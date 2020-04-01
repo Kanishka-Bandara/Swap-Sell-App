@@ -1,5 +1,5 @@
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/model/notification.dart';
+import 'package:swap_sell/model/default/notification.dart';
 
 class NotificationController extends Model {
   static NotificationController currentController;

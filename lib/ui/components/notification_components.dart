@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/controllers/notification_controller.dart';
-import 'package:swap_sell/model/notification.dart' as model;
+import 'package:swap_sell/model/default/notification.dart' as model;
 import 'package:swap_sell/ui/components/text_components.dart';
 
 class NotificationComponents {

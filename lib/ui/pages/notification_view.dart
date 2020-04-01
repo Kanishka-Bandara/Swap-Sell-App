@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/model/notification.dart' as notificationModel;
+import 'package:swap_sell/model/default/notification.dart' as notificationModel;
 import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/components/notification_components.dart';
 

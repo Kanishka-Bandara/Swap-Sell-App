@@ -25,5 +25,4 @@ class AppInit extends Model {
     AppInit.currentApp._removeCurruntUser();
     notifyListeners();
   }
-  
 }
