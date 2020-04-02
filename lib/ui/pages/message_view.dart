@@ -18,7 +18,7 @@ class _MessageViewState extends State<MessageView> {
     return ScopedModel(
         model: MessageController.defaultMessageController,
         child: Scaffold(
-          appBar: ApplicationBar.createHomeAppBar(context),
+          appBar: ApplicationBar.createNormalAppBar(context, "Messages", true),
           drawer: MyMenu.getMyMenu(context),
           body: DefaultComponents.buildNoDetailsWidget(
               context, Icons.message, "No Messages To View."),

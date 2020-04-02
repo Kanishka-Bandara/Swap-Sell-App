@@ -6,7 +6,6 @@ import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/components/notification_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
-import 'package:swap_sell/ui/components/text_components.dart';
 
 class NotificationView extends StatefulWidget {
   @override
@@ -19,7 +18,7 @@ class _NotificationViewState extends State<NotificationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ApplicationBar.createHomeAppBar(context),
+      appBar: ApplicationBar.createNormalAppBar(context, "Notifications",true),
       drawer: MyMenu.getMyMenu(context),
       // body: DefaultComponents.buildNoDetailsWidget(context, Icons.notifications_off, "No Notifications to View."),
       body: SingleChildScrollView(
@@ -32,13 +31,13 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: TextComponents.h1(context, "Notifications"),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  //   child: Align(
+                  //     alignment: Alignment.topLeft,
+                  //     child: TextComponents.h1(context, "Notifications"),
+                  //   ),
+                  // ),
                   model.isNotificationListEmpty
                       ? DefaultComponents.buildNoDetailsWidget(context,
                           Icons.notifications_off, "No Notifications to view")
@@ -56,7 +55,7 @@ class _NotificationViewState extends State<NotificationView> {
     return ScopedModelDescendant(builder:
         (BuildContext context, Widget widget, NotificationController model) {
       return Container(
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height-87,
         child: FutureBuilder(
           future: model.getNotificationList,
           builder: (context, snapshot) {

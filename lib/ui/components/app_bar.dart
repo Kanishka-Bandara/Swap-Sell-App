@@ -9,7 +9,7 @@ class ApplicationBar {
       actions: <Widget>[
         Container(
           margin: EdgeInsets.only(right: 20),
-          child: AppIcons.createShoppingCart(context,"0"),
+          child: AppIcons.createShoppingCart(context, "0"),
         )
       ],
       bottom: PreferredSize(
@@ -159,13 +159,23 @@ class ApplicationBar {
 //     );
 //   }
 
-  static createNormalAppBar(BuildContext context,String title) {
+  static createNormalAppBar(
+      BuildContext context, String title, bool showShoppingCart) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
         Container(
           margin: EdgeInsets.only(right: 20),
-          child: AppIcons.createShoppingCart(context,"0"),
+          child: Row(
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    AppNavigator.navigateToSearchPage(context);
+                  }),
+             showShoppingCart? AppIcons.createShoppingCart(context, "0"):Column(),
+            ],
+          ),
         )
       ],
     );
@@ -179,8 +189,10 @@ class ApplicationBar {
       currentIndex: _productPageBottomNavigationBarCurruntIndex,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.shop), title: Text("Shop")),
-        BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart), title: Text("Add")),
-        BottomNavigationBarItem(icon: Icon(Icons.check), title: Text("Buy Now")),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart), title: Text("Add")),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.check), title: Text("Buy Now")),
       ],
       onTap: (index) {
         _productPageBottomNavigationBarCurruntIndex = index;
