@@ -18,34 +18,30 @@ class _NotificationViewState extends State<NotificationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ApplicationBar.createNormalAppBar(context, "Notifications",true,null),
+      appBar: ApplicationBar.createNormalAppBar(
+          context, "Notifications", true, null),
       drawer: MyMenu.getMyMenu(context),
       // body: DefaultComponents.buildNoDetailsWidget(context, Icons.notifications_off, "No Notifications to View."),
-      body: SingleChildScrollView(
-        child: ScopedModel(
-          model: NotificationController.currentController,
-          child: ScopedModelDescendant(builder: (BuildContext context,
-              Widget widget, NotificationController model) {
-            return Container(
-              padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Padding(
-                  //   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  //   child: Align(
-                  //     alignment: Alignment.topLeft,
-                  //     child: TextComponents.h1(context, "Notifications"),
-                  //   ),
-                  // ),
-                  model.isNotificationListEmpty
-                      ? DefaultComponents.buildNoDetailsWidget(context,
-                          Icons.notifications_off, "No Notifications to view")
-                      : _buildNotificationList(context),
-                ],
-              ),
-            );
-          }),
+      body: ScopedModel(
+        model: NotificationController.currentController,
+        child: ScopedModelDescendant(
+          builder: (BuildContext context, Widget widget,
+              NotificationController model) {
+            return model.isNotificationListEmpty
+                ? DefaultComponents.buildNoDetailsWidget(context,
+                    Icons.notifications_off, "No Notifications to view")
+                : SingleChildScrollView(
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          _buildNotificationList(context),
+                        ],
+                      ),
+                    ),
+                  );
+          },
         ),
       ),
     );
@@ -55,7 +51,7 @@ class _NotificationViewState extends State<NotificationView> {
     return ScopedModelDescendant(builder:
         (BuildContext context, Widget widget, NotificationController model) {
       return Container(
-        height: MediaQuery.of(context).size.height-87,
+        height: MediaQuery.of(context).size.height - 87,
         child: FutureBuilder(
           future: model.getNotificationList,
           builder: (context, snapshot) {
