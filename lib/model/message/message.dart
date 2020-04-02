@@ -32,4 +32,12 @@ abstract class Message {
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+
+  DateTime get getSentAt => this.sentAt;
+
+  set setSentAt(DateTime sentTime) => this.sentAt = sentTime;
+
+  DateTime get getViewedAt => this.sentAt;
+
+  set setViewedAt(DateTime viewdTime) => this.sentAt = viewdTime;
 }
