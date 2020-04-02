@@ -16,12 +16,13 @@ class _MessageViewState extends State<MessageView> {
   @override
   Widget build(BuildContext context) {
     return ScopedModel(
-        model: MessageController.defaultMessageController,
-        child: Scaffold(
-          appBar: ApplicationBar.createNormalAppBar(context, "Messages", true),
-          drawer: MyMenu.getMyMenu(context),
-          body: DefaultComponents.buildNoDetailsWidget(
-              context, Icons.message, "No Messages To View."),
-        ));
+      model: MessageController.defaultMessageController,
+      child: Scaffold(
+        appBar: ApplicationBar.createNormalAppBar(context, "Messages", true),
+        drawer: MyMenu.getMyMenu(context),
+        body: DefaultComponents.buildNoDetailsWidget(
+            context, Icons.message, "No Messages To View."),
+      ),
+    );
   }
 }
