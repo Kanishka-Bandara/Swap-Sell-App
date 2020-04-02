@@ -13,7 +13,4 @@ class MessageController extends Model {
   Future<List<Message>> get receivedMessageList async {
     return Future.delayed(Duration(seconds: 2), () => _receivedMessageList);
   }
-
-
-
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 class TextComponents {
   static Widget h1(BuildContext context, String text) {

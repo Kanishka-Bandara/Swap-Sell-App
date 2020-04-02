@@ -4,8 +4,6 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/config/routs.dart';
-import 'package:swap_sell/controllers/product/product_controller_delete.dart';
-import 'package:swap_sell/model/product/product.dart';
 
 class MyMenu {
   static getMyMenu(BuildContext context) {
