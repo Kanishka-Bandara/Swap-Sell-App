@@ -1,16 +1,16 @@
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/model/message/Message.dart';
+import 'package:swap_sell/model/message/user_message.dart';
 
 class MessageController extends Model {
   static MessageController defaultMessageController = MessageController();
-  List<List<Message>> _messageList = [];
-  List<List<Message>> _archivedMessageList = [];
+  List<UserMessage> _messageList = [];
+  List<UserMessage> _archivedMessageList = [];
 
-  Future<List<List<Message>>> get messageList async {
+  Future<List<UserMessage>> get messageList async {
     return Future.delayed(Duration(seconds: 2), () => _messageList);
   }
 
-  Future<List<List<Message>>> get archivedMessageList async {
+  Future<List<UserMessage>> get receivedMessageList async {
     return Future.delayed(Duration(seconds: 2), () => _archivedMessageList);
   }
 
