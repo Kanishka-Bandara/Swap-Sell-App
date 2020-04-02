@@ -38,8 +38,7 @@ class MyMenu {
                   leading: Icon(Icons.message),
                   title: Text("Messages"),
                   onTap: () {
-                    Product p = ProductControllerDelete.mainList[0];
-                    print(p);
+                    AppNavigator.navigateToMessageViewPage(context);
                   },
                 ),
                 Divider(

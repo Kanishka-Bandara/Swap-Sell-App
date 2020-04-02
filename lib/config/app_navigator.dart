@@ -25,8 +25,12 @@ class AppNavigator extends Navigator {
 
   static navigateToNotificationViewPage(BuildContext context) {
     Navigator.of(context).pop();
-    Navigator.of(context).pop();
     Navigator.of(context).pushNamed(Routes.ROUTES_NOTIFICATION_VIEW);
+  }
+
+  static navigateToMessageViewPage(BuildContext context) {
+    Navigator.of(context).pop();
+    Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_VIEW);
   }
 
   static navigateToShoppingCart(BuildContext context) {

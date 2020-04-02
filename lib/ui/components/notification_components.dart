@@ -26,19 +26,49 @@ class NotificationComponents {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              TextComponents.h3(context, notification.getNotificationHeader),
-              IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    size: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      // GestureDetector(
+                      //   child: Icon(Icons.close),
+                      //   onTap: () {
+                      //     NotificationController.currentController
+                      //         .removeNotification(notification.getId);
+                      //   },
+                      // ),
+                      IconButton(
+                        padding: EdgeInsets.all(0),
+                        iconSize: 15,
+                        icon: Icon(
+                          Icons.close,
+                        ),
+                        onPressed: () {
+                          NotificationController.currentController
+                              .removeNotification(notification.getId);
+                        },
+                      )
+                    ],
                   ),
-                  onPressed: () {
-                    NotificationController.currentController.removeNotification(notification.getId);
-                  }),
+                ],
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Column(
+                  children: <Widget>[
+                    TextComponents.h3(
+                        context, notification.getNotificationHeader)
+                  ],
+                ),
+              ),
             ],
+          ),
+          SizedBox(
+            height: 10,
           ),
           TextComponents.paragraph(context, notification.getNotification)
         ],
