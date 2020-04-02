@@ -14,10 +14,7 @@ class MessageController extends Model {
     return Future.delayed(Duration(seconds: 2), () => _archivedMessageList);
   }
 
-bool get isEmptyMessageList{
-  return _messageList.length==0;
-}
-
-
-
+  bool get isEmptyMessageList {
+    return _messageList.length == 0;
+  }
 }

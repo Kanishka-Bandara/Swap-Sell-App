@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/model/user/user.dart';
 
 abstract class Message {
   int id;
   String category;
   String message;
-  User receivedBy;
-  User sentBy;
   DateTime sentAt;
   DateTime viewedAt;
   int status;
@@ -15,8 +12,6 @@ abstract class Message {
     @required this.id,
     @required this.category,
     @required this.message,
-    @required this.receivedBy,
-    @required this.sentBy,
     @required this.viewedAt,
     @required this.sentAt,
     @required this.status,
