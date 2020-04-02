@@ -3,14 +3,21 @@ import 'package:swap_sell/model/message/Message.dart';
 
 class MessageController extends Model {
   static MessageController defaultMessageController = MessageController();
-  List<Message> _sentMessageList = [];
-  List<Message> _receivedMessageList = [];
+  List<List<Message>> _messageList = [];
+  List<List<Message>> _archivedMessageList = [];
 
-  Future<List<Message>> get sentMessageList async {
-    return Future.delayed(Duration(seconds: 2), () => _sentMessageList);
+  Future<List<List<Message>>> get messageList async {
+    return Future.delayed(Duration(seconds: 2), () => _messageList);
   }
 
-  Future<List<Message>> get receivedMessageList async {
-    return Future.delayed(Duration(seconds: 2), () => _receivedMessageList);
+  Future<List<List<Message>>> get archivedMessageList async {
+    return Future.delayed(Duration(seconds: 2), () => _archivedMessageList);
   }
+
+bool get isEmptyMessageList{
+  return _messageList.length==0;
+}
+
+
+
 }

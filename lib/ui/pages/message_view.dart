@@ -17,11 +17,37 @@ class _MessageViewState extends State<MessageView> {
   Widget build(BuildContext context) {
     return ScopedModel(
       model: MessageController.defaultMessageController,
-      child: Scaffold(
-        appBar: ApplicationBar.createNormalAppBar(context, "Messages", true),
-        drawer: MyMenu.getMyMenu(context),
-        body: DefaultComponents.buildNoDetailsWidget(
-            context, Icons.message, "No Messages To View."),
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: ApplicationBar.createNormalAppBar(
+            context,
+            "Messages",
+            true,
+            TabBar(tabs: <Widget>[
+              Tab(
+                text: "Messages",
+                icon: Icon(Icons.chat),
+              ),
+              Tab(
+                text: "Archived",
+                icon: Icon(Icons.archive),
+              ),
+            ]),
+          ),
+          drawer: MyMenu.getMyMenu(context),
+          body: ScopedModelDescendant(
+            builder:
+                (BuildContext context, Widget widget, MessageController model) {
+              return TabBarView(children: <Widget>[
+                DefaultComponents.buildNoDetailsWidget(
+                    context, Icons.message, "No Messages To View."),
+                DefaultComponents.buildNoDetailsWidget(
+                    context, Icons.message, "No Messages To View."),
+              ]);
+            },
+          ),
+        ),
       ),
     );
   }

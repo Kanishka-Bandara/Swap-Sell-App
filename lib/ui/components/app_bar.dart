@@ -160,7 +160,7 @@ class ApplicationBar {
 //   }
 
   static createNormalAppBar(
-      BuildContext context, String title, bool showShoppingCart) {
+      BuildContext context, String title, bool showShoppingCart,Widget bottom) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
@@ -178,6 +178,7 @@ class ApplicationBar {
           ),
         )
       ],
+      bottom: bottom,
     );
   }
 
