@@ -17,4 +17,8 @@ class MessageController extends Model {
   bool get isEmptyMessageList {
     return _messageList.length == 0;
   }
+
+  bool get isEmptyArchivedMessageList {
+    return _archivedMessageList.length == 0;
+  }
 }

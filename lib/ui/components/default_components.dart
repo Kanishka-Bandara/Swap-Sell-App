@@ -7,9 +7,6 @@ class DefaultComponents {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 4,
-          ),
           Icon(
             iconData,
             size: 50,
