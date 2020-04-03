@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/message_controlller.dart';
+import 'package:swap_sell/model/message/message.dart';
+import 'package:swap_sell/model/message/message_category.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
+import 'package:swap_sell/ui/components/message_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 
 class MessageView extends StatefulWidget {
@@ -40,15 +43,58 @@ class _MessageViewState extends State<MessageView> {
             builder:
                 (BuildContext context, Widget widget, MessageController model) {
               return TabBarView(children: <Widget>[
-                DefaultComponents.buildNoDetailsWidget(
-                    context, Icons.message, "No Messages To View."),
-                DefaultComponents.buildNoDetailsWidget(
-                    context, Icons.message, "No Messages To View."),
+                model.isEmptyMessageList
+                    ? DefaultComponents.buildNoDetailsWidget(
+                        context, Icons.message, "No Messages To View.")
+                    : _buildMessageSection(),
+                model.isEmptyArchivedMessageList
+                    ? DefaultComponents.buildNoDetailsWidget(
+                        context, Icons.message, "No Messages To View.")
+                    : _buildArchivedMessageSection(),
               ]);
             },
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildMessageSection() {
+    return Column(
+      children: <Widget>[
+        MessageComponents.buildSendMessageTile(
+          context,
+          Message(
+            id: 1,
+            category: MessageCategory.RECEIVED_MESSAGE,
+            message:
+                "Are you comming today.",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: 1,
+          ),
+        ),
+        MessageComponents.buildReceivedMessageTile(
+          context,
+          Message(
+            id: 1,
+            category: MessageCategory.RECEIVED_MESSAGE,
+            message:
+                "Yes I am.",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: 1,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildArchivedMessageSection() {
+    return Column(
+      children: <Widget>[
+        Text("In the messages"),
+      ],
     );
   }
 }

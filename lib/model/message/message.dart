@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class Message {
+class Message {
   int id;
-  String category;
+  int category;
   String message;
   DateTime sentAt;
   DateTime viewedAt;
@@ -21,9 +21,9 @@ abstract class Message {
 
   set setId(int id) => this.id = id;
 
-  String get getCategory => category;
+  int get getCategory => category;
 
-  set setCategory(String category) => this.category = category;
+  set setCategory(int category) => this.category = category;
 
   String get getMessage => message;
 
