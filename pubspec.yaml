@@ -34,6 +34,7 @@ dependencies:
   speech_recognition: ^0.3.0+1
   scoped_model: ^1.0.1
   flutter_markdown: ^0.3.4
+  emoji_picker: ^0.1.0
 
 dev_dependencies:
   flutter_test:
