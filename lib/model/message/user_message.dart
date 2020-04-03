@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/user/user.dart';
 
-class UserMessage {
+class UserMessage extends Model{
   User receivedBy;
   User sentBy;
   int unreadMessageCount;
@@ -29,4 +30,8 @@ class UserMessage {
 
   set setUnreadMessageCount(int unreadMessageCount) =>
       this.unreadMessageCount = unreadMessageCount;
+
+  addMessage(Message message) {
+    messageList.add(message);
+  }
 }

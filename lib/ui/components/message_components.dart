@@ -25,7 +25,7 @@ class MessageComponents {
                   ),
             boxShadow: [
               BoxShadow(
-                color: Theme.of(context).primaryColor.withOpacity(0.5),
+                color: Theme.of(context).primaryColor.withOpacity(0.7),
                 blurRadius: 6,
                 offset: Offset(1, 1),
               ),
@@ -39,8 +39,11 @@ class MessageComponents {
         Container(
           alignment: Alignment.bottomRight,
           width: 200,
-          child: Text(
-              "${message.getSentAt.year}-${message.getSentAt.month}-${message.getSentAt.day} ${message.getSentAt.hour}:${message.getSentAt.minute}"),
+          child: message.getCategory == MessageMetadata.SENT_MESSAGE
+              ? Text(
+                  "${message.getSentAt.year}-${message.getSentAt.month}-${message.getSentAt.day} ${message.getSentAt.hour}:${message.getSentAt.minute}")
+              : Text(
+                  "${message.getViewedAt.year}-${message.getViewedAt.month}-${message.getViewedAt.day} ${message.getViewedAt.hour}:${message.getViewedAt.minute}"),
         ),
       ],
     );
@@ -48,7 +51,7 @@ class MessageComponents {
 
   static Widget buildMessageRowTile(BuildContext context, Message message) {
     return Container(
-      padding: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 5),
+      padding: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
       alignment: message.getCategory == MessageMetadata.SENT_MESSAGE
           ? Alignment.centerRight
           : Alignment.centerLeft,
