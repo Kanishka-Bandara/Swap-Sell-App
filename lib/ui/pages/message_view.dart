@@ -27,16 +27,18 @@ class _MessageViewState extends State<MessageView> {
             context,
             "Messages",
             true,
-            TabBar(tabs: <Widget>[
-              Tab(
-                text: "Messages",
-                icon: Icon(Icons.chat),
-              ),
-              Tab(
-                text: "Archived",
-                icon: Icon(Icons.archive),
-              ),
-            ]),
+            TabBar(
+              tabs: <Widget>[
+                Tab(
+                  text: "Messages",
+                  icon: Icon(Icons.chat),
+                ),
+                Tab(
+                  text: "Archived",
+                  icon: Icon(Icons.archive),
+                ),
+              ],
+            ),
           ),
           drawer: MyMenu.getMyMenu(context),
           body: ScopedModelDescendant(
@@ -62,28 +64,26 @@ class _MessageViewState extends State<MessageView> {
   Widget _buildMessageSection() {
     return Column(
       children: <Widget>[
-        MessageComponents.buildSendMessageTile(
+        MessageComponents.buildMessageRowTile(
           context,
           Message(
             id: 1,
-            category: MessageCategory.RECEIVED_MESSAGE,
-            message:
-                "Are you comming today.",
+            category: MessageMetadata.SENT_MESSAGE,
+            message: "Are you comming today.",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: 1,
+            status: MessageMetadata.LIVE_MESSAGE,
           ),
         ),
-        MessageComponents.buildReceivedMessageTile(
+        MessageComponents.buildMessageRowTile(
           context,
           Message(
             id: 1,
-            category: MessageCategory.RECEIVED_MESSAGE,
-            message:
-                "Yes I am.",
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message: "Yes I am.",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: 1,
+            status: MessageMetadata.LIVE_MESSAGE,
           ),
         ),
       ],

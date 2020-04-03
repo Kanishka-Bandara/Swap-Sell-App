@@ -50,12 +50,12 @@ class MessageController extends Model {
         messageList: [
           Message(
             id: 1,
-            category: MessageCategory.RECEIVED_MESSAGE,
+            category: MessageMetadata.RECEIVED_MESSAGE,
             message:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: 1,
+            status: MessageMetadata.LIVE_MESSAGE,
           ),
         ],
       ),
