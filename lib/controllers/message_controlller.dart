@@ -2,6 +2,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/message/message_category.dart';
 import 'package:swap_sell/model/message/user_message.dart';
+import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class MessageController extends Model {
@@ -24,29 +25,64 @@ class MessageController extends Model {
 
   bool get isEmptyMessageList {
     return _messageList.length == 0;
-  } 
+  }
 
   bool get isEmptyArchivedMessageList {
     return _archivedMessageList.length == 0;
   }
 
-  bool sendMessage(Message message,User receiver){
+  bool sendMessage(Message message, User receiver) {
     bool status = true;
     //Send Message To the backend
     if (status) {
-      for (var i = 0; i < _messageList.length; i++) {
-        
-      }
+      for (var i = 0; i < _messageList.length; i++) {}
     }
     return status;
   }
 
-
   void _loadMessagesList() {
     _messageList.add(
       UserMessage(
-        receivedBy: User(),
-        sentBy: User(),
+        receivedBy: User(
+          id: 1,
+          userId: "u0001",
+          title: "Mr.",
+          gender: "Male",
+          fName: "Kanishka",
+          lName: "Bandara",
+          fullName: "Kanishka Udayakantha Bandara",
+          emails: <Email>[
+            Email(
+              emailID: 1,
+              emailType: "Primary",
+              email: "wmkubandara@gmail.com",
+              status: 1,
+            )
+          ],
+          country: "Sri Lanka",
+          activeState: 1,
+          status: 1,
+        ),
+        sentBy: User(
+          id: 1,
+          userId: "u0001",
+          title: "Mr.",
+          gender: "Male",
+          fName: "Kanishka",
+          lName: "Bandara",
+          fullName: "Kanishka Udayakantha Bandara",
+          emails: <Email>[
+            Email(
+              emailID: 1,
+              emailType: "Primary",
+              email: "wmkubandara@gmail.com",
+              status: 1,
+            )
+          ],
+          country: "Sri Lanka",
+          activeState: 1,
+          status: 1,
+        ),
         messageList: [
           Message(
             id: 1,
