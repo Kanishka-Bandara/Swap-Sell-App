@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
-import 'package:swap_sell/model/message/message_category.dart';
+import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/message_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
+import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/components/spinner.dart';
 
 class MessageView extends StatefulWidget {
   @override
@@ -51,7 +53,7 @@ class _MessageViewState extends State<MessageView> {
                     : _buildMessageSection(),
                 model.isEmptyArchivedMessageList
                     ? DefaultComponents.buildNoDetailsWidget(
-                        context, Icons.message, "No Messages To View.")
+                        context, Icons.message, "No Archived Messages.")
                     : _buildArchivedMessageSection(),
               ]);
             },
@@ -62,31 +64,69 @@ class _MessageViewState extends State<MessageView> {
   }
 
   Widget _buildMessageSection() {
-    return Column(
-      children: <Widget>[
-        MessageComponents.buildMessageRowTile(
-          context,
-          Message(
-            id: 1,
-            category: MessageMetadata.SENT_MESSAGE,
-            message: "Are you comming today.",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
-          ),
-        ),
-        MessageComponents.buildMessageRowTile(
-          context,
-          Message(
-            id: 1,
-            category: MessageMetadata.RECEIVED_MESSAGE,
-            message: "Yes I am.",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
-          ),
-        ),
-      ],
+    return Container(
+      // child: SingleChildScrollView(
+      child: FutureBuilder(
+        future: MessageController.defaultMessageController.getMessageList,
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
+              child: ShimmerTile(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height, context),
+            );
+          } else {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return Column(
+                  children: <Widget>[
+                    ListTile(
+                      onTap: () {},
+                      leading: snapshot.data[index].sentBy.profilePicUrl == null
+                          ? Icon(Icons.perm_identity)
+                          : Image.network(
+                              snapshot.data[index].sentBy.profilePicUrl),
+                      title: Text(
+                          "${snapshot.data[index].sentBy.fName} ${snapshot.data[index].sentBy.lName}"),
+                      subtitle: Text(snapshot.data[index].messageList[0].message
+                                  .toString()
+                                  .length >
+                              30
+                          ? "${snapshot.data[index].messageList[0].message.toString().substring(0, 30)} ..."
+                          : snapshot.data[index].messageList[0].message),
+                      trailing: snapshot.data[index].getUnreadMessageCount > 0
+                          ? Container(
+                              width: 30,
+                              height: 30,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Text(
+                                "${snapshot.data[index].getUnreadMessageCount}",
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          : Text(""),
+                    ),
+                    Divider(
+                      height: 1,
+                      indent: 10,
+                      endIndent: 10,
+                    ),
+                  ],
+                );
+              },
+              itemCount: snapshot.data.length,
+            );
+          }
+        },
+      ),
+      // ),
     );
   }
 

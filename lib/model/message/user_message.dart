@@ -5,13 +5,13 @@ import 'package:swap_sell/model/user/user.dart';
 class UserMessage {
   User receivedBy;
   User sentBy;
+  int unreadMessageCount;
   List<Message> messageList = [];
-
-  UserMessage({
-    @required this.receivedBy,
-    @required this.sentBy,
-    this.messageList,
-  });
+  UserMessage(
+      {@required this.receivedBy,
+      @required this.sentBy,
+      this.messageList,
+      this.unreadMessageCount});
 
   User get getReceivedUser => this.receivedBy;
 
@@ -24,4 +24,9 @@ class UserMessage {
   List<Message> get getMessageList => this.messageList;
 
   set setMessageList(List<Message> messages) => this.messageList = messages;
+
+  int get getUnreadMessageCount => unreadMessageCount;
+
+  set setUnreadMessageCount(int unreadMessageCount) =>
+      this.unreadMessageCount = unreadMessageCount;
 }

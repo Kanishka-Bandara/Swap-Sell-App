@@ -1,6 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/message/message.dart';
-import 'package:swap_sell/model/message/message_category.dart';
+import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
@@ -43,6 +43,80 @@ class MessageController extends Model {
   void _loadMessagesList() {
     _messageList.add(
       UserMessage(
+        unreadMessageCount: 5,
+        receivedBy: User(
+          id: 1,
+          userId: "u0001",
+          title: "Mr.",
+          gender: "Male",
+          fName: "Kanishka",
+          lName: "Bandara",
+          fullName: "Kanishka Udayakantha Bandara",
+          emails: <Email>[
+            Email(
+              emailID: 1,
+              emailType: "Primary",
+              email: "wmkubandara@gmail.com",
+              status: 1,
+            )
+          ],
+          country: "Sri Lanka",
+          activeState: 1,
+          status: 1,
+        ),
+        sentBy: User(
+          id: 1,
+          userId: "u0001",
+          title: "Mr.",
+          gender: "Male",
+          fName: "Kanishka",
+          lName: "Bandara",
+          fullName: "Kanishka Udayakantha Bandara",
+          profilePicUrl: "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
+          emails: <Email>[
+            Email(
+              emailID: 1,
+              emailType: "Primary",
+              email: "wmkubandara@gmail.com",
+              status: 1,
+            )
+          ],
+          country: "Sri Lanka",
+          activeState: 1,
+          status: 1,
+        ),
+        messageList: [
+          Message(
+            id: 1,
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: MessageMetadata.LIVE_MESSAGE,
+          ),
+          Message(
+            id: 2,
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message: "",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: MessageMetadata.LIVE_MESSAGE,
+          ),
+          Message(
+            id: 3,
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message: "",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: MessageMetadata.LIVE_MESSAGE,
+          ),
+        ],
+      ),
+    );
+    _messageList.add(
+      UserMessage(
+        unreadMessageCount: 0,
         receivedBy: User(
           id: 1,
           userId: "u0001",
@@ -89,6 +163,22 @@ class MessageController extends Model {
             category: MessageMetadata.RECEIVED_MESSAGE,
             message:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: MessageMetadata.LIVE_MESSAGE,
+          ),
+          Message(
+            id: 2,
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message: "",
+            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
+            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
+            status: MessageMetadata.LIVE_MESSAGE,
+          ),
+          Message(
+            id: 3,
+            category: MessageMetadata.RECEIVED_MESSAGE,
+            message: "",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
             status: MessageMetadata.LIVE_MESSAGE,

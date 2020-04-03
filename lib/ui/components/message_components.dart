@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/model/message/message.dart';
-import 'package:swap_sell/model/message/message_category.dart';
+import 'package:swap_sell/model/message/message_metadata.dart';
 
 class MessageComponents {
   static Widget _buildMessageTile(BuildContext context, Message message) {
@@ -41,15 +41,17 @@ class MessageComponents {
           width: 200,
           child: Text(
               "${message.getSentAt.year}-${message.getSentAt.month}-${message.getSentAt.day} ${message.getSentAt.hour}:${message.getSentAt.minute}"),
-        )
+        ),
       ],
     );
   }
 
   static Widget buildMessageRowTile(BuildContext context, Message message) {
     return Container(
-      padding: EdgeInsets.only(left: 5,top: 5,right: 5,bottom: 5),
-      alignment: message.getCategory == MessageMetadata.SENT_MESSAGE?Alignment.centerRight:Alignment.centerLeft,
+      padding: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 5),
+      alignment: message.getCategory == MessageMetadata.SENT_MESSAGE
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
       child: _buildMessageTile(context, message),
     );
   }
