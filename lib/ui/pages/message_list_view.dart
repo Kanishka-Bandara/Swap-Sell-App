@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/message_controlller.dart';
-import 'package:swap_sell/model/message/message.dart';
-import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/message_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
-import 'package:swap_sell/ui/components/spinner.dart';
 
 class MessageView extends StatefulWidget {
   @override
@@ -81,7 +78,10 @@ class _MessageViewState extends State<MessageView> {
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        AppNavigator.navigateToChatViewPage(
+                            context, snapshot.data[index]);
+                      },
                       leading: snapshot.data[index].sentBy.profilePicUrl == null
                           ? Icon(Icons.perm_identity)
                           : Image.network(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/routs.dart';
+import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/ui/pages/chat_view.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/search_page.dart';
 
@@ -30,7 +32,12 @@ class AppNavigator extends Navigator {
 
   static navigateToMessageViewPage(BuildContext context) {
     Navigator.of(context).pop();
-    Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_VIEW);
+    Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_LIST_VIEW);
+  }
+
+  static navigateToChatViewPage(BuildContext context, UserMessage userMessage) {
+    ChatView.userMessage = userMessage;
+    Navigator.of(context).pushNamed(Routes.ROUTES_CHAT_VIEW);
   }
 
   static navigateToShoppingCart(BuildContext context) {
