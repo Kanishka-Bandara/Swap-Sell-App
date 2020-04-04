@@ -30,11 +30,11 @@ class _MessageViewState extends State<MessageView> {
               tabs: <Widget>[
                 Tab(
                   text: "Messages",
-                  icon: Icon(Icons.chat),
+                  // icon: Icon(Icons.chat),
                 ),
                 Tab(
                   text: "Archived",
-                  icon: Icon(Icons.archive),
+                  // icon: Icon(Icons.archive),
                 ),
               ],
             ),
@@ -43,16 +43,18 @@ class _MessageViewState extends State<MessageView> {
           body: ScopedModelDescendant(
             builder:
                 (BuildContext context, Widget widget, MessageController model) {
-              return TabBarView(children: <Widget>[
-                model.isEmptyMessageList
-                    ? DefaultComponents.buildNoDetailsWidget(
-                        context, Icons.message, "No Messages To View.")
-                    : _buildMessageSection(),
-                model.isEmptyArchivedMessageList
-                    ? DefaultComponents.buildNoDetailsWidget(
-                        context, Icons.message, "No Archived Messages.")
-                    : _buildArchivedMessageSection(),
-              ]);
+              return TabBarView(
+                children: <Widget>[
+                  model.isEmptyMessageList
+                      ? DefaultComponents.buildNoDetailsWidget(
+                          context, Icons.message, "No Messages To View.")
+                      : _buildMessageSection(),
+                  model.isEmptyArchivedMessageList
+                      ? DefaultComponents.buildNoDetailsWidget(
+                          context, Icons.message, "No Archived Messages.")
+                      : _buildArchivedMessageSection(),
+                ],
+              );
             },
           ),
         ),
