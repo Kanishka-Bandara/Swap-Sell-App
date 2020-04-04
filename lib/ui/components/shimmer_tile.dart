@@ -6,8 +6,8 @@ class ShimmerTile extends StatelessWidget {
   final double _width;
   final double _height;
   final BuildContext _context;
-  int _offset = 0;
-  int _time = 800;
+  static int _offset = 0;
+  static int _time = 800;
   ShimmerTile(this._width, this._height, this._context);
   @override
   Widget build(BuildContext context) {
