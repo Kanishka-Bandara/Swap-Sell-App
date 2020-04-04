@@ -27,9 +27,13 @@ class _MyHomePageState extends State<Home> {
               // Padding(
               //   padding: const EdgeInsets.all(10),
               // ),
+              Container(
+                height: 10,
+                color: Theme.of(context).scaffoldBackgroundColor,
+              ),
               _buildCategoryList(context),
               Container(
-                height: 20,
+                height: 10,
                 color: Theme.of(context).backgroundColor,
               ),
               Padding(
@@ -62,7 +66,7 @@ class _MyHomePageState extends State<Home> {
 
   _buildCategoryList(BuildContext context) {
     return Container(
-      height: 120,
+      height: 50,
       child: FutureBuilder(
         future: ProductController.getMainCategoryList(),
         builder: (context, snapshot) {
@@ -75,22 +79,43 @@ class _MyHomePageState extends State<Home> {
             return Padding(
               padding: EdgeInsets.only(top: 0, bottom: 0),
               child:
-                  ShimmerTile(MediaQuery.of(context).size.width, 120, context),
+                  ShimmerTile(MediaQuery.of(context).size.width, 50, context),
             );
           } else {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    Image.network(
-                      snapshot.data[index].getImgPath,
-                      width: 60,
-                      height: 100,
-                    ),
-                    Text(snapshot.data[index].getCatName),
-                  ],
+                return Container(
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).primaryColor.withOpacity(0.5),
+                        blurRadius: 6,
+                        offset: Offset(1, 1),
+                      ),
+                    ],
+                  ),
+                  // width: 100,
+                  height: 30,
+                  child: Center(
+                    child: Text(snapshot.data[index].getCatName,style: TextStyle(fontWeight: FontWeight.bold),),
+                  ),
                 );
+
+                // return Column(
+                //   children: <Widget>[
+                //     Image.network(
+                //       snapshot.data[index].getImgPath,
+                //       width: 60,
+                //       height: 100,
+                //     ),
+                //     Text(snapshot.data[index].getCatName),
+                //   ],
+                // );
               },
               itemCount: snapshot.data.length,
             );
@@ -99,7 +124,6 @@ class _MyHomePageState extends State<Home> {
       ),
     );
   }
-
 
   Widget _buildRecentArrivedProductList(BuildContext context) {
     return Container(
@@ -132,7 +156,6 @@ class _MyHomePageState extends State<Home> {
     );
   }
 
-
   Widget _buildHighestSoldProductList(BuildContext context) {
     return Container(
       height: 310,
@@ -163,8 +186,4 @@ class _MyHomePageState extends State<Home> {
       ),
     );
   }
-
-
-
-
 }
