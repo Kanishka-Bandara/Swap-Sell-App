@@ -40,6 +40,11 @@ class AppNavigator extends Navigator {
     Navigator.of(context).pushNamed(Routes.ROUTES_CHAT_VIEW);
   }
 
+  static navigateToSavedViewPage(BuildContext context) {
+    Navigator.of(context).pop();
+    Navigator.of(context).pushNamed(Routes.ROUTES_SAVED_VIEW);
+  }
+
   static navigateToShoppingCart(BuildContext context) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SHOPPING_CART);
   }
