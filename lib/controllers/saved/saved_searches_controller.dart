@@ -4,26 +4,26 @@ import 'package:swap_sell/model/saved/saved_search.dart';
 class SavedSearchesController extends Model {
   static SavedSearchesController defaultController = SavedSearchesController();
   List<SavedSearch> _savedList = [
-    SavedSearch.withId(
-      0,
-      "Alisha",
-      DateTime(2019, 5, 2, 11, 15, 20),
-      DateTime(2019, 5, 2, 11, 15, 20),
-      1,
+    SavedSearch(
+      id: 0,
+      query: "Alisha",
+      serachedAt: DateTime(2019, 5, 2, 11, 15, 20),
+      savedAt: DateTime(2019, 5, 2, 11, 15, 20),
+      status: 1,
     ),
-    SavedSearch.withId(
-      1,
-      "Solid",
-      DateTime(2020, 1, 2, 11, 15, 20),
-      DateTime(2020, 1, 2, 11, 15, 20),
-      1,
+    SavedSearch(
+      id: 1,
+      query: "Solid",
+      serachedAt: DateTime(2020, 1, 2, 11, 15, 20),
+      savedAt: DateTime(2020, 1, 2, 11, 15, 20),
+      status: 1,
     ),
-    SavedSearch.withId(
-      2,
-      "Carrel",
-      DateTime(2020, 4, 1, 13, 59, 00),
-      DateTime(2020, 4, 1, 13, 59, 00),
-      1,
+    SavedSearch(
+      id: 2,
+      query: "Carrel",
+      serachedAt: DateTime(2020, 4, 1, 13, 59, 00),
+      savedAt: DateTime(2020, 4, 1, 13, 59, 00),
+      status: 1,
     ),
   ];
 
