@@ -20,8 +20,14 @@ class ProductView extends StatefulWidget {
 
 class _ProductViewState extends State<ProductView> {
   Product _product;
+  double _selectedQty = 1;
+  int _bottomNavigationBarCurruntIndex = 1;
   _ProductViewState(this._product);
-  int _bottomNavigationBarCurruntIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   // _ProductViewState(_product);
   @override
   Widget build(BuildContext context) {
@@ -156,8 +162,7 @@ class _ProductViewState extends State<ProductView> {
           ],
         ),
       ),
-      
-      
+
       bottomNavigationBar: _buildBottomNavBar(context),
     );
   }
@@ -363,6 +368,30 @@ class _ProductViewState extends State<ProductView> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
           _generateDetailsTable(),
+          Row(
+            children: <Widget>[
+              Text("Select Qty"),
+              Slider.adaptive(
+                value: _selectedQty,
+                min: 1,
+                max: _product.getqty.round().toDouble(),
+                divisions: _product.getqty,
+                label: "${_selectedQty.toInt()}",
+                onChanged: (double v) {
+                  print("${v.toInt()}");
+                  setState(
+                    () {
+                      _selectedQty = v;
+                    },
+                  );
+                },
+              ),
+              Text(
+                "${_selectedQty.toInt()}",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
           _product.specifications.length != 0
               ? ExpansionTile(
                   title: Text("Specifications"),
@@ -391,82 +420,6 @@ class _ProductViewState extends State<ProductView> {
           )
         ],
       ),
-    );
-  }
-
-  Widget _buildBottomNavBar(BuildContext context) {
-    return BottomNavigationBar(
-      elevation: 10,
-      currentIndex: _bottomNavigationBarCurruntIndex,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shop),
-          title: Text("Shop"),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.add_shopping_cart),
-          title: Text("Add"),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.check),
-          title: Text("Buy Now"),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            _product.isFavorite ? Icons.favorite : Icons.favorite_border,
-          ),
-          title: Text("Save"),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-      ],
-      onTap: (index) {
-        _bottomNavigationBarCurruntIndex = index;
-
-        if (index == 0) {
-          //Shop
-          showBottomSheet(
-            context: context,
-            builder: (context) {
-              return Container(
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: Icon(Icons.adjust),
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        }
-        if (index == 1) {
-          //Add to Product Card
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text("data"),
-                  content: Text("data"),
-                );
-              });
-        }
-        if (index == 2) {
-          //Buy Now
-
-        }
-        if (index == 3) {
-          //Save
-          // setState(() {
-          // _product.isFavorite = !_product.isFavorite;
-          // });
-        }
-        setState(() {
-          _bottomNavigationBarCurruntIndex = index;
-        });
-      },
     );
   }
 
@@ -600,6 +553,60 @@ class _ProductViewState extends State<ProductView> {
           }
         },
       ),
+    );
+  }
+
+  _buildBottomNavBar(BuildContext context) {
+    return BottomNavigationBar(
+      elevation: 10,
+      currentIndex: _bottomNavigationBarCurruntIndex,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shop),
+          title: Text("Shop"),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_shopping_cart),
+          title: Text("Add"),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.check),
+          title: Text("Buy Now"),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            _product.isFavorite ? Icons.favorite : Icons.favorite_border,
+          ),
+          title: Text("Save"),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+      ],
+      onTap: (index) {
+        _bottomNavigationBarCurruntIndex = index;
+
+        if (index == 0) {
+          //Shop
+        }
+        if (index == 1) {
+          //Add to Product Card
+
+        }
+        if (index == 2) {
+          //Buy Now
+        }
+        if (index == 3) {
+          //Save
+          // setState(() {
+          // _product.isFavorite = !_product.isFavorite;
+          // });
+        }
+        setState(() {
+          _bottomNavigationBarCurruntIndex = index;
+        });
+      },
     );
   }
 }
