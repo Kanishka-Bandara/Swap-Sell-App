@@ -5,6 +5,7 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/ui/components/shimmer_tile.dart';
 import 'package:swap_sell/ui/components/spinner.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:swap_sell/model/product/product.dart';
@@ -121,10 +122,21 @@ class SearchPage extends SearchDelegate<String> {
         future: ProductController.getSearchedList(query),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
-            return Container(
-              child: Center(
-                child: Spinner.getSpinner(context, 20),
-              ),
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  child: Column(
+                    children: <Widget>[
+                      ShimmerTile(
+                          MediaQuery.of(context).size.width, 75, context),
+                      Divider(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 10,
             );
           } else {
             return ListView.builder(
