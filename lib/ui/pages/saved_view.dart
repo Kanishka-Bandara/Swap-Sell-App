@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
 
@@ -80,42 +81,47 @@ class _SavedViewState extends State<SavedView> {
             _searchedListCount = snapshot.data.length;
             return ScopedModel(
               model: SavedSearchesController.defaultController,
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: <Widget>[
-                      ScopedModelDescendant<SavedSearchesController>(builder:
-                          (BuildContext context, Widget widget,
-                              SavedSearchesController model) {
-                        return ListTile(
-                          onTap: () {},
-                          leading: Icon(Icons.search),
-                          title: Text("${snapshot.data[index].getQuery}"),
-                          subtitle: Text("${snapshot.data[index].getSavedAt}"),
-                          trailing: IconButton(
-                            icon: Icon(Icons.close),
-                            onPressed: () async {
-                              bool _state = await model.removeFromSavedList(
-                                  snapshot.data[index], index);
-                              if (_state) {
-                                setState(() {
-                                  _searchedListCount--;
-                                });
-                              }
-                            },
-                          ),
-                        );
-                      }),
-                      Divider(
-                        height: 1,
-                        indent: 10,
-                        endIndent: 10,
-                      ),
-                    ],
-                  );
-                },
-                itemCount: _searchedListCount,
-              ),
+              child: ScopedModelDescendant<SavedSearchesController>(builder:
+                  (BuildContext context, Widget widget,
+                      SavedSearchesController model) {
+                return _searchedListCount == 0
+                    ? DefaultComponents.buildNoDetailsWidget(
+                        context, Icons.search, "No saved searches.")
+                    : ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: <Widget>[
+                              ListTile(
+                                onTap: () {},
+                                leading: Icon(Icons.search),
+                                title: Text("${snapshot.data[index].getQuery}"),
+                                subtitle:
+                                    Text("${snapshot.data[index].getSavedAt}"),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.close),
+                                  onPressed: () async {
+                                    bool _state =
+                                        await model.removeFromSavedList(
+                                            snapshot.data[index], index);
+                                    if (_state) {
+                                      setState(() {
+                                        _searchedListCount--;
+                                      });
+                                    }
+                                  },
+                                ),
+                              ),
+                              Divider(
+                                height: 1,
+                                indent: 10,
+                                endIndent: 10,
+                              ),
+                            ],
+                          );
+                        },
+                        itemCount: _searchedListCount,
+                      );
+              }),
             );
           }
         },
