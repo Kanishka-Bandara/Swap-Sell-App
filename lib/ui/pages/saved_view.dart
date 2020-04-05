@@ -14,7 +14,6 @@ class SavedView extends StatefulWidget {
 }
 
 class _SavedViewState extends State<SavedView> {
-  int _searchedListCount = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -78,13 +77,12 @@ class _SavedViewState extends State<SavedView> {
               itemCount: 10,
             );
           } else {
-            _searchedListCount = snapshot.data.length;
             return ScopedModel(
               model: SavedSearchesController.defaultController,
               child: ScopedModelDescendant<SavedSearchesController>(builder:
                   (BuildContext context, Widget widget,
                       SavedSearchesController model) {
-                return _searchedListCount == 0
+                return snapshot.data.length == 0
                     ? DefaultComponents.buildNoDetailsWidget(
                         context, Icons.search, "No saved searches.")
                     : ListView.builder(
@@ -100,14 +98,14 @@ class _SavedViewState extends State<SavedView> {
                                 trailing: IconButton(
                                   icon: Icon(Icons.close),
                                   onPressed: () async {
-                                    bool _state =
-                                        await model.removeFromSavedList(
-                                            snapshot.data[index], index);
-                                    if (_state) {
-                                      setState(() {
-                                        _searchedListCount--;
-                                      });
-                                    }
+                                    // bool _state =
+                                    await model.removeFromSavedList(
+                                        snapshot.data[index], index);
+                                    // if (_state) {
+                                    //   setState(() {
+                                    //     _searchedListCount--;
+                                    //   });
+                                    // }
                                   },
                                 ),
                               ),
@@ -119,7 +117,7 @@ class _SavedViewState extends State<SavedView> {
                             ],
                           );
                         },
-                        itemCount: _searchedListCount,
+                        itemCount: snapshot.data.length,
                       );
               }),
             );
