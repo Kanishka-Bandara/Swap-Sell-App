@@ -5,21 +5,21 @@ class SavedSearchesController extends Model {
   static SavedSearchesController defaultController = SavedSearchesController();
   List<SavedSearch> _savedList = [
     SavedSearch(
-      id: 1,
+      id: 0,
       query: "Alisha",
       serachedAt: DateTime(2019, 5, 2, 11, 15, 20),
       savedAt: DateTime(2019, 5, 2, 11, 15, 20),
       status: 1,
     ),
     SavedSearch(
-      id: 2,
+      id: 1,
       query: "Solid",
       serachedAt: DateTime(2020, 1, 2, 11, 15, 20),
       savedAt: DateTime(2020, 1, 2, 11, 15, 20),
       status: 1,
     ),
     SavedSearch(
-      id: 3,
+      id: 2,
       query: "Carrel",
       serachedAt: DateTime(2020, 4, 1, 13, 59, 00),
       savedAt: DateTime(2020, 4, 1, 13, 59, 00),
@@ -28,7 +28,7 @@ class SavedSearchesController extends Model {
   ];
 
   Future<List<SavedSearch>> getSavedList() async {
-    return Future.delayed(Duration(minutes: 2), () => _savedList);
+    return Future.delayed(Duration(seconds: 2), () => _savedList);
   }
 
   Future<bool> addToSavedList(SavedSearch savedSearch) async {

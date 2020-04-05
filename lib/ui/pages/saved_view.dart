@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
+import 'package:swap_sell/ui/components/shimmer_tile.dart';
 
 class SavedView extends StatefulWidget {
   @override
@@ -50,25 +53,66 @@ class _SavedViewState extends State<SavedView> {
   }
 
   _buildSavedSearchesPage(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.archive),
-              title: Text("Title"),
-              subtitle: Text("Sub Title"),
-              trailing:
-                  IconButton(icon: Icon(Icons.delete_sweep), onPressed: () {}),
-              onTap: () {},
-            ),
-            Divider(
-              height: 0,
-            ),
-          ],
-        );
-      },
-      itemCount: 5,
+    return Container(
+      child: FutureBuilder(
+        future: SavedSearchesController.defaultController.getSavedList(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  // padding: EdgeInsets.only(),
+                  child: Column(
+                    children: <Widget>[
+                      ShimmerTile(
+                          MediaQuery.of(context).size.width, 75, context),
+                      Divider(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 10,
+            );
+          } else {
+            return ScopedModel(
+              model: SavedSearchesController.defaultController,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: <Widget>[
+                      ScopedModelDescendant<SavedSearchesController>(builder:
+                          (BuildContext context, Widget widget,
+                              SavedSearchesController model) {
+                        return ListTile(
+                          onTap: () {},
+                          leading: Icon(Icons.search),
+                          title: Text("${snapshot.data[index].getQuery}"),
+                          subtitle: Text("${snapshot.data[index].getSavedAt}"),
+                          trailing: IconButton(
+                            icon: Icon(Icons.close),
+                            onPressed: () async {
+                              await model
+                                  .removeFromSavedList(snapshot.data[index]);
+                            },
+                          ),
+                        );
+                      }),
+                      Divider(
+                        height: 1,
+                        indent: 10,
+                        endIndent: 10,
+                      ),
+                    ],
+                  );
+                },
+                itemCount: snapshot.data.length,
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
