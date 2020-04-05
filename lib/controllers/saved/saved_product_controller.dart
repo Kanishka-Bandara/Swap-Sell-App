@@ -2,8 +2,8 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/saved/saved_product.dart';
 
 class SavedProductsController extends Model {
-  static SavedProductsController defaultController;
-  List<SavedProduct> _savedList;
+  static SavedProductsController defaultController = SavedProductsController();
+  List<SavedProduct> _savedList = [];
 
   Future<List<SavedProduct>> getSavedList() async {
     return _savedList;

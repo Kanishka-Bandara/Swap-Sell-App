@@ -2,11 +2,33 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/saved/saved_search.dart';
 
 class SavedSearchesController extends Model {
-  static SavedSearchesController defaultController;
-  List<SavedSearch> _savedList;
+  static SavedSearchesController defaultController = SavedSearchesController();
+  List<SavedSearch> _savedList = [
+    SavedSearch(
+      id: 1,
+      query: "Alisha",
+      serachedAt: DateTime(2019, 5, 2, 11, 15, 20),
+      savedAt: DateTime(2019, 5, 2, 11, 15, 20),
+      status: 1,
+    ),
+    SavedSearch(
+      id: 2,
+      query: "Solid",
+      serachedAt: DateTime(2020, 1, 2, 11, 15, 20),
+      savedAt: DateTime(2020, 1, 2, 11, 15, 20),
+      status: 1,
+    ),
+    SavedSearch(
+      id: 3,
+      query: "Carrel",
+      serachedAt: DateTime(2020, 4, 1, 13, 59, 00),
+      savedAt: DateTime(2020, 4, 1, 13, 59, 00),
+      status: 1,
+    ),
+  ];
 
   Future<List<SavedSearch>> getSavedList() async {
-    return _savedList;
+    return Future.delayed(Duration(minutes: 2), () => _savedList);
   }
 
   Future<bool> addToSavedList(SavedSearch savedSearch) async {
