@@ -1,12 +1,12 @@
 import 'package:swap_sell/model/shop/shop.dart';
 
-class SavedSeller {
+class SavedShop {
   int id;
   Shop shop;
   DateTime savedAt;
   int status;
 
-  SavedSeller({
+  SavedShop({
     this.id,
     this.shop,
     this.savedAt,
