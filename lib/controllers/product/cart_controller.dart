@@ -9,7 +9,7 @@ class CartController extends Model {
   void addToCartProductList(CartProduct cartProduct) {
     bool _state = true;
     for (var i = 0; i < _cartProducts.length; i++) {
-      if (_cartProducts[i][0].p.shop.shopID == cartProduct.p.shop.shopID) {
+      if (_cartProducts[i][0].product.shop.shopID == cartProduct.product.shop.shopID) {
         _cartProducts[i].add(cartProduct);
         _state = false;
       }

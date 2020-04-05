@@ -22,13 +22,11 @@ class _ProductViewState extends State<ProductView> {
   Product _product;
   _ProductViewState(this._product);
   int _bottomNavigationBarCurruntIndex = 0;
-
-  GlobalKey<ScaffoldState> scaffoldStateKey;
   // _ProductViewState(_product);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ApplicationBar.createNormalAppBar(context, "Product",true,null),
+      appBar: ApplicationBar.createNormalAppBar(context, "Product", true, null),
       // drawer: MyMenu.getMyMenu(context),
       body: SingleChildScrollView(
         child: Column(
@@ -71,7 +69,6 @@ class _ProductViewState extends State<ProductView> {
                                   : _product.saleCount == 1
                                       ? "   ${_product.saleCount} order"
                                       : "   ${_product.saleCount} orders",
-                              // style: TextStyle(color: Colors.green),
                             )
                     ],
                   ),
@@ -129,7 +126,6 @@ class _ProductViewState extends State<ProductView> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 20,
-              // color: Colors.grey[300],
               color: Theme.of(context).backgroundColor,
             ),
             _buildAboutArea(),
@@ -152,9 +148,16 @@ class _ProductViewState extends State<ProductView> {
               ),
             ),
             _buildSimilarProductsList(context, _product),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 20,
+              color: Theme.of(context).backgroundColor,
+            ),
           ],
         ),
       ),
+      
+      
       bottomNavigationBar: _buildBottomNavBar(context),
     );
   }
@@ -421,6 +424,7 @@ class _ProductViewState extends State<ProductView> {
       ],
       onTap: (index) {
         _bottomNavigationBarCurruntIndex = index;
+
         if (index == 0) {
           //Shop
           showBottomSheet(
