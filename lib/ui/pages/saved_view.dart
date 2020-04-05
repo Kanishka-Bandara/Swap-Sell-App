@@ -13,6 +13,7 @@ class SavedView extends StatefulWidget {
 }
 
 class _SavedViewState extends State<SavedView> {
+  int _searchedListCount = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -76,6 +77,7 @@ class _SavedViewState extends State<SavedView> {
               itemCount: 10,
             );
           } else {
+            _searchedListCount = snapshot.data.length;
             return ScopedModel(
               model: SavedSearchesController.defaultController,
               child: ListView.builder(
@@ -93,8 +95,13 @@ class _SavedViewState extends State<SavedView> {
                           trailing: IconButton(
                             icon: Icon(Icons.close),
                             onPressed: () async {
-                              await model
-                                  .removeFromSavedList(snapshot.data[index]);
+                              bool _state = await model.removeFromSavedList(
+                                  snapshot.data[index], index);
+                              if (_state) {
+                                setState(() {
+                                  _searchedListCount--;
+                                });
+                              }
                             },
                           ),
                         );
@@ -107,7 +114,7 @@ class _SavedViewState extends State<SavedView> {
                     ],
                   );
                 },
-                itemCount: snapshot.data.length,
+                itemCount: _searchedListCount,
               ),
             );
           }

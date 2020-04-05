@@ -1,35 +1,42 @@
 class SavedSearch {
-  int id;
-  String query;
-  DateTime serachedAt;
-  DateTime savedAt;
-  int status;
+  int _id;
+  String _query;
+  DateTime _serachedAt;
+  DateTime _savedAt;
+  int _status;
 
-  SavedSearch({
-    this.id,
-    this.query,
-    this.serachedAt,
-    this.savedAt,
-    this.status,
-  });
+  SavedSearch(
+    this._query,
+    this._serachedAt, [
+    this._savedAt,
+    this._status,
+  ]);
 
-  int get getId => id;
+  SavedSearch.withId(
+    this._id,
+    this._query,
+    this._serachedAt,
+    this._savedAt,
+    this._status,
+  );
 
-  set setId(int id) => this.id = id;
+  int get getId => _id;
 
-  String get getQuery => query;
+  set setId(int _id) => this._id = _id;
 
-  set setQuery(String query) => this.query = query;
+  String get getQuery => _query;
 
-  DateTime get getSearchedAt => this.serachedAt;
+  set setQuery(String _query) => this._query = _query;
 
-  set setDearchedAt(DateTime searchedAt) => this.serachedAt = searchedAt;
+  DateTime get getSearchedAt => this._serachedAt;
 
-  DateTime get getSavedAt => this.savedAt;
+  set setDearchedAt(DateTime searchedAt) => this._serachedAt = searchedAt;
 
-  set setSavedAt(DateTime savedAt) => this.savedAt = savedAt;
+  DateTime get getSavedAt => this._savedAt;
 
-  int get getStatus => status;
+  set setSavedAt(DateTime _savedAt) => this._savedAt = _savedAt;
 
-  set setStatus(int status) => this.status = status;
+  int get getStatus => _status;
+
+  set setStatus(int _status) => this._status = _status;
 }
