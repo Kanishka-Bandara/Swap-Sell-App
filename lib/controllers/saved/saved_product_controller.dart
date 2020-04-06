@@ -6,7 +6,7 @@ class SavedProductsController extends Model {
   List<SavedProduct> _savedList = [];
 
   Future<List<SavedProduct>> getSavedList() async {
-    return _savedList;
+    return Future.delayed(Duration(seconds: 2), () => _savedList);
   }
 
   Future<bool> addToSavedList(SavedProduct savedSearch) async {
@@ -23,31 +23,27 @@ class SavedProductsController extends Model {
   }
 
   Future<bool> updateFromSavedList(
-      SavedProduct oldSavedSearch, SavedProduct newSavedSearch) async {
+      SavedProduct oldSavedProduct, SavedProduct newSavedProduct,int index) async {
     bool status = true;
     //Send to backend
     if (status) {
-      for (var i = 0; i < _savedList.length; i++) {
-        if (_savedList[i].id == oldSavedSearch.id) {
-          _savedList[i] = newSavedSearch;
-        }
-      }
+      _savedList[index] = newSavedProduct;
       notifyListeners();
     }
     return status;
   }
 
-  Future<bool> removeFromSavedList(SavedProduct savedSearch) async {
+  Future<bool> removeFromSavedList(SavedProduct savedSearch,int index) async {
     bool status = true;
     //Send to backend
     if (status) {
-      for (var i = 0; i < _savedList.length; i++) {
-        if (_savedList[i].id == savedSearch.id) {
-          _savedList.removeAt(i);
-        }
-      }
+      _savedList.removeAt(index);
       notifyListeners();
     }
     return status;
+  }
+
+  int getSavedListLength() {
+    return _savedList.length;
   }
 }
