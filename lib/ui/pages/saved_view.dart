@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
@@ -42,14 +43,95 @@ class _SavedViewState extends State<SavedView> {
         body: TabBarView(
           children: <Widget>[
             _buildSavedSearchesPage(context),
-            Center(
-              child: Text("Products"),
-            ),
+            _buildSavedProductsPage(context),
             Center(
               child: Text("Sellers"),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildSavedProductsPage(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+        future: SavedProductsController.defaultController.getSavedList(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  // padding: EdgeInsets.only(),
+                  child: Column(
+                    children: <Widget>[
+                      ShimmerTile(
+                          MediaQuery.of(context).size.width, 75, context),
+                      Divider(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 10,
+            );
+          } else {
+            return ScopedModel(
+              model: SavedProductsController.defaultController,
+              child: ScopedModelDescendant<SavedProductsController>(builder:
+                  (BuildContext context, Widget widget,
+                      SavedProductsController model) {
+                return snapshot.data.length == 0
+                    ? DefaultComponents.buildNoDetailsWidget(
+                        context, Icons.save, "No saved products.")
+                    : ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: <Widget>[
+                              ListTile(
+                                onTap: () {
+                                  AppNavigator.navigateToSearchPage(
+                                      context, snapshot.data[index].getQuery);
+                                },
+                                leading: Image.network(
+                                  snapshot.data[index].product.images[0],
+                                  width: 75,
+                                ),
+                                title: Text(
+                                  "${snapshot.data[index].product.name}",
+                                ),
+                                subtitle: Text(
+                                  "${snapshot.data[index].product.getSavedAt}",
+                                ),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.favorite_border),
+                                  onPressed: () async {
+                                    // bool _state =
+                                    await model.removeFromSavedList(
+                                        snapshot.data[index], index);
+                                    // if (_state) {
+                                    //   setState(() {
+                                    //     _searchedListCount--;
+                                    //   });
+                                    // }
+                                  },
+                                ),
+                              ),
+                              Divider(
+                                height: 1,
+                                indent: 10,
+                                endIndent: 10,
+                              ),
+                            ],
+                          );
+                        },
+                        itemCount: snapshot.data.length,
+                      );
+              }),
+            );
+          }
+        },
       ),
     );
   }
