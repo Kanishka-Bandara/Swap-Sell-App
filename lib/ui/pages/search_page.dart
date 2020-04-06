@@ -4,35 +4,61 @@ import 'package:speech_recognition/speech_recognition.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
+import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/saved/saved_search.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
-import 'package:swap_sell/ui/components/spinner.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:swap_sell/model/product/product.dart';
 
 class SearchPage extends SearchDelegate<String> {
+  SearchPage();
+  SearchPage.search(query);
   @override
   List<Widget> buildActions(BuildContext context) {
     // Searchbar End Actions
-    return [
-      // IconButton(
-      //   icon: Icon(Icons.close),
-      //   onPressed: () {
-      //     query = null;
-      //   },
-      // ),
-      IconButton(
-        icon: Icon(Icons.mic),
-        onPressed: () {
-          _initSpeechRecognizer();
-          _getVoiceAstext();
-        },
-      ),
-      IconButton(
-        icon: Icon(Icons.camera_alt),
-        onPressed: () {},
-      ),
-    ];
+    return this.query == "" || this.query == null
+        ? <Widget>[
+            // IconButton(
+            //   icon: Icon(Icons.close),
+            //   onPressed: () {
+            //     query = null;
+            //   },
+            // ),
+            IconButton(
+              icon: Icon(Icons.mic),
+              onPressed: () {
+                _initSpeechRecognizer();
+                _getVoiceAstext();
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.camera_alt),
+              onPressed: () {},
+            ),
+          ]
+        : <Widget>[
+            IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                query = "";
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.favorite_border),
+              onPressed: () {
+                SavedSearch savedSearch = SavedSearch(
+                  id: 3,
+                  savedAt: DateTime.now(),
+                  query: query,
+                  serachedAt: DateTime.now(),
+                  status: 1,
+                );
+                SavedSearchesController.defaultController
+                    .addToSavedList(savedSearch);
+              },
+            ),
+          ];
   }
 
   @override

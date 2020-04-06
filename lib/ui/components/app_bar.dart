@@ -35,7 +35,7 @@ class ApplicationBar {
               GestureDetector(
                 onTap: () {
                   // Navigator.of(context).pushNamed(Routes.ROUTES_SEARCHPAGE);
-                  AppNavigator.navigateToSearchPage(context);
+                  AppNavigator.navigateToSearchPage(context,"");
                 },
                 child: Text(
                   "Search for anything",
@@ -171,7 +171,7 @@ class ApplicationBar {
               IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
-                    AppNavigator.navigateToSearchPage(context);
+                    AppNavigator.navigateToSearchPage(context,"");
                   }),
              showShoppingCart? AppIcons.createShoppingCart(context, "0"):Column(),
             ],

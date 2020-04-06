@@ -12,8 +12,8 @@ class AppNavigator extends Navigator {
     Navigator.of(context).popUntil(ModalRoute.withName(Routes.ROUTES_HOME));
   }
 
-  static navigateToSearchPage(BuildContext context) {
-    showSearch(context: context, delegate: SearchPage());
+  static navigateToSearchPage(BuildContext context,String query) {
+    showSearch(context: context, delegate: SearchPage(),query: query);
   }
 
   static navigateToSignInPage(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
@@ -90,7 +91,10 @@ class _SavedViewState extends State<SavedView> {
                           return Column(
                             children: <Widget>[
                               ListTile(
-                                onTap: () {},
+                                onTap: () {
+                                  AppNavigator.navigateToSearchPage(
+                                      context, snapshot.data[index].getQuery);
+                                },
                                 leading: Icon(Icons.search),
                                 title: Text("${snapshot.data[index].getQuery}"),
                                 subtitle:
