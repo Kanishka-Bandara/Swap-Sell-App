@@ -47,14 +47,95 @@ class _SavedViewState extends State<SavedView> {
           children: <Widget>[
             _buildSavedSearchesPage(context),
             _buildSavedProductsPage(context),
-            Center(
-              child: Text("Shops"),
-            ),
+            _buildSavedProductsPage(context),
             Center(
               child: Text("Users"),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildSavedShopsPage(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+        future: SavedProductsController.defaultController.getSavedList(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  // padding: EdgeInsets.only(),
+                  child: Column(
+                    children: <Widget>[
+                      ShimmerTile(
+                          MediaQuery.of(context).size.width, 75, context),
+                      Divider(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 10,
+            );
+          } else {
+            return ScopedModel(
+              model: SavedProductsController.defaultController,
+              child: ScopedModelDescendant<SavedProductsController>(builder:
+                  (BuildContext context, Widget widget,
+                      SavedProductsController model) {
+                return snapshot.data.length == 0
+                    ? DefaultComponents.buildNoDetailsWidget(
+                        context, Icons.save, "No saved products.")
+                    : ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: <Widget>[
+                              ListTile(
+                                onTap: () {
+                                  AppNavigator.navigateToProductViewPage(
+                                      context, snapshot.data[index].product);
+                                },
+                                leading: Image.network(
+                                  snapshot.data[index].product.images[0],
+                                  width: 75,
+                                ),
+                                title: Text(
+                                  "${snapshot.data[index].product.name}",
+                                ),
+                                subtitle: Text(
+                                  "${snapshot.data[index].getSavedAt}",
+                                ),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.favorite_border),
+                                  onPressed: () async {
+                                    // bool _state =
+                                    await model.removeFromSavedList(
+                                        snapshot.data[index], index);
+                                    // if (_state) {
+                                    //   setState(() {
+                                    //     _searchedListCount--;
+                                    //   });
+                                    // }
+                                  },
+                                ),
+                              ),
+                              Divider(
+                                height: 1,
+                                indent: 10,
+                                endIndent: 10,
+                              ),
+                            ],
+                          );
+                        },
+                        itemCount: snapshot.data.length,
+                      );
+              }),
+            );
+          }
+        },
       ),
     );
   }
@@ -218,4 +299,6 @@ class _SavedViewState extends State<SavedView> {
       ),
     );
   }
+
+
 }
