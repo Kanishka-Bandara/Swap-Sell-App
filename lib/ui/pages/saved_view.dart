@@ -19,7 +19,7 @@ class _SavedViewState extends State<SavedView> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: ApplicationBar.createNormalAppBar(
           context,
@@ -34,7 +34,10 @@ class _SavedViewState extends State<SavedView> {
                 text: "Products",
               ),
               Tab(
-                text: "Sellers",
+                text: "Shops",
+              ),
+              Tab(
+                text: "Users",
               ),
             ],
           ),
@@ -45,7 +48,10 @@ class _SavedViewState extends State<SavedView> {
             _buildSavedSearchesPage(context),
             _buildSavedProductsPage(context),
             Center(
-              child: Text("Sellers"),
+              child: Text("Shops"),
+            ),
+            Center(
+              child: Text("Users"),
             ),
           ],
         ),
