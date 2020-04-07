@@ -177,8 +177,7 @@ class MyMenu {
                   RaisedButton(
                     child: Text("Sign in"),
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pushNamed(Routes.ROUTES_SIGNIN);
+                      AppNavigator.navigateToSignInPage(context);
                     },
                   ),
                 ],
