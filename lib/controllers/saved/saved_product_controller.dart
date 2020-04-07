@@ -22,8 +22,8 @@ class SavedProductsController extends Model {
     return status;
   }
 
-  Future<bool> updateFromSavedList(
-      SavedProduct oldSavedProduct, SavedProduct newSavedProduct,int index) async {
+  Future<bool> updateFromSavedList(SavedProduct oldSavedProduct,
+      SavedProduct newSavedProduct, int index) async {
     bool status = true;
     //Send to backend
     if (status) {
@@ -33,7 +33,7 @@ class SavedProductsController extends Model {
     return status;
   }
 
-  Future<bool> removeFromSavedList(SavedProduct savedSearch,int index) async {
+  Future<bool> removeFromSavedList(SavedProduct savedSearch, int index) async {
     bool status = true;
     //Send to backend
     if (status) {
