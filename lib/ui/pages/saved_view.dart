@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
+import 'package:swap_sell/controllers/saved/saved_shops_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
@@ -47,7 +48,7 @@ class _SavedViewState extends State<SavedView> {
           children: <Widget>[
             _buildSavedSearchesPage(context),
             _buildSavedProductsPage(context),
-            _buildSavedProductsPage(context),
+            _buildSavedShopsPage(context),
             Center(
               child: Text("Users"),
             ),
@@ -60,7 +61,7 @@ class _SavedViewState extends State<SavedView> {
   _buildSavedShopsPage(BuildContext context) {
     return Container(
       child: FutureBuilder(
-        future: SavedProductsController.defaultController.getSavedList(),
+        future: SavedShopsController.defaultController.getSavedList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return ListView.builder(
@@ -82,13 +83,13 @@ class _SavedViewState extends State<SavedView> {
             );
           } else {
             return ScopedModel(
-              model: SavedProductsController.defaultController,
-              child: ScopedModelDescendant<SavedProductsController>(builder:
+              model: SavedShopsController.defaultController,
+              child: ScopedModelDescendant<SavedShopsController>(builder:
                   (BuildContext context, Widget widget,
-                      SavedProductsController model) {
+                      SavedShopsController model) {
                 return snapshot.data.length == 0
                     ? DefaultComponents.buildNoDetailsWidget(
-                        context, Icons.save, "No saved products.")
+                        context, Icons.business, "No saved shops.")
                     : ListView.builder(
                         itemBuilder: (context, index) {
                           return Column(
@@ -96,14 +97,14 @@ class _SavedViewState extends State<SavedView> {
                               ListTile(
                                 onTap: () {
                                   AppNavigator.navigateToProductViewPage(
-                                      context, snapshot.data[index].product);
+                                      context, snapshot.data[index].shop);
                                 },
                                 leading: Image.network(
-                                  snapshot.data[index].product.images[0],
+                                  snapshot.data[index].shop.getImgUrl,
                                   width: 75,
                                 ),
                                 title: Text(
-                                  "${snapshot.data[index].product.name}",
+                                  "${snapshot.data[index].shop.shopName}",
                                 ),
                                 subtitle: Text(
                                   "${snapshot.data[index].getSavedAt}",
