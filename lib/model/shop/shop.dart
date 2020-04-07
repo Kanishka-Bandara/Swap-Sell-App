@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class Shop {
-  int shopID;
+  int id;
+  String shopID;
   String shopName;
   User owner;
   String imgUrl;
@@ -10,6 +12,7 @@ class Shop {
   int status;
 
   Shop({
+    @required this.id,
     @required this.shopID,
     @required this.shopName,
     @required this.owner,
@@ -18,9 +21,46 @@ class Shop {
     @required this.status,
   });
 
-  int get getShopID => shopID;
+  static Shop exampleShop = Shop(
+    id: 1,
+    shopID: "Sh123",
+    shopName: "Kanishka's Shop",
+    owner: User(
+      id: 1,
+      userId: "U123456",
+      title: "Mr.",
+      gender: "Male",
+      fName: "Kanishka",
+      lName: "Bandara",
+      fullName: "Kanishka Bandara",
+      profilePicUrl:
+          "https://qph.fs.quoracdn.net/main-raw-215174174-lbogygxumelpceaujmltqhykknchfzku.jpeg",
+      sName: "Bandara",
+      activeState: 1,
+      emails: [
+        Email(
+          emailID: 1,
+          emailType: "Official",
+          email: "kanishka@gmail.com",
+          status: 1,
+        ),
+      ],
+      country: "Sri Lanka",
+      status: 1,
+    ),
+    imgUrl:
+        "https://lh3.googleusercontent.com/proxy/X8FSIZC1IPsTljed6H_mszGRz55-iHXdTivKxXVJRiebhSKbTbWpufTacXgdPZP9GJCu0iyvnll1sRkcr6vgLwCE-pF_ojdPI_-CoXLkWWCVuqzhWHv7lA",
+    rating: 5,
+    status: 1,
+  );
 
-  set setShopID(int shopID) => this.shopID = shopID;
+  int get getID => id;
+
+  set setID(int id) => this.id = id;
+
+  String get getShopID => shopID;
+
+  set setShopID(String shopID) => this.shopID = shopID;
 
   String get getShopName => shopName;
 

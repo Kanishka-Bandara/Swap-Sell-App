@@ -83,7 +83,7 @@ class ProductControllerDelete {
                   .substring(1, data[i][13].toString().length)
                   .toLowerCase();
       String _model = "MDL$i";
-      Shop _shop = Shop();
+      Shop _shop = Shop.exampleShop;
       bool _isFavorite = i % 20 == 0 ? true : false;
       String _currancy = "Rs";
 
@@ -221,7 +221,7 @@ class ProductControllerDelete {
           "condition: \"${list[i].getcondition}\"," +
           " model: \"${list[i].getmodel}\"," +
           " brand: \"${list[i].getbrand}\"," +
-          " shop: Shop()," +
+          " shop: Shop.exampleShop," +
           " isFavorite: ${list[i].getisFavorite}," +
           "currancy: \"${list[i].getcurrancy}\"," +
           "); \n";

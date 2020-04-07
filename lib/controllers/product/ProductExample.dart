@@ -39,7 +39,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL29",
       brand: "FDT",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -76,7 +76,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL1",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -147,7 +147,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL2",
       brand: "Fabhomedecor",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -187,7 +187,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL3",
       brand: "Aw",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -226,7 +226,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL4",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -264,7 +264,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL5",
       brand: "Sicons",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -299,7 +299,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL6",
       brand: "Eternal gandhi",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -338,7 +338,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL7",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -407,7 +407,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL8",
       brand: "Fabhomedecor",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -446,7 +446,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL9",
       brand: "Dilli bazaaar",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -485,7 +485,7 @@ class ProductExamples {
       condition: "Brand New",
       model: "MDL10",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -524,7 +524,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL11",
       brand: "Ladela",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -563,7 +563,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL12",
       brand: "Carrel",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -601,7 +601,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL13",
       brand: "Sicons",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -639,7 +639,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL14",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -676,7 +676,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL15",
       brand: "Freelance",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -714,7 +714,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL16",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -786,7 +786,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL17",
       brand: "Fabhomedecor",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -824,7 +824,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL18",
       brand: "Style foot",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -863,7 +863,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL19",
       brand: "Carrel",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -933,7 +933,7 @@ class ProductExamples {
       condition: "Brand New",
       model: "MDL20",
       brand: "Fabhomedecor",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: true,
       currancy: "Rs",
     );
@@ -971,7 +971,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL21",
       brand: "Sicons",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1003,7 +1003,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL22",
       brand: "Alisha",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1043,7 +1043,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL23",
       brand: "Dongli",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1079,7 +1079,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL24",
       brand: "Swagga",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1120,7 +1120,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL25",
       brand: "Kennel",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1163,7 +1163,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL26",
       brand: "Glus",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1206,7 +1206,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL27",
       brand: "Veelys",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
@@ -1235,7 +1235,7 @@ class ProductExamples {
       condition: "Used",
       model: "MDL28",
       brand: "Bulaky",
-      shop: Shop(),
+      shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
     );
