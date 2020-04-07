@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class Shop {
@@ -7,7 +6,6 @@ class Shop {
   String shopName;
   User owner;
   String imgUrl;
-  List<Product> products;
   int rating;
   int status;
 
@@ -17,7 +15,6 @@ class Shop {
     @required this.owner,
     this.imgUrl,
     this.rating,
-    this.products,
     @required this.status,
   });
 
@@ -36,14 +33,6 @@ class Shop {
   String get getImgUrl => imgUrl;
 
   set setImgUrl(String imgUrl) => this.imgUrl = imgUrl;
-
-  List<Product> get getproducts => products;
-
-  set setproducts(List<Product> products) => this.products = products;
-
-  List get getProducts => products;
-
-  set setProducts(List products) => this.products = products;
 
   int get getRating => rating;
 
