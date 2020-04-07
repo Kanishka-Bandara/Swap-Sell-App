@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -27,12 +28,11 @@ class _SigninState extends State<Signin> {
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 3,
+                height: MediaQuery.of(context).size.height / 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.cake),
-                    Text("Swap&sell"),
+                    Image.asset("assets/Logo.png"),
                   ],
                 ),
               ),
@@ -113,11 +113,46 @@ class _SigninState extends State<Signin> {
                       SizedBox(
                         height: 10,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
-                        
-                      ],)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.facebookSquare,
+                              color: Colors.blueAccent,
+                              size: 50,
+                            ),
+                            onPressed: () {},
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.googlePlusSquare,
+                              color: Colors.red,
+                              size: 50,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text("Do no have a profile?"),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               )
             ],
