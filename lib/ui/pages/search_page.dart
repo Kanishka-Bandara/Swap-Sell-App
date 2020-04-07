@@ -4,8 +4,10 @@ import 'package:speech_recognition/speech_recognition.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
+import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/saved/saved_product.dart';
 import 'package:swap_sell/model/saved/saved_search.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
@@ -170,36 +172,51 @@ class SearchPage extends SearchDelegate<String> {
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      onTap: () {
-                        AppNavigator.navigateToProductViewPage(
-                            context, snapshot.data[index]);
-                      },
-                      leading: Image.network(
-                        snapshot.data[index].images[0],
-                        width: 75,
-                      ),
-                      title: RichText(
-                        text: TextSpan(
-                          text: snapshot.data[index].name
-                              .substring(0, query.length),
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                              text: snapshot.data[index].name
-                                  .substring(query.length),
-                              style: TextStyle(
-                                  color: Color.fromRGBO(85, 85, 85, 1)),
-                            ),
-                          ],
+                        onTap: () {
+                          AppNavigator.navigateToProductViewPage(
+                              context, snapshot.data[index]);
+                        },
+                        leading: Image.network(
+                          snapshot.data[index].images[0],
+                          width: 75,
                         ),
-                      ),
-                      subtitle: Text(
-                        "Rs " + snapshot.data[index].retailPrice.toString(),
-                        style: TextStyle(color: Color.fromRGBO(85, 85, 85, 1)),
-                      ),
-                      // isThreeLine: true,
-                    ),
+                        title: RichText(
+                          text: TextSpan(
+                            text: snapshot.data[index].name
+                                .substring(0, query.length),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                text: snapshot.data[index].name
+                                    .substring(query.length),
+                                style: TextStyle(
+                                    color: Color.fromRGBO(85, 85, 85, 1)),
+                              ),
+                            ],
+                          ),
+                        ),
+                        subtitle: Text(
+                          "Rs " + snapshot.data[index].retailPrice.toString(),
+                          style:
+                              TextStyle(color: Color.fromRGBO(85, 85, 85, 1)),
+                        ),
+                        // isThreeLine: true,
+                        trailing: IconButton(
+                          icon: Icon(Icons.favorite_border),
+                          onPressed: () async {
+                            SavedProductsController.defaultController
+                                .addToSavedList(
+                              SavedProduct(
+                                id: 1,
+                                product: snapshot.data[index],
+                                savedAt: DateTime.now(),
+                                status: 1,
+                              ),
+                            );
+                          },
+                        )),
                     Divider(
                       height: 1,
                       indent: 10,

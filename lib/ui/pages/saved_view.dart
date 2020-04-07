@@ -91,8 +91,8 @@ class _SavedViewState extends State<SavedView> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
-                                  AppNavigator.navigateToSearchPage(
-                                      context, snapshot.data[index].getQuery);
+                                  AppNavigator.navigateToProductViewPage(
+                                      context, snapshot.data[index].product);
                                 },
                                 leading: Image.network(
                                   snapshot.data[index].product.images[0],
@@ -102,7 +102,7 @@ class _SavedViewState extends State<SavedView> {
                                   "${snapshot.data[index].product.name}",
                                 ),
                                 subtitle: Text(
-                                  "${snapshot.data[index].product.getSavedAt}",
+                                  "${snapshot.data[index].getSavedAt}",
                                 ),
                                 trailing: IconButton(
                                   icon: Icon(Icons.favorite_border),
