@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
-import 'package:swap_sell/config/routs.dart';
 
 class MyMenu {
   static getMyMenu(BuildContext context) {
