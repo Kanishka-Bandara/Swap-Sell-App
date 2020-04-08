@@ -9,11 +9,15 @@ import 'package:swap_sell/ui/pages/search_page.dart';
 class AppNavigator extends Navigator {
   static navigateToHomePage(BuildContext context) {
     // Navigator.of(context).pushNamed(Routes.ROUTES_HOME);
-    Navigator.of(context).popUntil(ModalRoute.withName(Routes.ROUTES_HOME));
+    // Navigator.of(context).popUntil(ModalRoute.withName(Routes.ROUTES_HOME));
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      Routes.ROUTES_HOME,
+      (Route<dynamic> route) => false,
+    );
   }
 
-  static navigateToSearchPage(BuildContext context,String query) {
-    showSearch(context: context, delegate: SearchPage(),query: query);
+  static navigateToSearchPage(BuildContext context, String query) {
+    showSearch(context: context, delegate: SearchPage(), query: query);
   }
 
   static navigateToSignInPage(BuildContext context) {
@@ -30,13 +34,19 @@ class AppNavigator extends Navigator {
   }
 
   static navigateToNotificationViewPage(BuildContext context) {
-    Navigator.of(context).pop();
-    Navigator.of(context).pushNamed(Routes.ROUTES_NOTIFICATION_VIEW);
+    // Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(Routes.ROUTES_NOTIFICATION_VIEW);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+        Routes.ROUTES_NOTIFICATION_VIEW, (Route<dynamic> route) => false);
   }
 
   static navigateToMessageViewPage(BuildContext context) {
-    Navigator.of(context).pop();
-    Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_LIST_VIEW);
+    // Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_LIST_VIEW);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      Routes.ROUTES_MESSAGE_LIST_VIEW,
+      (Route<dynamic> route) => false,
+    );
   }
 
   static navigateToChatViewPage(BuildContext context, UserMessage userMessage) {
@@ -45,8 +55,12 @@ class AppNavigator extends Navigator {
   }
 
   static navigateToSavedViewPage(BuildContext context) {
-    Navigator.of(context).pop();
-    Navigator.of(context).pushNamed(Routes.ROUTES_SAVED_VIEW);
+    // Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(Routes.ROUTES_SAVED_VIEW);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      Routes.ROUTES_SAVED_VIEW,
+      (Route<dynamic> route) => false,
+    );
   }
 
   static navigateToShoppingCart(BuildContext context) {
