@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -156,7 +157,9 @@ class _SigninState extends State<Signin> {
                         height: 10,
                       ),
                       FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          AppNavigator.navigateToSignUpPage(context);
+                        },
                         child: Text(
                           "SIGN UP",
                           style: TextStyle(
