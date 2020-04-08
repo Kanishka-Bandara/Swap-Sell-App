@@ -20,6 +20,10 @@ class AppNavigator extends Navigator {
     Navigator.of(context).pushNamed(Routes.ROUTES_SIGNIN);
   }
 
+  static navigateToSignUpPage(BuildContext context) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_SIGNUP);
+  }
+
   static navigateToProductViewPage(BuildContext context, Product p) {
     ProductView.currentProduct = p;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
