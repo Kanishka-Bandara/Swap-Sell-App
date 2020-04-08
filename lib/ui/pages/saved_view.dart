@@ -26,6 +26,7 @@ class _SavedViewState extends State<SavedView> {
           context,
           "Saved",
           true,
+          true,
           TabBar(
             tabs: <Widget>[
               Tab(
@@ -300,6 +301,4 @@ class _SavedViewState extends State<SavedView> {
       ),
     );
   }
-
-
 }

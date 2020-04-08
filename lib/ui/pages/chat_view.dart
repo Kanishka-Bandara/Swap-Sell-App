@@ -89,6 +89,7 @@ class _ChatViewState extends State<ChatView> {
         context,
         "${_userMessage.getSentUser.getFName} ${_userMessage.getSentUser.getLName}",
         false,
+        false,
         null,
         // Row(
         //   children: <Widget>[],

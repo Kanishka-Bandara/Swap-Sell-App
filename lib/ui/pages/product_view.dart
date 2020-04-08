@@ -32,7 +32,7 @@ class _ProductViewState extends State<ProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ApplicationBar.createNormalAppBar(context, "Product", true, null),
+      appBar: ApplicationBar.createNormalAppBar(context, "Product", true,true, null),
       // drawer: MyMenu.getMyMenu(context),
       body: SingleChildScrollView(
         child: Column(

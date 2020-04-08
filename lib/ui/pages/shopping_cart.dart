@@ -15,7 +15,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
       body: Center(
         child: Text("Shopping Cart"),
       ),
-      appBar: ApplicationBar.createNormalAppBar(context, "Shopping Cart",false,null),
+      appBar: ApplicationBar.createNormalAppBar(
+        context,
+        "Shopping Cart",
+        false,
+        true,
+        null,
+      ),
     );
   }
 }

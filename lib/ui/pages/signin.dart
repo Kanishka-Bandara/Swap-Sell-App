@@ -20,7 +20,7 @@ class _SigninState extends State<Signin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          ApplicationBar.createNormalAppBar(context, "Sign in", false, null),
+          ApplicationBar.createNormalAppBar(context, "Sign in", false,false, null),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(

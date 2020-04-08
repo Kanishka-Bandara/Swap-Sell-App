@@ -26,6 +26,7 @@ class _MessageViewState extends State<MessageView> {
             context,
             "Messages",
             true,
+            true,
             TabBar(
               tabs: <Widget>[
                 Tab(

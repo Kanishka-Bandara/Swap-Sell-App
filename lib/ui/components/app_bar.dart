@@ -35,7 +35,7 @@ class ApplicationBar {
               GestureDetector(
                 onTap: () {
                   // Navigator.of(context).pushNamed(Routes.ROUTES_SEARCHPAGE);
-                  AppNavigator.navigateToSearchPage(context,"");
+                  AppNavigator.navigateToSearchPage(context, "");
                 },
                 child: Text(
                   "Search for anything",
@@ -159,8 +159,8 @@ class ApplicationBar {
 //     );
 //   }
 
-  static createNormalAppBar(
-      BuildContext context, String title, bool showShoppingCart,Widget bottom) {
+  static createNormalAppBar(BuildContext context, String title,
+      bool showShoppingCart, bool showSearchIcon, Widget bottom) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
@@ -168,12 +168,16 @@ class ApplicationBar {
           margin: EdgeInsets.only(right: 20),
           child: Row(
             children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    AppNavigator.navigateToSearchPage(context,"");
-                  }),
-             showShoppingCart? AppIcons.createShoppingCart(context, "0"):Column(),
+              showSearchIcon
+                  ? IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () {
+                        AppNavigator.navigateToSearchPage(context, "");
+                      })
+                  : Column(),
+              showShoppingCart
+                  ? AppIcons.createShoppingCart(context, "0")
+                  : Column(),
             ],
           ),
         )

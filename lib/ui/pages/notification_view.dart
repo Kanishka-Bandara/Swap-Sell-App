@@ -19,7 +19,7 @@ class _NotificationViewState extends State<NotificationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ApplicationBar.createNormalAppBar(
-          context, "Notifications", true, null),
+          context, "Notifications", true,true, null),
       drawer: MyMenu.getMyMenu(context),
       // body: DefaultComponents.buildNoDetailsWidget(context, Icons.notifications_off, "No Notifications to View."),
       body: ScopedModel(
