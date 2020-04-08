@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -21,7 +22,7 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       appBar: ApplicationBar.createNormalAppBar(
         context,
-        "Sign in",
+        "Sign up",
         false,
         false,
         null,
@@ -33,13 +34,13 @@ class _SignupState extends State<Signup> {
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 140,
+                height: 120,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
                       "assets/img/logo.png",
-                      scale: 1.5,
+                      scale: 2.0,
                     ),
                   ],
                 ),
@@ -58,8 +59,18 @@ class _SignupState extends State<Signup> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           KTextFormField(
-                            name: "Email",
+                            name: "Username",
                             emptyRequiredMessage: "Username is Required",
+                            onSaved: (String value) {
+                              _username = value;
+                            },
+                          ),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          KTextFormField(
+                            name: "Email",
+                            emptyRequiredMessage: "Email is Required",
                             onSaved: (String value) {
                               _username = value;
                             },
@@ -67,7 +78,7 @@ class _SignupState extends State<Signup> {
                             regExpErrorMessage: "Please enter valid email",
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           KTextFormField(
                             name: "Password",
@@ -90,14 +101,37 @@ class _SignupState extends State<Signup> {
                             obscureText: _isVisibilityOff,
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 0,
+                          ),
+                          KTextFormField(
+                            name: "Confirem Password",
+                            emptyRequiredMessage: "Confirem Password is Required",
+                            onSaved: (String value) {
+                              _password = value;
+                            },
+                            // regExp: KRegEx.EMAIL_REG_EX,
+                            // regExpErrorMessage: "Please enter valid password",
+                            suffix: IconButton(
+                              icon: Icon(_isVisibilityOff
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              onPressed: () {
+                                setState(() {
+                                  _isVisibilityOff = !_isVisibilityOff;
+                                });
+                              },
+                            ),
+                            obscureText: _isVisibilityOff,
+                          ),
+                          SizedBox(
+                            height: 0,
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           RaisedButton(
                             child: Text(
-                              "Sign in",
+                              "SIGN UP",
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -118,11 +152,11 @@ class _SignupState extends State<Signup> {
                   Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 10,
+                        height: 0,
                       ),
-                      Text("Signin with"),
+                      Text("Signup with"),
                       SizedBox(
-                        height: 10,
+                        height: 0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -149,18 +183,20 @@ class _SignupState extends State<Signup> {
                         ],
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
-                      Text("Do not have a profile?"),
+                      Text("Already have a profile?"),
                       SizedBox(
-                        height: 10,
+                        height: 0,
                       ),
                       FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          AppNavigator.navigateToSignInPage(context);
+                        },
                         child: Text(
-                          "SIGN UP",
+                          "SIGN IN",
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 20,
                             color: Colors.grey,
                           ),
                         ),
