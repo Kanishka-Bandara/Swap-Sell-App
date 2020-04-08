@@ -7,6 +7,7 @@ import 'package:swap_sell/ui/pages/home.dart';
 import 'package:swap_sell/ui/pages/saved_view.dart';
 import 'package:swap_sell/ui/pages/shopping_cart.dart';
 import 'package:swap_sell/ui/pages/signin.dart';
+import 'package:swap_sell/ui/pages/signup.dart';
 
 class Routes {
   static const String ROUTES_HOME = '/';
@@ -23,6 +24,7 @@ class Routes {
   static final Map<String, WidgetBuilder> routes = {
     ROUTES_HOME: (BuildContext context) => Home(),
     ROUTES_SIGNIN: (BuildContext context) => Signin(),
+    ROUTES_SIGNUP: (BuildContext context) => Signup(),
     ROUTES_PRODUCT_VIEW: (BuildContext context) => ProductView(),
     ROUTES_NOTIFICATION_VIEW: (BuildContext context) => NotificationView(),
     ROUTES_MESSAGE_LIST_VIEW: (BuildContext context) => MessageView(),
