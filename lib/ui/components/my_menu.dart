@@ -22,7 +22,7 @@ class MyMenu {
                   leading: Icon(Icons.home),
                   title: Text("Home"),
                   onTap: () {
-                    Navigator.of(context).pushNamed(Routes.ROUTES_HOME);
+                    AppNavigator.navigateToHomePage(context);
                   },
                 ),
                 ListTile(
