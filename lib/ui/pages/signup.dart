@@ -4,14 +4,14 @@ import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
-class Signin extends StatefulWidget {
+class Signup extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _SigninState();
+    return _SignupState();
   }
 }
 
-class _SigninState extends State<Signin> {
+class _SignupState extends State<Signup> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _username = "";
   String _password = "";
