@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // accentColor: Colors.black,
         backgroundColor: Colors.green[50],
         scaffoldBackgroundColor: Colors.white,
-
+        fontFamily: "Gotham Medium",
         // primarySwatch: Colors.pink,
         // buttonColor: Colors.pink,
         // brightness: Brightness.light,

@@ -32,7 +32,10 @@ class _SigninState extends State<Signin> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/Logo.png"),
+                    Image.asset(
+                      "assets/img/logo.png",
+                      scale: 1.5,
+                    ),
                   ],
                 ),
               ),
@@ -67,8 +70,8 @@ class _SigninState extends State<Signin> {
                             onSaved: (String value) {
                               _password = value;
                             },
-                            regExp: KRegEx.EMAIL_REG_EX,
-                            regExpErrorMessage: "Please enter valid password",
+                            // regExp: KRegEx.EMAIL_REG_EX,
+                            // regExpErrorMessage: "Please enter valid password",
                             suffix: IconButton(
                               icon: Icon(_isVisibilityOff
                                   ? Icons.visibility_off
@@ -109,6 +112,9 @@ class _SigninState extends State<Signin> {
                   ),
                   Column(
                     children: <Widget>[
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text("Signin with"),
                       SizedBox(
                         height: 10,
@@ -140,7 +146,10 @@ class _SigninState extends State<Signin> {
                       SizedBox(
                         height: 20,
                       ),
-                      Text("Do no have a profile?"),
+                      Text("Do not have a profile?"),
+                      SizedBox(
+                        height: 20,
+                      ),
                       FlatButton(
                         onPressed: () {},
                         child: Text(
