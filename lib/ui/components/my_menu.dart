@@ -170,8 +170,7 @@ class MyMenu {
                   RaisedButton(
                     child: Text("Sign up"),
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pushNamed(Routes.ROUTES_SIGNIN);
+                      AppNavigator.navigateToSignUpPage(context);
                     },
                   ),
                   RaisedButton(
