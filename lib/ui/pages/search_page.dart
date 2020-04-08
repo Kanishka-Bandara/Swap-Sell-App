@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/controllers/plugins/g_cloud_vision_controller.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
@@ -14,19 +15,11 @@ import 'package:swap_sell/ui/components/shimmer_tile.dart';
 // import 'package:swap_sell/model/product/product.dart';
 
 class SearchPage extends SearchDelegate<String> {
-  SearchPage();
-  SearchPage.search(query);
   @override
   List<Widget> buildActions(BuildContext context) {
     // Searchbar End Actions
     return this.query == "" || this.query == null
         ? <Widget>[
-            // IconButton(
-            //   icon: Icon(Icons.close),
-            //   onPressed: () {
-            //     query = null;
-            //   },
-            // ),
             IconButton(
               icon: Icon(Icons.mic),
               onPressed: () {
@@ -36,7 +29,17 @@ class SearchPage extends SearchDelegate<String> {
             ),
             IconButton(
               icon: Icon(Icons.camera_alt),
-              onPressed: () {},
+              onPressed: () async {
+                String _keyWord = await GCloudVisionController.defaultController
+                    .getKeyWord(context);
+                if (_keyWord != null) {
+                  AppNavigator.navigateToSearchPage(
+                    context,
+                    _keyWord,
+                    true,
+                  );
+                }
+              },
             ),
           ]
         : <Widget>[

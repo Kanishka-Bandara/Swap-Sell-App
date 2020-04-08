@@ -16,31 +16,49 @@ class AppNavigator extends Navigator {
     );
   }
 
-  static navigateToSearchPage(BuildContext context, String query) {
+  static navigateToSearchPage(
+    BuildContext context,
+    String query,
+    bool removePreviouse,
+  ) {
+    if (removePreviouse) {
+      Navigator.of(context).pop();
+    }
     showSearch(context: context, delegate: SearchPage(), query: query);
   }
 
-  static navigateToSignInPage(BuildContext context) {
+  static navigateToSignInPage(
+    BuildContext context,
+  ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SIGNIN);
   }
 
-  static navigateToSignUpPage(BuildContext context) {
+  static navigateToSignUpPage(
+    BuildContext context,
+  ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SIGNUP);
   }
 
-  static navigateToProductViewPage(BuildContext context, Product p) {
+  static navigateToProductViewPage(
+    BuildContext context,
+    Product p,
+  ) {
     ProductView.currentProduct = p;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
   }
 
-  static navigateToNotificationViewPage(BuildContext context) {
+  static navigateToNotificationViewPage(
+    BuildContext context,
+  ) {
     // Navigator.of(context).pop();
     // Navigator.of(context).pushNamed(Routes.ROUTES_NOTIFICATION_VIEW);
     Navigator.of(context).pushNamedAndRemoveUntil(
         Routes.ROUTES_NOTIFICATION_VIEW, (Route<dynamic> route) => false);
   }
 
-  static navigateToMessageViewPage(BuildContext context) {
+  static navigateToMessageViewPage(
+    BuildContext context,
+  ) {
     // Navigator.of(context).pop();
     // Navigator.of(context).pushNamed(Routes.ROUTES_MESSAGE_LIST_VIEW);
     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -49,12 +67,17 @@ class AppNavigator extends Navigator {
     );
   }
 
-  static navigateToChatViewPage(BuildContext context, UserMessage userMessage) {
+  static navigateToChatViewPage(
+    BuildContext context,
+    UserMessage userMessage,
+  ) {
     ChatView.userMessage = userMessage;
     Navigator.of(context).pushNamed(Routes.ROUTES_CHAT_VIEW);
   }
 
-  static navigateToSavedViewPage(BuildContext context) {
+  static navigateToSavedViewPage(
+    BuildContext context,
+  ) {
     // Navigator.of(context).pop();
     // Navigator.of(context).pushNamed(Routes.ROUTES_SAVED_VIEW);
     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -63,7 +86,9 @@ class AppNavigator extends Navigator {
     );
   }
 
-  static navigateToShoppingCart(BuildContext context) {
+  static navigateToShoppingCart(
+    BuildContext context,
+  ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SHOPPING_CART);
   }
 }

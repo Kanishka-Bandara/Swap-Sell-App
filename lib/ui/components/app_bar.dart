@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/ui/widgets/icons.dart';
+import 'package:swap_sell/controllers/plugins/g_cloud_vision_controller.dart';
 
 class ApplicationBar {
   static createHomeAppBar(BuildContext context) {
@@ -28,14 +29,15 @@ class ApplicationBar {
                       Icons.search,
                       color: Colors.grey,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      AppNavigator.navigateToSearchPage(context, "", false);
+                    },
                   )
                 ],
               ),
               GestureDetector(
                 onTap: () {
-                  // Navigator.of(context).pushNamed(Routes.ROUTES_SEARCHPAGE);
-                  AppNavigator.navigateToSearchPage(context, "");
+                  AppNavigator.navigateToSearchPage(context, "", false);
                 },
                 child: Text(
                   "Search for anything",
@@ -58,7 +60,15 @@ class ApplicationBar {
                         Icons.camera_alt,
                         color: Colors.grey,
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        String _keyWord = await GCloudVisionController
+                            .defaultController
+                            .getKeyWord(context);
+                        if (_keyWord != null) {
+                          AppNavigator.navigateToSearchPage(
+                              context, _keyWord, false);
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -172,7 +182,7 @@ class ApplicationBar {
                   ? IconButton(
                       icon: Icon(Icons.search),
                       onPressed: () {
-                        AppNavigator.navigateToSearchPage(context, "");
+                        AppNavigator.navigateToSearchPage(context, "", false);
                       })
                   : Column(),
               showShoppingCart

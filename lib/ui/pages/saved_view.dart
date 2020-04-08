@@ -264,7 +264,7 @@ class _SavedViewState extends State<SavedView> {
                               ListTile(
                                 onTap: () {
                                   AppNavigator.navigateToSearchPage(
-                                      context, snapshot.data[index].getQuery);
+                                      context, snapshot.data[index].getQuery,false);
                                 },
                                 leading: Icon(Icons.search),
                                 title: Text("${snapshot.data[index].getQuery}"),
