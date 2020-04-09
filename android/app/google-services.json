@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525500365135",
+    "firebase_url": "https://swap-sell.firebaseio.com",
+    "project_id": "swap-sell",
+    "storage_bucket": "swap-sell.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525500365135:android:4ef273de4a7c6b5480ed3a",
+        "android_client_info": {
+          "package_name": "com.kanishka.swap_sell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525500365135-noi2gar4mbsfuh66puhfimmqmgomokrm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kanishka.swap_sell",
+            "certificate_hash": "90262d0d88e00e1244e20aea9962f4f704a274f2"
+          }
+        },
+        {
+          "client_id": "525500365135-97dslobo6nfbklqotu4plc4i53a9p6kc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVmPyUXEPYLIjDH2jERXf79PcfQgIB3sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525500365135-97dslobo6nfbklqotu4plc4i53a9p6kc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

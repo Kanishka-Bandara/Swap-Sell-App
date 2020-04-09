@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
+import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -183,7 +184,10 @@ class _SignupState extends State<Signup> {
                               color: Colors.red,
                               size: 50,
                             ),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await GoogleAuthController.defaultController
+                                  .loginWithGoogle();
+                            },
                           ),
                         ],
                       ),
