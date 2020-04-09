@@ -26,4 +26,8 @@ class FaceBookAuthController {
         break;
     }
   }
+
+  logout() async {
+    facebookLogin.logOut();
+  }
 }
