@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">swap_sell</string>
+    <string name="app_name">swap sell</string>
 
     <!-- Replace "000000000000" with your Facebook App ID here. -->
     <string name="facebook_app_id">530203594568472</string>
