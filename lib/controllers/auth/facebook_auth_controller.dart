@@ -13,11 +13,10 @@ class FaceBookAuthController {
       case FacebookLoginStatus.loggedIn:
         final token = result.accessToken.token;
         final graphResponse = await http.get(
-            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=$token');
         Map profile = JSON.jsonDecode(graphResponse.body);
         print(profile);
         break;
-
       case FacebookLoginStatus.cancelledByUser:
         print("Cancelled");
         break;
