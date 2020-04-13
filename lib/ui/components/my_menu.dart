@@ -50,6 +50,13 @@ class MyMenu {
                   },
                 ),
                 ListTile(
+                  leading: Icon(Icons.favorite),
+                  title: Text("Product Management"),
+                  onTap: () {
+                    AppNavigator.navigateToProductManagementPage(context);
+                  },
+                ),
+                ListTile(
                   leading: Icon(Icons.local_mall),
                   title: Text("Purchases"),
                   onTap: () {},

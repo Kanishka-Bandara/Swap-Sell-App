@@ -47,6 +47,12 @@ class AppNavigator extends Navigator {
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
   }
 
+  static navigateToProductManagementPage(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_MANAGEMENT);
+  }
+
   static navigateToNotificationViewPage(
     BuildContext context,
   ) {
