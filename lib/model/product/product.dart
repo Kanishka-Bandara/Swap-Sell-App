@@ -39,7 +39,7 @@ class Product {
     this.description,
     this.rating,
     this.qty,
-    this.specifications,
+    this.specifications = const {},
     this.saleCount,
     this.returnCount,
     this.headCategory,
