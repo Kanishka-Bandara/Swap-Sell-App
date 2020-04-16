@@ -402,21 +402,23 @@ class _CreatedProductViewState extends State<CreatedProductView> {
           Row(
             children: <Widget>[
               Text("Select Qty"),
-              Slider.adaptive(
-                value: _selectedQty,
-                min: 1,
-                max: _product.getqty.round().toDouble(),
-                divisions: _product.getqty,
-                label: "${_selectedQty.toInt()}",
-                onChanged: (double v) {
-                  print("${v.toInt()}");
-                  setState(
-                    () {
-                      _selectedQty = v;
-                    },
-                  );
-                },
-              ),
+              _product.getqty > 0
+                  ? Slider.adaptive(
+                      value: _selectedQty,
+                      min: 1,
+                      max: _product.getqty.round().toDouble(),
+                      divisions: _product.getqty,
+                      label: "${_selectedQty.toInt()}",
+                      onChanged: (double v) {
+                        print("${v.toInt()}");
+                        setState(
+                          () {
+                            _selectedQty = v;
+                          },
+                        );
+                      },
+                    )
+                  : Text("Product is unavailable."),
               Text(
                 "${_selectedQty.toInt()}",
                 style: TextStyle(fontWeight: FontWeight.bold),
