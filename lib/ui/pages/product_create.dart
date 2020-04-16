@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -11,61 +14,90 @@ class ProductCreate extends StatefulWidget {
 }
 
 class _ProductCreateState extends State<ProductCreate> {
-  final GlobalKey<FormState> _formKeyCreate = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int _currentStepCreate = 0;
   Product _newProduct = Product();
+  List<File> _imgFiles = [];
   String _specsKey;
   String _specsValue;
+
+  //Start :: Create Instance Variables
+  KTextFormField _text_ProductName;
+  KTextFormField _text_Model;
+  KTextFormField _text_Brand;
+  KTextFormField _text_RetailPrice;
+  KTextFormField _text_DiscountPrice;
+  KDropDownButton _dropDown_SelectCondition;
+  KDropDownButton _dropDown_CanBarter;
+  KDropDownButton _dropDown_CatedoryHead;
+  KDropDownButton _dropDown_CatedoryMain;
+  KDropDownButton _dropDown_CatedorySub;
+  KTextFormField _text_SpecsKey;
+  KTextFormField _text_SpecsValue;
+  KTextFormField _text_Description;
+  //End :: Create Instance Variables
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SingleChildScrollView(
         // scrollDirection: Axis.horizontal,
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Stepper(
-                // type: StepperType.horizontal,
-                currentStep: _currentStepCreate,
-                onStepTapped: (step) {
-                  FocusScope.of(context).unfocus();
-                  setState(() {
-                    this._currentStepCreate = step;
-                  });
-                },
-                onStepContinue: () {
-                  setState(() {
-                    if (this._currentStepCreate <
-                        this._buildProductCreateSteps(context).length - 1) {
-                      this._currentStepCreate = this._currentStepCreate + 1;
-                    } else {
-                      //TODO:Logic to check if everithing is completed.
-                    }
-                  });
-                },
-                onStepCancel: () {
-                  setState(() {
-                    if (this._currentStepCreate > 0) {
-                      this._currentStepCreate = this._currentStepCreate - 1;
-                    } else {
-                      this._currentStepCreate = 0;
-                    }
-                  });
-                },
-                steps: _buildProductCreateSteps(context),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Stepper(
+                  // type: StepperType.horizontal,
+                  currentStep: _currentStepCreate,
+                  onStepTapped: (step) {
+                    FocusScope.of(context).unfocus();
+                    setState(() {
+                      this._currentStepCreate = step;
+                    });
+                  },
+                  onStepContinue: () {
+                    setState(() {
+                      if (this._currentStepCreate <
+                          this._buildProductCreateSteps(context).length - 1) {
+                        this._currentStepCreate = this._currentStepCreate + 1;
+                      } else {
+                        if (!_formKey.currentState.validate()) {
+                          return;
+                        }
+                        _formKey.currentState.save();
+                      }
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(() {
+                      if (this._currentStepCreate > 0) {
+                        this._currentStepCreate = this._currentStepCreate - 1;
+                      } else {
+                        this._currentStepCreate = 0;
+                      }
+                    });
+                  },
+                  steps: _buildProductCreateSteps(context),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   List<Step> _buildProductCreateSteps(BuildContext context) {
-    _newProduct.setspecifications = {"Color :": "Red"};
+    // _newProduct.setspecifications = {"Color :": "Red"};
     List<Step> _steps = <Step>[
       _buildStepMainDetails(context),
       _buildStepCategory(context),
@@ -82,45 +114,56 @@ class _ProductCreateState extends State<ProductCreate> {
       isActive: _currentStepCreate >= 0,
       content: Column(
         children: <Widget>[
-          KTextFormField(
+          _text_ProductName = KTextFormField(
+            required: true,
             name: "Product Name",
             emptyRequiredMessage: null,
             onSaved: (value) {
               _newProduct.name = value;
             },
           ),
-          KTextFormField(
+          _text_Model = KTextFormField(
+            required: true,
             name: "Model",
             emptyRequiredMessage: null,
             onSaved: (value) {
               _newProduct.model = value;
             },
           ),
-          KTextFormField(
+          _text_Brand = KTextFormField(
+            required: true,
             name: "Brand",
             emptyRequiredMessage: null,
             onSaved: (value) {
               _newProduct.brand = value;
             },
           ),
-          KTextFormField(
+          _text_RetailPrice = KTextFormField(
+            required: true,
             name: "Retail Price",
             emptyRequiredMessage: null,
             onSaved: (value) {
-              _newProduct.retailPrice = value as double;
+              if (value.isEmpty) {
+                value = "0";
+              }
+              _newProduct.retailPrice = double.parse(value.toString());
             },
           ),
-          KTextFormField(
+          _text_DiscountPrice = KTextFormField(
+            required: true,
             name: "Discount Price",
             emptyRequiredMessage: null,
             onSaved: (value) {
-              _newProduct.discountPrice = value as double;
+              if (value.isEmpty) {
+                value = "0";
+              }
+              _newProduct.discountPrice = double.parse(value.toString());
             },
           ),
           SizedBox(
             height: 10,
           ),
-          KDropDownButton<String>(
+          _dropDown_SelectCondition = KDropDownButton<String>(
             value: _newProduct.condition,
             hint: Row(
               children: <Widget>[
@@ -151,7 +194,7 @@ class _ProductCreateState extends State<ProductCreate> {
               });
             },
           ),
-          KDropDownButton<String>(
+          _dropDown_CanBarter = KDropDownButton<String>(
             value: _newProduct.canBarter ? "0" : "1",
             hint: Row(
               children: <Widget>[
@@ -198,7 +241,7 @@ class _ProductCreateState extends State<ProductCreate> {
       isActive: _currentStepCreate >= 1,
       content: Column(
         children: <Widget>[
-          KDropDownButton<String>(
+          _dropDown_CatedoryHead = KDropDownButton<String>(
             value: _newProduct.headCategory,
             hint: Row(
               children: <Widget>[
@@ -229,7 +272,7 @@ class _ProductCreateState extends State<ProductCreate> {
               });
             },
           ),
-          KDropDownButton<String>(
+          _dropDown_CatedoryMain = KDropDownButton<String>(
             value: _newProduct.mainCategory,
             hint: Row(
               children: <Widget>[
@@ -260,7 +303,7 @@ class _ProductCreateState extends State<ProductCreate> {
               });
             },
           ),
-          KDropDownButton<String>(
+          _dropDown_CatedorySub = KDropDownButton<String>(
             value: _newProduct.subCategory,
             hint: Row(
               children: <Widget>[
@@ -300,7 +343,79 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Media"),
       isActive: _currentStepCreate >= 2,
-      content: Column(),
+      content: Column(
+        children: <Widget>[
+          _imgFiles.length > 0
+              ? Container(
+                  height: 150,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _imgFiles.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: 100,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: FileImage(
+                              _imgFiles[index],
+                            ),
+                          ),
+                        ),
+                        margin: EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                          left: 5,
+                          right: 5,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            IconButton(
+                              color: Colors.white,
+                              icon: Icon(Icons.cancel),
+                              onPressed: () {
+                                setState(() {
+                                  _imgFiles.removeAt(index);
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                )
+              : Column(
+                  children: <Widget>[
+                    Text("No images have been selected."),
+                  ],
+                ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.add_a_photo,
+                  color: Theme.of(context).primaryColor,
+                  size: 35,
+                ),
+                onPressed: () async {
+                  File image = await CameraController.defaultController
+                      .getImage(context);
+                  setState(() {
+                    if (image != null) {
+                      _imgFiles.add(image);
+                      print(image.path);
+                    }
+                  });
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -349,34 +464,38 @@ class _ProductCreateState extends State<ProductCreate> {
             ],
           ),
           Column(children: [
-            Container(
-              // width: 150,
-              height: 30,
-              child: ListView.builder(
-                itemCount: _newProduct.specifications.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String key = _newProduct.specifications.keys.elementAt(index);
-                  return Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Text("$key"),
-                          Text("${_newProduct.specifications[key]}"),
-                        ],
-                      ),
-                      // ListTile(
-                      //   title: Text("$key"),
-                      //   subtitle: Text("${_newProduct.specifications[key]}"),
-                      // ),
-                      Divider(
-                        height: 2.0,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
+            _newProduct.specifications == null ||
+                    _newProduct.specifications.length <= 0
+                ? Column()
+                : Container(
+                    // width: 150,
+                    height: 30,
+                    child: ListView.builder(
+                      itemCount: _newProduct.specifications.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        String key =
+                            _newProduct.specifications.keys.elementAt(index);
+                        return Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text("$key"),
+                                Text("${_newProduct.specifications[key]}"),
+                              ],
+                            ),
+                            // ListTile(
+                            //   title: Text("$key"),
+                            //   subtitle: Text("${_newProduct.specifications[key]}"),
+                            // ),
+                            Divider(
+                              height: 2.0,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
           ]),
         ],
       ),
@@ -390,16 +509,21 @@ class _ProductCreateState extends State<ProductCreate> {
       content: Column(
         children: <Widget>[
           KTextFormField(
-              name: "Description",
-              emptyRequiredMessage: null,
-              onSaved: (value) {
-                setState(() {
+            required: true,
+            name: "Description",
+            emptyRequiredMessage: null,
+            isMultiLine: true,
+            maxLines: 3,
+            onSaved: (value) {
+              setState(
+                () {
                   _newProduct.description = value;
-                });
-              })
+                },
+              );
+            },
+          ),
         ],
       ),
     );
   }
-
 }

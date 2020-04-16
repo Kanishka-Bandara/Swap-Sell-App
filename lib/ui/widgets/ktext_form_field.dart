@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KTextFormField extends TextFormField {
+  TextEditingController textController;
   KTextFormField({
     @required String name,
     String regExp,
@@ -10,15 +11,21 @@ class KTextFormField extends TextFormField {
     Widget prefix,
     Widget suffix,
     bool obscureText = false,
+    bool isMultiLine = false,
+    int maxLines = 1,
+    textController,
+    bool required = false,
   }) : super(
           decoration: InputDecoration(
               labelText: name, prefixIcon: prefix, suffixIcon: suffix),
           validator: (regExp == null || regExpErrorMessage == null)
               ? (String value) {
-                  if (value.isEmpty) {
-                    return emptyRequiredMessage == null
-                        ? "This field is Required"
-                        : emptyRequiredMessage;
+                  if (required) {
+                    if (value.isEmpty) {
+                      return emptyRequiredMessage == null
+                          ? "This field is Required"
+                          : emptyRequiredMessage;
+                    }
                   }
                   return null;
                 }
@@ -35,5 +42,14 @@ class KTextFormField extends TextFormField {
                 },
           onSaved: onSaved,
           obscureText: obscureText,
-        );
+          keyboardType: isMultiLine ? TextInputType.multiline : null,
+          maxLines: maxLines,
+          controller: textController,
+        ) {
+    textController = TextEditingController();
+  }
+
+  void clear() {
+    this.textController.clear();
+  }
 }
