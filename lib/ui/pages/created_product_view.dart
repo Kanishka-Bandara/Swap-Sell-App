@@ -165,7 +165,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
         ),
       ),
 
-      // bottomNavigationBar: _buildBottomNavBar(context),
+      bottomNavigationBar: _buildBottomNavBar(context),
     );
   }
 
@@ -563,37 +563,6 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             ],
           )
         ],
-      ),
-    );
-  }
-
-  Widget _buildSimilarProductsList(BuildContext context, Product p) {
-    return Container(
-      height: 310,
-      child: FutureBuilder(
-        future: ProductController.getSimilarProducts(p),
-        builder: (context, snapshot) {
-          if (snapshot.data == null) {
-            // return Container(
-            //   child: Center(
-            //     child: Spinner.getSpinner(context, 15),
-            //   ),
-            // );
-            return Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10),
-              child:
-                  ShimmerTile(MediaQuery.of(context).size.width, 310, context),
-            );
-          } else {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return ProductCard(snapshot.data[index]);
-              },
-              itemCount: snapshot.data.length,
-            );
-          }
-        },
       ),
     );
   }
