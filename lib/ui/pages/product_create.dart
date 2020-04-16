@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
@@ -44,60 +45,79 @@ class _ProductCreateState extends State<ProductCreate> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: SingleChildScrollView(
-        // scrollDirection: Axis.horizontal,
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Stepper(
-                  // type: StepperType.horizontal,
-                  currentStep: _currentStepCreate,
-                  onStepTapped: (step) {
-                    FocusScope.of(context).unfocus();
-                    setState(() {
-                      this._currentStepCreate = step;
-                    });
-                  },
-                  onStepContinue: () {
-                    setState(() {
-                      if (this._currentStepCreate <
-                          this._buildProductCreateSteps(context).length - 1) {
-                        this._currentStepCreate = this._currentStepCreate + 1;
-                      } else {
-                        if (!_formKey.currentState.validate()) {
-                          return;
-                        }
-                        _formKey.currentState.save();
-                      }
-                    });
-                  },
-                  onStepCancel: () {
-                    setState(() {
-                      if (this._currentStepCreate > 0) {
-                        this._currentStepCreate = this._currentStepCreate - 1;
-                      } else {
-                        this._currentStepCreate = 0;
-                      }
-                    });
-                  },
-                  steps: _buildProductCreateSteps(context),
-                ),
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            // scrollDirection: Axis.horizontal,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Stepper(
+                      // type: StepperType.horizontal,
+                      currentStep: _currentStepCreate,
+                      onStepTapped: (step) {
+                        FocusScope.of(context).unfocus();
+                        setState(() {
+                          this._currentStepCreate = step;
+                        });
+                      },
+                      onStepContinue: () {
+                        setState(() {
+                          if (this._currentStepCreate <
+                              this._buildProductCreateSteps(context).length -
+                                  1) {
+                            this._currentStepCreate =
+                                this._currentStepCreate + 1;
+                          } else {
+                            if (!_formKey.currentState.validate()) {
+                              return;
+                            }
+                            _formKey.currentState.save();
+                            _clearAll();
+                          }
+                        });
+                      },
+                      onStepCancel: () {
+                        setState(() {
+                          if (this._currentStepCreate > 0) {
+                            this._currentStepCreate =
+                                this._currentStepCreate - 1;
+                          } else {
+                            this._currentStepCreate = 0;
+                          }
+                        });
+                      },
+                      steps: _buildProductCreateSteps(context),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
-      ),
+        Positioned(
+          left: MediaQuery.of(context).size.width - 70,
+          top: MediaQuery.of(context).size.height - 200,
+          child: FloatingActionButton(
+            onPressed: () {
+              AppNavigator.navigateToProductDummyViewPage(
+                  context, _newProduct, _imgFiles);
+            },
+            child: Icon(Icons.visibility),
+          ),
+        ),
+      ],
     );
   }
 
   List<Step> _buildProductCreateSteps(BuildContext context) {
-    // _newProduct.setspecifications = {"Color :": "Red"};
+    _newProduct.setspecifications = {};
     List<Step> _steps = <Step>[
       _buildStepMainDetails(context),
       _buildStepCategory(context),
@@ -118,6 +138,7 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Product Name",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               _newProduct.name = value;
             },
@@ -126,6 +147,7 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Model",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               _newProduct.model = value;
             },
@@ -134,6 +156,7 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Brand",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               _newProduct.brand = value;
             },
@@ -142,6 +165,7 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Retail Price",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               if (value.isEmpty) {
                 value = "0";
@@ -153,6 +177,7 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Discount Price",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               if (value.isEmpty) {
                 value = "0";
@@ -425,18 +450,20 @@ class _ProductCreateState extends State<ProductCreate> {
       isActive: _currentStepCreate >= 3,
       content: Column(
         children: <Widget>[
-          KTextFormField(
+          _text_SpecsKey = KTextFormField(
             name: "Key",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               setState(() {
                 _specsKey = value;
               });
             },
           ),
-          KTextFormField(
+          _text_SpecsValue = KTextFormField(
             name: "Value",
             emptyRequiredMessage: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               setState(() {
                 _specsValue = value;
@@ -508,12 +535,13 @@ class _ProductCreateState extends State<ProductCreate> {
       isActive: _currentStepCreate >= 4,
       content: Column(
         children: <Widget>[
-          KTextFormField(
+          _text_Description = KTextFormField(
             required: true,
             name: "Description",
             emptyRequiredMessage: null,
             isMultiLine: true,
-            maxLines: 3,
+            maxLines: null,
+            textController: TextEditingController(),
             onSaved: (value) {
               setState(
                 () {
@@ -525,5 +553,16 @@ class _ProductCreateState extends State<ProductCreate> {
         ],
       ),
     );
+  }
+
+  void _clearAll() {
+    _text_ProductName.clear();
+    _text_Model.clear();
+    _text_Brand.clear();
+    _text_RetailPrice.clear();
+    _text_DiscountPrice.clear();
+    _text_SpecsKey.clear();
+    _text_SpecsValue.clear();
+    _text_Description.clear();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KTextFormField extends TextFormField {
-  TextEditingController textController;
+  final TextEditingController textController = TextEditingController();
   KTextFormField({
     @required String name,
     String regExp,
@@ -13,7 +13,7 @@ class KTextFormField extends TextFormField {
     bool obscureText = false,
     bool isMultiLine = false,
     int maxLines = 1,
-    textController,
+    TextEditingController textController,
     bool required = false,
   }) : super(
           decoration: InputDecoration(
@@ -45,9 +45,7 @@ class KTextFormField extends TextFormField {
           keyboardType: isMultiLine ? TextInputType.multiline : null,
           maxLines: maxLines,
           controller: textController,
-        ) {
-    textController = TextEditingController();
-  }
+        );
 
   void clear() {
     this.textController.clear();

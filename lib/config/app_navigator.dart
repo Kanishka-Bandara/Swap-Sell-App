@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/routs.dart';
 import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/pages/chat_view.dart';
+import 'package:swap_sell/ui/pages/created_product_view.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/search_page.dart';
 
@@ -45,6 +48,15 @@ class AppNavigator extends Navigator {
   ) {
     ProductView.currentProduct = p;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
+  }
+
+  static navigateToProductDummyViewPage(
+    BuildContext context,
+    Product p,
+    List<File> images,
+  ) {
+    CreatedProductView.currentProduct = p;
+    Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_DUMMY_VIEW);
   }
 
   static navigateToProductManagementPage(

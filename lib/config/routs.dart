@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/ui/pages/chat_view.dart';
+import 'package:swap_sell/ui/pages/created_product_view.dart';
 import 'package:swap_sell/ui/pages/message_list_view.dart';
 import 'package:swap_sell/ui/pages/notification_view.dart';
 import 'package:swap_sell/ui/pages/product_management.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String ROUTES_SIGNUP = '/signUp';
   static const String ROUTES_PROFILE = '/profile';
   static const String ROUTES_PRODUCT_VIEW = '/productView';
+  static const String ROUTES_PRODUCT_DUMMY_VIEW = '/productDummyView';
   static const String ROUTES_PRODUCT_MANAGEMENT = '/productManagement';
   static const String ROUTES_SHOPPING_CART = '/shoppingCart';
   static const String ROUTES_NOTIFICATION_VIEW = '/notificationView';
@@ -28,6 +30,7 @@ class Routes {
     ROUTES_SIGNIN: (BuildContext context) => Signin(),
     ROUTES_SIGNUP: (BuildContext context) => Signup(),
     ROUTES_PRODUCT_VIEW: (BuildContext context) => ProductView(),
+    ROUTES_PRODUCT_DUMMY_VIEW: (BuildContext context) => CreatedProductView(),
     ROUTES_PRODUCT_MANAGEMENT: (BuildContext context) => ProductManagement(),
     ROUTES_NOTIFICATION_VIEW: (BuildContext context) => NotificationView(),
     ROUTES_MESSAGE_LIST_VIEW: (BuildContext context) => MessageView(),
