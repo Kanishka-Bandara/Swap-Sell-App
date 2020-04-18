@@ -4,6 +4,7 @@ import 'package:swap_sell/model/shop/shop.dart';
 
 class ProductExamples {
   static List<Product> mainList = [];
+  static List<Product> sendableList = [];
 
   static List<Product> getList() {
     mainList = List(29);
@@ -1239,7 +1240,10 @@ class ProductExamples {
       isFavorite: false,
       currancy: "Rs",
     );
-    return mainList;
+    mainList.forEach((p) {
+      sendableList.add(p);
+    });
+    return sendableList;
   }
 
   static Future<List<Product>> getSearchedList(String query) async {
