@@ -4,6 +4,11 @@ import 'package:swap_sell/ui/components/shimmer_tile.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class OwnProductListView extends StatefulWidget {
+  static const int VIEW_STATE = 5;
+  static const int EDIT_STATE = 1;
+  static const int DELETE_STATE = 0;
+  final int _status;
+  OwnProductListView(this._status);
   @override
   State<StatefulWidget> createState() {
     return _OwnProductListView();
@@ -80,6 +85,13 @@ class _OwnProductListView extends State<OwnProductListView> {
                       style: TextStyle(color: Color.fromRGBO(85, 85, 85, 1)),
                     ),
                     // isThreeLine: true,
+                    trailing: widget._status == OwnProductListView.DELETE_STATE
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.close,
+                            ),
+                            onPressed: () {})
+                        : null,
                   ),
                   Divider(
                     height: 1,

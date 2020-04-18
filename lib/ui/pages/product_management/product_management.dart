@@ -44,8 +44,8 @@ class _ProductManagementState extends State<ProductManagement> {
         body: TabBarView(
           children: <Widget>[
             ProductCreate(),
-            OwnProductListView(),
-            _buildProductDeleteSection(context),
+            OwnProductListView(OwnProductListView.EDIT_STATE),
+            OwnProductListView(OwnProductListView.DELETE_STATE),
             _buildProductListViewSection(context),
           ],
         ),
