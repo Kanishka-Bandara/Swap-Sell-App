@@ -3,7 +3,7 @@ import 'package:swap_sell/ui/pages/chat_view.dart';
 import 'package:swap_sell/ui/pages/created_product_view.dart';
 import 'package:swap_sell/ui/pages/message_list_view.dart';
 import 'package:swap_sell/ui/pages/notification_view.dart';
-import 'package:swap_sell/ui/pages/product_management.dart';
+import 'package:swap_sell/ui/pages/product_management/product_management.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/home.dart';
 import 'package:swap_sell/ui/pages/saved_view.dart';

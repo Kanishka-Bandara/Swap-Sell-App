@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
-import 'package:swap_sell/ui/pages/product_create.dart';
-import 'package:swap_sell/ui/pages/product_edit_view.dart';
+import 'package:swap_sell/ui/pages/product_management/product_create.dart';
+import 'package:swap_sell/ui/pages/product_management/product_edit_view.dart';
 
 class ProductManagement extends StatefulWidget {
   @override
