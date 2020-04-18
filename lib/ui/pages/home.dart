@@ -68,7 +68,7 @@ class _MyHomePageState extends State<Home> {
     return Container(
       height: 50,
       child: FutureBuilder(
-        future: ProductController.getMainCategoryList(),
+        future: ProductController.defaultController.getMainCategoryList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<Home> {
     return Container(
       height: 310,
       child: FutureBuilder(
-        future: ProductController.getRecentArrivedProductList(),
+        future: ProductController.defaultController.getRecentArrivedProductList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<Home> {
     return Container(
       height: 310,
       child: FutureBuilder(
-        future: ProductController.getHighestSoldProductList(),
+        future: ProductController.defaultController.getHighestSoldProductList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(

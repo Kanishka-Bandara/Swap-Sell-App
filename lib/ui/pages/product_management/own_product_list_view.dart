@@ -48,7 +48,7 @@ class _OwnProductListView extends State<OwnProductListView> {
 
   _buildOwnProductList(BuildContext context) {
     return FutureBuilder(
-      future: ProductController.getOwnerProductList(null),
+      future: ProductController.defaultController.getOwnerProductList(null),
       builder: (context, snapshot) {
         if (snapshot.data == null) {
           return ListView.builder(

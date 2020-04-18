@@ -529,7 +529,7 @@ class _ProductViewState extends State<ProductView> {
     return Container(
       height: 310,
       child: FutureBuilder(
-        future: ProductController.getSimilarProducts(p),
+        future: ProductController.defaultController.getSimilarProducts(p),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(

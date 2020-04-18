@@ -150,7 +150,7 @@ class SearchPage extends SearchDelegate<String> {
   _buildSearchList(String query) {
     return Container(
       child: FutureBuilder(
-        future: ProductController.getSearchedList(query),
+        future: ProductController.defaultController.getSearchedList(query),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return ListView.builder(
