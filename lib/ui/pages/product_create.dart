@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -17,7 +18,7 @@ class ProductCreate extends StatefulWidget {
 class _ProductCreateState extends State<ProductCreate> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int _currentStepCreate = 0;
-  Product _newProduct = Product();
+  Product _newProduct = Product(id: 0, uniqueID: "", name: "", description: "");
   List<File> _imgFiles = [];
   String _specsKey;
   String _specsValue;
@@ -220,7 +221,7 @@ class _ProductCreateState extends State<ProductCreate> {
             },
           ),
           _dropDown_CanBarter = KDropDownButton<String>(
-            value: _newProduct.canBarter ? "0" : "1",
+            value: _newProduct.canOnlyBarter ? "0" : "1",
             hint: Row(
               children: <Widget>[
                 Text("Can Barter"),
@@ -247,9 +248,11 @@ class _ProductCreateState extends State<ProductCreate> {
             onChanged: (value) {
               setState(() {
                 if (value.toString() == "1") {
-                  _newProduct.canBarter = true;
+                  _newProduct.setDealingState =
+                      ProductDealingStatus.ONLY_BARTER_STATE;
                 } else {
-                  _newProduct.canBarter = false;
+                  _newProduct.setDealingState =
+                      ProductDealingStatus.ONLY_SELL_STATE;
                 }
                 // _newProduct.canBarter = value as bool;
               });

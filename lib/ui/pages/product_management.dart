@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/pages/product_create.dart';
+import 'package:swap_sell/ui/pages/product_edit_view.dart';
 
 class ProductManagement extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _ProductManagementState extends State<ProductManagement> {
         body: TabBarView(
           children: <Widget>[
             ProductCreate(),
-            _buildProductEditSection(context),
+            ProductEditView(),
             _buildProductDeleteSection(context),
             _buildProductListViewSection(context),
           ],

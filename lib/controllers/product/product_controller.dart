@@ -2,10 +2,12 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/model/product/ProductCategory.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/user/user.dart';
 
 class ProductController extends Model {
   Future<List<Category>> mainCategoryList;
   Future<List<Product>> savedProductList;
+  Future<List<Product>> ownerProductList;
   Future<List<Product>> resentSearchedList;
   Future<List<Product>> resentArrivedProductList;
   Future<List<Product>> highestSoldProductList;
@@ -29,6 +31,16 @@ class ProductController extends Model {
   static Future<List<Product>> getHighestSoldProductList() async {
     return await ProductExamples.getExampleProductList();
   }
+
+  static Future<List<Product>> getOwnerProductList(User owner) async {
+    return await ProductExamples.getExampleProductList();
+  }
+
+  static Future<List<Product>> getFilterdOwnerProductList(
+      User owner, String query) async {
+    return await ProductExamples.getSearchedList(query);
+  }
+
   static Future<List<Product>> getSimilarProducts(Product product) async {
     return await ProductExamples.getExampleProductList();
   }

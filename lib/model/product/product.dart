@@ -1,46 +1,53 @@
 import 'package:flutter/cupertino.dart';
 import 'package:swap_sell/kpackage/currency.dart';
+import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
 class Product {
   int id;
   String uniqueID;
   String name;
-  double retailPrice;
-  double delivaryPrice;
-  double discountPrice;
-  List<String> images;
-  List<Image> networkImages;
-  String description;
-  double rating;
-  int qty;
-  Map<String, String> specifications = Map();
-  int saleCount;
-  int returnCount;
   String headCategory;
   String mainCategory;
   String subCategory;
-  String condition;
   String model;
   String brand;
+  List<String> images;
+  List<Image> networkImages;
+  String description;
+  Map<String, String> specifications = Map();
+  String condition;
+  String inTheBox;
+  double rating;
+  int qty;
+  String currancy;
+  int dealingState;
+  double barterPrice; //
+  double retailPrice;
+  double delivaryPrice;
+  double discountPrice;
+  int saleCount;
+  int barterCount; //
+  int returnCount;
   Shop shop;
   bool isFavorite;
-  String currancy;
-  bool canBarter;
 
   Product({
-    this.id,
-    this.uniqueID,
-    this.name,
+    @required this.id,
+    @required this.uniqueID,
+    @required this.name,
     this.retailPrice = 0.0,
+    this.barterPrice = 0.0,
     this.delivaryPrice = 0.0,
     this.discountPrice = 0.0,
     this.images,
-    this.description,
+    @required this.description,
+    this.inTheBox,
     this.rating = 0.0,
     this.qty = 0,
     this.specifications = const {},
     this.saleCount = 0,
+    this.barterCount = 0,
     this.returnCount = 0,
     this.headCategory,
     this.mainCategory,
@@ -49,9 +56,9 @@ class Product {
     this.model,
     this.brand,
     this.shop,
-    this.isFavorite,
+    this.isFavorite = false,
     this.currancy,
-    this.canBarter = false,
+    this.dealingState = ProductDealingStatus.ONLY_SELL_STATE,
   });
 
   int get getid => id;
@@ -69,6 +76,10 @@ class Product {
   double get getretailPrice => retailPrice;
 
   set setretailPrice(double value) => retailPrice = value;
+
+  double get getBarterPrice => barterPrice;
+
+  set setBarterPrice(double value) => barterPrice = value;
 
   double get getdelivaryPrice => delivaryPrice;
 
@@ -98,6 +109,10 @@ class Product {
 
   set setdescription(String value) => description = value;
 
+  String get getWhatIsInTheBox => inTheBox;
+
+  set setWhatIsInTheBox(String value) => inTheBox = value;
+
   double get getrating => rating;
 
   set setrating(double value) => rating = value;
@@ -109,6 +124,10 @@ class Product {
   int get getsaleCount => saleCount;
 
   set setsaleCount(int value) => saleCount = value;
+
+  int get getDealingState => dealingState;
+
+  set setDealingState(int value) => dealingState = value;
 
   int get getreturnCount => returnCount;
 
@@ -150,26 +169,35 @@ class Product {
 
   set setcurrancy(String value) => currancy = value;
 
+  int get getqty => qty;
+
+  set setqty(int value) => qty = value;
+
+  double get getdiscountedRetailPrice => discountPrice;
+
+  set setdiscountedRetailPrice(double value) => discountPrice = value;
+
   String get getdisplayRetailPrice {
     return Currency.convertToCurrency(retailPrice);
   }
 
-  double get getdiscountedRetailPrice {
-    return discountPrice;
+  String get getdisplayBarterPrice {
+    return Currency.convertToCurrency(barterPrice);
   }
-
-  set setdiscountedRetailPrice(double value) => discountPrice = value;
 
   String get getdisplayDiscountedRetailPrice {
     return Currency.convertToCurrency(
         getretailPrice - getdiscountedRetailPrice);
   }
 
-  int get getqty => qty;
-
-  set setqty(int value) => qty = value;
-
-  bool get isthiscanBarter => canBarter;
-
-  set setasthiscanBarter(bool value) => canBarter = value;
+  bool get canOnlyBarter =>
+      this.dealingState == ProductDealingStatus.ONLY_BARTER_STATE
+          ? true
+          : false;
+  bool get canOnlySell =>
+      this.dealingState == ProductDealingStatus.ONLY_SELL_STATE ? true : false;
+  bool get canBarterAndSell =>
+      this.dealingState == ProductDealingStatus.BARTER_AND_SELL_STATE
+          ? true
+          : false;
 }
