@@ -3,14 +3,14 @@ import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
-class ProductEditView extends StatefulWidget {
+class OwnProductListView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _ProductEditViewState();
+    return _OwnProductListView();
   }
 }
 
-class _ProductEditViewState extends State<ProductEditView> {
+class _OwnProductListView extends State<OwnProductListView> {
   String _filterQuery = "";
   @override
   Widget build(BuildContext context) {
