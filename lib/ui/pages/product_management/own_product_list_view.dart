@@ -17,12 +17,13 @@ class OwnProductListView extends StatefulWidget {
 
 class _OwnProductListView extends State<OwnProductListView> {
   String _filterQuery = "";
+  KTextFormField _textFilterField;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Container(
-          child: KTextFormField(
+          child: _textFilterField = KTextFormField(
             name: "Search",
             emptyRequiredMessage: null,
             onChanged: (value) {
@@ -33,7 +34,15 @@ class _OwnProductListView extends State<OwnProductListView> {
             onSaved: (value) {},
             suffix: _filterQuery == null || _filterQuery.isEmpty
                 ? null
-                : IconButton(icon: Icon(Icons.clear), onPressed: () {}),
+                : IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      setState(() {
+                        _filterQuery = "";
+                        _textFilterField.clear();
+                      });
+                    },
+                  ),
             prefix: Container(
               width: 10,
             ),
@@ -90,7 +99,9 @@ class _OwnProductListView extends State<OwnProductListView> {
                             icon: Icon(
                               Icons.close,
                             ),
-                            onPressed: () {})
+                            onPressed: () {
+                              
+                            })
                         : null,
                   ),
                   Divider(

@@ -17,6 +17,7 @@ class KTextFormField extends TextFormField {
     bool required = false,
     GestureTapCallback onTap,
     ValueChanged<String> onChanged,
+    String initialValue,
   }) : super(
           decoration: InputDecoration(
             labelText: name,
@@ -52,6 +53,7 @@ class KTextFormField extends TextFormField {
           keyboardType: isMultiLine ? TextInputType.multiline : null,
           maxLines: maxLines,
           controller: textController,
+          initialValue: initialValue,
         );
 
   void clear() {
