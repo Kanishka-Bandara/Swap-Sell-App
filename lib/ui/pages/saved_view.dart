@@ -131,7 +131,7 @@ class _SavedViewState extends State<SavedView> {
                                   "${snapshot.data[index].getSavedAt}",
                                 ),
                                 trailing: IconButton(
-                                  icon: Icon(Icons.favorite_border),
+                                  icon: Icon(Icons.delete_forever),
                                   onPressed: () async {
                                     // bool _state =
                                     await model.removeFromSavedList(
@@ -214,7 +214,7 @@ class _SavedViewState extends State<SavedView> {
                                   "${snapshot.data[index].getSavedAt}",
                                 ),
                                 trailing: IconButton(
-                                  icon: Icon(Icons.favorite_border),
+                                  icon: Icon(Icons.delete_forever),
                                   onPressed: () async {
                                     // bool _state =
                                     await model.removeFromSavedList(
@@ -271,50 +271,52 @@ class _SavedViewState extends State<SavedView> {
           } else {
             return ScopedModel(
               model: SavedSearchesController.defaultController,
-              child: ScopedModelDescendant<SavedSearchesController>(builder:
-                  (BuildContext context, Widget widget,
-                      SavedSearchesController model) {
-                return snapshot.data.length == 0
-                    ? DefaultComponents.buildNoDetailsWidget(
-                        context, Icons.search, "No saved searches.")
-                    : ListView.builder(
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: <Widget>[
-                              ListTile(
-                                onTap: () {
-                                  AppNavigator.navigateToSearchPage(context,
-                                      snapshot.data[index].getQuery, false);
-                                },
-                                leading: Icon(Icons.search),
-                                title: Text("${snapshot.data[index].getQuery}"),
-                                subtitle:
-                                    Text("${snapshot.data[index].getSavedAt}"),
-                                trailing: IconButton(
-                                  icon: Icon(Icons.close),
-                                  onPressed: () async {
-                                    // bool _state =
-                                    await model.removeFromSavedList(
-                                        snapshot.data[index], index);
-                                    // if (_state) {
-                                    //   setState(() {
-                                    //     _searchedListCount--;
-                                    //   });
-                                    // }
+              child: ScopedModelDescendant<SavedSearchesController>(
+                builder: (BuildContext context, Widget widget,
+                    SavedSearchesController model) {
+                  return snapshot.data.length == 0
+                      ? DefaultComponents.buildNoDetailsWidget(
+                          context, Icons.search, "No saved searches.")
+                      : ListView.builder(
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: <Widget>[
+                                ListTile(
+                                  onTap: () {
+                                    AppNavigator.navigateToSearchPage(context,
+                                        snapshot.data[index].getQuery, false);
                                   },
+                                  leading: Icon(Icons.search),
+                                  title:
+                                      Text("${snapshot.data[index].getQuery}"),
+                                  subtitle: Text(
+                                      "${snapshot.data[index].getSavedAt}"),
+                                  trailing: IconButton(
+                                    icon: Icon(Icons.delete_forever),
+                                    onPressed: () async {
+                                      // bool _state =
+                                      await model.removeFromSavedList(
+                                          snapshot.data[index], index);
+                                      // if (_state) {
+                                      //   setState(() {
+                                      //     _searchedListCount--;
+                                      //   });
+                                      // }
+                                    },
+                                  ),
                                 ),
-                              ),
-                              Divider(
-                                height: 1,
-                                indent: 10,
-                                endIndent: 10,
-                              ),
-                            ],
-                          );
-                        },
-                        itemCount: snapshot.data.length,
-                      );
-              }),
+                                Divider(
+                                  height: 1,
+                                  indent: 10,
+                                  endIndent: 10,
+                                ),
+                              ],
+                            );
+                          },
+                          itemCount: snapshot.data.length,
+                        );
+                },
+              ),
             );
           }
         },
