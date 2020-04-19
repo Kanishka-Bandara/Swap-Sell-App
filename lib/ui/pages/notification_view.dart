@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/notification_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
@@ -19,28 +20,40 @@ class _NotificationViewState extends State<NotificationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ApplicationBar.createNormalAppBar(
-          context, "Notifications", true,true, null),
+          context, "Notifications", true, true, null),
       drawer: MyMenu.getMyMenu(context),
       // body: DefaultComponents.buildNoDetailsWidget(context, Icons.notifications_off, "No Notifications to View."),
       body: ScopedModel(
-        model: NotificationController.currentController,
-        child: ScopedModelDescendant(
-          builder: (BuildContext context, Widget widget,
-              NotificationController model) {
-            return model.isNotificationListEmpty
-                ? DefaultComponents.buildNoDetailsWidget(context,
-                    Icons.notifications_off, "No Notifications to view")
-                : SingleChildScrollView(
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          _buildNotificationList(context),
-                        ],
-                      ),
+        model: AppInit.currentApp,
+        child: ScopedModelDescendant<AppInit>(
+          builder: (BuildContext context, Widget widget, AppInit model) {
+            return model.currentUserState
+                ? ScopedModel(
+                    model: NotificationController.currentController,
+                    child: ScopedModelDescendant(
+                      builder: (BuildContext context, Widget widget,
+                          NotificationController model) {
+                        return model.isNotificationListEmpty
+                            ? DefaultComponents.buildNoDetailsWidget(
+                                context,
+                                Icons.notifications_off,
+                                "No Notifications to view")
+                            : SingleChildScrollView(
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      _buildNotificationList(context),
+                                    ],
+                                  ),
+                                ),
+                              );
+                      },
                     ),
-                  );
+                  )
+                : DefaultComponents.buildUnSignedTile(context,"Please Sign in to get notifications.");
           },
         ),
       ),

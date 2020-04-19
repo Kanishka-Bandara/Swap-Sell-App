@@ -8,7 +8,7 @@ class Shop {
   String shopName;
   User owner;
   String imgUrl;
-  int rating;
+  double rating;
   int status;
 
   Shop({
@@ -50,7 +50,7 @@ class Shop {
     ),
     imgUrl:
         "https://lh3.googleusercontent.com/proxy/X8FSIZC1IPsTljed6H_mszGRz55-iHXdTivKxXVJRiebhSKbTbWpufTacXgdPZP9GJCu0iyvnll1sRkcr6vgLwCE-pF_ojdPI_-CoXLkWWCVuqzhWHv7lA",
-    rating: 5,
+    rating: 3.8,
     status: 1,
   );
 
@@ -74,9 +74,9 @@ class Shop {
 
   set setImgUrl(String imgUrl) => this.imgUrl = imgUrl;
 
-  int get getRating => rating;
+  double get getRating => rating;
 
-  set setRating(int rating) => this.rating = rating;
+  set setRating(double rating) => this.rating = rating;
 
   int get getStatus => status;
 

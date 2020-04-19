@@ -573,7 +573,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
       currentIndex: _bottomNavigationBarCurruntIndex,
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.shop),
+          icon: Icon(Icons.store),
           title: Text("Shop"),
           backgroundColor: Theme.of(context).primaryColor,
         ),

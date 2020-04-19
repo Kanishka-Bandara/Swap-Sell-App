@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 
 class DefaultComponents {
   static Widget buildNoDetailsWidget(
@@ -19,6 +20,50 @@ class DefaultComponents {
           ),
         ],
       ),
+    );
+  }
+
+  static Widget buildUnSignedTile(BuildContext context, String message) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              message,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 50,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ButtonBar(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Sign up"),
+                  onPressed: () {
+                    AppNavigator.navigateToSignUpPage(context);
+                  },
+                ),
+                RaisedButton(
+                  child: Text("Sign in"),
+                  onPressed: () {
+                    AppNavigator.navigateToSignInPage(context);
+                  },
+                ),
+              ],
+            )
+          ],
+        ),
+      ],
     );
   }
 }

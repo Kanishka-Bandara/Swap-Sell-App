@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_shops_controller.dart';
@@ -19,42 +20,61 @@ class SavedView extends StatefulWidget {
 class _SavedViewState extends State<SavedView> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: ApplicationBar.createNormalAppBar(
-          context,
-          "Saved",
-          true,
-          true,
-          TabBar(
-            tabs: <Widget>[
-              Tab(
-                text: "Searches",
+    return ScopedModel(
+      model: AppInit.currentApp,
+      child: ScopedModelDescendant<AppInit>(
+        builder: (BuildContext context, Widget widget, AppInit model) {
+          return DefaultTabController(
+            length: 4,
+            child: Scaffold(
+              appBar: ApplicationBar.createNormalAppBar(
+                context,
+                "Saved",
+                true,
+                true,
+                TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      text: "Searches",
+                    ),
+                    Tab(
+                      text: "Products",
+                    ),
+                    Tab(
+                      text: "Shops",
+                    ),
+                    Tab(
+                      text: "Users",
+                    ),
+                  ],
+                ),
               ),
-              Tab(
-                text: "Products",
+              drawer: MyMenu.getMyMenu(context),
+              body: TabBarView(
+                children: <Widget>[
+                  model.currentUserState
+                      ? _buildSavedSearchesPage(context)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to get saved searches."),
+                  model.currentUserState
+                      ? _buildSavedProductsPage(context)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to get saved products."),
+                  model.currentUserState
+                      ? _buildSavedShopsPage(context)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to get saved shops."),
+                  model.currentUserState
+                      ? Center(
+                          child: Text("Users"),
+                        )
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to get saved users."),
+                ],
               ),
-              Tab(
-                text: "Shops",
-              ),
-              Tab(
-                text: "Users",
-              ),
-            ],
-          ),
-        ),
-        drawer: MyMenu.getMyMenu(context),
-        body: TabBarView(
-          children: <Widget>[
-            _buildSavedSearchesPage(context),
-            _buildSavedProductsPage(context),
-            _buildSavedShopsPage(context),
-            Center(
-              child: Text("Users"),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -263,8 +283,8 @@ class _SavedViewState extends State<SavedView> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
-                                  AppNavigator.navigateToSearchPage(
-                                      context, snapshot.data[index].getQuery,false);
+                                  AppNavigator.navigateToSearchPage(context,
+                                      snapshot.data[index].getQuery, false);
                                 },
                                 leading: Icon(Icons.search),
                                 title: Text("${snapshot.data[index].getQuery}"),

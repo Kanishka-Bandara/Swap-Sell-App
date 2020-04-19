@@ -50,7 +50,7 @@ class MyMenu {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.favorite),
+                  leading: Icon(Icons.image_aspect_ratio),
                   title: Text("Product Management"),
                   onTap: () {
                     AppNavigator.navigateToProductManagementPage(context);
@@ -115,49 +115,42 @@ class MyMenu {
   }
 
   static _buildUserAccount() {
-    return UserAccountsDrawerHeader(
-      currentAccountPicture: Icon(
-        Icons.account_circle,
-        size: 80,
-        color: Colors.white,
+    return ScopedModel(
+      model: AppInit.currentApp,
+      child: ScopedModelDescendant<AppInit>(
+        builder: (BuildContext context, Widget widget, AppInit model) {
+          return UserAccountsDrawerHeader(
+            currentAccountPicture:
+                model.getCurrentUser.getProfilePicUrl == null ||
+                        model.getCurrentUser.getProfilePicUrl.isEmpty
+                    ? Icon(
+                        Icons.account_circle,
+                        size: 80,
+                        color: Colors.white,
+                      )
+                    : Container(
+                        width: 100.0,
+                        height: 150.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              model.getCurrentUser.getProfilePicUrl,
+                            ),
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                      ),
+            accountName: Text(model.getCurrentUser.getFName +
+                " " +
+                model.getCurrentUser.getLName),
+            accountEmail: Text(model.getCurrentUser.getEmails[0].getEmail),
+          );
+        },
       ),
-      accountName: Text("Kanishka Bandara"),
-      accountEmail: Text("wmkubandara@gmail.com"),
     );
-    // AppBar(
-    //   automaticallyImplyLeading: false,
-    //   leading: Icon(Icons.verified_user),
-    //   title: Text("Kanishka"),
-    // ),
-    // Container(
-    //   color: Colors.green,
-    //   height: 170,
-    //   padding: EdgeInsets.only(top: 30, left: 20),
-    //   child: Column(
-    //     children: <Widget>[
-    //       Row(
-    //         children: <Widget>[
-    //           Icon(
-    //             Icons.account_circle,
-    //             size: 100,
-    //             color: Colors.white,
-    //           )
-    //         ],
-    //       ),
-    //       Row(
-    //         children: <Widget>[
-    //           SizedBox(
-    //             height: 35,
-    //           ),
-    //           Text(
-    //             "Kanishka Bandara",
-    //             style: TextStyle(color: Colors.white),
-    //           ),
-    //         ],
-    //       )
-    //     ],
-    //   ),
-    // );
   }
 
   static _buildSignInTile(BuildContext context) {
@@ -189,17 +182,6 @@ class MyMenu {
               )
             ],
           ),
-          // Row(
-          //   children: <Widget>[
-          //     SizedBox(
-          //       height: 35,
-          //     ),
-          //     Text(
-          //       "Kanishka Bandara",
-          //       style: TextStyle(color: Colors.white),
-          //     ),
-          //   ],
-          // )
         ],
       ),
     );

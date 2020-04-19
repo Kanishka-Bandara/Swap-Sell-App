@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/pages/product_management/own_product_list_view.dart';
 import 'package:swap_sell/ui/pages/product_management/product_create.dart';
@@ -12,7 +15,6 @@ class ProductManagement extends StatefulWidget {
 }
 
 class _ProductManagementState extends State<ProductManagement> {
-  final GlobalKey<FormState> _formKeyEdit = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -41,40 +43,34 @@ class _ProductManagementState extends State<ProductManagement> {
           ),
         ),
         drawer: MyMenu.getMyMenu(context),
-        body: TabBarView(
-          children: <Widget>[
-            ProductCreate(),
-            OwnProductListView(OwnProductListView.EDIT_STATE),
-            OwnProductListView(OwnProductListView.DELETE_STATE),
-            OwnProductListView(OwnProductListView.VIEW_STATE),
-          ],
+        body: ScopedModel(
+          model: AppInit.currentApp,
+          child: ScopedModelDescendant<AppInit>(
+            builder: (BuildContext context, Widget widget, AppInit model) {
+              return TabBarView(
+                children: <Widget>[
+                  model.currentUserState
+                      ? ProductCreate()
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to manage your products."),
+                  model.currentUserState
+                      ? OwnProductListView(OwnProductListView.EDIT_STATE)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to manage your products."),
+                  model.currentUserState
+                      ? OwnProductListView(OwnProductListView.DELETE_STATE)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to manage your products."),
+                  model.currentUserState
+                      ? OwnProductListView(OwnProductListView.VIEW_STATE)
+                      : DefaultComponents.buildUnSignedTile(
+                          context, "Please Sign in to manage your products."),
+                ],
+              );
+            },
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _buildProductCreateSection(BuildContext context) {
-    //TODO:Finish _buildProductCreateSection
-  }
-
-  Widget _buildProductEditSection(BuildContext context) {
-    //TODO:Finish _buildProductEditSection
-    return Center(
-      child: Text("Product Edit"),
-    );
-  }
-
-  Widget _buildProductDeleteSection(BuildContext context) {
-    //TODO:Finish _buildProductDeleteSection
-    return Center(
-      child: Text("Product Delete"),
-    );
-  }
-
-  Widget _buildProductListViewSection(BuildContext context) {
-    //TODO:Finish _buildProductListViewSection
-    return Center(
-      child: Text("Product List"),
     );
   }
 }
