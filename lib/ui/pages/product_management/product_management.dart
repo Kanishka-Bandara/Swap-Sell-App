@@ -46,7 +46,7 @@ class _ProductManagementState extends State<ProductManagement> {
             ProductCreate(),
             OwnProductListView(OwnProductListView.EDIT_STATE),
             OwnProductListView(OwnProductListView.DELETE_STATE),
-            _buildProductListViewSection(context),
+            OwnProductListView(OwnProductListView.VIEW_STATE),
           ],
         ),
       ),

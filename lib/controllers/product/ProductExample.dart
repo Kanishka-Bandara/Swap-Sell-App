@@ -1240,6 +1240,7 @@ class ProductExamples {
       isFavorite: false,
       currancy: "Rs",
     );
+    sendableList.clear();
     mainList.forEach((p) {
       sendableList.add(p);
     });
