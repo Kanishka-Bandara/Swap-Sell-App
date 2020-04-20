@@ -97,7 +97,10 @@ class MyMenu {
                 ListTile(
                   leading: Icon(Icons.perm_identity),
                   title: Text("Profile"),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    AppNavigator.navigateToProfileOverviewPage(context);
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.exit_to_app),

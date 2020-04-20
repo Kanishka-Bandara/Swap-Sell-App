@@ -6,6 +6,7 @@ import 'package:swap_sell/ui/pages/notification_view.dart';
 import 'package:swap_sell/ui/pages/product_management/product_management.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/home.dart';
+import 'package:swap_sell/ui/pages/profile_view.dart';
 import 'package:swap_sell/ui/pages/saved_view.dart';
 import 'package:swap_sell/ui/pages/shopping_cart.dart';
 import 'package:swap_sell/ui/pages/signin.dart';
@@ -15,7 +16,7 @@ class Routes {
   static const String ROUTES_HOME = '/';
   static const String ROUTES_SIGNIN = '/signin';
   static const String ROUTES_SIGNUP = '/signUp';
-  static const String ROUTES_PROFILE = '/profile';
+  static const String ROUTES_PROFILE_VIEW = '/profileView';
   static const String ROUTES_PRODUCT_VIEW = '/productView';
   static const String ROUTES_PRODUCT_DUMMY_VIEW = '/productDummyView';
   static const String ROUTES_PRODUCT_MANAGEMENT = '/productManagement';
@@ -30,6 +31,7 @@ class Routes {
     ROUTES_SIGNIN: (BuildContext context) => Signin(),
     ROUTES_SIGNUP: (BuildContext context) => Signup(),
     ROUTES_PRODUCT_VIEW: (BuildContext context) => ProductView(),
+    ROUTES_PROFILE_VIEW: (BuildContext context) => UserProfileView(),
     ROUTES_PRODUCT_DUMMY_VIEW: (BuildContext context) => CreatedProductView(),
     ROUTES_PRODUCT_MANAGEMENT: (BuildContext context) => ProductManagement(),
     ROUTES_NOTIFICATION_VIEW: (BuildContext context) => NotificationView(),

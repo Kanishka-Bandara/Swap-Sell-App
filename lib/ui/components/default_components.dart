@@ -66,4 +66,25 @@ class DefaultComponents {
       ],
     );
   }
+
+  static void showMessage(
+      BuildContext context, String message, IconData iconData) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 1),
+        content: Container(
+          alignment: Alignment.center,
+          width: MediaQuery.of(context).size.width,
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(message),
+              Icon(iconData),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

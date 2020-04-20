@@ -49,6 +49,12 @@ class AppNavigator extends Navigator {
     ProductView.currentProduct = p;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
   }
+  
+  static navigateToProfileOverviewPage(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_PROFILE_VIEW);
+  }
 
   static navigateToProductDummyViewPage(
     BuildContext context,

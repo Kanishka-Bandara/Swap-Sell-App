@@ -19,6 +19,8 @@ class User {
   String profilePicUrl;
   List<Address> addresses = [];
   List<ContactNumber> contactNumbers = [];
+  String username;
+  String password;
   int status;
 
   User({
@@ -37,6 +39,8 @@ class User {
     this.profilePicUrl,
     this.addresses,
     this.contactNumbers,
+    this.username,
+    this.password,
     @required this.status,
   });
 
@@ -102,7 +106,39 @@ class User {
 
   set setEmails(List<Email> emails) => this.emails = emails;
 
+  String get getUsername => username;
+
+  set setUsername(String username) => this.username = username;
+
+  String get getPassword => password;
+
+  set setPassword(String password) => this.password = password;
+
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+
+  User get getClone {
+    User u = new User(
+      id: this.getId,
+      userId: this.getUserId,
+      title: this.getTitle,
+      gender: this.getGender,
+      fName: this.getFName,
+      lName: this.getLName,
+      fullName: this.getFullName,
+      activeState: this.getActiveState,
+      emails: this.getEmails,
+      country: this.getCountry,
+      status: this.getStatus,
+      sName: this.getSName,
+      note: this.getNote,
+      profilePicUrl: this.getProfilePicUrl,
+      addresses: this.getAddresses,
+      contactNumbers: this.getContactNumbers,
+      username: this.getUsername,
+      password: this.getPassword,
+    );
+    return u;
+  }
 }

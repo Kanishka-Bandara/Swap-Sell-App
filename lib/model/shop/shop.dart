@@ -47,6 +47,8 @@ class Shop {
       ],
       country: "Sri Lanka",
       status: 1,
+      username: "kanishka123",
+      password: "123"
     ),
     imgUrl:
         "https://lh3.googleusercontent.com/proxy/X8FSIZC1IPsTljed6H_mszGRz55-iHXdTivKxXVJRiebhSKbTbWpufTacXgdPZP9GJCu0iyvnll1sRkcr6vgLwCE-pF_ojdPI_-CoXLkWWCVuqzhWHv7lA",

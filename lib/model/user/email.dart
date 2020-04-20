@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Email {
+  static const Map<int, String> EMAIL_TYPES = {
+    1: "Primary Email",
+  };
+
   int emailID;
   String emailType;
   String email;
