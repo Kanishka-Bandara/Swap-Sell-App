@@ -83,7 +83,9 @@ class MyMenu {
                 ListTile(
                   leading: Icon(Icons.settings),
                   title: Text("Settings"),
-                  onTap: () {},
+                  onTap: () {
+                    AppNavigator.navigateToSettingsPage(context);
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.help),
