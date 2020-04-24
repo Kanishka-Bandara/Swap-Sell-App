@@ -99,7 +99,7 @@ class _OwnProductListView extends State<OwnProductListView> {
                     OwnerProductsController model) {
               return snapshot.data.length <= 0
                   ? DefaultComponents.buildNoDetailsWidget(context,
-                      Icons.cloud_queue, "You hav not added a product yet.")
+                      Icons.cloud_queue, "You have not added a product yet.")
                   : ListView.builder(
                       itemBuilder: (context, index) {
                         return Column(

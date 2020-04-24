@@ -1,8 +1,12 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
+import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:swap_sell/ui/components/product_card.dart';
@@ -32,7 +36,8 @@ class _ProductViewState extends State<ProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ApplicationBar.createNormalAppBar(context, "Product", true,true, null),
+      appBar: ApplicationBar.createNormalAppBar(
+          context, "Product", true, true, null),
       // drawer: MyMenu.getMyMenu(context),
       body: SingleChildScrollView(
         child: Column(
@@ -42,23 +47,15 @@ class _ProductViewState extends State<ProductView> {
               padding: EdgeInsets.all(15),
               child: Column(
                 children: <Widget>[
-                  Wrap(
-                    spacing: 5.0,
-                    runSpacing: 5.0,
-                    direction: Axis.vertical,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: <Widget>[
-                            Text(
-                              _product.name,
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      )
+                      Text(
+                        _product.name,
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                   Row(
@@ -75,7 +72,7 @@ class _ProductViewState extends State<ProductView> {
                                   : _product.saleCount == 1
                                       ? "   ${_product.saleCount} order"
                                       : "   ${_product.saleCount} orders",
-                            )
+                            ),
                     ],
                   ),
                   SizedBox(
@@ -123,7 +120,7 @@ class _ProductViewState extends State<ProductView> {
                                       color: Colors.deepOrange),
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                 ],
@@ -253,6 +250,44 @@ class _ProductViewState extends State<ProductView> {
         TableRow(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              child: Text(
+                "Can Buy",
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              child: Text(
+                _product.canOnlySell || _product.canBarterAndSell
+                    ? "Yes"
+                    : "No",
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              child: Text(
+                "Can Barter",
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              child: Text(
+                _product.canOnlyBarter || _product.canBarterAndSell
+                    ? "Yes"
+                    : "No",
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: <Widget>[
+            Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: Text(
                 "Quantity",
@@ -294,28 +329,6 @@ class _ProductViewState extends State<ProductView> {
         ),
       ],
     );
-
-    // DataTable(
-    //   columns: [
-    //     DataColumn(
-    //       numeric: false,
-    //       label: Text(""),
-    //     ),
-    //     DataColumn(
-    //       label: Text(""),
-    //     )
-    //   ],
-    //   rows: [
-    //     DataRow(cells: [
-    //       DataCell(
-    //         Text("data"),
-    //       ),
-    //       DataCell(
-    //         Text("data"),
-    //       ),
-    //     ]),
-    //   ],
-    // );
   }
 
   Widget _buildRatingBar(BuildContext context, double rating) {
@@ -378,12 +391,9 @@ class _ProductViewState extends State<ProductView> {
                 divisions: _product.getqty,
                 label: "${_selectedQty.toInt()}",
                 onChanged: (double v) {
-                  print("${v.toInt()}");
-                  setState(
-                    () {
-                      _selectedQty = v;
-                    },
-                  );
+                  setState(() {
+                    _selectedQty = v;
+                  });
                 },
               ),
               Text(
@@ -591,8 +601,45 @@ class _ProductViewState extends State<ProductView> {
           //Shop
         }
         if (index == 1) {
-          //Add to Product Card
-
+          showModalBottomSheet(
+            isDismissible: true,
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _product.canOnlySell || _product.canBarterAndSell
+                        ? CupertinoButton(
+                            onPressed: () {
+                              CartController.defaultController
+                                  .addToCartProductList(
+                                CartProduct(
+                                  product: _product,
+                                  isSelected: false,
+                                  qty: _selectedQty.toInt(),
+                                  dealingType: ProductDealingType.ONLY_SELL,
+                                  addedDate: DateTime.now(),
+                                  status: 1,
+                                ),
+                              );
+                              Navigator.of(context).pop();
+                            },
+                            child: Text("Buy"),
+                          )
+                        : Container(),
+                    _product.canOnlyBarter || _product.canBarterAndSell
+                        ? CupertinoButton(
+                            onPressed: () {},
+                            child: Text("Exchange"),
+                          )
+                        : Container(),
+                  ],
+                ),
+              );
+            },
+          );
         }
         if (index == 2) {
           //Buy Now

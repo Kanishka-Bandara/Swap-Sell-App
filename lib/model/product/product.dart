@@ -21,7 +21,7 @@ class Product {
   double rating;
   int qty;
   String currancy;
-  int dealingState;
+  ProductDealingType dealingState;
   double barterPrice; //
   double retailPrice;
   double delivaryPrice;
@@ -58,7 +58,7 @@ class Product {
     this.shop,
     this.isFavorite = false,
     this.currancy,
-    this.dealingState = ProductDealingStatus.ONLY_SELL_STATE,
+    this.dealingState = ProductDealingType.ONLY_SELL,
   });
 
   int get getid => id;
@@ -125,9 +125,9 @@ class Product {
 
   set setsaleCount(int value) => saleCount = value;
 
-  int get getDealingState => dealingState;
+  ProductDealingType get getDealingType => dealingState;
 
-  set setDealingState(int value) => dealingState = value;
+  set setDealingType(ProductDealingType value) => dealingState = value;
 
   int get getreturnCount => returnCount;
 
@@ -191,13 +191,13 @@ class Product {
   }
 
   bool get canOnlyBarter =>
-      this.dealingState == ProductDealingStatus.ONLY_BARTER_STATE
+      this.dealingState == ProductDealingType.ONLY_BARTER
           ? true
           : false;
   bool get canOnlySell =>
-      this.dealingState == ProductDealingStatus.ONLY_SELL_STATE ? true : false;
+      this.dealingState == ProductDealingType.ONLY_SELL ? true : false;
   bool get canBarterAndSell =>
-      this.dealingState == ProductDealingStatus.BARTER_AND_SELL_STATE
+      this.dealingState == ProductDealingType.BARTER_AND_SELL
           ? true
           : false;
 }

@@ -248,13 +248,10 @@ class _ProductCreateState extends State<ProductCreate> {
             onChanged: (value) {
               setState(() {
                 if (value.toString() == "1") {
-                  _newProduct.setDealingState =
-                      ProductDealingStatus.ONLY_BARTER_STATE;
+                  _newProduct.setDealingType = ProductDealingType.ONLY_BARTER;
                 } else {
-                  _newProduct.setDealingState =
-                      ProductDealingStatus.ONLY_SELL_STATE;
+                  _newProduct.setDealingType = ProductDealingType.ONLY_SELL;
                 }
-                // _newProduct.canBarter = value as bool;
               });
             },
           ),

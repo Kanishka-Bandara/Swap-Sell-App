@@ -10,8 +10,8 @@ class ApplicationBar {
       actions: <Widget>[
         Container(
           margin: EdgeInsets.only(right: 20),
-          child: AppIcons.createShoppingCart(context, "0"),
-        )
+          child: AppIcons.createShoppingCart(context),
+        ),
       ],
       bottom: PreferredSize(
         preferredSize: Size(1000, 60),
@@ -186,7 +186,7 @@ class ApplicationBar {
                       })
                   : Column(),
               showShoppingCart
-                  ? AppIcons.createShoppingCart(context, "0")
+                  ? AppIcons.createShoppingCart(context)
                   : Column(),
             ],
           ),
