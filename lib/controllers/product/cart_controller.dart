@@ -1,5 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
+import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product_dealing_status.dart';
@@ -14,11 +15,30 @@ enum _CartProductType {
 }
 
 class CartController extends Model {
-  // CartController() {
-  //   setData();
-  // }
+  CartController() {
+    setData();
+  }
   static CartController defaultController = CartController();
   List<UserCartProduct> _cartProducts = [];
+
+  bool get isSelectedAll {
+    bool _selectedAll = true;
+    _cartProducts.forEach((p) {
+      p.getCartProducts.forEach((f) {
+        if (!f.isSelected) {
+          _selectedAll = false;
+        }
+      });
+    });
+    return _selectedAll;
+  }
+
+  void setAllSelected(bool select) {
+    _cartProducts.forEach((f) {
+      f.setAllProductSelected(select);
+    });
+    notifyListeners();
+  }
 
   void setData() {
     _cartProducts.add(
@@ -183,8 +203,6 @@ class CartController extends Model {
     return _state;
   }
 
-
-
   int get getCartItemCount {
     int _count = 0;
     _cartProducts.forEach((p) {
@@ -200,5 +218,28 @@ class CartController extends Model {
       return _cartProducts;
     });
   }
-  
+
+  double get getCartTotal {
+    double _total = 0;
+    _cartProducts.forEach((p) {
+      p.getCartProducts.forEach((f) {
+        _total += (f.getQty * f.getProduct.getdiscountedRetailPrice);
+      });
+    });
+    return _total;
+  }
+
+  String get getDisplayCartTotal {
+   return Currency.convertToCurrency(getCartTotal);
+  }
+
+  double getShopCartTotal(int index) {
+    double _total = 0;
+    _cartProducts.forEach((p) {
+      p.getCartProducts.forEach((f) {
+        _total += (f.getQty * f.getProduct.getdiscountedRetailPrice);
+      });
+    });
+    return _total;
+  }
 }

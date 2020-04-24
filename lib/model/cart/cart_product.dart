@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_dealing_status.dart';
 
@@ -25,7 +26,11 @@ class CartProduct extends Model {
 
   bool get getIsSelected => isSelected;
 
-  set setIsSelected(bool isSelected) => this.isSelected = isSelected;
+  set setSelected(bool isSelected) {
+    this.isSelected = isSelected;
+    notifyListeners();
+    CartController.defaultController.notifyListeners();
+  }
 
   int get getQty => qty;
 
@@ -34,4 +39,13 @@ class CartProduct extends Model {
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+
+  void addQty(int qty) {
+    int newQTy = this.getQty + qty;
+    if (newQTy>0) {
+      this.setQty = newQTy;
+    }
+    notifyListeners();
+    CartController.defaultController.notifyListeners();
+  }
 }

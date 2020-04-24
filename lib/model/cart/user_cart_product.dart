@@ -3,7 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
-class UserCartProduct extends Model{
+class UserCartProduct extends Model {
   Shop shop;
   List<CartProduct> cartProducts = [];
 
@@ -20,4 +20,20 @@ class UserCartProduct extends Model{
 
   set setCartProducts(List<CartProduct> cartProducts) =>
       this.cartProducts = cartProducts;
+  bool get isAllProductSelected {
+    bool _selected = true;
+    cartProducts.forEach((f) {
+      if (!f.isSelected) {
+        _selected = false;
+      }
+    });
+    return _selected;
+  }
+
+  void setAllProductSelected(bool select) {
+    cartProducts.forEach((f) {
+      f.setSelected = select;
+    });
+    notifyListeners();
+  }
 }

@@ -29,15 +29,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            height: 50,
-            child: Row(),
-          ),
           Flexible(
             child: _buildCartList(context),
           ),
         ],
       ),
+      bottomNavigationBar: buildBottomDetailsBar(context),
     );
   }
 
@@ -102,14 +99,14 @@ class _ShoppingCartState extends State<ShoppingCart> {
       // height: 500,
       child: Column(
         children: <Widget>[
-          _buildShopNameTile(context, userCartProduct.getShop),
+          _buildShopNameTile(context, userCartProduct),
           _buildItemList(userCartProduct),
         ],
       ),
     );
   }
 
-  _buildShopNameTile(BuildContext context, Shop shop) {
+  _buildShopNameTile(BuildContext context, UserCartProduct userCartProduct) {
     return Container(
       color: Theme.of(context).primaryColor.withOpacity(0.5),
       width: MediaQuery.of(context).size.width,
@@ -117,11 +114,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
       child: Row(
         children: <Widget>[
           Switch(
-            value: true,
-            onChanged: (v) {},
+            value: userCartProduct.isAllProductSelected,
+            onChanged: (v) {
+              userCartProduct.setAllProductSelected(v);
+            },
           ),
           Text(
-            shop.getShopName,
+            userCartProduct.getShop.getShopName,
             style: TextStyle(fontSize: 20),
           ),
         ],
@@ -164,8 +163,10 @@ class _ShoppingCartState extends State<ShoppingCart> {
       child: Row(
         children: <Widget>[
           Switch(
-            value: true,
-            onChanged: (v) {},
+            value: cartProduct.isSelected,
+            onChanged: (v) {
+              cartProduct.setSelected = v;
+            },
           ),
           Container(
             width: 150,
@@ -261,7 +262,9 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(Icons.remove),
-                    onPressed: () {},
+                    onPressed: () {
+                      cartProduct.addQty(-1);
+                    },
                   ),
                   Container(
                     color: Theme.of(context).backgroundColor,
@@ -276,13 +279,99 @@ class _ShoppingCartState extends State<ShoppingCart> {
                   ),
                   IconButton(
                     icon: Icon(Icons.add),
-                    onPressed: () {},
+                    onPressed: () {
+                      cartProduct.addQty(1);
+                    },
                   ),
                 ],
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  buildBottomDetailsBar(BuildContext context) {
+    return ScopedModel(
+      model: CartController.defaultController,
+      child: ScopedModelDescendant<CartController>(
+        builder: (BuildContext context, Widget widget, CartController model) {
+          return Container(
+            height: 75,
+            // color: Theme.of(context).primaryColor,
+            child: Padding(
+              padding: EdgeInsets.all(5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Switch(
+                    value: model.isSelectedAll,
+                    onChanged: (v) {
+                      model.setAllSelected(v);
+                    },
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Total :",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "${model.getDisplayCartTotal}",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  _buildCheckoutButton(context),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildCheckoutButton(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        //TODO::Checkout
+      },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Ink(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Theme.of(context).primaryColor,
+              Theme.of(context).primaryColor.withOpacity(0.6),
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
+          constraints: BoxConstraints(maxHeight: 50.0, maxWidth: 100.0),
+          alignment: Alignment.center,
+          child: Text(
+            "Check Out",
+            style: TextStyle(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
     );
   }
