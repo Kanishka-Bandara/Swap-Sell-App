@@ -616,6 +616,7 @@ class _ProductViewState extends State<ProductView> {
                               CartController.defaultController
                                   .addToCartProductList(
                                 CartProduct(
+                                  id: 0,
                                   product: _product,
                                   isSelected: false,
                                   qty: _selectedQty.toInt(),
@@ -631,7 +632,21 @@ class _ProductViewState extends State<ProductView> {
                         : Container(),
                     _product.canOnlyBarter || _product.canBarterAndSell
                         ? CupertinoButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              CartController.defaultController
+                                  .addToCartProductList(
+                                CartProduct(
+                                  id: 0,
+                                  product: _product,
+                                  isSelected: false,
+                                  qty: _selectedQty.toInt(),
+                                  dealingType: ProductDealingType.ONLY_BARTER,
+                                  addedDate: DateTime.now(),
+                                  status: 1,
+                                ),
+                              );
+                              Navigator.of(context).pop();
+                            },
                             child: Text("Exchange"),
                           )
                         : Container(),

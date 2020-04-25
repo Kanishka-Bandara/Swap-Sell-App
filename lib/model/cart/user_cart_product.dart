@@ -36,4 +36,16 @@ class UserCartProduct extends Model {
     });
     notifyListeners();
   }
+
+  void removeFromTheShoppingCart(CartProduct cp) {
+    // List<CartProduct> newCartProducts = [];
+    // for (var i = 0; i < cartProducts.length; i++) {
+    //   if (i!=cartProductIndex) {
+    //     newCartProducts.add(value)
+    //   }
+    // }
+    cartProducts.removeWhere((CartProduct _cp) {
+      return _cp.getId == _cp.getId;
+    });
+  }
 }

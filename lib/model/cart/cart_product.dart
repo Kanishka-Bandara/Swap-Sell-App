@@ -5,6 +5,7 @@ import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_dealing_status.dart';
 
 class CartProduct extends Model {
+  int id;
   Product product;
   bool isSelected;
   int qty;
@@ -12,6 +13,7 @@ class CartProduct extends Model {
   ProductDealingType dealingType;
   int status;
   CartProduct({
+    @required this.id,
     @required this.product,
     @required this.isSelected,
     @required this.qty,
@@ -19,6 +21,10 @@ class CartProduct extends Model {
     @required this.addedDate,
     @required this.status,
   });
+
+  int get getId => this.id;
+
+  set setId(int id) => this.id = id;
 
   Product get getProduct => this.product;
 

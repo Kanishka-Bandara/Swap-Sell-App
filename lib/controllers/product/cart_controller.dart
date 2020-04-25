@@ -69,6 +69,7 @@ class CartController extends Model {
         ),
         cartProducts: [
           CartProduct(
+            id: 1,
             product: ProductExamples.getList()[0],
             isSelected: true,
             qty: 1,
@@ -77,6 +78,7 @@ class CartController extends Model {
             status: 1,
           ),
           CartProduct(
+            id: 2,
             product: ProductExamples.getList()[1],
             isSelected: true,
             qty: 1,
@@ -85,6 +87,7 @@ class CartController extends Model {
             status: 1,
           ),
           CartProduct(
+            id: 3,
             product: ProductExamples.getList()[2],
             isSelected: true,
             qty: 1,
@@ -93,6 +96,7 @@ class CartController extends Model {
             status: 1,
           ),
           CartProduct(
+            id: 4,
             product: ProductExamples.getList()[3],
             isSelected: true,
             qty: 1,
@@ -101,6 +105,7 @@ class CartController extends Model {
             status: 1,
           ),
           CartProduct(
+            id: 5,
             product: ProductExamples.getList()[4],
             isSelected: true,
             qty: 1,
@@ -140,6 +145,7 @@ class CartController extends Model {
         ),
         cartProducts: [
           CartProduct(
+            id: 6,
             product: ProductExamples.getList()[5],
             isSelected: true,
             qty: 1,
@@ -148,6 +154,7 @@ class CartController extends Model {
             status: 1,
           ),
           CartProduct(
+            id: 7,
             product: ProductExamples.getList()[6],
             isSelected: true,
             qty: 1,
@@ -230,7 +237,7 @@ class CartController extends Model {
   }
 
   String get getDisplayCartTotal {
-   return Currency.convertToCurrency(getCartTotal);
+    return Currency.convertToCurrency(getCartTotal);
   }
 
   double getShopCartTotal(int index) {
@@ -241,5 +248,9 @@ class CartController extends Model {
       });
     });
     return _total;
+  }
+
+  void removeFromTheShoppingCart(CartProduct cartProduct) {
+    
   }
 }

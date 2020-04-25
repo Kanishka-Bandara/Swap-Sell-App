@@ -1,5 +1,6 @@
 import 'package:swap_sell/model/product/ProductCategory.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
 class ProductExamples {
@@ -43,6 +44,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[1] = Product(
       id: 1,
@@ -80,6 +82,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
 
     mainList[2] = Product(
@@ -151,6 +154,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
 
     mainList[3] = Product(
@@ -230,6 +234,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
     mainList[5] = Product(
@@ -268,6 +273,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
 
     mainList[6] = Product(
@@ -342,6 +348,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
 
     mainList[8] = Product(
@@ -450,6 +457,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
     mainList[10] = Product(
@@ -489,6 +497,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
 
     mainList[11] = Product(
@@ -567,6 +576,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
 
     mainList[13] = Product(
@@ -605,6 +615,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
     mainList[14] = Product(
@@ -643,6 +654,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[15] = Product(
       id: 15,
@@ -718,6 +730,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
 
     mainList[17] = Product(
@@ -790,6 +803,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
     mainList[18] = Product(
@@ -828,6 +842,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
 
     mainList[19] = Product(
@@ -867,6 +882,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
 
     mainList[20] = Product(
@@ -937,6 +953,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: true,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
     mainList[21] = Product(
@@ -1007,6 +1024,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[23] = Product(
       id: 23,
@@ -1047,6 +1065,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
     mainList[24] = Product(
       id: 24,
@@ -1083,6 +1102,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[25] = Product(
       id: 25,
@@ -1124,6 +1144,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[26] = Product(
       id: 26,
@@ -1167,6 +1188,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_SELL,
     );
     mainList[27] = Product(
       id: 27,
@@ -1210,6 +1232,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[28] = Product(
       id: 28,
@@ -1239,6 +1262,7 @@ class ProductExamples {
       shop: Shop.exampleShop,
       isFavorite: false,
       currancy: "Rs",
+      dealingState: ProductDealingType.ONLY_BARTER,
     );
     sendableList.clear();
     mainList.forEach((p) {

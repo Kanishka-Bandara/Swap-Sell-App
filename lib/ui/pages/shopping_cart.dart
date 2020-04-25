@@ -4,7 +4,6 @@ import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
