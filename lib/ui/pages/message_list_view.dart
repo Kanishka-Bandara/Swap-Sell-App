@@ -67,7 +67,8 @@ class _MessageViewState extends State<MessageView> {
                                     Icons.message,
                                     "No Archived Messages.")
                                 : _buildArchivedMessageSection()
-                            : DefaultComponents.buildUnSignedTile(context, "Please Sign in to get messages."),
+                            : DefaultComponents.buildUnSignedTile(
+                                context, "Please Sign in to get messages."),
                       ],
                     );
                   },
@@ -100,7 +101,10 @@ class _MessageViewState extends State<MessageView> {
                     ListTile(
                       onTap: () {
                         AppNavigator.navigateToChatViewPage(
-                            context, snapshot.data[index]);
+                          context,
+                          snapshot.data[index],
+                        );
+                        snapshot.data[index].setAllAsRead();
                       },
                       leading: snapshot.data[index].sentBy.profilePicUrl == null
                           ? Icon(Icons.perm_identity)
@@ -115,21 +119,13 @@ class _MessageViewState extends State<MessageView> {
                           ? "${snapshot.data[index].messageList[0].message.toString().substring(0, 30)} ..."
                           : snapshot.data[index].messageList[0].message),
                       trailing: snapshot.data[index].getUnreadMessageCount > 0
-                          ? Container(
-                              width: 30,
-                              height: 30,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Text(
-                                "${snapshot.data[index].getUnreadMessageCount}",
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                          ? DefaultComponents.buildRoundedNotificationLabel(
+                              context,
+                              "${snapshot.data[index].getUnreadMessageCount}",
+                              Theme.of(context).primaryColor,
+                              30,
+                              30,
+                              50,
                             )
                           : Text(""),
                     ),

@@ -12,7 +12,7 @@ class MessageComponents {
           width: 200,
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
-            borderRadius: message.getCategory == MessageMetadata.SENT_MESSAGE
+            borderRadius: message.getCategory == MessageType.SENT_MESSAGE
                 ? BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
@@ -39,7 +39,7 @@ class MessageComponents {
         Container(
           alignment: Alignment.bottomRight,
           width: 200,
-          child: message.getCategory == MessageMetadata.SENT_MESSAGE
+          child: message.getCategory == MessageType.SENT_MESSAGE
               ? Text(
                   "${message.getSentAt.year}-${message.getSentAt.month}-${message.getSentAt.day} ${message.getSentAt.hour}:${message.getSentAt.minute}")
               : Text(
@@ -52,7 +52,7 @@ class MessageComponents {
   static Widget buildMessageRowTile(BuildContext context, Message message) {
     return Container(
       padding: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-      alignment: message.getCategory == MessageMetadata.SENT_MESSAGE
+      alignment: message.getCategory == MessageType.SENT_MESSAGE
           ? Alignment.centerRight
           : Alignment.centerLeft,
       child: _buildMessageTile(context, message),

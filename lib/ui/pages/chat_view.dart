@@ -66,11 +66,12 @@ class _ChatViewState extends State<ChatView> {
                       if (_currentMessage != "") {
                         Message m = Message(
                             id: _userMessage.getMessageList.length,
-                            category: MessageMetadata.SENT_MESSAGE,
+                            category: MessageType.SENT_MESSAGE,
                             message: _currentMessage,
+                            read: true,
                             viewedAt: null,
                             sentAt: DateTime.now(),
-                            status: MessageMetadata.LIVE_MESSAGE);
+                            status: MessageStatus.LIVE_MESSAGE);
                         setState(() {
                           _userMessage.getMessageList.add(m);
                         _currentMessage = "";

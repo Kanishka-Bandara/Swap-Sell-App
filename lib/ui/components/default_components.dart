@@ -87,4 +87,23 @@ class DefaultComponents {
       ),
     );
   }
+
+  static Widget buildRoundedNotificationLabel(BuildContext context,
+      String message, Color color, double width, double height,double radius,) {
+    return Container(
+      width: width,
+      height: height,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      child: Text(
+        message,
+        style: TextStyle(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            fontWeight: FontWeight.bold),
+      ),
+    );
+  }
 }

@@ -1,6 +1,9 @@
-class MessageMetadata {
-  static const int RECEIVED_MESSAGE = 1;
-  static const int SENT_MESSAGE = 2;
-  static const int LIVE_MESSAGE = 3;
-  static const int ARCHIVE_MESSAGE = 4;
+enum MessageType {
+  RECEIVED_MESSAGE,
+  SENT_MESSAGE,
+}
+
+enum MessageStatus {
+  LIVE_MESSAGE,
+  ARCHIVE_MESSAGE,
 }

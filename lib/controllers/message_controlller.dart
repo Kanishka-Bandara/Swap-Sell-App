@@ -16,11 +16,11 @@ class MessageController extends Model {
   }
 
   Future<List<UserMessage>> get getMessageList async {
-    return Future.delayed(Duration(seconds: 2), () => _messageList);
+    return Future.delayed(Duration(seconds: 1), () => _messageList);
   }
 
   Future<List<UserMessage>> get getReceivedMessageList async {
-    return Future.delayed(Duration(seconds: 2), () => _archivedMessageList);
+    return Future.delayed(Duration(seconds: 1), () => _archivedMessageList);
   }
 
   bool get isEmptyMessageList {
@@ -29,6 +29,14 @@ class MessageController extends Model {
 
   bool get isEmptyArchivedMessageList {
     return _archivedMessageList.length == 0;
+  }
+
+  int get getAllUnreadMessagesCount {
+    int _count = 0;
+    _messageList.forEach((UserMessage um) {
+      _count += um.getUnreadMessageCount;
+    });
+    return _count;
   }
 
   bool sendMessage(Message message, User receiver) {
@@ -43,7 +51,6 @@ class MessageController extends Model {
   void _loadMessagesList() {
     _messageList.add(
       UserMessage(
-        unreadMessageCount: 5,
         receivedBy: User(
           id: 1,
           userId: "u0001",
@@ -72,7 +79,8 @@ class MessageController extends Model {
           fName: "Kanishka",
           lName: "Bandara",
           fullName: "Kanishka Udayakantha Bandara",
-          profilePicUrl: "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
+          profilePicUrl:
+              "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
           emails: <Email>[
             Email(
               emailID: 1,
@@ -88,35 +96,37 @@ class MessageController extends Model {
         messageList: [
           Message(
             id: 1,
-            category: MessageMetadata.RECEIVED_MESSAGE,
+            category: MessageType.RECEIVED_MESSAGE,
             message:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: true,
           ),
           Message(
             id: 2,
-            category: MessageMetadata.RECEIVED_MESSAGE,
-            message: "",
+            category: MessageType.RECEIVED_MESSAGE,
+            message: "How about the ",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: false,
           ),
           Message(
             id: 3,
-            category: MessageMetadata.RECEIVED_MESSAGE,
+            category: MessageType.RECEIVED_MESSAGE,
             message: "",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: false,
           ),
         ],
       ),
     );
     _messageList.add(
       UserMessage(
-        unreadMessageCount: 0,
         receivedBy: User(
           id: 1,
           userId: "u0001",
@@ -160,28 +170,31 @@ class MessageController extends Model {
         messageList: [
           Message(
             id: 1,
-            category: MessageMetadata.SENT_MESSAGE,
+            category: MessageType.SENT_MESSAGE,
             message:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: true,
           ),
           Message(
             id: 2,
-            category: MessageMetadata.RECEIVED_MESSAGE,
+            category: MessageType.RECEIVED_MESSAGE,
             message: "Hey",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: true,
           ),
           Message(
             id: 3,
-            category: MessageMetadata.RECEIVED_MESSAGE,
+            category: MessageType.RECEIVED_MESSAGE,
             message: "Hey",
             viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
             sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageMetadata.LIVE_MESSAGE,
+            status: MessageStatus.LIVE_MESSAGE,
+            read: false,
           ),
         ],
       ),

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/controllers/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/user/user.dart';
 
-class UserMessage extends Model{
+class UserMessage extends Model {
   User receivedBy;
   User sentBy;
-  int unreadMessageCount;
   List<Message> messageList = [];
-  UserMessage(
-      {@required this.receivedBy,
-      @required this.sentBy,
-      this.messageList,
-      this.unreadMessageCount});
+  UserMessage({
+    @required this.receivedBy,
+    @required this.sentBy,
+    this.messageList,
+  });
 
   User get getReceivedUser => this.receivedBy;
 
@@ -26,10 +26,21 @@ class UserMessage extends Model{
 
   set setMessageList(List<Message> messages) => this.messageList = messages;
 
-  int get getUnreadMessageCount => unreadMessageCount;
+  int get getUnreadMessageCount {
+    return messageList
+        .where((um) {
+          return !um.isRead;
+        })
+        .toList()
+        .length;
+  }
 
-  set setUnreadMessageCount(int unreadMessageCount) =>
-      this.unreadMessageCount = unreadMessageCount;
+  void setAllAsRead() {
+    messageList.forEach((m) {
+      m.setIsRead = true;
+    });
+    MessageController.defaultMessageController.notifyListeners();
+  }
 
   addMessage(Message message) {
     messageList.add(message);
