@@ -9,6 +9,7 @@ import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/product_card.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
 import 'package:swap_sell/ui/components/text_components.dart';
@@ -190,30 +191,44 @@ class _ProductViewState extends State<ProductView> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Carousel(
-              boxFit: BoxFit.cover,
-              defaultImage: images[defaultImage],
-              images: images,
-              autoplay: false,
-              animationCurve: Curves.fastOutSlowIn,
-              animationDuration: Duration(milliseconds: 1000),
-              // dotSize: 4.0,
-              // indicatorBgPadding: 6.0,
-              showIndicator: false,
-            ),
+          content: Stack(
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Carousel(
+                  boxFit: BoxFit.cover,
+                  defaultImage: images[defaultImage],
+                  images: images,
+                  autoplay: false,
+                  animationCurve: Curves.fastOutSlowIn,
+                  animationDuration: Duration(milliseconds: 1000),
+                  // dotSize: 4.0,
+                  // indicatorBgPadding: 6.0,
+                  showIndicator: false,
+                ),
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: DefaultComponents.buildRoundedContainer(
+                  context,
+                  IconButton(
+                    icon: Icon(Icons.close,color: Colors.white,),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  Theme.of(context).primaryColor.withOpacity(0.9),
+                  50,
+                  50,
+                  50,
+                ),
+              )
+            ],
           ),
           contentPadding: EdgeInsets.zero,
           backgroundColor: Colors.transparent,
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                }),
-          ],
           elevation: 0,
         );
       },

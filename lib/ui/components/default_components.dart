@@ -68,7 +68,7 @@ class DefaultComponents {
   }
 
   static void showMessage(
-      BuildContext context, String message, IconData iconData,int duraionSec) {
+      BuildContext context, String message, IconData iconData, int duraionSec) {
     Scaffold.of(context).showSnackBar(
       SnackBar(
         duration: Duration(seconds: duraionSec),
@@ -88,8 +88,14 @@ class DefaultComponents {
     );
   }
 
-  static Widget buildRoundedNotificationLabel(BuildContext context,
-      String message, Color color, double width, double height,double radius,) {
+  static Widget buildRoundedNotificationLabel(
+    BuildContext context,
+    String message,
+    Color color,
+    double width,
+    double height,
+    double radius,
+  ) {
     return Container(
       width: width,
       height: height,
@@ -104,6 +110,26 @@ class DefaultComponents {
             color: Theme.of(context).scaffoldBackgroundColor,
             fontWeight: FontWeight.bold),
       ),
+    );
+  }
+
+  static Widget buildRoundedContainer(
+    BuildContext context,
+    Widget child,
+    Color color,
+    double width,
+    double height,
+    double radius,
+  ) {
+    return Container(
+      width: width,
+      height: height,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      child: child,
     );
   }
 }
