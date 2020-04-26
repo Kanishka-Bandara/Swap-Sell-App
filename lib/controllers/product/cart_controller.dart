@@ -230,7 +230,7 @@ class CartController extends Model {
     double _total = 0;
     _cartProducts.forEach((p) {
       p.getCartProducts.forEach((f) {
-        _total += (f.getQty * f.getProduct.getdiscountedRetailPrice);
+        _total += (f.getQty * f.getProduct.getretailPrice);
       });
     });
     return _total;
@@ -250,7 +250,26 @@ class CartController extends Model {
     return _total;
   }
 
-  void removeFromTheShoppingCart(CartProduct cartProduct) {
-    
+  void removeSelectedFromTheShoppingCart() {
+    _cartProducts.forEach((ucp) {
+      ucp.getCartProducts.removeWhere((cp) {
+        //Send To Backend
+        return cp.isSelected;
+      });
+    });
+    _cartProducts.removeWhere((ucp) {
+      return ucp.getCartProducts.length <= 0;
+    });
+    notifyListeners();
   }
+
+  // void removeSelectedFromTheShoppingCart() {
+  //   _cartProducts.forEach((ucp){
+  //     ucp.getCartProducts.forEach((cp){
+  //       if(cp.isSelected){
+
+  //       }
+  //     });
+  //   });
+  // }
 }

@@ -68,10 +68,10 @@ class DefaultComponents {
   }
 
   static void showMessage(
-      BuildContext context, String message, IconData iconData) {
+      BuildContext context, String message, IconData iconData,int duraionSec) {
     Scaffold.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 1),
+        duration: Duration(seconds: duraionSec),
         content: Container(
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,

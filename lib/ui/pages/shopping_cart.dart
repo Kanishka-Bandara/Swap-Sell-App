@@ -4,6 +4,7 @@ import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_dealing_status.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
@@ -17,23 +18,41 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   @override
+  bool _useCheckBox = true;
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ApplicationBar.createNormalAppBar(
-        context,
-        "My Cart",
-        false,
-        false,
-        null,
+    return ScopedModel(
+      model: CartController.defaultController,
+      child: ScopedModelDescendant<CartController>(
+        builder: (BuildContext context, Widget widget, CartController ccModel) {
+          return Scaffold(
+            appBar: ApplicationBar.createNormalAppBar(
+              context,
+              "My Cart (${ccModel.getCartItemCount})",
+              false,
+              false,
+              null,
+              <Widget>[
+                IconButton(
+                  icon: Icon(Icons.delete_forever),
+                  onPressed: ccModel.getCartTotal <= 0
+                      ? null
+                      : () {
+                          ccModel.removeSelectedFromTheShoppingCart();
+                        },
+                ),
+              ],
+            ),
+            body: Column(
+              children: <Widget>[
+                Flexible(
+                  child: _buildCartList(context),
+                ),
+              ],
+            ),
+            bottomNavigationBar: buildBottomDetailsBar(context),
+          );
+        },
       ),
-      body: Column(
-        children: <Widget>[
-          Flexible(
-            child: _buildCartList(context),
-          ),
-        ],
-      ),
-      bottomNavigationBar: buildBottomDetailsBar(context),
     );
   }
 
@@ -112,12 +131,19 @@ class _ShoppingCartState extends State<ShoppingCart> {
       height: 50,
       child: Row(
         children: <Widget>[
-          Switch(
-            value: userCartProduct.isAllProductSelected,
-            onChanged: (v) {
-              userCartProduct.setAllProductSelected(v);
-            },
-          ),
+          _useCheckBox
+              ? Checkbox(
+                  value: userCartProduct.isAllProductSelected,
+                  onChanged: (v) {
+                    userCartProduct.setAllProductSelected(v);
+                  },
+                )
+              : Switch(
+                  value: userCartProduct.isAllProductSelected,
+                  onChanged: (v) {
+                    userCartProduct.setAllProductSelected(v);
+                  },
+                ),
           Text(
             userCartProduct.getShop.getShopName,
             style: TextStyle(fontSize: 20),
@@ -157,136 +183,153 @@ class _ShoppingCartState extends State<ShoppingCart> {
   _buildCartItemBody(BuildContext context, CartProduct cartProduct) {
     Product _product = cartProduct.getProduct;
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 150,
-      child: Row(
-        children: <Widget>[
-          Switch(
-            value: cartProduct.isSelected,
-            onChanged: (v) {
-              cartProduct.setSelected = v;
-            },
-          ),
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(5),
-              ),
-              image: DecorationImage(
-                image: NetworkImage(_product.images[0]),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Banner(
+        layoutDirection: TextDirection.ltr,
+        message: cartProduct.dealingType == ProductDealingType.ONLY_SELL
+            ? "Buy"
+            : "Exchange",
+        location: BannerLocation.topEnd,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 150,
+          child: Row(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 10,
-                  bottom: 10,
-                  right: 10,
-                ),
-                child: Container(
-                  child: Text(
-                    //TODO:product name
-                    _product.getname.substring(0, 10),
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+              _useCheckBox
+                  ? Checkbox(
+                      value: cartProduct.isSelected,
+                      onChanged: (v) {
+                        cartProduct.setSelected = v;
+                      },
+                    )
+                  : Switch(
+                      value: cartProduct.isSelected,
+                      onChanged: (v) {
+                        cartProduct.setSelected = v;
+                      },
                     ),
+              Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5),
+                    topRight: Radius.circular(5),
+                  ),
+                  image: DecorationImage(
+                    image: NetworkImage(_product.images[0]),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 10,
-                  right: 10,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    _product.getdiscount == 0.0
-                        ? Row(
-                            children: <Widget>[
-                              Text(
-                                "${_product.getdisplayRetailPrice}",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          )
-                        : Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    // "${_product.currancy} ${_product.retailPrice}",
-                                    "${_product.getdisplayDiscountedRetailPrice}",
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    // "${_product.currancy} ${_product.retailPrice}",
-                                    "${_product.getdisplayRetailPrice}",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        decoration: TextDecoration.lineThrough,
-                                        fontStyle: FontStyle.italic),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    // "${_product.currancy} ${_product.retailPrice}",
-                                    "-${_product.getdiscount} %",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.deepOrange),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                  ],
-                ),
-              ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.remove),
-                    onPressed: () {
-                      cartProduct.addQty(-1);
-                    },
-                  ),
-                  Container(
-                    color: Theme.of(context).backgroundColor,
-                    width: 60,
-                    height: 40,
-                    child: Center(
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 10,
+                      bottom: 10,
+                      right: 10,
+                    ),
+                    child: Container(
                       child: Text(
-                        "${cartProduct.getQty}",
-                        style: TextStyle(fontSize: 20),
+                        //TODO:product name
+                        _product.getname.substring(0, 10),
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      cartProduct.addQty(1);
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 10,
+                      right: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        _product.getdiscount == 0.0
+                            ? Row(
+                                children: <Widget>[
+                                  Text(
+                                    "${_product.getdisplayRetailPrice}",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        // "${_product.currancy} ${_product.retailPrice}",
+                                        "${_product.getdisplayDiscountedRetailPrice}",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        // "${_product.currancy} ${_product.retailPrice}",
+                                        "${_product.getdisplayRetailPrice}",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            fontStyle: FontStyle.italic),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        // "${_product.currancy} ${_product.retailPrice}",
+                                        "-${_product.getdiscount} %",
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.deepOrange),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.remove),
+                        onPressed: () {
+                          cartProduct.addQty(-1);
+                        },
+                      ),
+                      Container(
+                        color: Theme.of(context).backgroundColor,
+                        width: 60,
+                        height: 40,
+                        child: Center(
+                          child: Text(
+                            "${cartProduct.getQty}",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          cartProduct.addQty(1);
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -304,12 +347,23 @@ class _ShoppingCartState extends State<ShoppingCart> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Switch(
-                    value: model.isSelectedAll,
-                    onChanged: (v) {
-                      model.setAllSelected(v);
-                    },
-                  ),
+                  _useCheckBox
+                      ? Checkbox(
+                          value: model.isSelectedAll,
+                          onChanged: model.getCartTotal <= 0
+                              ? null
+                              : (v) {
+                                  model.setAllSelected(v);
+                                },
+                        )
+                      : Switch(
+                          value: model.isSelectedAll,
+                          onChanged: model.getCartTotal <= 0
+                              ? null
+                              : (v) {
+                                  model.setAllSelected(v);
+                                },
+                        ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -340,37 +394,49 @@ class _ShoppingCartState extends State<ShoppingCart> {
   }
 
   Widget _buildCheckoutButton(BuildContext context) {
-    return RaisedButton(
-      onPressed: () {
-        //TODO::Checkout
-      },
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Ink(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              Theme.of(context).primaryColor,
-              Theme.of(context).primaryColor.withOpacity(0.6),
-            ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Container(
-          constraints: BoxConstraints(maxHeight: 50.0, maxWidth: 100.0),
-          alignment: Alignment.center,
-          child: Text(
-            "Check Out",
-            style: TextStyle(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+    return ScopedModel(
+      model: CartController.defaultController,
+      child: ScopedModelDescendant<CartController>(
+        builder: (BuildContext context, Widget widget, CartController model) {
+          return RaisedButton(
+            onPressed: model.getCartTotal <= 0
+                ? () {
+                    DefaultComponents.showMessage(context,
+                        "Add items to the cart to proceed checkout.", null, 2);
+                  }
+                : () {
+                    //TODO::Checkout
+                  },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-        ),
+            child: Ink(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).primaryColor.withOpacity(0.6),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                constraints: BoxConstraints(maxHeight: 50.0, maxWidth: 100.0),
+                alignment: Alignment.center,
+                child: Text(
+                  "Check Out",
+                  style: TextStyle(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

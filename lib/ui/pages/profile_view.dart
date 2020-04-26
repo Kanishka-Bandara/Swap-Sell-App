@@ -232,7 +232,7 @@ class _UserProfileViewState extends State<UserProfileView> {
                     onPressed: () {
                       if (_classMode == ClassMode.Edit) {
                         model.editCurrentUser(_user);
-                        DefaultComponents.showMessage(context,"Successfully Saved",Icons.done_outline);
+                        DefaultComponents.showMessage(context,"Successfully Saved",Icons.done_outline,1);
                       }
                       setState(() {
                         _classMode == ClassMode.View
