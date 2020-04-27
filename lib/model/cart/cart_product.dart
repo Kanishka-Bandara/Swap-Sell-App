@@ -47,9 +47,12 @@ class CartProduct extends Model {
   set setStatus(int status) => this.status = status;
 
   void addQty(int qty) {
-    int newQTy = this.getQty + qty;
-    if (newQTy>0) {
-      this.setQty = newQTy;
+    int _newQTy = this.getQty + qty;
+    if (_newQTy > this.getProduct.getqty) {
+      _newQTy = this.getProduct.getqty;
+    }
+    if (_newQTy > 0) {
+      this.setQty = _newQTy;
     }
     notifyListeners();
     CartController.defaultController.notifyListeners();
