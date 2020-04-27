@@ -12,6 +12,7 @@ import 'package:swap_sell/ui/pages/settings.dart';
 import 'package:swap_sell/ui/pages/shopping_cart.dart';
 import 'package:swap_sell/ui/pages/signin.dart';
 import 'package:swap_sell/ui/pages/signup.dart';
+import 'package:swap_sell/ui/pages/wish_list_view.dart';
 
 class Routes {
   static const String ROUTES_HOME = '/';
@@ -26,6 +27,7 @@ class Routes {
   static const String ROUTES_MESSAGE_LIST_VIEW = '/messageListView';
   static const String ROUTES_CHAT_VIEW = '/chatView';
   static const String ROUTES_SAVED_VIEW = '/savedView';
+  static const String ROUTES_WISH_LIST_VIEW = '/wishListView';
   static const String ROUTES_SETTINGS_VIEW = '/settings';
 
   static final Map<String, WidgetBuilder> routes = {
@@ -42,6 +44,7 @@ class Routes {
     ROUTES_SAVED_VIEW: (BuildContext context) => SavedView(),
     ROUTES_SHOPPING_CART: (BuildContext context) => ShoppingCart(),
     ROUTES_SETTINGS_VIEW: (BuildContext context) => Settings(),
+    ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
   };
   static final RouteFactory onUnknownRoute = (RouteSettings settings) {
     return MaterialPageRoute(builder: ((BuildContext context) => Home()));

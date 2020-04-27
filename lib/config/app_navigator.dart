@@ -115,6 +115,14 @@ class AppNavigator extends Navigator {
       (Route<dynamic> route) => false,
     );
   }
+  static navigateToWishListViewPage(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      Routes.ROUTES_WISH_LIST_VIEW,
+      (Route<dynamic> route) => false,
+    );
+  }
 
   static navigateToShoppingCart(
     BuildContext context,

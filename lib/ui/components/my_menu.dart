@@ -80,15 +80,17 @@ class MyMenu {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(Icons.flag),
-                  title: Text("Offers"),
-                  onTap: () {},
+                  leading: Icon(Icons.flash_on),
+                  title: Text("Wish List"),
+                  onTap: () {
+                    AppNavigator.navigateToWishListViewPage(context);
+                  },
                 ),
-                ListTile(
-                  leading: Icon(Icons.local_offer),
-                  title: Text("Selling"),
-                  onTap: () {},
-                ),
+                // ListTile(
+                //   leading: Icon(Icons.local_offer),
+                //   title: Text("Selling"),
+                //   onTap: () {},
+                // ),
                 Divider(
                   color: Colors.black,
                   height: 36,
