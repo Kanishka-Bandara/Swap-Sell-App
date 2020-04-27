@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';

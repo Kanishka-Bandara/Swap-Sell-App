@@ -17,8 +17,8 @@ class ShoppingCart extends StatefulWidget {
 }
 
 class _ShoppingCartState extends State<ShoppingCart> {
-  @override
   bool _useCheckBox = true;
+  @override
   Widget build(BuildContext context) {
     return ScopedModel(
       model: CartController.defaultController,

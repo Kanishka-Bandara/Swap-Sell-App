@@ -2,12 +2,9 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:swap_sell/ui/components/product_card.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
 
 class CreatedProductView extends StatefulWidget {
   static Product currentProduct;
