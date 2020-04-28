@@ -178,7 +178,7 @@ class _ProductCreateState extends State<ProductCreate> {
                   name: "Product Name",
                   emptyRequiredMessage: null,
                   textController: TextEditingController(
-                      text: product.getName == null ? "" : product.getName),
+                      text: product.getName),
                   onChanged: (value) {
                     product.setName = value;
                   },

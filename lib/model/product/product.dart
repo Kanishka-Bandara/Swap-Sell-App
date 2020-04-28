@@ -67,42 +67,42 @@ class Product extends Model {
 
   set setId(int id) {
     this.id = id;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getUniqueID => uniqueID;
 
   set setUniqueID(String value) {
     this.uniqueID = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getName => name;
 
   set setName(String value) {
     this.name = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getRetailPrice => retailPrice;
 
   set setRetailPrice(double value) {
     this.retailPrice = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getBarterPrice => barterPrice;
 
   set setBarterPrice(double value) {
     this.barterPrice = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getDelivaryPrice => delivaryPrice;
 
   set setDelivaryPrice(double value) {
     this.delivaryPrice = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getDiscount {
@@ -114,7 +114,7 @@ class Product extends Model {
 
   set setImages(List<String> value) {
     this.images = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   List<Image> get getnetworkImages {
@@ -128,133 +128,133 @@ class Product extends Model {
 
   set setNetworkImages(List<Image> value) {
     this.networkImages = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getDescription => description;
 
   set setDescription(String value) {
     this.description = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getWhatIsInTheBox => inTheBox;
 
   set setWhatIsInTheBox(String value) {
     this.inTheBox = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getRating => rating;
 
   set setRating(double value) {
     this.rating = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   Map<String, String> get getSpecifications => specifications;
 
   set setSpecifications(Map<String, String> value) {
     this.specifications = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   int get getSaleCount => saleCount;
 
   set setSaleCount(int value) {
     this.saleCount = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   ProductDealingType get getDealingType => dealingState;
 
   set setDealingType(ProductDealingType value) {
     this.dealingState = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   int get getReturnCount => returnCount;
 
   set setReturnCount(int value) {
     this.returnCount = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getHeadCategory => headCategory;
 
   set setHeadCategory(String value) {
     this.headCategory = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getMainCategory => mainCategory;
 
   set setMainCategory(String value) {
     this.mainCategory = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getSubCategory => subCategory;
 
   set setSubCategory(String value) {
     this.subCategory = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   ProductCondition get getCondition => condition;
 
   set setCondition(ProductCondition value) {
     this.condition = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getModel => model;
 
   set setModel(String value) {
     this.model = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getBrand => brand;
 
   set setBrand(String value) {
     this.brand = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   Shop get getShop => shop;
 
   set setShop(Shop value) {
     this.shop = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   bool get getIsFavorite => isFavorite;
 
   set setIsFavorite(bool value) {
     this.isFavorite = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   String get getCurrancy => currancy;
 
   set setCurrancy(String value) {
     this.currancy = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   int get getQty => qty;
 
   set setQty(int value) {
     this.qty = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getDiscountPrice => discountPrice;
 
   set setDiscountePrice(double value) {
     this.discountPrice = value;
-    notifyListeners();
+    //notifyListeners();
   }
 
   double get getOwnerPrice =>
