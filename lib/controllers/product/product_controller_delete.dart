@@ -34,7 +34,7 @@ class ProductControllerDelete {
     print("query = $query");
     _searchResults = (query == "")
         ? resentSearchedProductList
-        : mainList.where((p) => p.getname.contains(query)).toList();
+        : mainList.where((p) => p.getName.contains(query)).toList();
     print("done");
     return _searchResults;
   }
@@ -179,52 +179,52 @@ class ProductControllerDelete {
         isFavorite: _isFavorite,
         currancy: _currancy,
       );
-      list[i].setid = _id;
-      list[i].setuniqueID = _uniqueID;
-      list[i].setname = _name;
-      list[i].setretailPrice = _retailPrice;
-      list[i].setdelivaryPrice = _delivaryPrice;
-      list[i].setdiscountedRetailPrice = _discount;
-      list[i].setimages = _images;
-      list[i].setdescription = _description;
-      list[i].setrating = _rating;
-      list[i].setspecifications = _specifications;
-      list[i].setsaleCount = _saleCount;
-      list[i].setreturnCount = _returnCount;
-      list[i].setheadCategory = _headCategory;
-      list[i].setmainCategory = _mainCategory;
-      list[i].setsubCategory = _subCategory;
-      list[i].setcondition = _condition;
-      list[i].setmodel = _model;
-      list[i].setbrand = _brand;
-      list[i].setshop = _shop;
-      list[i].setisFavorite = _isFavorite;
-      list[i].setcurrancy = _currancy;
+      list[i].setId = _id;
+      list[i].setUniqueID = _uniqueID;
+      list[i].setName = _name;
+      list[i].setRetailPrice = _retailPrice;
+      list[i].setDelivaryPrice = _delivaryPrice;
+      list[i].setDiscountedRetailPrice = _discount;
+      list[i].setImages = _images;
+      list[i].setDescription = _description;
+      list[i].setRating = _rating;
+      list[i].setSpecifications = _specifications;
+      list[i].setSaleCount = _saleCount;
+      list[i].setReturnCount = _returnCount;
+      list[i].setHeadCategory = _headCategory;
+      list[i].setMainCategory = _mainCategory;
+      list[i].setSubCategory = _subCategory;
+      list[i].setCondition = _condition;
+      list[i].setModel = _model;
+      list[i].setBrand = _brand;
+      list[i].setShop = _shop;
+      list[i].setIsFavorite = _isFavorite;
+      list[i].setCurrancy = _currancy;
       // print("${list[i].name} added");
 
       a += " mainList[$i] = Product(" +
           " id: ${list[i].id}," +
-          "uniqueID: \"${list[i].getuniqueID}\"," +
-          " name: \"${list[i].getname}\"," +
-          " retailPrice: ${list[i].getretailPrice}," +
-          " delivaryPrice: ${list[i].getdelivaryPrice}," +
-          " discountPrice: ${list[i].getdiscount}," +
+          "uniqueID: \"${list[i].getUniqueID}\"," +
+          " name: \"${list[i].getName}\"," +
+          " retailPrice: ${list[i].getRetailPrice}," +
+          " delivaryPrice: ${list[i].getDelivaryPrice}," +
+          " discountPrice: ${list[i].getDiscount}," +
           " images: $_imagesString," +
-          "description: \"${list[i].getdescription}\"," +
-          " rating: ${list[i].getrating}," +
-          "  qty: ${list[i].getqty}," +
+          "description: \"${list[i].getDescription}\"," +
+          " rating: ${list[i].getRating}," +
+          "  qty: ${list[i].getQty}," +
           " specifications: $_specificationsString," +
-          " saleCount: ${list[i].getsaleCount}," +
-          " returnCount: ${list[i].getreturnCount}," +
-          " headCategory: \"${list[i].getheadCategory}\"," +
-          " mainCategory: \"${list[i].getmainCategory}\"," +
-          " subCategory: \"${list[i].getsubCategory}\"," +
-          "condition: \"${list[i].getcondition}\"," +
-          " model: \"${list[i].getmodel}\"," +
-          " brand: \"${list[i].getbrand}\"," +
+          " saleCount: ${list[i].getSaleCount}," +
+          " returnCount: ${list[i].getReturnCount}," +
+          " headCategory: \"${list[i].getHeadCategory}\"," +
+          " mainCategory: \"${list[i].getMainCategory}\"," +
+          " subCategory: \"${list[i].getSubCategory}\"," +
+          "condition: \"${list[i].getCondition}\"," +
+          " model: \"${list[i].getModel}\"," +
+          " brand: \"${list[i].getBrand}\"," +
           " shop: Shop.exampleShop," +
-          " isFavorite: ${list[i].getisFavorite}," +
-          "currancy: \"${list[i].getcurrancy}\"," +
+          " isFavorite: ${list[i].getIsFavorite}," +
+          "currancy: \"${list[i].getCurrancy}\"," +
           "); \n";
       i++;
     }

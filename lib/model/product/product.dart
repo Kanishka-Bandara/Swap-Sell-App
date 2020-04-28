@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
-class Product {
+class Product extends Model{
   int id;
   String uniqueID;
   String name;
@@ -61,41 +62,41 @@ class Product {
     this.dealingState = ProductDealingType.ONLY_SELL,
   });
 
-  int get getid => id;
+  int get getId => id;
 
-  set setid(int id) => id;
+  set setId(int id) => id;
 
-  String get getuniqueID => uniqueID;
+  String get getUniqueID => uniqueID;
 
-  set setuniqueID(String value) => uniqueID = value;
+  set setUniqueID(String value) => uniqueID = value;
 
-  String get getname => name;
+  String get getName => name;
 
-  set setname(String value) => name = value;
+  set setName(String value) => name = value;
 
-  double get getretailPrice => retailPrice;
+  double get getRetailPrice => retailPrice;
 
-  set setretailPrice(double value) => retailPrice = value;
+  set setRetailPrice(double value) => retailPrice = value;
 
   double get getBarterPrice => barterPrice;
 
   set setBarterPrice(double value) => barterPrice = value;
 
-  double get getdelivaryPrice => delivaryPrice;
+  double get getDelivaryPrice => delivaryPrice;
 
-  set setdelivaryPrice(double value) => delivaryPrice = value;
+  set setDelivaryPrice(double value) => delivaryPrice = value;
 
-  double get getdiscount {
+  double get getDiscount {
     return double.parse(
         (((discountPrice) / retailPrice * 100)).toStringAsFixed(2));
   }
 
-  List<String> get getimages => images;
+  List<String> get getImages => images;
 
-  set setimages(List<String> value) => images = value;
+  set setImages(List<String> value) => images = value;
 
   List<Image> get getnetworkImages {
-    List<String> l = this.getimages;
+    List<String> l = this.getImages;
     List<Image> images = List(l.length);
     for (var i = 0; i < l.length; i++) {
       images[i] = Image.network(l[i]);
@@ -103,91 +104,91 @@ class Product {
     return images;
   }
 
-  set setnetworkImages(List<Image> value) => networkImages = value;
+  set setNetworkImages(List<Image> value) => networkImages = value;
 
-  String get getdescription => description;
+  String get getDescription => description;
 
-  set setdescription(String value) => description = value;
+  set setDescription(String value) => description = value;
 
   String get getWhatIsInTheBox => inTheBox;
 
   set setWhatIsInTheBox(String value) => inTheBox = value;
 
-  double get getrating => rating;
+  double get getRating => rating;
 
-  set setrating(double value) => rating = value;
+  set setRating(double value) => rating = value;
 
-  Map<String, String> get getspecifications => specifications;
+  Map<String, String> get getSpecifications => specifications;
 
-  set setspecifications(Map<String, String> value) => specifications = value;
+  set setSpecifications(Map<String, String> value) => specifications = value;
 
-  int get getsaleCount => saleCount;
+  int get getSaleCount => saleCount;
 
-  set setsaleCount(int value) => saleCount = value;
+  set setSaleCount(int value) => saleCount = value;
 
   ProductDealingType get getDealingType => dealingState;
 
   set setDealingType(ProductDealingType value) => dealingState = value;
 
-  int get getreturnCount => returnCount;
+  int get getReturnCount => returnCount;
 
-  set setreturnCount(int value) => returnCount = value;
+  set setReturnCount(int value) => returnCount = value;
 
-  String get getheadCategory => headCategory;
+  String get getHeadCategory => headCategory;
 
-  set setheadCategory(String value) => headCategory = value;
+  set setHeadCategory(String value) => headCategory = value;
 
-  String get getmainCategory => mainCategory;
+  String get getMainCategory => mainCategory;
 
-  set setmainCategory(String value) => mainCategory = value;
+  set setMainCategory(String value) => mainCategory = value;
 
-  String get getsubCategory => subCategory;
+  String get getSubCategory => subCategory;
 
-  set setsubCategory(String value) => subCategory = value;
+  set setSubCategory(String value) => subCategory = value;
 
-  ProductCondition get getcondition => condition;
+  ProductCondition get getCondition => condition;
 
-  set setcondition(ProductCondition value) => condition = value;
+  set setCondition(ProductCondition value) => condition = value;
 
-  String get getmodel => model;
+  String get getModel => model;
 
-  set setmodel(String value) => model = value;
+  set setModel(String value) => model = value;
 
-  String get getbrand => brand;
+  String get getBrand => brand;
 
-  set setbrand(String value) => brand = value;
+  set setBrand(String value) => brand = value;
 
-  Shop get getshop => shop;
+  Shop get getShop => shop;
 
-  set setshop(Shop value) => shop = value;
+  set setShop(Shop value) => shop = value;
 
-  bool get getisFavorite => isFavorite;
+  bool get getIsFavorite => isFavorite;
 
-  set setisFavorite(bool value) => isFavorite = value;
+  set setIsFavorite(bool value) => isFavorite = value;
 
-  String get getcurrancy => currancy;
+  String get getCurrancy => currancy;
 
-  set setcurrancy(String value) => currancy = value;
+  set setCurrancy(String value) => currancy = value;
 
-  int get getqty => qty;
+  int get getQty => qty;
 
-  set setqty(int value) => qty = value;
+  set setQty(int value) => qty = value;
 
-  double get getdiscountedRetailPrice => discountPrice;
+  double get getDiscountedRetailPrice => discountPrice;
 
-  set setdiscountedRetailPrice(double value) => discountPrice = value;
+  set setDiscountedRetailPrice(double value) => discountPrice = value;
 
-  String get getdisplayRetailPrice {
+  String get getDisplayRetailPrice {
     return Currency.convertToCurrency(retailPrice);
   }
 
-  String get getdisplayBarterPrice {
+  String get getDisplayBarterPrice {
     return Currency.convertToCurrency(barterPrice);
   }
 
-  String get getdisplayDiscountedRetailPrice {
+  String get getDisplayDiscountedRetailPrice {
     return Currency.convertToCurrency(
-        getretailPrice - getdiscountedRetailPrice);
+        getRetailPrice - getDiscountedRetailPrice);
   }
 
   bool get canOnlyBarter =>

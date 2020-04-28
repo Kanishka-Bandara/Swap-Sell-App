@@ -233,7 +233,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     child: Container(
                       child: Text(
                         //TODO:product name
-                        _product.getname.substring(0, 10),
+                        _product.getName.substring(0, 10),
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -249,11 +249,11 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        _product.getdiscount == 0.0
+                        _product.getDiscount == 0.0
                             ? Row(
                                 children: <Widget>[
                                   Text(
-                                    "${_product.getdisplayRetailPrice}",
+                                    "${_product.getDisplayRetailPrice}",
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ],
@@ -264,7 +264,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                     children: <Widget>[
                                       Text(
                                         // "${_product.currancy} ${_product.retailPrice}",
-                                        "${_product.getdisplayDiscountedRetailPrice}",
+                                        "${_product.getDisplayDiscountedRetailPrice}",
                                         style: TextStyle(fontSize: 20),
                                       ),
                                     ],
@@ -273,7 +273,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                     children: <Widget>[
                                       Text(
                                         // "${_product.currancy} ${_product.retailPrice}",
-                                        "${_product.getdisplayRetailPrice}",
+                                        "${_product.getDisplayRetailPrice}",
                                         style: TextStyle(
                                             fontSize: 15,
                                             decoration:
@@ -285,7 +285,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                       ),
                                       Text(
                                         // "${_product.currancy} ${_product.retailPrice}",
-                                        "-${_product.getdiscount} %",
+                                        "-${_product.getDiscount} %",
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontStyle: FontStyle.italic,

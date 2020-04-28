@@ -180,8 +180,8 @@ class CartController extends Model {
         type = _CartProductType.EXISTING_SHOP_WITH_NEW_PRODUCT;
         ucpIndex = i;
         for (var j = 0; j < _cartProducts[i].cartProducts.length; j++) {
-          if (_cartProducts[i].cartProducts[j].getProduct.getid ==
-              cartProduct.getProduct.getid) {
+          if (_cartProducts[i].cartProducts[j].getProduct.getId ==
+              cartProduct.getProduct.getId) {
             type = _CartProductType.EXISTING_SHOP_WITH_EXISTING_PRODUCT;
             cpIndex = j;
           }
@@ -230,7 +230,7 @@ class CartController extends Model {
     double _total = 0;
     _cartProducts.forEach((p) {
       p.getCartProducts.forEach((f) {
-        _total += (f.getQty * f.getProduct.getretailPrice);
+        _total += (f.getQty * f.getProduct.getRetailPrice);
       });
     });
     return _total;
@@ -244,7 +244,7 @@ class CartController extends Model {
     double _total = 0;
     _cartProducts.forEach((p) {
       p.getCartProducts.forEach((f) {
-        _total += (f.getQty * f.getProduct.getdiscountedRetailPrice);
+        _total += (f.getQty * f.getProduct.getDiscountedRetailPrice);
       });
     });
     return _total;
@@ -262,14 +262,4 @@ class CartController extends Model {
     });
     notifyListeners();
   }
-
-  // void removeSelectedFromTheShoppingCart() {
-  //   _cartProducts.forEach((ucp){
-  //     ucp.getCartProducts.forEach((cp){
-  //       if(cp.isSelected){
-
-  //       }
-  //     });
-  //   });
-  // }
 }

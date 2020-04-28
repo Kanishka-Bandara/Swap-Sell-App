@@ -62,6 +62,7 @@ class AppNavigator extends Navigator {
     List<File> images,
   ) {
     CreatedProductView.currentProduct = p;
+    CreatedProductView.images = images;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_DUMMY_VIEW);
   }
 

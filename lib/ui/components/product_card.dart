@@ -60,13 +60,13 @@ class ProductCard extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.all(5),
-                  child: _p.getdiscount == 0.0
+                  child: _p.getDiscount == 0.0
                       ? Column(
                           children: <Widget>[
                             Row(
                               children: <Widget>[
                                 Text(
-                                  "${_p.getdisplayRetailPrice}",
+                                  "${_p.getDisplayRetailPrice}",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],
@@ -87,7 +87,7 @@ class ProductCard extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_p.getdisplayDiscountedRetailPrice}",
+                                  "${_p.getDisplayDiscountedRetailPrice}",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],
@@ -96,7 +96,7 @@ class ProductCard extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_p.getdisplayRetailPrice}",
+                                  "${_p.getDisplayRetailPrice}",
                                   style: TextStyle(
                                       fontSize: 10,
                                       decoration: TextDecoration.lineThrough,
@@ -107,7 +107,7 @@ class ProductCard extends StatelessWidget {
                                 ),
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "-${_p.getdiscount} %",
+                                  "-${_p.getDiscount} %",
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontStyle: FontStyle.italic,

@@ -5,6 +5,7 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
+import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -107,6 +108,7 @@ class _ProductCreateState extends State<ProductCreate> {
           top: MediaQuery.of(context).size.height - 200,
           child: FloatingActionButton(
             onPressed: () {
+              print("specs = ${_newProduct.getSpecifications}");
               AppNavigator.navigateToProductDummyViewPage(
                   context, _newProduct, _imgFiles);
             },
@@ -118,7 +120,7 @@ class _ProductCreateState extends State<ProductCreate> {
   }
 
   List<Step> _buildProductCreateSteps(BuildContext context) {
-    _newProduct.setspecifications = {};
+    _newProduct.setSpecifications = {};
     List<Step> _steps = <Step>[
       _buildStepMainDetails(context),
       _buildStepCategory(context),
@@ -214,16 +216,17 @@ class _ProductCreateState extends State<ProductCreate> {
             height: 10,
           ),
           _dropDown_SelectCondition = KDropDownButton<ProductCondition>(
-            value:_newProduct.condition,
+            value: _newProduct.condition,
             hint: Row(
               children: <Widget>[
                 Text("Select Condition"),
               ],
             ),
-            items: ProductConditionController.defaultController.getNamesAsListForDropDown(),
+            items: ProductConditionController.defaultController
+                .getNamesAsListForDropDown(),
             onChanged: (value) {
               setState(() {
-              _newProduct.setcondition = value;  
+                _newProduct.setCondition = value;
               });
             },
           ),
@@ -234,7 +237,8 @@ class _ProductCreateState extends State<ProductCreate> {
                 Text("Dealing Type"),
               ],
             ),
-            items: ProductDealingTypeController.defaultController.getNamesAsListForDropDown(),
+            items: ProductDealingTypeController.defaultController
+                .getNamesAsListForDropDown(),
             onChanged: (value) {
               setState(() {
                 if (value.toString() == "1") {
@@ -443,7 +447,12 @@ class _ProductCreateState extends State<ProductCreate> {
           _text_SpecsKey = KTextFormField(
             name: "Key",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(text: _specsKey),
+            onChanged: (value) {
+              setState(() {
+                _specsKey = value;
+              });
+            },
             onSaved: (value) {
               setState(() {
                 _specsKey = value;
@@ -453,7 +462,12 @@ class _ProductCreateState extends State<ProductCreate> {
           _text_SpecsValue = KTextFormField(
             name: "Value",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(text: _specsValue),
+            onChanged: (value) {
+              setState(() {
+                _specsValue = value;
+              });
+            },
             onSaved: (value) {
               setState(() {
                 _specsValue = value;
@@ -465,55 +479,75 @@ class _ProductCreateState extends State<ProductCreate> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  setState(() {
-                    _newProduct.specifications[_specsKey] = _specsValue;
-                  });
+                  if (_specsKey == null || _specsKey.isEmpty) {
+                    DefaultComponents.showMessage(
+                      context,
+                      "Key is empty.Please Fill the key content.",
+                      Icons.error,
+                      1,
+                    );
+                    return;
+                  }
+                  if (_specsValue == null || _specsValue.isEmpty) {
+                    DefaultComponents.showMessage(
+                      context,
+                      "Key is empty.Please Fill the key content.",
+                      Icons.error,
+                      1,
+                    );
+                    return;
+                  }
+                  _newProduct.specifications[_specsKey] = _specsValue;
+                  _specsKey = "";
+                  _specsValue = "";
                 },
                 color: Theme.of(context).backgroundColor,
                 child: Text(
                   "Add",
                   style: TextStyle(
-                    // color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ],
           ),
-          Column(children: [
-            _newProduct.specifications == null ||
-                    _newProduct.specifications.length <= 0
-                ? Column()
-                : Container(
-                    // width: 150,
-                    height: 30,
-                    child: ListView.builder(
-                      itemCount: _newProduct.specifications.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        String key =
-                            _newProduct.specifications.keys.elementAt(index);
-                        return Column(
-                          children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Text("$key"),
-                                Text("${_newProduct.specifications[key]}"),
-                              ],
-                            ),
-                            // ListTile(
-                            //   title: Text("$key"),
-                            //   subtitle: Text("${_newProduct.specifications[key]}"),
-                            // ),
-                            Divider(
-                              height: 2.0,
-                            ),
-                          ],
-                        );
-                      },
+          Column(
+            children: [
+              _newProduct.specifications == null ||
+                      _newProduct.specifications.length <= 0
+                  ? Column()
+                  : Container(
+                      // width: 150,
+                      height: 30,
+                      child: ListView.builder(
+                        itemCount: _newProduct.specifications.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String key =
+                              _newProduct.specifications.keys.elementAt(index);
+                          return Column(
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text("$key"),
+                                  Text("${_newProduct.specifications[key]}"),
+                                ],
+                              ),
+                              // ListTile(
+                              //   title: Text("$key"),
+                              //   subtitle: Text("${_newProduct.specifications[key]}"),
+                              // ),
+                              Divider(
+                                height: 2.0,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                  ),
-          ]),
+            ],
+          ),
         ],
       ),
     );
@@ -531,12 +565,13 @@ class _ProductCreateState extends State<ProductCreate> {
             emptyRequiredMessage: null,
             isMultiLine: true,
             maxLines: null,
-            textController: TextEditingController(text:  _newProduct.description),
+            textController:
+                TextEditingController(text: _newProduct.description),
             onChanged: (value) {
-                  _newProduct.description = value;
+              _newProduct.description = value;
             },
             onSaved: (value) {
-                  _newProduct.description = value;
+              _newProduct.description = value;
             },
           ),
         ],

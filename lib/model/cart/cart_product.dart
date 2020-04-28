@@ -48,8 +48,8 @@ class CartProduct extends Model {
 
   void addQty(int qty) {
     int _newQTy = this.getQty + qty;
-    if (_newQTy > this.getProduct.getqty) {
-      _newQTy = this.getProduct.getqty;
+    if (_newQTy > this.getProduct.getQty) {
+      _newQTy = this.getProduct.getQty;
     }
     if (_newQTy > 0) {
       this.setQty = _newQTy;

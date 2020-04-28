@@ -23,11 +23,11 @@ class _CreatedProductViewState extends State<CreatedProductView> {
   double _selectedQty = 1;
   int _bottomNavigationBarCurruntIndex = 1;
   _CreatedProductViewState(this._product, List<File> imagesFiles) {
-    if (imagesFiles == null) {
-      _images = [];
-    } else {
-      imagesFiles.forEach((f) {
+    _images = [];
+    if (imagesFiles != null) {
+      imagesFiles.forEach((File f) {
         _images.add(FileImage(f));
+        print(f.path);
       });
     }
   }
@@ -94,11 +94,11 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                   SizedBox(
                     height: 10,
                   ),
-                  _product.getdiscount == 0.0
+                  _product.getDiscount == 0.0
                       ? Row(
                           children: <Widget>[
                             Text(
-                              "${_product.getdisplayRetailPrice}",
+                              "${_product.getDisplayRetailPrice}",
                               style: TextStyle(fontSize: 30),
                             ),
                           ],
@@ -109,7 +109,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_product.getdisplayDiscountedRetailPrice}",
+                                  "${_product.getDisplayDiscountedRetailPrice}",
                                   style: TextStyle(fontSize: 30),
                                 ),
                               ],
@@ -118,7 +118,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_product.getdisplayRetailPrice}",
+                                  "${_product.getDisplayRetailPrice}",
                                   style: TextStyle(
                                       fontSize: 20,
                                       decoration: TextDecoration.lineThrough,
@@ -129,7 +129,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                                 ),
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "-${_product.getdiscount} %",
+                                  "-${_product.getDiscount} %",
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontStyle: FontStyle.italic,
@@ -403,12 +403,12 @@ class _CreatedProductViewState extends State<CreatedProductView> {
           Row(
             children: <Widget>[
               Text("Select Qty"),
-              _product.getqty > 0
+              _product.getQty > 0
                   ? Slider.adaptive(
                       value: _selectedQty,
                       min: 1,
-                      max: _product.getqty.round().toDouble(),
-                      divisions: _product.getqty,
+                      max: _product.getQty.round().toDouble(),
+                      divisions: _product.getQty,
                       label: "${_selectedQty.toInt()}",
                       onChanged: (double v) {
                         print("${v.toInt()}");

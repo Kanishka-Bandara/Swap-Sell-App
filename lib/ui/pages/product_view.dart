@@ -79,11 +79,11 @@ class _ProductViewState extends State<ProductView> {
                   SizedBox(
                     height: 10,
                   ),
-                  _product.getdiscount == 0.0
+                  _product.getDiscount == 0.0
                       ? Row(
                           children: <Widget>[
                             Text(
-                              "${_product.getdisplayRetailPrice}",
+                              "${_product.getDisplayRetailPrice}",
                               style: TextStyle(fontSize: 30),
                             ),
                           ],
@@ -94,7 +94,7 @@ class _ProductViewState extends State<ProductView> {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_product.getdisplayDiscountedRetailPrice}",
+                                  "${_product.getDisplayDiscountedRetailPrice}",
                                   style: TextStyle(fontSize: 30),
                                 ),
                               ],
@@ -103,7 +103,7 @@ class _ProductViewState extends State<ProductView> {
                               children: <Widget>[
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "${_product.getdisplayRetailPrice}",
+                                  "${_product.getDisplayRetailPrice}",
                                   style: TextStyle(
                                       fontSize: 20,
                                       decoration: TextDecoration.lineThrough,
@@ -114,7 +114,7 @@ class _ProductViewState extends State<ProductView> {
                                 ),
                                 Text(
                                   // "${_product.currancy} ${_product.retailPrice}",
-                                  "-${_product.getdiscount} %",
+                                  "-${_product.getDiscount} %",
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontStyle: FontStyle.italic,
@@ -406,8 +406,8 @@ class _ProductViewState extends State<ProductView> {
               Slider.adaptive(
                 value: _selectedQty,
                 min: 1,
-                max: _product.getqty.round().toDouble(),
-                divisions: _product.getqty,
+                max: _product.getQty.round().toDouble(),
+                divisions: _product.getQty,
                 label: "${_selectedQty.toInt()}",
                 onChanged: (double v) {
                   setState(() {
