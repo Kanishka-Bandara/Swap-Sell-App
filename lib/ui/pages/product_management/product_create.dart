@@ -30,7 +30,7 @@ class _ProductCreateState extends State<ProductCreate> {
   KTextFormField _text_RetailPrice;
   KTextFormField _text_DiscountPrice;
   KDropDownButton _dropDown_SelectCondition;
-  KDropDownButton _dropDown_CanBarter;
+  KDropDownButton _dropDown_dealingType;
   KDropDownButton _dropDown_CatedoryHead;
   KDropDownButton _dropDown_CatedoryMain;
   KDropDownButton _dropDown_CatedorySub;
@@ -220,46 +220,21 @@ class _ProductCreateState extends State<ProductCreate> {
                 Text("Select Condition"),
               ],
             ),
-            items: ProductConditionController.getProductConditionsAsListForDropDown(),
+            items: ProductConditionController.defaultController.getNamesAsListForDropDown(),
             onChanged: (value) {
               setState(() {
               _newProduct.setcondition = value;  
               });
-              print(_newProduct.getcondition);
-              // setState(() {
-              // });
-                // if (value.toString()=="1") {
-                // _newProduct.condition = "Brand New";
-                // } else {
-                // _newProduct.condition = "Used";
-                // }
             },
           ),
-          _dropDown_CanBarter = KDropDownButton<String>(
-            value: _newProduct.canOnlyBarter ? "0" : "1",
+          _dropDown_dealingType = KDropDownButton<ProductDealingType>(
+            value: _newProduct.getDealingType,
             hint: Row(
               children: <Widget>[
-                Text("Can Barter"),
+                Text("Dealing Type"),
               ],
             ),
-            items: [
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("Yes"),
-                  ],
-                ),
-                value: "1",
-              ),
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("No"),
-                  ],
-                ),
-                value: "0",
-              ),
-            ],
+            items: ProductDealingTypeController.defaultController.getNamesAsListForDropDown(),
             onChanged: (value) {
               setState(() {
                 if (value.toString() == "1") {

@@ -214,7 +214,10 @@ class _ProductViewState extends State<ProductView> {
                 child: DefaultComponents.buildRoundedContainer(
                   context,
                   IconButton(
-                    icon: Icon(Icons.close,color: Colors.white,),
+                    icon: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -259,7 +262,8 @@ class _ProductViewState extends State<ProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: Text(ProductConditionController.getConditionNameByIndex(_product.condition))),
+                child: Text(ProductConditionController.defaultController
+                    .getNameByIndex(_product.condition))),
           ],
         ),
         TableRow(

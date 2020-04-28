@@ -266,11 +266,14 @@ class _CreatedProductViewState extends State<CreatedProductView> {
               ),
             ),
             Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: Text(
-                    _product.condition == null
-                        ? "Define whether your product is used or not."
-                        : ProductConditionController.getConditionNameByIndex(_product.condition))),
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              child: Text(
+                _product.condition == null
+                    ? "Define whether your product is used or not."
+                    : ProductConditionController.defaultController
+                        .getNameByIndex(_product.condition),
+              ),
+            ),
           ],
         ),
         TableRow(

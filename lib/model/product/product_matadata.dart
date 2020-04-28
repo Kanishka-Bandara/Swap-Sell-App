@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:swap_sell/kpackage/metadata_controller.dart';
 
 enum ProductDealingType {
   ONLY_SELL,
@@ -6,23 +6,59 @@ enum ProductDealingType {
   BARTER_AND_SELL,
 }
 
+class ProductDealingTypeController
+    extends MetaDataController<ProductDealingType> {
+  static Map<ProductDealingType, String> _indexMap = {
+    ProductDealingType.ONLY_SELL: "Only Sell",
+    ProductDealingType.ONLY_BARTER: "Only Exchange",
+    ProductDealingType.BARTER_AND_SELL: "Sell & Exchange",
+  };
+  static ProductDealingTypeController defaultController =
+      ProductDealingTypeController();
+  ProductDealingTypeController() : super(_indexMap);
+
+  @override
+  int getIndexNumberByName(String name) {
+    int _k;
+    _indexMap.forEach((k, v) {
+      if (name == v) {
+        _k = k.index;
+        return;
+      }
+    });
+    return _k;
+  }
+
+  @override
+  String getNameByIndexNumber(int indexNumber) {
+    String _c;
+    _indexMap.forEach((k, v) {
+      if (indexNumber == k.index) {
+        _c = v;
+        return;
+      }
+    });
+    return _c;
+  }
+}
+
 enum ProductCondition {
   BRAND_NEW,
   USED,
 }
 
-class ProductConditionController {
-  static Map<ProductCondition, String> _conditions = {
+class ProductConditionController extends MetaDataController<ProductCondition> {
+  static Map<ProductCondition, String> _indexMap = {
     ProductCondition.BRAND_NEW: "Brand New",
     ProductCondition.USED: "Used",
   };
-  static String getConditionNameByIndex(ProductCondition condition) {
-    return _conditions[condition];
-  }
+  static ProductConditionController defaultController = ProductConditionController();
+  ProductConditionController() : super(_indexMap);
 
-  static String getConditionNameByIndexNumber(int indexNumber) {
+  @override
+  String getNameByIndexNumber(int indexNumber) {
     String _c;
-    _conditions.forEach((k, v) {
+    _indexMap.forEach((k, v) {
       if (indexNumber == k.index) {
         _c = v;
         return;
@@ -31,45 +67,15 @@ class ProductConditionController {
     return _c;
   }
 
-  static int getConditionIndexNumberByName(String condition) {
+  @override
+  int getIndexNumberByName(String condition) {
     int _k;
-    _conditions.forEach((k, v) {
+    _indexMap.forEach((k, v) {
       if (condition == v) {
         _k = k.index;
         return;
       }
     });
     return _k;
-  }
-
-  static ProductCondition getConditionIndexByName(String condition) {
-    ProductCondition _c;
-    _conditions.forEach((k, v) {
-      if (condition == v) {
-        _c = k;
-        return;
-      }
-    });
-    return _c;
-  }
-
-  static List<DropdownMenuItem<ProductCondition>>
-      getProductConditionsAsListForDropDown() {
-    List<DropdownMenuItem<ProductCondition>> l = [];
-    _conditions.forEach(
-      (k, v) {
-        l.add(
-          DropdownMenuItem(
-            child: Row(
-              children: <Widget>[
-                Text(getConditionNameByIndex(k)),
-              ],
-            ),
-            value: k,
-          ),
-        );
-      },
-    );
-    return l;
   }
 }
