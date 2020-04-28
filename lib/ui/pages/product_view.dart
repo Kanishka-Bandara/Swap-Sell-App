@@ -6,7 +6,7 @@ import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/product/product_dealing_status.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
@@ -259,7 +259,7 @@ class _ProductViewState extends State<ProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: Text(_product.condition)),
+                child: Text(ProductConditionController.getConditionNameByIndex(_product.condition))),
           ],
         ),
         TableRow(

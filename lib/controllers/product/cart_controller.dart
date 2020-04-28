@@ -3,7 +3,7 @@ import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
-import 'package:swap_sell/model/product/product_dealing_status.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';

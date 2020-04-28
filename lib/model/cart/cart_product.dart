@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/product/product_dealing_status.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 
 class CartProduct extends Model {
   int id;

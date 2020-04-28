@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:swap_sell/kpackage/currency.dart';
-import 'package:swap_sell/model/product/product_dealing_status.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
 class Product {
@@ -16,7 +16,7 @@ class Product {
   List<Image> networkImages;
   String description;
   Map<String, String> specifications = Map();
-  String condition;
+  ProductCondition condition = ProductCondition.BRAND_NEW;
   String inTheBox;
   double rating;
   int qty;
@@ -145,9 +145,9 @@ class Product {
 
   set setsubCategory(String value) => subCategory = value;
 
-  String get getcondition => condition;
+  ProductCondition get getcondition => condition;
 
-  set setcondition(String value) => condition = value;
+  set setcondition(ProductCondition value) => condition = value;
 
   String get getmodel => model;
 

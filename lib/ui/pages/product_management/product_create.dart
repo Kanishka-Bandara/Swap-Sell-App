@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/product/product_dealing_status.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -139,7 +139,11 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Product Name",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(
+                text: _newProduct.name == null ? "" : _newProduct.name),
+            onChanged: (value) {
+              _newProduct.name = value;
+            },
             onSaved: (value) {
               _newProduct.name = value;
             },
@@ -148,7 +152,10 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Model",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(text: _newProduct.model),
+            onChanged: (value) {
+              _newProduct.model = value;
+            },
             onSaved: (value) {
               _newProduct.model = value;
             },
@@ -157,7 +164,10 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Brand",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(text: _newProduct.brand),
+            onChanged: (value) {
+              _newProduct.brand = value;
+            },
             onSaved: (value) {
               _newProduct.brand = value;
             },
@@ -166,7 +176,14 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Retail Price",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController:
+                TextEditingController(text: _newProduct.retailPrice.toString()),
+            onChanged: (value) {
+              if (value.isEmpty) {
+                value = "0";
+              }
+              _newProduct.retailPrice = double.parse(value.toString());
+            },
             onSaved: (value) {
               if (value.isEmpty) {
                 value = "0";
@@ -178,7 +195,14 @@ class _ProductCreateState extends State<ProductCreate> {
             required: true,
             name: "Discount Price",
             emptyRequiredMessage: null,
-            textController: TextEditingController(),
+            textController: TextEditingController(
+                text: _newProduct.discountPrice.toString()),
+            onChanged: (value) {
+              if (value.isEmpty) {
+                value = "0";
+              }
+              _newProduct.discountPrice = double.parse(value.toString());
+            },
             onSaved: (value) {
               if (value.isEmpty) {
                 value = "0";
@@ -189,35 +213,26 @@ class _ProductCreateState extends State<ProductCreate> {
           SizedBox(
             height: 10,
           ),
-          _dropDown_SelectCondition = KDropDownButton<String>(
-            value: _newProduct.condition,
+          _dropDown_SelectCondition = KDropDownButton<ProductCondition>(
+            value:_newProduct.condition,
             hint: Row(
               children: <Widget>[
                 Text("Select Condition"),
               ],
             ),
-            items: [
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("Brand New"),
-                  ],
-                ),
-                value: "1",
-              ),
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("Used"),
-                  ],
-                ),
-                value: "2",
-              ),
-            ],
+            items: ProductConditionController.getProductConditionsAsListForDropDown(),
             onChanged: (value) {
               setState(() {
-                _newProduct.condition = value;
+              _newProduct.setcondition = value;  
               });
+              print(_newProduct.getcondition);
+              // setState(() {
+              // });
+                // if (value.toString()=="1") {
+                // _newProduct.condition = "Brand New";
+                // } else {
+                // _newProduct.condition = "Used";
+                // }
             },
           ),
           _dropDown_CanBarter = KDropDownButton<String>(
@@ -541,13 +556,12 @@ class _ProductCreateState extends State<ProductCreate> {
             emptyRequiredMessage: null,
             isMultiLine: true,
             maxLines: null,
-            textController: TextEditingController(),
-            onSaved: (value) {
-              setState(
-                () {
+            textController: TextEditingController(text:  _newProduct.description),
+            onChanged: (value) {
                   _newProduct.description = value;
-                },
-              );
+            },
+            onSaved: (value) {
+                  _newProduct.description = value;
             },
           ),
         ],

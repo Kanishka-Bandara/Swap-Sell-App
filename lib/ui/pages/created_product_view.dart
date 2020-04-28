@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -267,9 +268,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             Container(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
                 child: Text(
-                    _product.condition == null || _product.condition.isEmpty
+                    _product.condition == null
                         ? "Define whether your product is used or not."
-                        : _product.condition)),
+                        : ProductConditionController.getConditionNameByIndex(_product.condition))),
           ],
         ),
         TableRow(

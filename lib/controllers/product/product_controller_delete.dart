@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:csv/csv.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'dart:convert';
 
 import 'package:swap_sell/model/shop/shop.dart';
@@ -74,7 +75,7 @@ class ProductControllerDelete {
       String _headCategory;
       String _mainCategory;
       String _subCategory;
-      String _condition = i % 10 == 0 ? "Brand New" : "Used";
+      ProductCondition _condition = i % 10 == 0 ? ProductCondition.BRAND_NEW : ProductCondition.USED;
       String _brand = data[i][13] == ""
           ? _name.split(" ")[0]
           : data[i][13].toString().substring(0, 1).toUpperCase() +
