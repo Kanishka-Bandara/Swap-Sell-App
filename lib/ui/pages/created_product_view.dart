@@ -61,9 +61,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              _product.name == null || _product.name.isEmpty
+                              _product.getName == null || _product.getName.isEmpty
                                   ? "Your product name will be shown here."
-                                  : _product.name,
+                                  : _product.getName,
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -79,15 +79,15 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                       SizedBox(
                         height: 20,
                       ),
-                      _buildRatingBar(context, _product.rating),
-                      _product.rating == 0
+                      _buildRatingBar(context, _product.getRating),
+                      _product.getRating == 0
                           ? Text("No ratings yet")
                           : Text(
-                              _product.saleCount == 0
+                              _product.getSaleCount == 0
                                   ? "No orders"
-                                  : _product.saleCount == 1
-                                      ? "   ${_product.saleCount} order"
-                                      : "   ${_product.saleCount} orders",
+                                  : _product.getSaleCount == 1
+                                      ? "   ${_product.getSaleCount} order"
+                                      : "   ${_product.getSaleCount} orders",
                             ),
                     ],
                   ),
@@ -268,10 +268,10 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             Container(
               padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
               child: Text(
-                _product.condition == null
+                _product.getCondition == null
                     ? "Define whether your product is used or not."
                     : ProductConditionController.defaultController
-                        .getNameByIndex(_product.condition),
+                        .getNameByIndex(_product.getCondition),
               ),
             ),
           ],
@@ -287,7 +287,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                child: Text("${_product.qty.round()} available")),
+                child: Text("${_product.getQty.round()} available")),
           ],
         ),
         TableRow(
@@ -301,9 +301,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Text(_product.brand == null || _product.brand.isEmpty
+              child: Text(_product.getBrand == null || _product.getBrand.isEmpty
                   ? "Define your product brand."
-                  : _product.brand),
+                  : _product.getBrand),
             ),
           ],
         ),
@@ -318,9 +318,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Text(_product.model == null || _product.model.isEmpty
+              child: Text(_product.getModel == null || _product.getModel.isEmpty
                   ? "Define your product model."
-                  : _product.model),
+                  : _product.getModel),
             ),
           ],
         ),
@@ -364,9 +364,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
   }
 
   List<Widget> _getSpecificationList() {
-    List<Widget> a = new List(_product.specifications.length);
+    List<Widget> a = new List(_product.getSpecifications.length);
     int i = 0;
-    _product.specifications.forEach((k, v) {
+    _product.getSpecifications.forEach((k, v) {
       a[i] = Row(
         children: <Widget>[
           Container(
@@ -426,7 +426,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
               ),
             ],
           ),
-          _product.specifications.length != 0
+          _product.getSpecifications.length != 0
               ? ExpansionTile(
                   title: Text("Specifications"),
                   children: _getSpecificationList(),
@@ -450,12 +450,12 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
-                      _product.description == null ||
-                              _product.description.isEmpty
+                      _product.getDescription == null ||
+                              _product.getDescription.isEmpty
                           ? "Define some details of your product."
-                          : _product.description,
+                          : _product.getDescription,
                       style: TextStyle(fontStyle: FontStyle.normal),
-                    )
+                    ),
                   ],
                 ),
               )
@@ -590,7 +590,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            _product.isFavorite ? Icons.favorite : Icons.favorite_border,
+            _product.getIsFavorite ? Icons.favorite : Icons.favorite_border,
           ),
           title: Text("Save"),
           backgroundColor: Theme.of(context).primaryColor,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
@@ -29,6 +30,7 @@ class _ProductCreateState extends State<ProductCreate> {
   KTextFormField _text_Model;
   KTextFormField _text_Brand;
   KTextFormField _text_RetailPrice;
+  KTextFormField _text_BarterPrice;
   KTextFormField _text_DiscountPrice;
   KDropDownButton _dropDown_SelectCondition;
   KDropDownButton _dropDown_dealingType;
@@ -135,121 +137,143 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Main Details"),
       isActive: _currentStepCreate >= 0,
-      content: Column(
-        children: <Widget>[
-          _text_ProductName = KTextFormField(
-            required: true,
-            name: "Product Name",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(
-                text: _newProduct.name == null ? "" : _newProduct.name),
-            onChanged: (value) {
-              _newProduct.name = value;
-            },
-            onSaved: (value) {
-              _newProduct.name = value;
-            },
-          ),
-          _text_Model = KTextFormField(
-            required: true,
-            name: "Model",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(text: _newProduct.model),
-            onChanged: (value) {
-              _newProduct.model = value;
-            },
-            onSaved: (value) {
-              _newProduct.model = value;
-            },
-          ),
-          _text_Brand = KTextFormField(
-            required: true,
-            name: "Brand",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(text: _newProduct.brand),
-            onChanged: (value) {
-              _newProduct.brand = value;
-            },
-            onSaved: (value) {
-              _newProduct.brand = value;
-            },
-          ),
-          _text_RetailPrice = KTextFormField(
-            required: true,
-            name: "Retail Price",
-            emptyRequiredMessage: null,
-            textController:
-                TextEditingController(text: _newProduct.retailPrice.toString()),
-            onChanged: (value) {
-              if (value.isEmpty) {
-                value = "0";
-              }
-              _newProduct.retailPrice = double.parse(value.toString());
-            },
-            onSaved: (value) {
-              if (value.isEmpty) {
-                value = "0";
-              }
-              _newProduct.retailPrice = double.parse(value.toString());
-            },
-          ),
-          _text_DiscountPrice = KTextFormField(
-            required: true,
-            name: "Discount Price",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(
-                text: _newProduct.discountPrice.toString()),
-            onChanged: (value) {
-              if (value.isEmpty) {
-                value = "0";
-              }
-              _newProduct.discountPrice = double.parse(value.toString());
-            },
-            onSaved: (value) {
-              if (value.isEmpty) {
-                value = "0";
-              }
-              _newProduct.discountPrice = double.parse(value.toString());
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          _dropDown_SelectCondition = KDropDownButton<ProductCondition>(
-            value: _newProduct.condition,
-            hint: Row(
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
               children: <Widget>[
-                Text("Select Condition"),
+                _dropDown_SelectCondition = KDropDownButton<ProductCondition>(
+                  value: product.getCondition,
+                  hint: Row(
+                    children: <Widget>[
+                      Text("Select Condition"),
+                    ],
+                  ),
+                  items: ProductConditionController.defaultController
+                      .getNamesAsListForDropDown(),
+                  onChanged: (value) {
+                    setState(() {
+                      product.setCondition = value;
+                    });
+                  },
+                ),
+                _dropDown_dealingType = KDropDownButton<ProductDealingType>(
+                  value: product.getDealingType,
+                  hint: Row(
+                    children: <Widget>[
+                      Text("Dealing Type"),
+                    ],
+                  ),
+                  items: ProductDealingTypeController.defaultController
+                      .getNamesAsListForDropDown(),
+                  onChanged: (value) {
+                    setState(() {
+                      product.setDealingType = value;
+                    });
+                  },
+                ),
+                _text_ProductName = KTextFormField(
+                  required: true,
+                  name: "Product Name",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(
+                      text: product.getName == null ? "" : product.getName),
+                  onChanged: (value) {
+                    product.setName = value;
+                  },
+                  onSaved: (value) {
+                    product.setName = value;
+                  },
+                ),
+                _text_Model = KTextFormField(
+                  required: true,
+                  name: "Model",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(text: product.getModel),
+                  onChanged: (value) {
+                    product.setModel = value;
+                  },
+                  onSaved: (value) {
+                    product.setModel = value;
+                  },
+                ),
+                _text_Brand = KTextFormField(
+                  required: true,
+                  name: "Brand",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(text: product.getBrand),
+                  onChanged: (value) {
+                    product.setBrand = value;
+                  },
+                  onSaved: (value) {
+                    product.setBrand = value;
+                  },
+                ),
+                _text_RetailPrice = KTextFormField(
+                  required: true,
+                  name: "Retail Price",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(
+                      text: product.getRetailPrice.toString()),
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.setRetailPrice = double.parse(value.toString());
+                  },
+                  onSaved: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.setRetailPrice = double.parse(value.toString());
+                  },
+                ),
+                _text_BarterPrice = KTextFormField(
+                  required: true,
+                  name: "Exchange Price",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(
+                      text: product.getBarterPrice.toString()),
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.setBarterPrice = double.parse(value.toString());
+                  },
+                  onSaved: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.setBarterPrice = double.parse(value.toString());
+                  },
+                ),
+                _text_DiscountPrice = KTextFormField(
+                  required: true,
+                  name: "Discount Price",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(
+                      text: product.discountPrice.toString()),
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.discountPrice = double.parse(value.toString());
+                  },
+                  onSaved: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.discountPrice = double.parse(value.toString());
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ],
-            ),
-            items: ProductConditionController.defaultController
-                .getNamesAsListForDropDown(),
-            onChanged: (value) {
-              setState(() {
-                _newProduct.setCondition = value;
-              });
-            },
-          ),
-          _dropDown_dealingType = KDropDownButton<ProductDealingType>(
-            value: _newProduct.getDealingType,
-            hint: Row(
-              children: <Widget>[
-                Text("Dealing Type"),
-              ],
-            ),
-            items: ProductDealingTypeController.defaultController
-                .getNamesAsListForDropDown(),
-            onChanged: (value) {
-              setState(() {
-                if (value.toString() == "1") {
-                  _newProduct.setDealingType = ProductDealingType.ONLY_BARTER;
-                } else {
-                  _newProduct.setDealingType = ProductDealingType.ONLY_SELL;
-                }
-              });
-            },
-          ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -258,102 +282,109 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Category"),
       isActive: _currentStepCreate >= 1,
-      content: Column(
-        children: <Widget>[
-          _dropDown_CatedoryHead = KDropDownButton<String>(
-            value: _newProduct.headCategory,
-            hint: Row(
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
               children: <Widget>[
-                Text("Select Head Category"),
+                _dropDown_CatedoryHead = KDropDownButton<String>(
+                  value: product.getHeadCategory,
+                  hint: Row(
+                    children: <Widget>[
+                      Text("Select Head Category"),
+                    ],
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("HA"),
+                        ],
+                      ),
+                      value: "1",
+                    ),
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("HB"),
+                        ],
+                      ),
+                      value: "2",
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      product.setHeadCategory = value;
+                    });
+                  },
+                ),
+                _dropDown_CatedoryMain = KDropDownButton<String>(
+                  value: product.getMainCategory,
+                  hint: Row(
+                    children: <Widget>[
+                      Text("Select Main Category"),
+                    ],
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("MA"),
+                        ],
+                      ),
+                      value: "1",
+                    ),
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("MB"),
+                        ],
+                      ),
+                      value: "2",
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      product.setMainCategory = value;
+                    });
+                  },
+                ),
+                _dropDown_CatedorySub = KDropDownButton<String>(
+                  value: product.getSubCategory,
+                  hint: Row(
+                    children: <Widget>[
+                      Text("Sub Category"),
+                    ],
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("SA"),
+                        ],
+                      ),
+                      value: "1",
+                    ),
+                    DropdownMenuItem(
+                      child: Row(
+                        children: <Widget>[
+                          Text("SB"),
+                        ],
+                      ),
+                      value: "2",
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      product.setSubCategory = value;
+                    });
+                  },
+                ),
               ],
-            ),
-            items: [
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("HA"),
-                  ],
-                ),
-                value: "1",
-              ),
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("HB"),
-                  ],
-                ),
-                value: "2",
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                _newProduct.headCategory = value;
-              });
-            },
-          ),
-          _dropDown_CatedoryMain = KDropDownButton<String>(
-            value: _newProduct.mainCategory,
-            hint: Row(
-              children: <Widget>[
-                Text("Select Main Category"),
-              ],
-            ),
-            items: [
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("MA"),
-                  ],
-                ),
-                value: "1",
-              ),
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("MB"),
-                  ],
-                ),
-                value: "2",
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                _newProduct.mainCategory = value;
-              });
-            },
-          ),
-          _dropDown_CatedorySub = KDropDownButton<String>(
-            value: _newProduct.subCategory,
-            hint: Row(
-              children: <Widget>[
-                Text("Sub Category"),
-              ],
-            ),
-            items: [
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("SA"),
-                  ],
-                ),
-                value: "1",
-              ),
-              DropdownMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Text("SB"),
-                  ],
-                ),
-                value: "2",
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                _newProduct.subCategory = value;
-              });
-            },
-          ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -362,78 +393,85 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Media"),
       isActive: _currentStepCreate >= 2,
-      content: Column(
-        children: <Widget>[
-          _imgFiles.length > 0
-              ? Container(
-                  height: 150,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _imgFiles.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        width: 100,
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
+              children: <Widget>[
+                _imgFiles.length > 0
+                    ? Container(
                         height: 150,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: FileImage(
-                              _imgFiles[index],
-                            ),
-                          ),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _imgFiles.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              width: 100,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: FileImage(
+                                    _imgFiles[index],
+                                  ),
+                                ),
+                              ),
+                              margin: EdgeInsets.only(
+                                top: 10,
+                                bottom: 10,
+                                left: 5,
+                                right: 5,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  IconButton(
+                                    color: Colors.white,
+                                    icon: Icon(Icons.cancel),
+                                    onPressed: () {
+                                      setState(() {
+                                        _imgFiles.removeAt(index);
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
-                        margin: EdgeInsets.only(
-                          top: 10,
-                          bottom: 10,
-                          left: 5,
-                          right: 5,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            IconButton(
-                              color: Colors.white,
-                              icon: Icon(Icons.cancel),
-                              onPressed: () {
-                                setState(() {
-                                  _imgFiles.removeAt(index);
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                )
-              : Column(
+                      )
+                    : Column(
+                        children: <Widget>[
+                          Text("No images have been selected."),
+                        ],
+                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Text("No images have been selected."),
+                    IconButton(
+                      icon: Icon(
+                        Icons.add_a_photo,
+                        color: Theme.of(context).primaryColor,
+                        size: 35,
+                      ),
+                      onPressed: () async {
+                        File image = await CameraController.defaultController
+                            .getImage(context);
+                        setState(() {
+                          if (image != null) {
+                            _imgFiles.add(image);
+                            print(image.path);
+                          }
+                        });
+                      },
+                    ),
                   ],
                 ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.add_a_photo,
-                  color: Theme.of(context).primaryColor,
-                  size: 35,
-                ),
-                onPressed: () async {
-                  File image = await CameraController.defaultController
-                      .getImage(context);
-                  setState(() {
-                    if (image != null) {
-                      _imgFiles.add(image);
-                      print(image.path);
-                    }
-                  });
-                },
-              ),
-            ],
-          ),
-        ],
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -442,113 +480,120 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Specifications"),
       isActive: _currentStepCreate >= 3,
-      content: Column(
-        children: <Widget>[
-          _text_SpecsKey = KTextFormField(
-            name: "Key",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(text: _specsKey),
-            onChanged: (value) {
-              setState(() {
-                _specsKey = value;
-              });
-            },
-            onSaved: (value) {
-              setState(() {
-                _specsKey = value;
-              });
-            },
-          ),
-          _text_SpecsValue = KTextFormField(
-            name: "Value",
-            emptyRequiredMessage: null,
-            textController: TextEditingController(text: _specsValue),
-            onChanged: (value) {
-              setState(() {
-                _specsValue = value;
-              });
-            },
-            onSaved: (value) {
-              setState(() {
-                _specsValue = value;
-              });
-            },
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () {
-                  if (_specsKey == null || _specsKey.isEmpty) {
-                    DefaultComponents.showMessage(
-                      context,
-                      "Key is empty.Please Fill the key content.",
-                      Icons.error,
-                      1,
-                    );
-                    return;
-                  }
-                  if (_specsValue == null || _specsValue.isEmpty) {
-                    DefaultComponents.showMessage(
-                      context,
-                      "Key is empty.Please Fill the key content.",
-                      Icons.error,
-                      1,
-                    );
-                    return;
-                  }
-                  _newProduct.specifications[_specsKey] = _specsValue;
-                  _specsKey = "";
-                  _specsValue = "";
-                },
-                color: Theme.of(context).backgroundColor,
-                child: Text(
-                  "Add",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
+              children: <Widget>[
+                _text_SpecsKey = KTextFormField(
+                  name: "Key",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(text: _specsKey),
+                  onChanged: (value) {
+                    setState(() {
+                      _specsKey = value;
+                    });
+                  },
+                  onSaved: (value) {
+                    setState(() {
+                      _specsKey = value;
+                    });
+                  },
                 ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              _newProduct.specifications == null ||
-                      _newProduct.specifications.length <= 0
-                  ? Column()
-                  : Container(
-                      // width: 150,
-                      height: 30,
-                      child: ListView.builder(
-                        itemCount: _newProduct.specifications.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          String key =
-                              _newProduct.specifications.keys.elementAt(index);
-                          return Column(
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text("$key"),
-                                  Text("${_newProduct.specifications[key]}"),
-                                ],
-                              ),
-                              // ListTile(
-                              //   title: Text("$key"),
-                              //   subtitle: Text("${_newProduct.specifications[key]}"),
-                              // ),
-                              Divider(
-                                height: 2.0,
-                              ),
-                            ],
+                _text_SpecsValue = KTextFormField(
+                  name: "Value",
+                  emptyRequiredMessage: null,
+                  textController: TextEditingController(text: _specsValue),
+                  onChanged: (value) {
+                    setState(() {
+                      _specsValue = value;
+                    });
+                  },
+                  onSaved: (value) {
+                    setState(() {
+                      _specsValue = value;
+                    });
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    RaisedButton(
+                      onPressed: () {
+                        if (_specsKey == null || _specsKey.isEmpty) {
+                          DefaultComponents.showMessage(
+                            context,
+                            "Key is empty.Please Fill the key content.",
+                            Icons.error,
+                            1,
                           );
-                        },
+                          return;
+                        }
+                        if (_specsValue == null || _specsValue.isEmpty) {
+                          DefaultComponents.showMessage(
+                            context,
+                            "Key is empty.Please Fill the key content.",
+                            Icons.error,
+                            1,
+                          );
+                          return;
+                        }
+                        product.specifications[_specsKey] = _specsValue;
+                        _specsKey = "";
+                        _specsValue = "";
+                      },
+                      color: Theme.of(context).backgroundColor,
+                      child: Text(
+                        "Add",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-            ],
-          ),
-        ],
+                  ],
+                ),
+                Column(
+                  children: [
+                    product.specifications == null ||
+                            product.specifications.length <= 0
+                        ? Column()
+                        : Container(
+                            // width: 150,
+                            height: 30,
+                            child: ListView.builder(
+                              itemCount: product.specifications.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                String key = product.specifications.keys
+                                    .elementAt(index);
+                                return Column(
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        Text("$key"),
+                                        Text("${product.specifications[key]}"),
+                                      ],
+                                    ),
+                                    // ListTile(
+                                    //   title: Text("$key"),
+                                    //   subtitle: Text("${_newProduct.specifications[key]}"),
+                                    // ),
+                                    Divider(
+                                      height: 2.0,
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -557,36 +602,44 @@ class _ProductCreateState extends State<ProductCreate> {
     return Step(
       title: Text("Description"),
       isActive: _currentStepCreate >= 4,
-      content: Column(
-        children: <Widget>[
-          _text_Description = KTextFormField(
-            required: true,
-            name: "Description",
-            emptyRequiredMessage: null,
-            isMultiLine: true,
-            maxLines: null,
-            textController:
-                TextEditingController(text: _newProduct.description),
-            onChanged: (value) {
-              _newProduct.description = value;
-            },
-            onSaved: (value) {
-              _newProduct.description = value;
-            },
-          ),
-        ],
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
+              children: <Widget>[
+                _text_Description = KTextFormField(
+                  required: true,
+                  name: "Description",
+                  emptyRequiredMessage: null,
+                  isMultiLine: true,
+                  maxLines: null,
+                  textController:
+                      TextEditingController(text: product.description),
+                  onChanged: (value) {
+                    product.description = value;
+                  },
+                  onSaved: (value) {
+                    product.description = value;
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
   void _clearAll() {
-    _text_ProductName.clear();
-    _text_Model.clear();
-    _text_Brand.clear();
-    _text_RetailPrice.clear();
-    _text_DiscountPrice.clear();
-    _text_SpecsKey.clear();
-    _text_SpecsValue.clear();
-    _text_Description.clear();
+    _newProduct = Product(id: 0, uniqueID: "", name: "", description: "");
+    // _text_ProductName.clear();
+    // _text_Model.clear();
+    // _text_Brand.clear();
+    // _text_RetailPrice.clear();
+    // _text_DiscountPrice.clear();
+    // _text_SpecsKey.clear();
+    // _text_SpecsValue.clear();
+    // _text_Description.clear();
   }
 }

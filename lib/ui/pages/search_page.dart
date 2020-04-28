@@ -108,17 +108,17 @@ class SearchPage extends SearchDelegate<String> {
                 AppNavigator.navigateToProductViewPage(context, list[index]);
               },
               leading: Image.network(
-                list[index].images[0],
+                list[index].getImages[0],
                 width: 75,
               ),
               title: RichText(
                 text: TextSpan(
-                  text: list[index].name.substring(0, query.length),
+                  text: list[index].getName.substring(0, query.length),
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(
-                      text: list[index].name.substring(query.length),
+                      text: list[index].getName.substring(query.length),
                       style: TextStyle(
                         color: Color.fromRGBO(85, 85, 85, 1),
                       ),
@@ -128,7 +128,7 @@ class SearchPage extends SearchDelegate<String> {
               ),
               subtitle: Text(
                 "${list[index].getCurrancy} " +
-                    list[index].retailPrice.toString(),
+                    list[index].getRetailPrice.toString(),
                 style: TextStyle(
                   color: Color.fromRGBO(85, 85, 85, 1),
                 ),
@@ -201,7 +201,7 @@ class SearchPage extends SearchDelegate<String> {
                           ),
                         ),
                         subtitle: Text(
-                          "Rs " + snapshot.data[index].retailPrice.toString(),
+                          "Rs " + snapshot.data[index].getRetailPrice.toString(),
                           style:
                               TextStyle(color: Color.fromRGBO(85, 85, 85, 1)),
                         ),

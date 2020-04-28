@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                           topRight: Radius.circular(5),
                         ),
                         image: DecorationImage(
-                            image: NetworkImage(_p.images[0]),
+                            image: NetworkImage(_p.getImages[0]),
                             fit: BoxFit.cover),
                       ),
                     ),
@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                   margin: EdgeInsets.all(5),
                   child: Text(
                     // _p.name.length > 20 ? _p.name.substring(0, 20) :
-                    _p.name,
+                    _p.getName,
                   ),
                 ),
                 Container(
@@ -76,7 +76,7 @@ class ProductCard extends StatelessWidget {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                _buildRatingBar(context, _p.rating),
+                                _buildRatingBar(context, _p.getRating),
                               ],
                             ),
                           ],
@@ -120,7 +120,7 @@ class ProductCard extends StatelessWidget {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                _buildRatingBar(context, _p.rating),
+                                _buildRatingBar(context, _p.getRating),
                               ],
                             ),
                           ],

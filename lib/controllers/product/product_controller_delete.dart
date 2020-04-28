@@ -184,7 +184,7 @@ class ProductControllerDelete {
       list[i].setName = _name;
       list[i].setRetailPrice = _retailPrice;
       list[i].setDelivaryPrice = _delivaryPrice;
-      list[i].setDiscountedRetailPrice = _discount;
+      list[i].setDiscountePrice = _discount;
       list[i].setImages = _images;
       list[i].setDescription = _description;
       list[i].setRating = _rating;

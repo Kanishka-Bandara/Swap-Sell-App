@@ -53,7 +53,7 @@ class _ProductViewState extends State<ProductView> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Text(
-                        _product.name,
+                        _product.getName,
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
@@ -64,15 +64,15 @@ class _ProductViewState extends State<ProductView> {
                       SizedBox(
                         height: 20,
                       ),
-                      _buildRatingBar(context, _product.rating),
-                      _product.rating == 0
+                      _buildRatingBar(context, _product.getRating),
+                      _product.getRating == 0
                           ? Text("No ratings yet")
                           : Text(
-                              _product.saleCount == 0
+                              _product.getSaleCount == 0
                                   ? "No orders"
-                                  : _product.saleCount == 1
-                                      ? "   ${_product.saleCount} order"
-                                      : "   ${_product.saleCount} orders",
+                                  : _product.getSaleCount == 1
+                                      ? "   ${_product.getSaleCount} order"
+                                      : "   ${_product.getSaleCount} orders",
                             ),
                     ],
                   ),
@@ -263,7 +263,7 @@ class _ProductViewState extends State<ProductView> {
             Container(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
                 child: Text(ProductConditionController.defaultController
-                    .getNameByIndex(_product.condition))),
+                    .getNameByIndex(_product.getCondition))),
           ],
         ),
         TableRow(
@@ -315,7 +315,7 @@ class _ProductViewState extends State<ProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                child: Text("${_product.qty.round()} available")),
+                child: Text("${_product.getQty.round()} available")),
           ],
         ),
         TableRow(
@@ -329,7 +329,7 @@ class _ProductViewState extends State<ProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                child: Text(_product.brand)),
+                child: Text(_product.getBrand)),
           ],
         ),
         TableRow(
@@ -343,7 +343,7 @@ class _ProductViewState extends State<ProductView> {
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                child: Text(_product.model)),
+                child: Text(_product.getModel)),
           ],
         ),
       ],
@@ -364,9 +364,9 @@ class _ProductViewState extends State<ProductView> {
   }
 
   List<Widget> _getSpecificationList() {
-    List<Widget> a = new List(_product.specifications.length);
+    List<Widget> a = new List(_product.getSpecifications.length);
     int i = 0;
-    _product.specifications.forEach((k, v) {
+    _product.getSpecifications.forEach((k, v) {
       a[i] = Row(
         children: <Widget>[
           Container(
@@ -421,7 +421,7 @@ class _ProductViewState extends State<ProductView> {
               ),
             ],
           ),
-          _product.specifications.length != 0
+          _product.getSpecifications.length != 0
               ? ExpansionTile(
                   title: Text("Specifications"),
                   children: _getSpecificationList(),
@@ -439,7 +439,7 @@ class _ProductViewState extends State<ProductView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
-                      _product.description,
+                      _product.getDescription,
                       style: TextStyle(fontStyle: FontStyle.normal),
                     )
                   ],
@@ -607,7 +607,7 @@ class _ProductViewState extends State<ProductView> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            _product.isFavorite ? Icons.favorite : Icons.favorite_border,
+            _product.getIsFavorite ? Icons.favorite : Icons.favorite_border,
           ),
           title: Text("Save"),
           backgroundColor: Theme.of(context).primaryColor,

@@ -216,7 +216,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     topRight: Radius.circular(5),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(_product.images[0]),
+                    image: NetworkImage(_product.getImages[0]),
                     fit: BoxFit.cover,
                   ),
                 ),
