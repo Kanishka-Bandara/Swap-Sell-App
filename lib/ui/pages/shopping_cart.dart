@@ -213,8 +213,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(5),
-                    topRight: Radius.circular(5),
                   ),
                   image: DecorationImage(
                     image: NetworkImage(_product.getImages[0]),
@@ -441,4 +439,5 @@ class _ShoppingCartState extends State<ShoppingCart> {
       ),
     );
   }
+
 }

@@ -220,7 +220,7 @@ class CartController extends Model {
     return _count;
   }
 
-  Future<List> get getCartProducts async {
+  Future<List<UserCartProduct>> get getCartProducts async {
     return Future.delayed(Duration(seconds: 1), () {
       return _cartProducts;
     });
@@ -261,5 +261,27 @@ class CartController extends Model {
       return ucp.getCartProducts.length <= 0;
     });
     notifyListeners();
+  }
+
+  Future<List<UserCartProduct>> get getSelectedCartProducts async {
+    List<UserCartProduct> l = [];
+    _cartProducts.forEach((ucp) {
+      if (ucp.getSelectedAsClone.getCartProducts.length > 0) {
+        l.add(ucp.getSelectedAsClone);
+      }
+    });
+    return l;
+  }
+
+  int get selectedCartProductCount {
+    int _c = 0;
+    _cartProducts.forEach((ucp) {
+      ucp.getCartProducts.forEach((cp) {
+        if (cp.isSelected) {
+          _c++;
+        }
+      });
+    });
+    return _c;
   }
 }

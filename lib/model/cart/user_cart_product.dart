@@ -48,4 +48,25 @@ class UserCartProduct extends Model {
       return _cp.getId == _cp.getId;
     });
   }
+
+  UserCartProduct get getClone {
+    List<CartProduct> cps = [];
+    this.cartProducts.forEach((cp) {
+      cps.add(cp.getClone);
+    });
+    UserCartProduct ucp = UserCartProduct(shop: this.shop, cartProducts: cps);
+    return ucp;
+  }
+
+  UserCartProduct get getSelectedAsClone {
+    List<CartProduct> cps = [];
+    this.cartProducts.forEach((cp) {
+      if(cp.isSelected){
+       cps.add(cp.getClone);
+      }
+
+    });
+    UserCartProduct ucp = UserCartProduct(shop: this.shop, cartProducts: cps);
+    return ucp;
+  }
 }

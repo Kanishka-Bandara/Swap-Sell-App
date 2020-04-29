@@ -1,6 +1,7 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class OwnerProductsController extends Model {
@@ -63,4 +64,11 @@ class OwnerProductsController extends Model {
   int getOwnerProductsListLength() {
     return _ownerProductList.length;
   }
+
+ List<Product> get getExchangableOwnerProducts{
+  return _ownerProductList.where((p){
+     return p.getDealingType!=ProductDealingType.ONLY_SELL;
+   }).toList();
+ }
+
 }
