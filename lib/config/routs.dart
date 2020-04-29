@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/ui/pages/chat_view.dart';
+import 'package:swap_sell/ui/pages/checkout.dart';
 import 'package:swap_sell/ui/pages/created_product_view.dart';
 import 'package:swap_sell/ui/pages/message_list_view.dart';
 import 'package:swap_sell/ui/pages/notification_view.dart';
+import 'package:swap_sell/ui/pages/preparation_for_checkout.dart';
 import 'package:swap_sell/ui/pages/product_management/product_management.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/home.dart';
@@ -29,6 +31,8 @@ class Routes {
   static const String ROUTES_SAVED_VIEW = '/savedView';
   static const String ROUTES_WISH_LIST_VIEW = '/wishListView';
   static const String ROUTES_SETTINGS_VIEW = '/settings';
+  static const String ROUTES_CHECKOUT_VIEW = '/checkOut';
+  static const String ROUTES_PREPARATION_VIEW = '/preparation';
 
   static final Map<String, WidgetBuilder> routes = {
     ROUTES_HOME: (BuildContext context) => Home(),
@@ -45,6 +49,8 @@ class Routes {
     ROUTES_SHOPPING_CART: (BuildContext context) => ShoppingCart(),
     ROUTES_SETTINGS_VIEW: (BuildContext context) => Settings(),
     ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
+    ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
+    ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),
   };
   static final RouteFactory onUnknownRoute = (RouteSettings settings) {
     return MaterialPageRoute(builder: ((BuildContext context) => Home()));

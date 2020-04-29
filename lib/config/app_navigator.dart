@@ -130,4 +130,15 @@ class AppNavigator extends Navigator {
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SHOPPING_CART);
   }
+
+  static navigateToPreparation(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_PREPARATION_VIEW);
+  }
+  static navigateToCheckOut(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_CHECKOUT_VIEW);
+  }
 }

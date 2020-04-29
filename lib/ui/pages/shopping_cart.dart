@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/product/cart_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
@@ -405,7 +406,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         "Add items to the cart to proceed checkout.", null, 2);
                   }
                 : () {
-                    //TODO::Checkout
+                    AppNavigator.navigateToPreparation(context);
                   },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
