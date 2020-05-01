@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ContactNumber {
-  int contactNumberID;
+  int id;
   String contactNumberType;
   String contactNumber;
-  bool isPrimary;
+  bool isDefault;
+  int state;
 
   ContactNumber({
-    @required this.contactNumberID,
+    @required this.id,
     @required this.contactNumberType,
     @required this.contactNumber,
-    @required this.isPrimary,
+    @required this.isDefault,
+    @required this.state,
   });
 
-  int get getContactNumberID => contactNumberID;
+  int get getID => id;
 
-  set setContactNumberID(int contactNumberID) =>
-      this.contactNumberID = contactNumberID;
+  set setID(int contactNumberID) =>
+      this.id = contactNumberID;
 
   String get getContactNumberType => contactNumberType;
 
@@ -28,7 +30,11 @@ class ContactNumber {
   set setContactNumber(String contactNumber) =>
       this.contactNumber = contactNumber;
 
-  bool get getIsPrimary => isPrimary;
+  bool get getIsDefault => isDefault;
 
-  set setIsPrimary(bool isPrimary) => this.isPrimary = isPrimary;
+  set setIsDefault(bool isDefault) => this.isDefault = isDefault;
+  
+  int get getState => state;
+
+  set setState(int state) => this.state = state;
 }

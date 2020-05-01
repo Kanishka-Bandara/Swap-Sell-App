@@ -2,6 +2,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/model/message/user_message.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -62,7 +63,8 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
               emailID: 1,
-              emailType: "Primary",
+              emailType: EmailType.OFFICIAL,
+              isDefault: true,
               email: "wmkubandara@gmail.com",
               status: 1,
             )
@@ -84,7 +86,8 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
               emailID: 1,
-              emailType: "Primary",
+              emailType: EmailType.OFFICIAL,
+              isDefault: true,
               email: "wmkubandara@gmail.com",
               status: 1,
             )
@@ -138,7 +141,8 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
               emailID: 1,
-              emailType: "Primary",
+              emailType: EmailType.OFFICIAL,
+              isDefault: true,
               email: "wmkubandara@gmail.com",
               status: 1,
             )
@@ -158,7 +162,8 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
               emailID: 1,
-              emailType: "Primary",
+              emailType: EmailType.OFFICIAL,
+              isDefault: true,
               email: "wmkubandara@gmail.com",
               status: 1,
             )

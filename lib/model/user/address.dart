@@ -11,7 +11,7 @@ class Address {
   String district;
   String province;
   String country;
-  bool isPrimaryAddress;
+  bool isDefaultAddress;
   int state;
 
   Address({
@@ -24,7 +24,7 @@ class Address {
     @required this.district,
     @required this.province,
     @required this.country,
-    @required this.isPrimaryAddress,
+    @required this.isDefaultAddress,
     @required this.state,
   });
 
@@ -64,10 +64,10 @@ class Address {
 
   set setCountry(String country) => this.country = country;
 
-  bool get getIsPrimaryAddress => isPrimaryAddress;
+  bool get getIsDefaultAddress => isDefaultAddress;
 
-  set setIsPrimaryAddress(bool isPrimaryAddress) =>
-      this.isPrimaryAddress = isPrimaryAddress;
+  set setIsDefaultAddress(bool isDefaultAddress) =>
+      this.isDefaultAddress = isDefaultAddress;
 
   int get getState => state;
 

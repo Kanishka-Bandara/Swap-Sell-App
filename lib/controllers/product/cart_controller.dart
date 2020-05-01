@@ -5,6 +5,7 @@ import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -59,7 +60,8 @@ class CartController extends Model {
               emails: [
                 Email(
                     emailID: 0,
-                    emailType: "Business",
+              emailType: EmailType.BUSINESS,
+              isDefault: true,
                     email: "user1@gmail.com.c",
                     status: 1),
               ],
@@ -135,7 +137,8 @@ class CartController extends Model {
               emails: [
                 Email(
                     emailID: 1,
-                    emailType: "Business",
+              emailType: EmailType.BUSINESS,
+              isDefault: true,
                     email: "user1@gmail.com.c",
                     status: 1),
               ],

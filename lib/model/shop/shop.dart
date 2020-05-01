@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -40,8 +41,9 @@ class Shop {
       emails: [
         Email(
           emailID: 1,
-          emailType: "Official",
+          emailType: EmailType.OFFICIAL,
           email: "kanishka@gmail.com",
+          isDefault: true,
           status: 1,
         ),
       ],

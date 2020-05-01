@@ -21,7 +21,8 @@ class AppInit extends Model {
     emails: <Email>[
       Email(
         emailID: 1,
-        emailType: "Primary",
+        emailType: EmailType.OFFICIAL,
+        isDefault: true,
         email: "wmkubandara@gmail.com",
         status: 1,
       )
@@ -45,7 +46,7 @@ class AppInit extends Model {
           district: "Moneragala",
           province: "Uva",
           country: "Sri Lanka",
-          isPrimaryAddress: true,
+          isDefaultAddress: true,
           state: 1)
     ],
   );

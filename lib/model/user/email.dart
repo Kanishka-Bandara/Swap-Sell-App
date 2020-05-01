@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 
 class Email {
-  static const Map<int, String> EMAIL_TYPES = {
-    1: "Primary Email",
-  };
 
   int emailID;
-  String emailType;
+  EmailType emailType;
   String email;
+  bool isDefault;
   int status;
   Email({
     @required this.emailID,
     @required this.emailType,
     @required this.email,
+    @required this.isDefault,
     @required this.status,
   });
 
@@ -20,13 +20,17 @@ class Email {
 
   set setEmailID(int emailID) => this.emailID = emailID;
 
-  String get getEmailType => emailType;
+  EmailType get getEmailType => emailType;
 
-  set setEmailType(String emailType) => this.emailType = emailType;
+  set setEmailType(EmailType emailType) => this.emailType = emailType;
 
   String get getEmail => email;
 
   set setEmail(String email) => this.email = email;
+
+  bool get getIsDefault => isDefault;
+
+  set setIsDefault(bool isDefault) => this.isDefault = isDefault;
 
   int get getStatus => status;
 
