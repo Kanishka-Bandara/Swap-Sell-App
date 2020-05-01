@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 
 class Address {
   int id;
-  String type;
+  AddressType type;
   String name;
   String poBox;
   String street;
@@ -31,9 +32,9 @@ class Address {
 
   set setId(int id) => this.id = id;
 
-  String get getType => type;
+  AddressType get getType => type;
 
-  set setType(String type) => this.type = type;
+  set setType(AddressType type) => this.type = type;
 
   String get getName => name;
 
