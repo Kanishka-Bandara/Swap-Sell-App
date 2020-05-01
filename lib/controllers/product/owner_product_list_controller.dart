@@ -2,7 +2,6 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class OwnerProductsController extends Model {

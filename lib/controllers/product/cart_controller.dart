@@ -60,8 +60,8 @@ class CartController extends Model {
               emails: [
                 Email(
                     emailID: 0,
-              emailType: EmailType.BUSINESS,
-              isDefault: true,
+                    emailType: EmailType.BUSINESS,
+                    isDefault: true,
                     email: "user1@gmail.com.c",
                     status: 1),
               ],
@@ -137,8 +137,8 @@ class CartController extends Model {
               emails: [
                 Email(
                     emailID: 1,
-              emailType: EmailType.BUSINESS,
-              isDefault: true,
+                    emailType: EmailType.BUSINESS,
+                    isDefault: true,
                     email: "user1@gmail.com.c",
                     status: 1),
               ],
@@ -256,7 +256,7 @@ class CartController extends Model {
   void removeSelectedFromTheShoppingCart() {
     _cartProducts.forEach((ucp) {
       ucp.getCartProducts.removeWhere((cp) {
-        //Send To Backend
+        //TODO ::Send To Backend
         return cp.isSelected;
       });
     });
@@ -286,12 +286,94 @@ class CartController extends Model {
 
   bool get isAllSelectedAreBarterProducts {
     bool _c = false;
-    _cartProducts.forEach((ucp) async{
+    _cartProducts.forEach((ucp) async {
       if (await ucp.isAllSelectedProductsAreBarterProducts) {
         _c = true;
         print(_c);
       }
     });
     return _c;
+  }
+
+  int get getSelectedBuyingCartProductQty {
+    int _c = 0;
+    _cartProducts.forEach((ucp) {
+      _c += ucp.getSelectedBuyingProductsQty;
+    });
+    return _c;
+  }
+
+  int get getSelectedBarterCartProductQty {
+    int _c = 0;
+    _cartProducts.forEach((ucp) {
+      _c += ucp.getSelectedBarterProductsQty;
+    });
+    return _c;
+  }
+
+  int get getSelectedCartProductQty {
+    int _c = 0;
+    _cartProducts.forEach((ucp) {
+      _c += ucp.getSelectedProductsQty;
+    });
+    return _c;
+  }
+
+  double getSelectedCartProductsTotal(ProductDealingType productDealingType) {
+    double _total = 0;
+    _cartProducts.forEach((ucp) {
+      _total += ucp.getSelectedProductsTotal(productDealingType);
+    });
+    return _total;
+  }
+
+  String getSelectedCartProductsTotalDisplay(
+      ProductDealingType productDealingType) {
+    return Currency.convertToCurrency(
+        getSelectedCartProductsTotal(productDealingType));
+  }
+
+  double get getAllSelectedCartProductsTotal {
+    double _total = 0;
+    _cartProducts.forEach((ucp) {
+      _total += ucp.getAllSelectedProductsTotal();
+    });
+    return _total;
+  }
+
+  String get getAllSelectedCartProductsTotalDisplay {
+    return Currency.convertToCurrency(getAllSelectedCartProductsTotal);
+  }
+
+  double get getSelectedOwnerExchangingCartProductsTotal {
+    double _total = 0;
+    _cartProducts.forEach((ucp) {
+      _total += ucp.getSelectedOwnerExchangingCartProductsTotal;
+    });
+    return _total;
+  }
+
+  String get getSelectedOwnerExchangingCartProductsTotalDisplay {
+    return Currency.convertToCurrency(
+        getSelectedOwnerExchangingCartProductsTotal);
+  }
+
+  double get getSelectedExchangingCartProductsDifference {
+    return getSelectedCartProductsTotal(ProductDealingType.ONLY_BARTER) -
+        getSelectedOwnerExchangingCartProductsTotal;
+  }
+
+  String get getSelectedExchangingCartProductsDifferenceDisplay {
+    return Currency.convertToCurrency(
+        getSelectedExchangingCartProductsDifference);
+  }
+
+  double get getTotalPayable {
+    return getSelectedCartProductsTotal(ProductDealingType.ONLY_SELL) +
+        getSelectedExchangingCartProductsDifference;
+  }
+
+  String get getTotalPayableDisplay {
+    return Currency.convertToCurrency(getTotalPayable);
   }
 }

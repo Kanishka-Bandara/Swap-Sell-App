@@ -109,4 +109,17 @@ class CartProduct extends Model {
   String get getBuyingTotalDisplay {
     return Currency.convertToCurrency(getBuyingTotal);
   }
+  
+  double get getOwnerExchangingTotal {
+    if (this.getExchangingProduct==null) {
+      return 0.0;
+    }else{
+      return this.getExchangingQty*this.getExchangingProduct.getDiscountedRetailPrice;
+    }
+  }
+  
+  String get getOwnerExchangingTotalDisplay {
+    return Currency.convertToCurrency(getOwnerExchangingTotal);
+  }
+
 }

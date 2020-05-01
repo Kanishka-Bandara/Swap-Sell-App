@@ -10,6 +10,7 @@ import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class Preparation extends StatefulWidget {
   @override
@@ -276,7 +277,7 @@ class _PreparationState extends State<Preparation> {
                 child: cartProduct.getProductDealingType ==
                         ProductDealingType.ONLY_SELL
                     ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text("A buying product"),
                         ],
@@ -303,9 +304,21 @@ class _PreparationState extends State<Preparation> {
                                     ),
                                   ),
                                   onPressed: () async {
-                                    cartProduct.setExchangingproduct =
+                                    Product _p =
                                         await showUserProductListDialogBox(
                                             context);
+                                    if (_p != null) {
+                                      int _qty = await showProductDialogBox(
+                                          context, _p);
+                                      if (_qty == null) {
+                                        cartProduct.setExchangingproduct = null;
+                                      } else {
+                                        cartProduct.setExchangingproduct = _p;
+                                        cartProduct.setExchangingQty = _qty;
+                                      }
+                                    } else {
+                                      cartProduct.setExchangingproduct = null;
+                                    }
                                   },
                                 ),
                               ],
@@ -371,7 +384,7 @@ class _PreparationState extends State<Preparation> {
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        "Qty = ${cartProduct.getQty}",
+                                        "Qty = ${cartProduct.getExchangingQty}",
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
@@ -405,9 +418,27 @@ class _PreparationState extends State<Preparation> {
                                             ),
                                           ),
                                           onPressed: () async {
-                                            cartProduct.setExchangingproduct =
+                                            Product _p =
                                                 await showUserProductListDialogBox(
                                                     context);
+                                            if (_p != null) {
+                                              int _qty =
+                                                  await showProductDialogBox(
+                                                      context, _p);
+                                              if (_qty == null) {
+                                                cartProduct
+                                                        .setExchangingproduct =
+                                                    null;
+                                              } else {
+                                                cartProduct
+                                                    .setExchangingproduct = _p;
+                                                cartProduct.setExchangingQty =
+                                                    _qty;
+                                              }
+                                            } else {
+                                              cartProduct.setExchangingproduct =
+                                                  null;
+                                            }
                                           },
                                         ),
                                       ),
@@ -594,6 +625,88 @@ class _PreparationState extends State<Preparation> {
                       );
               }
             },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<int> showProductDialogBox(BuildContext context, Product p) async {
+    int _qty = 1;
+    return await showDialog(
+      context: context,
+      barrierDismissible: false,
+      child: AlertDialog(
+        actions: <Widget>[
+          MaterialButton(
+            child: Text("Cancel"),
+            onPressed: () {
+              Navigator.of(context).pop(null);
+            },
+          ),
+          RaisedButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.of(context).pop(_qty);
+            },
+          ),
+        ],
+        content: SingleChildScrollView(
+          child: Container(
+            width: 400,
+            height: 500,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(p.getImages[0]),
+                    ),
+                  ),
+                ),
+                Text(
+                  p.getName,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(p.getDisplayDiscountedRetailPrice),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Qty : "),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 75,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).primaryColorDark),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: KTextFormField(
+                        name: null,
+                        emptyRequiredMessage: null,
+                        onSaved: null,
+                        initialValue: "1",
+                        onChanged: (v) {
+                          _qty = int.parse(v);
+                          print(_qty);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

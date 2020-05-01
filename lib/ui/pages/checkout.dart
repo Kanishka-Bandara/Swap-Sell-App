@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/controllers/product/cart_controller.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 
 class CheckOut extends StatefulWidget {
@@ -30,14 +32,20 @@ class _CheckOutState extends State<CheckOut> {
             _buildProductCountArea(context),
             _buildHeaderRow(context, "Bill"),
             _buildBillArea(context),
-            RaisedButton(
-              child: Text(
-                "Confirm & Pay",
-                style: TextStyle(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              padding: EdgeInsets.all(10),
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: RaisedButton(
+                child: Text(
+                  "CONFIRM & PAY",
+                  style: TextStyle(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
                 ),
+                onPressed: () {},
               ),
-              onPressed: () {},
             ),
           ],
         ),
@@ -165,38 +173,6 @@ class _CheckOutState extends State<CheckOut> {
     );
   }
 
-  Widget _buildBillArea(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: MediaQuery.of(context).size.width,
-          // height: 120,
-          color: Theme.of(context).primaryColorLight,
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              Table(
-                border: TableBorder.all(
-                  color: Colors.black26,
-                  width: 1,
-                  style: BorderStyle.none,
-                ),
-                children: <TableRow>[
-                  _buildTableRow(
-                      context, "Buying Products Total", "5,000.00"),
-                  _buildTableRow(
-                      context, "Exchange Products Total", "5,000.00"),
-                  _buildTableRow(context, "Total", "10,000.00"),
-                  _buildTableRow(context, "Total payable", "5,000.00"),
-                ],
-              )
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildProductCountArea(BuildContext context) {
     return Row(
       children: <Widget>[
@@ -214,9 +190,56 @@ class _CheckOutState extends State<CheckOut> {
                   style: BorderStyle.none,
                 ),
                 children: <TableRow>[
-                  _buildTableRow(context, "Buying Count", "10"),
-                  _buildTableRow(context, "Exchange pair Count", "10"),
-                  _buildTableRow(context, "Total Count", "20"),
+                  _buildTableRow(context, "Buying Count",
+                      "${CartController.defaultController.getSelectedBuyingCartProductQty}"),
+                  _buildTableRow(context, "Exchanging pair Count",
+                      "${CartController.defaultController.getSelectedBarterCartProductQty}"),
+                  _buildTableRow(context, "Total Count",
+                      "${CartController.defaultController.getSelectedCartProductQty}"),
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBillArea(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          // height: 120,
+          color: Theme.of(context).primaryColorLight,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Table(
+                border: TableBorder.all(
+                  color: Colors.black26,
+                  width: 1,
+                  style: BorderStyle.none,
+                ),
+                children: <TableRow>[
+                  _buildTableRow(context, "Exchanging(Taken) Total",
+                      "${CartController.defaultController.getSelectedCartProductsTotalDisplay(ProductDealingType.ONLY_BARTER)}"),
+                  _buildTableRowBreaker(context, null),
+                  _buildTableRow(context, "Exchanging(Granted) Total",
+                      "- ${CartController.defaultController.getSelectedOwnerExchangingCartProductsTotalDisplay}"),
+                  _buildTableRowBreaker(context, null),
+                  _buildTableRow(context, "Exchanging Difference",
+                      "= ${CartController.defaultController.getSelectedExchangingCartProductsDifferenceDisplay}"),
+                  _buildTableRowBreaker(
+                      context, Theme.of(context).primaryColor),
+                  _buildTableRow(context, "Buying Total",
+                      "${CartController.defaultController.getSelectedCartProductsTotalDisplay(ProductDealingType.ONLY_SELL)}"),
+                  _buildTableRowBreaker(context, null),
+                  _buildTableRow(context, "Exchanging Difference",
+                      "+ ${CartController.defaultController.getSelectedExchangingCartProductsDifferenceDisplay}"),
+                  _buildTableRowBreaker(context, null),
+                  _buildTableRow(context, "Total payable",
+                      "= ${CartController.defaultController.getTotalPayableDisplay}"),
                 ],
               )
             ],
@@ -255,4 +278,42 @@ class _CheckOutState extends State<CheckOut> {
       ],
     );
   }
+
+  _buildTableRowBreaker(BuildContext context, Color color) {
+    return TableRow(
+      children: <Widget>[
+        TableCell(
+          child: Container(
+            height: 1,
+            color: color,
+            margin: EdgeInsets.only(
+              top: 2,
+              bottom: 2,
+            ),
+          ),
+        ),
+        TableCell(
+          child: Container(
+            height: 1,
+            color: color,
+            margin: EdgeInsets.only(
+              top: 2,
+              bottom: 2,
+            ),
+          ),
+        ),
+        TableCell(
+          child: Container(
+            height: 1,
+            color: color,
+            margin: EdgeInsets.only(
+              top: 2,
+              bottom: 2,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
 }
