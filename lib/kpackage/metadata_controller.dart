@@ -9,9 +9,27 @@ abstract class MetaDataController<T> {
     return _indexMap[index];
   }
 
-  String getNameByIndexNumber(int indexNumber);
+  String getNameByIndexNumber(int indexNumber){
+    String _c;
+    _indexMap.forEach((dynamic k, v) {
+      if (indexNumber == k.index) {
+        _c = v;
+        return;
+      }
+    });
+    return _c;
+  }
 
-  int getIndexNumberByName(String name);
+  int getIndexNumberByName(String name){
+    int _k;
+    _indexMap.forEach((dynamic k, v) {
+      if (name == v) {
+        _k = k.index;
+        return;
+      }
+    });
+    return _k;
+  }
 
   T getIndexByName(String name) {
     T _c;
