@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
+import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
 class UserCartProduct extends Model {
@@ -61,12 +62,35 @@ class UserCartProduct extends Model {
   UserCartProduct get getSelectedAsClone {
     List<CartProduct> cps = [];
     this.cartProducts.forEach((cp) {
-      if(cp.isSelected){
-       cps.add(cp.getClone);
+      if (cp.isSelected) {
+        cps.add(cp.getClone);
       }
-
     });
     UserCartProduct ucp = UserCartProduct(shop: this.shop, cartProducts: cps);
     return ucp;
+  }
+
+  int get getSelectedCount {
+    int count = 0;
+    this.cartProducts.forEach((cp) {
+      if (cp.isSelected) {
+        count++;
+      }
+    });
+    return count;
+  }
+
+  Future<bool> get isAllSelectedProductsAreBarterProducts async{
+    bool _c = true;
+    this.cartProducts.forEach((cp) {
+      if (cp.isSelected) {
+        if (cp.getProductDealingType != ProductDealingType.ONLY_BARTER) {
+          _c = false;
+          print("c = ${cp.getProductDealingType}");
+          return;
+        }
+      }
+    });
+    return _c;
   }
 }

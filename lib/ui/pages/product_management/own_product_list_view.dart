@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/owner_product_list_controller.dart';
+import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -74,8 +75,8 @@ class _OwnProductListView extends State<OwnProductListView> {
       model: OwnerProductsController.defaultController,
       child: FutureBuilder(
         future:
-            OwnerProductsController.defaultController.getOwnerProductList(null),
-        builder: (context, snapshot) {
+            OwnerProductsController.defaultController.getCurrentOwnerProductList(),
+        builder: (context,AsyncSnapshot<List<Product>> snapshot) {
           if (snapshot.data == null) {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
@@ -109,13 +110,12 @@ class _OwnProductListView extends State<OwnProductListView> {
                                 //TODO::
                               },
                               leading: Image.network(
-                                snapshot.data[index].images[0],
+                                snapshot.data[index].getImages[0],
                                 width: 75,
                               ),
                               title: Text(snapshot.data[index].name),
                               subtitle: Text(
-                                "Rs " +
-                                    snapshot.data[index].retailPrice.toString(),
+                                    snapshot.data[index].getDisplayRetailPrice,
                                 style: TextStyle(
                                     color: Color.fromRGBO(85, 85, 85, 1)),
                               ),

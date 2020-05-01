@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
+import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -32,6 +33,20 @@ class AppInit extends Model {
     status: 1,
     username: "kanishka12345",
     password: "123",
+    addresses: [
+      Address(
+          id: 1,
+          type: "Billing",
+          name: "Kanishka Bandara",
+          poBox: "192/2",
+          street: "Handapanagala",
+          city: "Wellawaya",
+          district: "Moneragala",
+          province: "Uva",
+          country: "Sri Lanka",
+          isPrimaryAddress: true,
+          state: 1)
+    ],
   );
   Shop _currentUserShop = Shop.exampleShop;
 

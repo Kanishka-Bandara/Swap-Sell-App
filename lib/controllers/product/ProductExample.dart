@@ -1283,7 +1283,7 @@ class ProductExamples {
   static Future<List<Product>> getExampleProductList() async {
     List<Product> lit = getList();
     lit.shuffle();
-    return Future.delayed(Duration(seconds: 2), () => lit);
+    return Future.delayed(Duration(seconds: 1), () => lit);
   }
 
   static Future<List<Category>> getMainCategoryList() async {

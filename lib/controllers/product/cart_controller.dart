@@ -263,24 +263,31 @@ class CartController extends Model {
     notifyListeners();
   }
 
-  Future<List<UserCartProduct>> get getSelectedCartProducts async {
-    List<UserCartProduct> l = [];
-    _cartProducts.forEach((ucp) {
-      if (ucp.getSelectedAsClone.getCartProducts.length > 0) {
-        l.add(ucp.getSelectedAsClone);
-      }
-    });
-    return l;
-  }
+  // Future<List<UserCartProduct>> get getSelectedCartProducts async {
+  //   List<UserCartProduct> l = [];
+  //   _cartProducts.forEach((ucp) {
+  //     if (ucp.getSelectedAsClone.getCartProducts.length > 0) {
+  //       l.add(ucp.getSelectedAsClone);
+  //     }
+  //   });
+  //   return l;
+  // }
 
-  int get selectedCartProductCount {
+  int get getSelectedCartProductCount {
     int _c = 0;
     _cartProducts.forEach((ucp) {
-      ucp.getCartProducts.forEach((cp) {
-        if (cp.isSelected) {
-          _c++;
-        }
-      });
+      _c += ucp.getSelectedCount;
+    });
+    return _c;
+  }
+
+  bool get isAllSelectedAreBarterProducts {
+    bool _c = false;
+    _cartProducts.forEach((ucp) async{
+      if (await ucp.isAllSelectedProductsAreBarterProducts) {
+        _c = true;
+        print(_c);
+      }
     });
     return _c;
   }

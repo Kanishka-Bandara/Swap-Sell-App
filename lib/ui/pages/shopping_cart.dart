@@ -212,8 +212,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 width: 150,
                 height: 150,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                  ),
+                  borderRadius: BorderRadius.only(),
                   image: DecorationImage(
                     image: NetworkImage(_product.getImages[0]),
                     fit: BoxFit.cover,
@@ -398,12 +397,18 @@ class _ShoppingCartState extends State<ShoppingCart> {
       child: ScopedModelDescendant<CartController>(
         builder: (BuildContext context, Widget widget, CartController model) {
           return RaisedButton(
-            onPressed: model.getCartTotal <= 0
+            onPressed: model.getSelectedCartProductCount <= 0
                 ? () {
-                    DefaultComponents.showMessage(context,
-                        "Add items to the cart to proceed checkout.", null, 2);
+                    DefaultComponents.showMessage(
+                        context,
+                        "Select items from the cart to proceed checkout.",
+                        null,
+                        2);
                   }
                 : () {
+                    // model.isAllSelectedAreBarterProducts
+                    //     ? AppNavigator.navigateToPreparation(context)
+                    //     : AppNavigator.navigateToCheckOut(context);
                     AppNavigator.navigateToPreparation(context);
                   },
             shape: RoundedRectangleBorder(
@@ -439,5 +444,4 @@ class _ShoppingCartState extends State<ShoppingCart> {
       ),
     );
   }
-
 }

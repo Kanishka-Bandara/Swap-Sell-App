@@ -26,7 +26,7 @@ class _PreparationState extends State<Preparation> {
           return Scaffold(
             appBar: ApplicationBar.createNormalAppBar(
               context,
-              "Preparation for Check Out (${ccModel.selectedCartProductCount})",
+              "Preparation for Check Out (${ccModel.getSelectedCartProductCount})",
               false,
               false,
               null,
@@ -50,8 +50,8 @@ class _PreparationState extends State<Preparation> {
     return ScopedModel(
       model: CartController.defaultController,
       child: FutureBuilder(
-        future: CartController.defaultController.getSelectedCartProducts,
-        builder: (context, snapshot) {
+        future: CartController.defaultController.getCartProducts,
+        builder: (context, AsyncSnapshot<List<UserCartProduct>> snapshot) {
           if (snapshot.data == null) {
             return ListView.builder(
               scrollDirection: Axis.vertical,
@@ -102,16 +102,20 @@ class _PreparationState extends State<Preparation> {
   }
 
   _buildRow(BuildContext context, UserCartProduct userCartProduct) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      // height: 500,
-      child: Column(
-        children: <Widget>[
-          _buildShopNameTile(context, userCartProduct),
-          _buildItemList(userCartProduct),
-        ],
-      ),
-    );
+    if (userCartProduct.getSelectedCount > 0) {
+      return Container(
+        width: MediaQuery.of(context).size.width,
+        // height: 500,
+        child: Column(
+          children: <Widget>[
+            _buildShopNameTile(context, userCartProduct),
+            _buildItemList(userCartProduct),
+          ],
+        ),
+      );
+    } else {
+      return Container();
+    }
   }
 
   _buildShopNameTile(BuildContext context, UserCartProduct userCartProduct) {
@@ -144,187 +148,280 @@ class _PreparationState extends State<Preparation> {
     // );
     List<Widget> a = [];
     for (var i = 0; i < userCartProduct.getCartProducts.length; i++) {
-      a.add(
-        _buildCartItemBody(context, userCartProduct.getCartProducts[i]),
-      );
-      a.add(
-        Divider(
-          height: 5,
-        ),
-      );
+      if (userCartProduct.getCartProducts[i].getIsSelected) {
+        a.add(
+          _buildCartItemBody(context, userCartProduct.getCartProducts[i]),
+        );
+        a.add(
+          Divider(
+            height: 5,
+          ),
+        );
+      }
     }
     return Column(
       children: a,
     );
   }
 
-  _buildCartItemBody(BuildContext context, CartProduct cartProduct) {
-    Product _product = cartProduct.getProduct;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: 150,
-          padding: EdgeInsets.only(left: 5),
-          child: Column(
+  _buildCartItemBody(BuildContext context, CartProduct cp) {
+    Product _product = cp.getProduct;
+    return ScopedModel(
+      model: cp,
+      child: ScopedModelDescendant<CartProduct>(
+        builder:
+            (BuildContext context, Widget widget, CartProduct cartProduct) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width / 2,
-                height: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(_product.getImages[0]),
-                    // fit: BoxFit.cover,
-                  ),
+                height: 150,
+                padding: EdgeInsets.only(left: 5),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(_product.getImages[0]),
+                          // fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              _product.getName,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 5,
+                              softWrap: true,
+                            ),
+                          ],
+                        ),
+                        _product.getDiscount == 0.0
+                            ? Row(
+                                children: <Widget>[
+                                  Text(
+                                    "${_product.getDisplayRetailPrice}",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Row(
+                                children: <Widget>[
+                                  Text(
+                                    // "${_product.currancy} ${_product.retailPrice}",
+                                    "${_product.getDisplayDiscountedRetailPrice}",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Qty = ${cartProduct.getQty}",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Sub Tot. = ${cartProduct.getBuyingTotalDisplay}",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        _product.getName,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: 5,
-                        softWrap: true,
-                      ),
-                    ],
-                  ),
-                  _product.getDiscount == 0.0
-                      ? Row(
-                          children: <Widget>[
-                            Text(
-                              "${_product.getDisplayRetailPrice}",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          children: <Widget>[
-                            Text(
-                              // "${_product.currancy} ${_product.retailPrice}",
-                              "${_product.getDisplayDiscountedRetailPrice}",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Qty = ${cartProduct.getQty}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Sub Tot. = ${cartProduct.getBuyingTotalDisplay}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              Container(
+                height: 100,
+                width: 1.0,
+                color: Theme.of(context).primaryColor.withOpacity(0.5),
+                margin: const EdgeInsets.only(
+                  left: 5.0,
+                  right: 5.0,
+                  top: 25,
+                ),
               ),
-            ],
-          ),
-        ),
-        Container(
-          height: 100,
-          width: 1.0,
-          color: Theme.of(context).primaryColor.withOpacity(0.5),
-          margin: const EdgeInsets.only(
-            left: 5.0,
-            right: 5.0,
-            top: 25,
-          ),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width / 2 - 15,
-          height: 150,
-          // padding: EdgeInsets.only(left: 5),
-          child: cartProduct.getProductDealingType ==
-                  ProductDealingType.ONLY_SELL
-              ? Column(
-                  children: <Widget>[],
-                )
-              : (cartProduct.getExchangingProduct == null)
-                  ? Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Container(
+                width: MediaQuery.of(context).size.width / 2 - 15,
+                height: 150,
+                // padding: EdgeInsets.only(left: 5),
+                child: cartProduct.getProductDealingType ==
+                        ProductDealingType.ONLY_SELL
+                    ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
-                            "Select Your Exchange Product",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          RaisedButton(
-                            child: Text(
-                              "Select",
-                              style: TextStyle(
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                                fontSize: 15,
-                              ),
-                            ),
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                child: AlertDialog(
-                                  content: Column(
-                                    children: <Widget>[
-                                      ListView.builder(
-                                          itemCount: OwnerProductsController
-                                              .defaultController
-                                              .getExchangableOwnerProducts
-                                              .length,
-                                          itemBuilder:
-                                              (BuildContext context, index) {
-                                            Product _p = OwnerProductsController
-                                                    .defaultController
-                                                    .getExchangableOwnerProducts[
-                                                index];
-                                            return ListTile(
-                                              leading: Image.network(
-                                                _p.getImages[0],
-                                              ),
-                                            );
-                                          }),
-                                    ],
+                          Text("A buying product"),
+                        ],
+                      )
+                    : (cartProduct.getExchangingProduct == null)
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text(
+                                  "Select Your Exchange Product",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              );
-                            },
+                                RaisedButton(
+                                  child: Text(
+                                    "Select",
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  onPressed: () async {
+                                    cartProduct.setExchangingproduct =
+                                        await showUserProductListDialogBox(
+                                            context);
+                                  },
+                                ),
+                              ],
+                            ),
+                          )
+                        : Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width / 2,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(cartProduct
+                                        .getExchangingProduct.getImages[0]),
+                                    // fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Column(
+                                    children: <Widget>[
+                                      Text(
+                                        cartProduct
+                                            .getExchangingProduct.getName,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        maxLines: 5,
+                                        softWrap: true,
+                                      ),
+                                    ],
+                                  ),
+                                  cartProduct.getExchangingProduct
+                                              .getDiscount ==
+                                          0.0
+                                      ? Row(
+                                          children: <Widget>[
+                                            Text(
+                                              "${cartProduct.getExchangingProduct.getDisplayRetailPrice}",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Row(
+                                          children: <Widget>[
+                                            Text(
+                                              // "${cartProduct.getExchangingProduct.currancy} ${cartProduct.getExchangingProduct.retailPrice}",
+                                              "${cartProduct.getExchangingProduct.getDisplayDiscountedRetailPrice}",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Qty = ${cartProduct.getQty}",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Sub Tot. = ${cartProduct.getBuyingTotalDisplay}",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        height: 20,
+                                        child: RaisedButton(
+                                          child: Text(
+                                            "Edit",
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .scaffoldBackgroundColor,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            cartProduct.setExchangingproduct =
+                                                await showUserProductListDialogBox(
+                                                    context);
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )
-                  : Column(
-                      children: <Widget>[],
-                    ),
-        )
-      ],
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -344,20 +441,20 @@ class _PreparationState extends State<Preparation> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        "Total :",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "${model.getDisplayCartTotal}",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      // Text(
+                      //   "Total :",
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
+                      // Text(
+                      //   "${model.getDisplayCartTotal}",
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                     ],
                   ),
                   _buildCheckoutButton(context),
@@ -414,6 +511,91 @@ class _PreparationState extends State<Preparation> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Future<Product> showUserProductListDialogBox(BuildContext context) async {
+    return await showDialog(
+      context: context,
+      child: AlertDialog(
+        content: Container(
+          width: 300,
+          height: 1000,
+          child: FutureBuilder(
+            future: OwnerProductsController.defaultController
+                .getCurrentOwnerProductList(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+              if (snapshot.data == null) {
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      child: Column(
+                        children: <Widget>[
+                          ShimmerTile(
+                              MediaQuery.of(context).size.width, 75, context),
+                          Divider(
+                            height: 10,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: 10,
+                );
+              } else {
+                return snapshot.data.length <= 0
+                    ? DefaultComponents.buildNoDetailsWidget(context,
+                        Icons.cloud_queue, "You have not added a product yet.")
+                    : ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: <Widget>[
+                              snapshot.data[index].canOnlySell
+                                  ? Container()
+                                  : ListTile(
+                                      onTap: () {
+                                        Navigator.of(context)
+                                            .pop(snapshot.data[index]);
+                                      },
+                                      leading: snapshot.data[index].canOnlySell
+                                          ? Icon(
+                                              Icons.warning,
+                                              color: Colors.red,
+                                            )
+                                          : Image.network(
+                                              snapshot.data[index].images[0],
+                                              width: 75,
+                                            ),
+                                      title: Text(snapshot.data[index].name),
+                                      subtitle: Text(
+                                        snapshot.data[index]
+                                            .getDisplayDiscountedRetailPrice,
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(
+                                            85,
+                                            85,
+                                            85,
+                                            1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              Divider(
+                                height: 1,
+                                indent: 10,
+                                endIndent: 10,
+                              ),
+                            ],
+                          );
+                        },
+                        itemCount: snapshot.data.length,
+                      );
+              }
+            },
+          ),
+        ),
       ),
     );
   }

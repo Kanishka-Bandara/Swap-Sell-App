@@ -20,7 +20,7 @@ class Address {
     @required this.poBox,
     @required this.street,
     @required this.city,
-    this.district,
+    @required this.district,
     @required this.province,
     @required this.country,
     @required this.isPrimaryAddress,

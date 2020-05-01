@@ -1,4 +1,5 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
@@ -12,6 +13,9 @@ class OwnerProductsController extends Model {
     _ownerProductList = await ProductExamples.getExampleProductList();
     //TODO: get data from backend
     return _ownerProductList;
+  }
+  Future<List<Product>> getCurrentOwnerProductList() async {
+    return await getOwnerProductList(AppInit.currentApp.getCurrentUser);
   }
 
   Future<List<Product>> getFilterdOwnerProductList(
@@ -65,10 +69,8 @@ class OwnerProductsController extends Model {
     return _ownerProductList.length;
   }
 
- List<Product> get getExchangableOwnerProducts{
-  return _ownerProductList.where((p){
-     return p.getDealingType!=ProductDealingType.ONLY_SELL;
-   }).toList();
+ Future<List<Product>> get getExchangableOwnerProducts async{
+  return getCurrentOwnerProductList();
  }
 
 }

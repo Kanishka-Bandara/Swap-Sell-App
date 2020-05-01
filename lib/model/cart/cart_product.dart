@@ -36,11 +36,15 @@ class CartProduct extends Model {
 
   Product get getExchangingProduct => this.exchangingProduct;
 
-  set setExchangingproduct(Product product) => this.exchangingProduct = product;
+  set setExchangingproduct(Product product) {
+    this.exchangingProduct = product;
+    notifyListeners();
+  }
 
   ProductDealingType get getProductDealingType => this.dealingType;
 
-  set setProductDealingType(ProductDealingType dealingType) => this.dealingType = dealingType;
+  set setProductDealingType(ProductDealingType dealingType) =>
+      this.dealingType = dealingType;
 
   bool get getIsSelected => isSelected;
 
