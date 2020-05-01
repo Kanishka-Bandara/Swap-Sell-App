@@ -32,9 +32,9 @@ class Address {
 
   set setId(int id) => this.id = id;
 
-  AddressType get getType => type;
+  AddressType get getAddressType => type;
 
-  set setType(AddressType type) => this.type = type;
+  set setAddressType(AddressType type) => this.type = type;
 
   String get getName => name;
 
@@ -72,4 +72,30 @@ class Address {
   int get getState => state;
 
   set setState(int state) => this.state = state;
+
+  String get getAsString {
+    String a = "";
+    if (this.getName != null || this.getName.isNotEmpty) {
+      a += this.getName + ",\n";
+    }
+    if (this.getPoBox != null || this.getPoBox.isNotEmpty) {
+      a += this.getPoBox + ",\n";
+    }
+    if (this.getStreet != null || this.getStreet.isNotEmpty) {
+      a += this.getStreet + ",\n";
+    }
+    if (this.getCity != null || this.getCity.isNotEmpty) {
+      a += this.getCity + ",\n";
+    }
+    if (this.getDistrict != null || this.getDistrict.isNotEmpty) {
+      a += this.getDistrict + ",\n";
+    }
+    if (this.province != null || this.province.isNotEmpty) {
+      a += this.province + ",\n";
+    }
+    if (this.country != null || this.country.isNotEmpty) {
+      a += this.country + ",\n";
+    }
+    return a;
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/model/user/address.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/contact_number.dart';
 import 'package:swap_sell/model/user/email.dart';
 
@@ -117,6 +118,42 @@ class User {
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+
+  Email getDefaultEmail(EmailType type) {
+    Email e;
+    this.getEmails.forEach((v) {
+      if (v.getEmailType == type) {
+        if (v.getIsDefault) {
+          e = v;
+        }
+      }
+    });
+    return e;
+  }
+
+  Address getDefaultAddress(AddressType type) {
+    Address e;
+    this.getAddresses.forEach((v) {
+      if (v.getAddressType == type) {
+        if (v.getIsDefaultAddress) {
+          e = v;
+        }
+      }
+    });
+    return e;
+  }
+
+  ContactNumber getDefaultContactNumber(ContactNumberType type) {
+    ContactNumber e;
+    this.getContactNumbers.forEach((v) {
+      if (v.getContactNumberType == type) {
+        if (v.getIsDefault) {
+          e = v;
+        }
+      }
+    });
+    return e;
+  }
 
   User get getClone {
     User u = new User(

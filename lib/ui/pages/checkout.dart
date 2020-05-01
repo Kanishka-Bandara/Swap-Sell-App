@@ -19,24 +19,28 @@ class _CheckOutState extends State<CheckOut> {
         null,
         null,
       ),
-      body: Column(
-        children: <Widget>[
-          _buildHeaderRow(context, "Ship To :"),
-          _buildShippingAddressArea(context),
-          _buildHeaderRow(context, "Pay With :"),
-          _buildPaymentArea(context),
-          _buildHeaderRow(context, "Bill"),
-          _buildBillArea(context),
-          RaisedButton(
-            child: Text(
-              "Confirem & Pay",
-              style: TextStyle(
-                color: Theme.of(context).scaffoldBackgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _buildHeaderRow(context, "Ship To :"),
+            _buildShippingAddressArea(context),
+            _buildHeaderRow(context, "Pay With :"),
+            _buildPaymentArea(context),
+            _buildHeaderRow(context, "Product Count"),
+            _buildProductCountArea(context),
+            _buildHeaderRow(context, "Bill"),
+            _buildBillArea(context),
+            RaisedButton(
+              child: Text(
+                "Confirm & Pay",
+                style: TextStyle(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
               ),
+              onPressed: () {},
             ),
-            onPressed: () {},
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -71,52 +75,8 @@ class _CheckOutState extends State<CheckOut> {
               Row(
                 children: <Widget>[
                   Text(
-                    AppInit.currentApp.getCurrentUser.getAddresses[0].getName,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    AppInit.currentApp.getCurrentUser.getAddresses[0].getPoBox,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    AppInit.currentApp.getCurrentUser.getAddresses[0].getStreet,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    AppInit.currentApp.getCurrentUser.getAddresses[0].getCity,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
                     AppInit
-                        .currentApp.getCurrentUser.getAddresses[0].getDistrict,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    AppInit
-                        .currentApp.getCurrentUser.getAddresses[0].getProvince,
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    AppInit
-                        .currentApp.getCurrentUser.getAddresses[0].getCountry,
+                        .currentApp.getCurrentUser.getAddresses[0].getAsString,
                   ),
                 ],
               ),
@@ -210,6 +170,38 @@ class _CheckOutState extends State<CheckOut> {
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
+          // height: 120,
+          color: Theme.of(context).primaryColorLight,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Table(
+                border: TableBorder.all(
+                  color: Colors.black26,
+                  width: 1,
+                  style: BorderStyle.none,
+                ),
+                children: <TableRow>[
+                  _buildTableRow(
+                      context, "Buying Products Total", "5,000.00"),
+                  _buildTableRow(
+                      context, "Exchange Products Total", "5,000.00"),
+                  _buildTableRow(context, "Total", "10,000.00"),
+                  _buildTableRow(context, "Total payable", "5,000.00"),
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCountArea(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
           height: 100,
           color: Theme.of(context).primaryColorLight,
           padding: EdgeInsets.all(10),
@@ -222,11 +214,9 @@ class _CheckOutState extends State<CheckOut> {
                   style: BorderStyle.none,
                 ),
                 children: <TableRow>[
-                  _buildTableRow(context, "Products Count", "10"),
-                  _buildTableRow(context, "Total", "10,000.00"),
-                  _buildTableRow(
-                      context, "Exchange Products Total", "5,000.00"),
-                  _buildTableRow(context, "Total payable", "5,000.00"),
+                  _buildTableRow(context, "Buying Count", "10"),
+                  _buildTableRow(context, "Exchange pair Count", "10"),
+                  _buildTableRow(context, "Total Count", "20"),
                 ],
               )
             ],

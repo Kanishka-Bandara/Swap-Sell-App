@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
 
 class ContactNumber {
   int id;
-  String contactNumberType;
+  ContactNumberType contactNumberType;
   String contactNumber;
   bool isDefault;
   int state;
@@ -20,9 +21,9 @@ class ContactNumber {
   set setID(int contactNumberID) =>
       this.id = contactNumberID;
 
-  String get getContactNumberType => contactNumberType;
+  ContactNumberType get getContactNumberType => contactNumberType;
 
-  set setContactNumberType(String contactNumberType) =>
+  set setContactNumberType(ContactNumberType contactNumberType) =>
       this.contactNumberType = contactNumberType;
 
   String get getContactNumber => contactNumber;
@@ -33,7 +34,7 @@ class ContactNumber {
   bool get getIsDefault => isDefault;
 
   set setIsDefault(bool isDefault) => this.isDefault = isDefault;
-  
+
   int get getState => state;
 
   set setState(int state) => this.state = state;
