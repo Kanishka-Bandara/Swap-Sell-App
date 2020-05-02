@@ -17,6 +17,7 @@ class Product extends Model {
   List<String> images;
   List<Image> networkImages;
   String description;
+  String barcode;
   Map<String, String> specifications = Map();
   ProductCondition condition = ProductCondition.BRAND_NEW;
   String inTheBox;
@@ -44,6 +45,7 @@ class Product extends Model {
     this.discountPrice = 0.0,
     this.images,
     @required this.description,
+    this.barcode,
     this.inTheBox,
     this.rating = 0.0,
     this.qty = 0,
@@ -135,6 +137,13 @@ class Product extends Model {
 
   set setDescription(String value) {
     this.description = value;
+    //notifyListeners();
+  }
+
+  String get getBarcode => barcode;
+
+  set setBarcode(String value) {
+    this.barcode = value;
     //notifyListeners();
   }
 
