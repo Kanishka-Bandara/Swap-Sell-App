@@ -3,9 +3,11 @@ import 'package:swap_sell/model/user/contact_metadata.dart';
 
 class Address {
   int id;
+  int userId;
   AddressType type;
   String name;
-  String poBox;
+  String poCode;
+  String poArea;
   String street;
   String city;
   String district;
@@ -16,9 +18,11 @@ class Address {
 
   Address({
     @required this.id,
+    @required this.userId,
     @required this.type,
     @required this.name,
-    @required this.poBox,
+    @required this.poCode,
+    @required this.poArea,
     @required this.street,
     @required this.city,
     @required this.district,
@@ -32,6 +36,10 @@ class Address {
 
   set setId(int id) => this.id = id;
 
+  int get getUserId => userId;
+
+  set setUserId(int userId) => this.userId = userId;
+
   AddressType get getAddressType => type;
 
   set setAddressType(AddressType type) => this.type = type;
@@ -40,9 +48,13 @@ class Address {
 
   set setName(String name) => this.name = name;
 
-  String get getPoBox => poBox;
+  String get getPostalCode => poCode;
 
-  set setPoBox(String poBox) => this.poBox = poBox;
+  set setPostalCode(String poCode) => this.poCode = poCode;
+
+  String get getPostalArea => poArea;
+
+  set setPostalArea(String poArea) => this.poArea = poArea;
 
   String get getStreet => street;
 
@@ -78,8 +90,11 @@ class Address {
     if (this.getName != null || this.getName.isNotEmpty) {
       a += this.getName + ",\n";
     }
-    if (this.getPoBox != null || this.getPoBox.isNotEmpty) {
-      a += this.getPoBox + ",\n";
+    if (this.getPostalCode != null || this.getPostalCode.isNotEmpty) {
+      a += this.getPostalCode + ",\n";
+    }
+    if (this.getPostalArea != null || this.getPostalArea.isNotEmpty) {
+      a += this.getPostalArea + ",\n";
     }
     if (this.getStreet != null || this.getStreet.isNotEmpty) {
       a += this.getStreet + ",\n";
@@ -98,4 +113,21 @@ class Address {
     }
     return a;
   }
+
+Map toJson()=>{
+  'id':id,
+  'userId':userId,
+  'type':AddressTypeController.defaultController.getNameByIndex(type),
+  'name':name,
+  'postalCode':poCode,
+  'postalArea':poArea,
+  'street':street,
+  'city':city,
+  'district':district,
+  'province':province,
+  'country':country,
+  'isDefaultAddress':isDefaultAddress,
+  'status':state
+};
+
 }
