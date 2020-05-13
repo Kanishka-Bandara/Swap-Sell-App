@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 
+part 'contact_number.g.dart';
+
+@JsonSerializable()
 class ContactNumber {
   int id;
   int contactNumberTypeId;
   ContactNumberType contactNumberType;
   String contactNumber;
-  bool isDefault;
+  int isDefault;
   int userId;
   int state;
 
@@ -40,9 +44,9 @@ class ContactNumber {
   set setContactNumber(String contactNumber) =>
       this.contactNumber = contactNumber;
 
-  bool get getIsDefault => isDefault;
+  int get getIsDefault => isDefault;
 
-  set setIsDefault(bool isDefault) => this.isDefault = isDefault;
+  set setIsDefault(int isDefault) => this.isDefault = isDefault;
 
   int get getUserID => userId;
 
@@ -52,14 +56,9 @@ class ContactNumber {
 
   set setState(int state) => this.state = state;
 
-Map toJson()=>{
-  'id':id,
-  'contactNumberTypeId':contactNumberTypeId,
-  'contactNumberType':ContactNumberType,
-  'userId':userId,
-  'contactNumber':ContactNumber,
-  'isDefault':isDefault,
-  'status':state
-};
+  factory ContactNumber.fromJson(Map<String, dynamic> json) => _$ContactNumberFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ContactNumberToJson(this);
+
 
 }

@@ -64,7 +64,7 @@ class MessageController extends Model {
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
-              emailID: 1,
+              id: 1,
               emailType: EmailType.OFFICIAL,
               isDefault: true,
               email: "wmkubandara@gmail.com",
@@ -90,7 +90,7 @@ class MessageController extends Model {
               "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
           emails: <Email>[
             Email(
-                emailID: 1,
+                id: 1,
                 emailType: EmailType.OFFICIAL,
                 isDefault: true,
                 email: "wmkubandara@gmail.com",
@@ -147,7 +147,7 @@ class MessageController extends Model {
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
-                emailID: 1,
+                id: 1,
                 emailType: EmailType.OFFICIAL,
                 isDefault: true,
                 email: "wmkubandara@gmail.com",
@@ -170,7 +170,7 @@ class MessageController extends Model {
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
-                emailID: 1,
+                id: 1,
                 emailType: EmailType.OFFICIAL,
                 isDefault: true,
                 email: "wmkubandara@gmail.com",

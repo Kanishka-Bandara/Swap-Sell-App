@@ -42,7 +42,7 @@ class Shop {
       activeState: 1,
       emails: [
         Email(
-          emailID: 1,
+          id: 1,
           emailType: EmailType.OFFICIAL,
           email: "kanishka@gmail.com",
           emailTypeId: 1,

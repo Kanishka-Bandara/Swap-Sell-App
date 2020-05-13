@@ -12,6 +12,7 @@ class UserController extends Model {
   }
 
   Future<User> editUser(User user, int userID) async {
+    print(user.toJson());
     //TODO:Edit User on backend
     return user;
   }

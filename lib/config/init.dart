@@ -22,7 +22,7 @@ class AppInit extends Model {
     fullName: "Kanishka Udayakantha Bandara",
     emails: <Email>[
       Email(
-        emailID: 1,
+        id: 1,
         emailType: EmailType.OFFICIAL,
         isDefault: true,
         email: "wmkubandara@gmail.com",
@@ -42,6 +42,7 @@ class AppInit extends Model {
     addresses: [
       Address(
           id: 1,
+          typeId: AddressType.BILLING.index,
           type: AddressType.BILLING,
           name: "Kanishka Bandara",
           poCode: "192/2",

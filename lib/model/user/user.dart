@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/contact_number.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/usertype_metadata.dart';
 
+part 'user.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class User {
   int id;
   String userId;
@@ -154,7 +158,7 @@ class User {
     ContactNumber e;
     this.getContactNumbers.forEach((v) {
       if (v.getContactNumberType == type) {
-        if (v.getIsDefault) {
+        if (v.getIsDefault==1) {
           e = v;
         }
       }
@@ -187,24 +191,8 @@ class User {
     return u;
   }
 
-  Map toJson() => {
-        "id": this.id,
-        "userId": this.userId,
-        "userType": this.userType,
-        "title": this.title,
-        "gender": this.gender,
-        "fullName": this.fullName,
-        "activeState": this.activeState,
-        "emails": this.emails,
-        "country": this.country,
-        "note": this.note,
-        "profilePicUrl": this.profilePicUrl,
-        "addresses": this.addresses,
-        "contactNumbers": this.contactNumbers,
-        "username": this.username,
-        "status": this.status,
-        "lname": this.lName,
-        "sname": this.sName,
-        "fname": this.fName
-      };
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+
 }

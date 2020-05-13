@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 
+part 'address.g.dart';
+
+@JsonSerializable()
 class Address {
   int id;
   int userId;
+  int typeId;
   AddressType type;
   String name;
   String poCode;
@@ -19,6 +24,7 @@ class Address {
   Address({
     @required this.id,
     @required this.userId,
+    @required this.typeId,
     @required this.type,
     @required this.name,
     @required this.poCode,
@@ -39,6 +45,10 @@ class Address {
   int get getUserId => userId;
 
   set setUserId(int userId) => this.userId = userId;
+
+  int get getAddressTypeId => typeId;
+
+  set setAddressTypeId(int typeId) => this.typeId = typeId;
 
   AddressType get getAddressType => type;
 
@@ -113,22 +123,9 @@ class Address {
     }
     return a;
   }
+  
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
 
-Map toJson()=>{
-  'id':id,
-  'userId':userId,
-  'typeId':this.getAddressType.index,
-  'type':AddressTypeController.defaultController.getNameByIndex(type),
-  'name':name,
-  'postalCode':poCode,
-  'postalArea':poArea,
-  'street':street,
-  'city':city,
-  'district':district,
-  'province':province,
-  'country':country,
-  'isDefaultAddress':isDefaultAddress,
-  'status':state
-};
-
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

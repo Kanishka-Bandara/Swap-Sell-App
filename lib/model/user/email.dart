@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 
+part 'email.g.dart';
+
+@JsonSerializable()
 class Email {
-  int emailID;
+  int id;
   int emailTypeId;
   EmailType emailType;
   String email;
@@ -10,7 +14,7 @@ class Email {
   int userId;
   int status;
   Email({
-    @required this.emailID,
+    @required this.id,
     @required this.emailTypeId,
     @required this.emailType,
     @required this.email,
@@ -19,9 +23,9 @@ class Email {
     @required this.status,
   });
 
-  int get getEmailID => emailID;
+  int get getEmailID => id;
 
-  set setEmailID(int emailID) => this.emailID = emailID;
+  set setEmailID(int id) => this.id = id;
 
   EmailType get getEmailType => emailType;
 
@@ -47,13 +51,7 @@ class Email {
 
   set setStatus(int status) => this.status = status;
 
-  Map toJson() => {
-        'id': emailID,
-        'emailTypeId': emailTypeId,
-        'emailType': emailType,
-        'userId': userId,
-        'email': email,
-        'isDefault': isDefault,
-        'status': status,
-      };
+  factory Email.fromJson(Map<String, dynamic> json) => _$EmailFromJson(json);
+
+  Map<String, dynamic> toJson() => _$EmailToJson(this);
 }
