@@ -76,6 +76,6 @@ T _$enumDecodeNullable<T>(
 
 const _$AddressTypeEnumMap = {
   AddressType.ignore: 'ignore',
-  AddressType.BILLING: 'Billing',
-  AddressType.DELIVERY: 'Delivery',
+  AddressType.BILLING: 'BILLING',
+  AddressType.DELIVERY: 'DELIVERY',
 };

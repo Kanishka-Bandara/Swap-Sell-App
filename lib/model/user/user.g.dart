@@ -97,7 +97,7 @@ T _$enumDecodeNullable<T>(
 
 const _$UserTypeEnumMap = {
   UserType.ignore: 'ignore',
-  UserType.SELLER: 'Seller',
-  UserType.BUYER: 'Buyer',
-  UserType.SELLER_AND_BUYER: 'Seller & Buyer',
+  UserType.SELLER: 'SELLER',
+  UserType.BUYER: 'BUYER',
+  UserType.SELLER_AND_BUYER: 'SELLER_AND_BUYER',
 };
