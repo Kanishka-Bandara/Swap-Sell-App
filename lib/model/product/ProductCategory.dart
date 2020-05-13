@@ -19,4 +19,5 @@ class Category {
   set setImgPath(String imgPath) => this.imgPath = imgPath;
 
   Image get getNetworkImage => Image.network(this.getImgPath);
+  
 }

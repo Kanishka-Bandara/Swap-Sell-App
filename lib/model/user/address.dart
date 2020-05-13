@@ -117,6 +117,7 @@ class Address {
 Map toJson()=>{
   'id':id,
   'userId':userId,
+  'typeId':this.getAddressType.index,
   'type':AddressTypeController.defaultController.getNameByIndex(type),
   'name':name,
   'postalCode':poCode,

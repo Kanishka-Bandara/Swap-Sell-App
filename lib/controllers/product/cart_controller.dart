@@ -8,6 +8,7 @@ import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
+import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 enum _CartProductType {
   NEW_SHOP_WITH_NEW_PRODUCT,
@@ -49,24 +50,28 @@ class CartController extends Model {
           shopID: "1",
           shopName: "Shop 1",
           owner: User(
-              id: 0,
-              userId: "u1",
-              title: "Mr.",
-              gender: "Male",
-              fName: "User 1",
-              lName: "U1",
-              fullName: "User1 u1",
-              activeState: 1,
-              emails: [
-                Email(
-                    emailID: 0,
-                    emailType: EmailType.BUSINESS,
-                    isDefault: true,
-                    email: "user1@gmail.com.c",
-                    status: 1),
-              ],
-              country: "Sri Lanka",
-              status: 1),
+            id: 0,
+            userId: "u1",
+            userType: UserType.SELLER_AND_BUYER,
+            title: "Mr.",
+            gender: "Male",
+            fName: "User 1",
+            lName: "U1",
+            fullName: "User1 u1",
+            activeState: 1,
+            emails: [
+              Email(
+                  emailID: 0,
+                  emailType: EmailType.BUSINESS,
+                  isDefault: true,
+                  email: "user1@gmail.com.c",
+                  emailTypeId: EmailType.BUSINESS.index,
+                  userId: 1,
+                  status: 1),
+            ],
+            country: "Sri Lanka",
+            status: 1,
+          ),
           status: 1,
         ),
         cartProducts: [
@@ -128,6 +133,7 @@ class CartController extends Model {
           owner: User(
               id: 1,
               userId: "u1",
+              userType: UserType.SELLER_AND_BUYER,
               title: "Mr.",
               gender: "Male",
               fName: "User 1",
@@ -136,11 +142,14 @@ class CartController extends Model {
               activeState: 1,
               emails: [
                 Email(
-                    emailID: 1,
-                    emailType: EmailType.BUSINESS,
-                    isDefault: true,
-                    email: "user1@gmail.com.c",
-                    status: 1),
+                  emailID: 1,
+                  emailType: EmailType.BUSINESS,
+                  isDefault: true,
+                  email: "user1@gmail.com.c",
+                  status: 1,
+                  emailTypeId: EmailType.BUSINESS.index,
+                  userId: 1,
+                ),
               ],
               country: "Sri Lanka",
               status: 1),

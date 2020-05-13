@@ -7,12 +7,14 @@ import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
+import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class AppInit extends Model {
   static AppInit currentApp = AppInit();
   User _currentUser = User(
     id: 1,
     userId: "u0001",
+    userType: UserType.SELLER_AND_BUYER,
     title: "Mr.",
     gender: "Male",
     fName: "Kanishka",
@@ -25,6 +27,8 @@ class AppInit extends Model {
         isDefault: true,
         email: "wmkubandara@gmail.com",
         status: 1,
+        emailTypeId: EmailType.OFFICIAL.index,
+        userId: 1,
       )
     ],
     country: "Sri Lanka",

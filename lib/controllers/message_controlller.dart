@@ -5,6 +5,7 @@ import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
+import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class MessageController extends Model {
   static MessageController defaultMessageController = MessageController();
@@ -55,6 +56,7 @@ class MessageController extends Model {
         receivedBy: User(
           id: 1,
           userId: "u0001",
+          userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
           fName: "Kanishka",
@@ -66,6 +68,8 @@ class MessageController extends Model {
               emailType: EmailType.OFFICIAL,
               isDefault: true,
               email: "wmkubandara@gmail.com",
+              emailTypeId: 1,
+              userId: EmailType.OFFICIAL.index,
               status: 1,
             )
           ],
@@ -76,6 +80,7 @@ class MessageController extends Model {
         sentBy: User(
           id: 1,
           userId: "u0001",
+          userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
           fName: "Kanishka",
@@ -85,12 +90,13 @@ class MessageController extends Model {
               "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
           emails: <Email>[
             Email(
-              emailID: 1,
-              emailType: EmailType.OFFICIAL,
-              isDefault: true,
-              email: "wmkubandara@gmail.com",
-              status: 1,
-            )
+                emailID: 1,
+                emailType: EmailType.OFFICIAL,
+                isDefault: true,
+                email: "wmkubandara@gmail.com",
+                status: 1,
+                emailTypeId: EmailType.OFFICIAL.index,
+                userId: 1)
           ],
           country: "Sri Lanka",
           activeState: 1,
@@ -133,6 +139,7 @@ class MessageController extends Model {
         receivedBy: User(
           id: 1,
           userId: "u0001",
+          userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
           fName: "Kanishka",
@@ -140,12 +147,13 @@ class MessageController extends Model {
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
-              emailID: 1,
-              emailType: EmailType.OFFICIAL,
-              isDefault: true,
-              email: "wmkubandara@gmail.com",
-              status: 1,
-            )
+                emailID: 1,
+                emailType: EmailType.OFFICIAL,
+                isDefault: true,
+                email: "wmkubandara@gmail.com",
+                status: 1,
+                emailTypeId: EmailType.OFFICIAL.index,
+                userId: 1)
           ],
           country: "Sri Lanka",
           activeState: 1,
@@ -154,6 +162,7 @@ class MessageController extends Model {
         sentBy: User(
           id: 1,
           userId: "u0001",
+          userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
           fName: "Kanishka",
@@ -161,12 +170,13 @@ class MessageController extends Model {
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
-              emailID: 1,
-              emailType: EmailType.OFFICIAL,
-              isDefault: true,
-              email: "wmkubandara@gmail.com",
-              status: 1,
-            )
+                emailID: 1,
+                emailType: EmailType.OFFICIAL,
+                isDefault: true,
+                email: "wmkubandara@gmail.com",
+                status: 1,
+                emailTypeId: EmailType.OFFICIAL.index,
+                userId: 1)
           ],
           country: "Sri Lanka",
           activeState: 1,

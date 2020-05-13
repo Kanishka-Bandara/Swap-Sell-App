@@ -3,10 +3,12 @@ import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/contact_number.dart';
 import 'package:swap_sell/model/user/email.dart';
+import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class User {
   int id;
   String userId;
+  UserType userType;
   String title;
   String gender;
   String fName;
@@ -27,6 +29,7 @@ class User {
   User({
     @required this.id,
     @required this.userId,
+    @required this.userType,
     @required this.title,
     @required this.gender,
     @required this.fName,
@@ -52,6 +55,10 @@ class User {
   String get getUserId => userId;
 
   set setUserId(String userId) => this.userId = userId;
+
+  UserType get getUserType => userType;
+
+  set setUserType(UserType userType) => this.userType = userType;
 
   String get getTitle => title;
 
@@ -159,6 +166,7 @@ class User {
     User u = new User(
       id: this.getId,
       userId: this.getUserId,
+      userType: this.userType,
       title: this.getTitle,
       gender: this.getGender,
       fName: this.getFName,
@@ -178,4 +186,25 @@ class User {
     );
     return u;
   }
+
+  Map toJson() => {
+        "id": this.id,
+        "userId": this.userId,
+        "userType": this.userType,
+        "title": this.title,
+        "gender": this.gender,
+        "fullName": this.fullName,
+        "activeState": this.activeState,
+        "emails": this.emails,
+        "country": this.country,
+        "note": this.note,
+        "profilePicUrl": this.profilePicUrl,
+        "addresses": this.addresses,
+        "contactNumbers": this.contactNumbers,
+        "username": this.username,
+        "status": this.status,
+        "lname": this.lName,
+        "sname": this.sName,
+        "fname": this.fName
+      };
 }
