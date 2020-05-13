@@ -12,7 +12,7 @@ Email _$EmailFromJson(Map<String, dynamic> json) {
     emailTypeId: json['emailTypeId'] as int,
     emailType: _$enumDecodeNullable(_$EmailTypeEnumMap, json['emailType']),
     email: json['email'] as String,
-    isDefault: json['isDefault'] as bool,
+    isDefault: json['isDefault'] as int,
     userId: json['userId'] as int,
     status: json['status'] as int,
   );

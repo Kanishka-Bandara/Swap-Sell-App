@@ -18,7 +18,7 @@ class Address {
   String district;
   String province;
   String country;
-  bool isDefaultAddress;
+  int isDefaultAddress;
   int state;
 
   Address({
@@ -86,9 +86,9 @@ class Address {
 
   set setCountry(String country) => this.country = country;
 
-  bool get getIsDefaultAddress => isDefaultAddress;
+  int get getIsDefaultAddress => isDefaultAddress;
 
-  set setIsDefaultAddress(bool isDefaultAddress) =>
+  set setIsDefaultAddress(int isDefaultAddress) =>
       this.isDefaultAddress = isDefaultAddress;
 
   int get getState => state;
@@ -123,7 +123,7 @@ class Address {
     }
     return a;
   }
-  
+
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
 

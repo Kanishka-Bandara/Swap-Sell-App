@@ -20,7 +20,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     district: json['district'] as String,
     province: json['province'] as String,
     country: json['country'] as String,
-    isDefaultAddress: json['isDefaultAddress'] as bool,
+    isDefaultAddress: json['isDefaultAddress'] as int,
     state: json['state'] as int,
   );
 }
@@ -76,6 +76,6 @@ T _$enumDecodeNullable<T>(
 
 const _$AddressTypeEnumMap = {
   AddressType.ignore: 'ignore',
-  AddressType.BILLING: 'BILLING',
-  AddressType.DELIVERY: 'DELIVERY',
+  AddressType.BILLING: 'Billing',
+  AddressType.DELIVERY: 'Delivery',
 };

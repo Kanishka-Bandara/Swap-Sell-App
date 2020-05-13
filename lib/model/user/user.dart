@@ -134,7 +134,7 @@ class User {
     Email e;
     this.getEmails.forEach((v) {
       if (v.getEmailType == type) {
-        if (v.getIsDefault) {
+        if (v.getIsDefault==1) {
           e = v;
         }
       }
@@ -146,7 +146,7 @@ class User {
     Address e;
     this.getAddresses.forEach((v) {
       if (v.getAddressType == type) {
-        if (v.getIsDefaultAddress) {
+        if (v.getIsDefaultAddress==1) {
           e = v;
         }
       }

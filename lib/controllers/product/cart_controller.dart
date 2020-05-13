@@ -63,7 +63,7 @@ class CartController extends Model {
               Email(
                   id: 0,
                   emailType: EmailType.BUSINESS,
-                  isDefault: true,
+                  isDefault: 1,
                   email: "user1@gmail.com.c",
                   emailTypeId: EmailType.BUSINESS.index,
                   userId: 1,
@@ -144,7 +144,7 @@ class CartController extends Model {
                 Email(
                   id: 1,
                   emailType: EmailType.BUSINESS,
-                  isDefault: true,
+                  isDefault: 1,
                   email: "user1@gmail.com.c",
                   status: 1,
                   emailTypeId: EmailType.BUSINESS.index,

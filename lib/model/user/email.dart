@@ -10,7 +10,7 @@ class Email {
   int emailTypeId;
   EmailType emailType;
   String email;
-  bool isDefault;
+  int isDefault;
   int userId;
   int status;
   Email({
@@ -39,9 +39,9 @@ class Email {
 
   set setEmail(String email) => this.email = email;
 
-  bool get getIsDefault => isDefault;
+  int get getIsDefault => isDefault;
 
-  set setIsDefault(bool isDefault) => this.isDefault = isDefault;
+  set setIsDefault(int isDefault) => this.isDefault = isDefault;
 
   int get getUserId => userId;
 

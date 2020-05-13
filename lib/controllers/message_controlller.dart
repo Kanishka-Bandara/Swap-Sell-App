@@ -66,7 +66,7 @@ class MessageController extends Model {
             Email(
               id: 1,
               emailType: EmailType.OFFICIAL,
-              isDefault: true,
+              isDefault: 1,
               email: "wmkubandara@gmail.com",
               emailTypeId: 1,
               userId: EmailType.OFFICIAL.index,
@@ -92,7 +92,7 @@ class MessageController extends Model {
             Email(
                 id: 1,
                 emailType: EmailType.OFFICIAL,
-                isDefault: true,
+                isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
                 emailTypeId: EmailType.OFFICIAL.index,
@@ -149,7 +149,7 @@ class MessageController extends Model {
             Email(
                 id: 1,
                 emailType: EmailType.OFFICIAL,
-                isDefault: true,
+                isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
                 emailTypeId: EmailType.OFFICIAL.index,
@@ -172,7 +172,7 @@ class MessageController extends Model {
             Email(
                 id: 1,
                 emailType: EmailType.OFFICIAL,
-                isDefault: true,
+                isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
                 emailTypeId: EmailType.OFFICIAL.index,

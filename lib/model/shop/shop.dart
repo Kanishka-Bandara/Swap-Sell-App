@@ -47,7 +47,7 @@ class Shop {
           email: "kanishka@gmail.com",
           emailTypeId: 1,
           userId: 1,
-          isDefault: true,
+          isDefault: 1,
           status: 1,
         ),
       ],
