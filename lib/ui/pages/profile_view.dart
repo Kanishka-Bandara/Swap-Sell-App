@@ -31,7 +31,7 @@ class _UserProfileViewState extends State<UserProfileView> {
         model: AppInit.currentApp,
         child: ScopedModelDescendant<AppInit>(
           builder: (BuildContext context, Widget widget, AppInit model) {
-            _user = model.getCurrentUser.getClone;
+            _user = model.getCurrentUser;
             return SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

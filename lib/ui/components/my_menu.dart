@@ -112,25 +112,25 @@ class MyMenu {
                   title: Text("Help"),
                   onTap: () {},
                 ),
-                Divider(
+               model.currentUserState?  Divider(
                   color: Colors.black,
                   height: 36,
-                ),
-                ListTile(
+                ):Container(),
+               model.currentUserState? ListTile(
                   leading: Icon(Icons.perm_identity),
                   title: Text("Profile"),
                   onTap: () {
                     Navigator.of(context).pop();
                     AppNavigator.navigateToProfileOverviewPage(context);
                   },
-                ),
-                ListTile(
+                ):Container(),
+                 model.currentUserState? ListTile(
                   leading: Icon(Icons.exit_to_app),
                   title: Text("Sign Out"),
                   onTap: () {
                     model.logOut();
                   },
-                ),
+                ):Container(),
               ],
             );
           }),
