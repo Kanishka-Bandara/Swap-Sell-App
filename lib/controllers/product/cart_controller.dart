@@ -62,10 +62,10 @@ class CartController extends Model {
             emails: [
               Email(
                   id: 0,
-                  emailType: EmailType.BUSINESS,
+                  emailType: EmailType.MESSAGES,
                   isDefault: 1,
                   email: "user1@gmail.com.c",
-                  emailTypeId: EmailType.BUSINESS.index,
+                  emailTypeId: EmailType.MESSAGES.index,
                   userId: 1,
                   status: 1),
             ],
@@ -143,11 +143,11 @@ class CartController extends Model {
               emails: [
                 Email(
                   id: 1,
-                  emailType: EmailType.BUSINESS,
+                  emailType: EmailType.MESSAGES,
                   isDefault: 1,
                   email: "user1@gmail.com.c",
                   status: 1,
-                  emailTypeId: EmailType.BUSINESS.index,
+                  emailTypeId: EmailType.MESSAGES.index,
                   userId: 1,
                 ),
               ],

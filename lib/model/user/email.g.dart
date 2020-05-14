@@ -62,7 +62,8 @@ T _$enumDecodeNullable<T>(
 
 const _$EmailTypeEnumMap = {
   EmailType.ignore: 'ignore',
+  EmailType.AUTHENTICATION: 'AUTHENTICATION',
   EmailType.BILLING: 'BILLING',
-  EmailType.OFFICIAL: 'OFFICIAL',
-  EmailType.BUSINESS: 'BUSINESS',
+  EmailType.NOTIFICATION: 'NOTIFICATION',
+  EmailType.MESSAGES: 'MESSAGES',
 };

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class KTextFormField extends TextFormField {
   final TextEditingController textController = TextEditingController();
   KTextFormField({
-    @required String name,
+    String name,
     String regExp,
-    @required String emptyRequiredMessage,
+    String emptyRequiredMessage,
     String regExpErrorMessage,
-    @required FormFieldSetter<String> onSaved,
+    FormFieldSetter<String> onSaved,
     Widget prefix,
     Widget suffix,
     bool obscureText = false,
@@ -19,13 +19,16 @@ class KTextFormField extends TextFormField {
     ValueChanged<String> onChanged,
     String initialValue,
     bool enabled = true,
+    FormFieldValidator<String> validator,
+    String errorText,
   }) : super(
           decoration: InputDecoration(
             labelText: name,
             prefixIcon: prefix,
             suffixIcon: suffix,
+            errorText: errorText,
           ),
-          validator: (regExp == null || regExpErrorMessage == null)
+          validator:validator!=null? validator:(regExp == null || regExpErrorMessage == null)
               ? (String value) {
                   if (required) {
                     if (value.isEmpty) {

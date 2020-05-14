@@ -65,11 +65,11 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
               id: 1,
-              emailType: EmailType.OFFICIAL,
+              emailType: EmailType.MESSAGES,
               isDefault: 1,
               email: "wmkubandara@gmail.com",
               emailTypeId: 1,
-              userId: EmailType.OFFICIAL.index,
+              userId: EmailType.MESSAGES.index,
               status: 1,
             )
           ],
@@ -91,11 +91,11 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
                 id: 1,
-                emailType: EmailType.OFFICIAL,
+                emailType: EmailType.MESSAGES,
                 isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
-                emailTypeId: EmailType.OFFICIAL.index,
+                emailTypeId: EmailType.MESSAGES.index,
                 userId: 1)
           ],
           country: "Sri Lanka",
@@ -148,11 +148,11 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
                 id: 1,
-                emailType: EmailType.OFFICIAL,
+                emailType: EmailType.MESSAGES,
                 isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
-                emailTypeId: EmailType.OFFICIAL.index,
+                emailTypeId: EmailType.MESSAGES.index,
                 userId: 1)
           ],
           country: "Sri Lanka",
@@ -171,11 +171,11 @@ class MessageController extends Model {
           emails: <Email>[
             Email(
                 id: 1,
-                emailType: EmailType.OFFICIAL,
+                emailType: EmailType.MESSAGES,
                 isDefault: 1,
                 email: "wmkubandara@gmail.com",
                 status: 1,
-                emailTypeId: EmailType.OFFICIAL.index,
+                emailTypeId: EmailType.MESSAGES.index,
                 userId: 1)
           ],
           country: "Sri Lanka",

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
+import 'package:swap_sell/model/user/contact_metadata.dart';
+import 'package:swap_sell/model/user/email.dart';
+import 'package:swap_sell/model/user/user.dart';
+import 'package:swap_sell/model/user/usertype_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -16,8 +22,15 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _username = "";
+  String _fName = "";
+  String _lName = "";
+  String _email = "";
   String _password = "";
+  String _confirmPassword = "";
+  String _username = "";
+  String _usernameErrorText;
+  String _emailErrorText;
+  String _confirmPasswordError;
   bool _isVisibilityOff = true;
   @override
   Widget build(BuildContext context) {
@@ -61,35 +74,126 @@ class _SignupState extends State<Signup> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           KTextFormField(
+                            required: true,
+                            name: "First Name",
+                            emptyRequiredMessage: "First name is Required",
+                            onChanged: (String value) {
+                              _fName = value;
+                            },
+                            onSaved: (String value) {
+                              _fName = value;
+                            },
+                          ),
+                          KTextFormField(
+                            required: true,
+                            name: "Last Name",
+                            emptyRequiredMessage: "Last name is Required",
+                            onChanged: (String value) {
+                              _lName = value;
+                            },
+                            onSaved: (String value) {
+                              _lName = value;
+                            },
+                          ),
+                          KTextFormField(
+                            required: true,
                             name: "Username",
                             emptyRequiredMessage: "Username is Required",
+                            onChanged: (String value) async {
+                              _username = value;
+                              var status = await AuthController
+                                  .defaultController
+                                  .isUserNameAlreadyExist(value);
+                              if (status) {
+                                setState(() {
+                                  _usernameErrorText =
+                                      "Username is already Exists";
+                                });
+                              } else {
+                                setState(() {
+                                  _usernameErrorText = null;
+                                });
+                              }
+                            },
                             onSaved: (String value) {
                               _username = value;
                             },
+                            errorText: _usernameErrorText,
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           KTextFormField(
+                            required: true,
                             name: "Email",
                             emptyRequiredMessage: "Email is Required",
-                            onSaved: (String value) {
-                              _username = value;
-                            },
                             regExp: KRegEx.EMAIL_REG_EX,
-                            regExpErrorMessage: "Please enter valid email",
+                            regExpErrorMessage: "Please enter valid email.",
+                            onChanged: (String value) async {
+                              _username = value;
+                              var status = await AuthController
+                                  .defaultController
+                                  .isEmailAlreadyExist(value);
+                              if (status) {
+                                setState(() {
+                                  _emailErrorText = "Email is already Exists";
+                                });
+                              } else {
+                                setState(() {
+                                  _emailErrorText = null;
+                                });
+                              }
+                            },
+                            onSaved: (String value) {
+                              _email = value;
+                            },
+                            errorText: _emailErrorText,
+                          ),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          KDropDownButton<String>(
+                            value: "1",
+                            hint: Row(
+                              children: <Widget>[
+                                Text("Select Head Category"),
+                              ],
+                            ),
+                            items: [
+                              DropdownMenuItem(
+                                child: Row(
+                                  children: <Widget>[
+                                    Text("HA"),
+                                  ],
+                                ),
+                                value: "1",
+                              ),
+                              DropdownMenuItem(
+                                child: Row(
+                                  children: <Widget>[
+                                    Text("HB"),
+                                  ],
+                                ),
+                                value: "2",
+                              ),
+                            ],
+                            onChanged: (value) {
+                              setState(() {});
+                            },
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           KTextFormField(
+                            required: true,
                             name: "Password",
                             emptyRequiredMessage: "Password is Required",
+                            onChanged: (String value) {
+                              _password = value;
+                            },
                             onSaved: (String value) {
                               _password = value;
                             },
-                            // regExp: KRegEx.EMAIL_REG_EX,
-                            // regExpErrorMessage: "Please enter valid password",
                             suffix: IconButton(
                               icon: Icon(_isVisibilityOff
                                   ? Icons.visibility_off
@@ -106,14 +210,28 @@ class _SignupState extends State<Signup> {
                             height: 0,
                           ),
                           KTextFormField(
+                            required: true,
                             name: "Confirem Password",
                             emptyRequiredMessage:
                                 "Confirem Password is Required",
-                            onSaved: (String value) {
-                              _password = value;
+                            onChanged: (String value) {
+                              _confirmPassword = value;
+                              setState(() {
+                                if (_password == _confirmPassword) {
+                                  setState(() {
+                                    _confirmPasswordError = null;
+                                  });
+                                } else {
+                                  setState(() {
+                                    _confirmPasswordError =
+                                        "Passwords dosen't match.";
+                                  });
+                                }
+                              });
                             },
-                            // regExp: KRegEx.EMAIL_REG_EX,
-                            // regExpErrorMessage: "Please enter valid password",
+                            onSaved: (String value) {
+                              _confirmPassword = value;
+                            },
                             suffix: IconButton(
                               icon: Icon(_isVisibilityOff
                                   ? Icons.visibility_off
@@ -125,6 +243,7 @@ class _SignupState extends State<Signup> {
                               },
                             ),
                             obscureText: _isVisibilityOff,
+                            errorText: _confirmPasswordError,
                           ),
                           SizedBox(
                             height: 0,
@@ -143,9 +262,41 @@ class _SignupState extends State<Signup> {
                               if (!_formKey.currentState.validate()) {
                                 return;
                               }
+                              if (_emailErrorText != null) {
+                                return;
+                              }
+                              if (_emailErrorText != null) {
+                                return;
+                              }
+                              if (_confirmPasswordError != null) {
+                                return;
+                              }
                               _formKey.currentState.save();
-                              print(
-                                  "Username = $_username & password = $_password");
+                              User u = new User(
+                                  id: null,
+                                  userId: _username,
+                                  userType: UserType.SELLER_AND_BUYER,
+                                  title: "Mr.",
+                                  gender: "Not Specified",
+                                  fName: _fName,
+                                  lName: _lName,
+                                  fullName: _fName + " " + _lName,
+                                  activeState: 1,
+                                  emails: [
+                                    Email(
+                                        id: null,
+                                        emailTypeId: 1,
+                                        emailType: EmailType.AUTHENTICATION,
+                                        email: _email,
+                                        isDefault: 1,
+                                        userId: null,
+                                        status: 1)
+                                  ],
+                                  country: null,
+                                  status: 1,
+                                  addresses: null,
+                                  username: _username);
+                              print(u.toJson());
                             },
                           ),
                         ],

@@ -36,18 +36,20 @@ class ContactNumberTypeController
 
 enum EmailType {
   ignore,
+  AUTHENTICATION,
   BILLING,
-  OFFICIAL,
-  BUSINESS,
+  NOTIFICATION,
+  MESSAGES,
 }
 
 class EmailTypeController extends MetaDataController<EmailType> {
   static EmailTypeController defaultController = EmailTypeController();
   static Map<EmailType, String> _indexMap = {
     EmailType.ignore:"ignore",
+    EmailType.AUTHENTICATION: "Authentication",
     EmailType.BILLING: "Billing",
-    EmailType.OFFICIAL: "Official",
-    EmailType.BUSINESS: "Business",
+    EmailType.NOTIFICATION: "Notification",
+    EmailType.MESSAGES: "Messages",
   };
   EmailTypeController() : super(_indexMap);
 }

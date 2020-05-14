@@ -43,7 +43,7 @@ class Shop {
       emails: [
         Email(
           id: 1,
-          emailType: EmailType.OFFICIAL,
+          emailType: EmailType.BILLING,
           email: "kanishka@gmail.com",
           emailTypeId: 1,
           userId: 1,
