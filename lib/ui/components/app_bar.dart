@@ -50,7 +50,9 @@ class ApplicationBar {
                         Icons.mic,
                         color: Colors.grey,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        AppNavigator.navigateToVoiceRecognizer(context);
+                      },
                     ),
                     IconButton(
                       icon: Icon(

@@ -141,4 +141,9 @@ class AppNavigator extends Navigator {
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_CHECKOUT_VIEW);
   }
+  static navigateToVoiceRecognizer(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_VOICE_RECOGNIZER);
+  }
 }

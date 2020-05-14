@@ -14,6 +14,7 @@ import 'package:swap_sell/ui/pages/settings.dart';
 import 'package:swap_sell/ui/pages/shopping_cart.dart';
 import 'package:swap_sell/ui/pages/signin.dart';
 import 'package:swap_sell/ui/pages/signup.dart';
+import 'package:swap_sell/ui/pages/speech_recognizer.dart';
 import 'package:swap_sell/ui/pages/wish_list_view.dart';
 
 class Routes {
@@ -33,6 +34,7 @@ class Routes {
   static const String ROUTES_SETTINGS_VIEW = '/settings';
   static const String ROUTES_CHECKOUT_VIEW = '/checkOut';
   static const String ROUTES_PREPARATION_VIEW = '/preparation';
+  static const String ROUTES_VOICE_RECOGNIZER = '/voice';
 
   static final Map<String, WidgetBuilder> routes = {
     ROUTES_HOME: (BuildContext context) => Home(),
@@ -51,6 +53,7 @@ class Routes {
     ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
     ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
     ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),
+    ROUTES_VOICE_RECOGNIZER: (BuildContext context) => VoiceRecognizer(),
   };
   static final RouteFactory onUnknownRoute = (RouteSettings settings) {
     return MaterialPageRoute(builder: ((BuildContext context) => Home()));
