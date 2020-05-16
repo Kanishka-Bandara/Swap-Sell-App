@@ -125,6 +125,7 @@ class _SigninState extends State<Signin> {
                                   _password=null;
                                 });
                                 print("Bad Credentials");
+                                // TODO::Show message
                                 // DefaultComponents.showMessage(
                                 //   context,
                                 //   "You are not signin with your facebook account./nPlease signup with your account.",
@@ -164,6 +165,7 @@ class _SigninState extends State<Signin> {
                                 FaceBookAuthController.defaultController
                                     .logout();
                                 print("Wrong details");
+                                // TODO::Show message
                                 // DefaultComponents.showMessage(
                                 //   context,
                                 //   "You are not signin with your facebook account./nPlease signup with your account.",
@@ -189,6 +191,7 @@ class _SigninState extends State<Signin> {
                               if (state == false) {
                                 GoogleAuthController.defaultController.logOut();
                                 print("Wrong details");
+                                // TODO::Show message
                                 // DefaultComponents.showMessage(
                                 //   context,
                                 //   "You are not signin with your google account./nPlease signup with your account.",
