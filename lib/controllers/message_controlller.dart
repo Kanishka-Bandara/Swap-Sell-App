@@ -59,8 +59,8 @@ class MessageController extends Model {
           userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
-          fName: "Kanishka",
-          lName: "Bandara",
+          fname: "Kanishka",
+          lname: "Bandara",
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
@@ -83,8 +83,8 @@ class MessageController extends Model {
           userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
-          fName: "Kanishka",
-          lName: "Bandara",
+          fname: "Kanishka",
+          lname: "Bandara",
           fullName: "Kanishka Udayakantha Bandara",
           profilePicUrl:
               "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
@@ -142,8 +142,8 @@ class MessageController extends Model {
           userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
-          fName: "Kanishka",
-          lName: "Bandara",
+          fname: "Kanishka",
+          lname: "Bandara",
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(
@@ -165,8 +165,8 @@ class MessageController extends Model {
           userType: UserType.SELLER_AND_BUYER,
           title: "Mr.",
           gender: "Male",
-          fName: "Kanishka",
-          lName: "Bandara",
+          fname: "Kanishka",
+          lname: "Bandara",
           fullName: "Kanishka Udayakantha Bandara",
           emails: <Email>[
             Email(

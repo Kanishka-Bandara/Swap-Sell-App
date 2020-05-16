@@ -4,6 +4,9 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
+import 'package:swap_sell/controllers/location_details_controller.dart';
+import 'package:swap_sell/controllers/user/user_controller.dart';
+import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
@@ -28,6 +31,8 @@ class _SignupState extends State<Signup> {
   String _password = "";
   String _confirmPassword = "";
   String _username = "";
+  String _title;
+  String _country;
   String _usernameErrorText;
   String _emailErrorText;
   String _confirmPasswordError;
@@ -73,15 +78,20 @@ class _SignupState extends State<Signup> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          _buildUserTitleDropDown(),
                           KTextFormField(
                             required: true,
                             name: "First Name",
                             emptyRequiredMessage: "First name is Required",
                             onChanged: (String value) {
-                              _fName = value;
+                              setState(() {
+                                _fName = value;
+                              });
                             },
                             onSaved: (String value) {
-                              _fName = value;
+                              setState(() {
+                                _fName = value;
+                              });
                             },
                           ),
                           KTextFormField(
@@ -89,10 +99,14 @@ class _SignupState extends State<Signup> {
                             name: "Last Name",
                             emptyRequiredMessage: "Last name is Required",
                             onChanged: (String value) {
-                              _lName = value;
+                              setState(() {
+                                _lName = value;
+                              });
                             },
                             onSaved: (String value) {
-                              _lName = value;
+                              setState(() {
+                                _lName = value;
+                              });
                             },
                           ),
                           KTextFormField(
@@ -150,37 +164,9 @@ class _SignupState extends State<Signup> {
                             errorText: _emailErrorText,
                           ),
                           SizedBox(
-                            height: 0,
+                            height: 15,
                           ),
-                          KDropDownButton<String>(
-                            value: "1",
-                            hint: Row(
-                              children: <Widget>[
-                                Text("Select Head Category"),
-                              ],
-                            ),
-                            items: [
-                              DropdownMenuItem(
-                                child: Row(
-                                  children: <Widget>[
-                                    Text("HA"),
-                                  ],
-                                ),
-                                value: "1",
-                              ),
-                              DropdownMenuItem(
-                                child: Row(
-                                  children: <Widget>[
-                                    Text("HB"),
-                                  ],
-                                ),
-                                value: "2",
-                              ),
-                            ],
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          ),
+                          _buildCountryDropDown(),
                           SizedBox(
                             height: 0,
                           ),
@@ -273,30 +259,40 @@ class _SignupState extends State<Signup> {
                               }
                               _formKey.currentState.save();
                               User u = new User(
-                                  id: null,
-                                  userId: _username,
-                                  userType: UserType.SELLER_AND_BUYER,
-                                  title: "Mr.",
-                                  gender: "Not Specified",
-                                  fName: _fName,
-                                  lName: _lName,
-                                  fullName: _fName + " " + _lName,
-                                  activeState: 1,
-                                  emails: [
-                                    Email(
-                                        id: null,
-                                        emailTypeId: 1,
-                                        emailType: EmailType.AUTHENTICATION,
-                                        email: _email,
-                                        isDefault: 1,
-                                        userId: null,
-                                        status: 1)
-                                  ],
-                                  country: null,
-                                  status: 1,
-                                  addresses: null,
-                                  username: _username);
-                              print(u.toJson());
+                                id: null,
+                                userId: _username,
+                                userType: UserType.SELLER_AND_BUYER,
+                                title: _title,
+                                gender: "Not Specified",
+                                fname: _fName,
+                                lname: _lName,
+                                fullName: _fName + " " + _lName,
+                                activeState: 1,
+                                emails: [
+                                  Email(
+                                      id: null,
+                                      emailTypeId: 1,
+                                      emailType: EmailType.AUTHENTICATION,
+                                      email: _email,
+                                      isDefault: 1,
+                                      userId: null,
+                                      status: 1)
+                                ],
+                                country: _country,
+                                status: 1,
+                                addresses: null,
+                                username: _username,
+                              );
+                              AuthenticatedUser authenticatedUser =
+                                  AuthenticatedUser(
+                                logInAt: DateTime.now(),
+                                password: _password,
+                                userName: _username,
+                                status: 1,
+                              );
+                              UserController.defaultUserController
+                                  .signupUser(u, authenticatedUser, context);
+                              // print(u.toJson().toString());
                             },
                           ),
                         ],
@@ -323,7 +319,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await FaceBookAuthController.defaulyController
-                                  .loginWithFB();
+                                  .loginWithFB(context);
                             },
                           ),
                           SizedBox(
@@ -337,7 +333,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await GoogleAuthController.defaultController
-                                  .loginWithGoogle();
+                                  .loginWithGoogle(context);
                             },
                           ),
                         ],
@@ -370,5 +366,55 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
+  }
+
+  Widget _buildCountryDropDown() {
+    return FutureBuilder(
+        future: LocationDetailsController.defaultcontroller.getCountryList(),
+        builder: (context, snapshot) {
+          if (snapshot == null) {
+            return Container();
+          } else {
+            return KDropDownButton<String>(
+              value: _country,
+              hint: Row(
+                children: <Widget>[
+                  Text("Select your Country"),
+                ],
+              ),
+              items: snapshot.data,
+              onChanged: (value) {
+                setState(() {
+                  _country = value;
+                });
+              },
+            );
+          }
+        });
+  }
+
+  Widget _buildUserTitleDropDown() {
+    return FutureBuilder(
+        future: UserController.defaultUserController.getUserTitleList(),
+        builder: (context, snapshot) {
+          if (snapshot == null) {
+            return Container();
+          } else {
+            return KDropDownButton<String>(
+              value: _title,
+              hint: Row(
+                children: <Widget>[
+                  Text("Select your Title"),
+                ],
+              ),
+              items: snapshot.data,
+              onChanged: (value) {
+                setState(() {
+                  _title = value;
+                });
+              },
+            );
+          }
+        });
   }
 }

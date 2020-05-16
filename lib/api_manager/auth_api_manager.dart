@@ -8,7 +8,6 @@ import 'package:swap_sell/model/user/user.dart';
 
 class AuthManagerAPI {
   static AuthManagerAPI defaultManager = AuthManagerAPI();
-  void signUp(User u, AuthenticatedUser authenticatedUser) {}
 
   Future<bool> isUserNameAlreadyExist(String userName) async {
     var response = await http.post(
@@ -47,4 +46,17 @@ class AuthManagerAPI {
     }
   }
 
+  Future<User> signUp(AuthenticatedUser u) async {
+    var response = await http.post(
+      URLHolder.SIGNUP_URL,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(u),
+    );
+    if (response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    }
+    return null;
+  }
 }

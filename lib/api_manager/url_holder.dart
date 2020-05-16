@@ -4,7 +4,13 @@ class URLHolder{
    static const String _SIGNUP_PACKAGE = _AUTH_PACKAGE+"/signUp";
    static const String SIGNUP_URL = _SIGNUP_PACKAGE; 
    static const String USERNAME_ALREADY_EXISTS_URL = SIGNUP_URL+"/userNameAlreadyExist"; 
-   static const String EMAIL_ALREADY_EXISTS_URL = SIGNUP_URL+"/userEmailAlreadyExist"; 
-
+   static const String EMAIL_ALREADY_EXISTS_URL = SIGNUP_URL+"/userEmailAlreadyExist";  
+   static const String _LOCATION_PACKAGE = MAIN_URL+"/location";
+   static const String ALL_COUNTRY_LIST_URL = _LOCATION_PACKAGE+"/getAllCountries";  
+   static const String _USER_PACKAGE = MAIN_URL+"/user";  
+   static const String _TITLE_PACKAGE = _USER_PACKAGE+"/title";
+   static const String ALL_USER_TITLES_LIST_URL = _TITLE_PACKAGE+"/getAll";
+   static const String USER_CREATE_URL = _USER_PACKAGE+"/create";
+  
    
 }

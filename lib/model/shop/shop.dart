@@ -33,12 +33,12 @@ class Shop {
       userType: UserType.SELLER_AND_BUYER,
       title: "Mr.",
       gender: "Male",
-      fName: "Kanishka",
-      lName: "Bandara",
+      fname: "Kanishka",
+      lname: "Bandara",
       fullName: "Kanishka Bandara",
       profilePicUrl:
           "https://qph.fs.quoracdn.net/main-raw-215174174-lbogygxumelpceaujmltqhykknchfzku.jpeg",
-      sName: "Bandara",
+      sname: "Bandara",
       activeState: 1,
       emails: [
         Email(

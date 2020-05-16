@@ -130,7 +130,7 @@ class _UserProfileViewState extends State<UserProfileView> {
                                 " " +
                                 model.getCurrentUser.getLName),
                             _aboveText("Username : " +
-                                model.getCurrentUser.getUsername),
+                                model.getCurrentUser.getUserId),
                           ],
                         ),
                       ),

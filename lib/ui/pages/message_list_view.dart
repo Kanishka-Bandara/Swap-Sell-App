@@ -111,7 +111,7 @@ class _MessageViewState extends State<MessageView> {
                           : Image.network(
                               snapshot.data[index].sentBy.profilePicUrl),
                       title: Text(
-                          "${snapshot.data[index].sentBy.fName} ${snapshot.data[index].sentBy.lName}"),
+                          "${snapshot.data[index].sentBy.fname} ${snapshot.data[index].sentBy.lname}"),
                       subtitle: Text(snapshot.data[index].messageList[0].message
                                   .toString()
                                   .length >

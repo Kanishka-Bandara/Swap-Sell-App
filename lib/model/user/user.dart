@@ -15,9 +15,9 @@ class User {
   UserType userType;
   String title;
   String gender;
-  String fName;
-  String lName;
-  String sName;
+  String fname;
+  String lname;
+  String sname;
   String fullName;
   int activeState;
   List<Email> emails;
@@ -36,9 +36,9 @@ class User {
     @required this.userType,
     @required this.title,
     @required this.gender,
-    @required this.fName,
-    @required this.lName,
-    this.sName,
+    @required this.fname,
+    @required this.lname,
+    this.sname,
     @required this.fullName,
     @required this.activeState,
     @required this.emails,
@@ -72,17 +72,17 @@ class User {
 
   set setGender(String gender) => this.gender = gender;
 
-  String get getFName => fName;
+  String get getFName => fname;
 
-  set setFName(String fName) => this.fName = fName;
+  set setFName(String fname) => this.fname = fname;
 
-  String get getLName => lName;
+  String get getLName => lname;
 
-  set setLName(String lName) => this.lName = lName;
+  set setLName(String lname) => this.lname = lname;
 
-  String get getSName => sName;
+  String get getSName => sname;
 
-  set setSName(String sName) => this.sName = sName;
+  set setSName(String sname) => this.sname = sname;
 
   String get getFullName => fullName;
 
@@ -173,14 +173,14 @@ class User {
       userType: this.userType,
       title: this.getTitle,
       gender: this.getGender,
-      fName: this.getFName,
-      lName: this.getLName,
+      fname: this.getFName,
+      lname: this.getLName,
       fullName: this.getFullName,
       activeState: this.getActiveState,
       emails: this.getEmails,
       country: this.getCountry,
       status: this.getStatus,
-      sName: this.getSName,
+      sname: this.getSName,
       note: this.getNote,
       profilePicUrl: this.getProfilePicUrl,
       addresses: this.getAddresses,

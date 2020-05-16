@@ -1,14 +1,28 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/api_manager/auth_api_manager.dart';
+import 'package:swap_sell/api_manager/user_api_manager.dart';
+import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class UserController extends Model {
   static UserController defaultUserController = UserController();
 
+  Future<void> signupUser(User u, AuthenticatedUser authenticatedUser,BuildContext context) async {
+    User newUser = await createUser(u);
+    authenticatedUser.setUserId = newUser.getId;
+    newUser = await AuthManagerAPI.defaultManager.signUp(authenticatedUser);
+    AppInit.currentApp.setCurrentUser = newUser;
+    AppNavigator.navigateToHomePage(context);
+  }
+
   Future<User> createUser(User user) async {
-    //TODO:Save User on backend
-    return user;
+    User newUser = await UserManagerAPI.defaultManager.saveUser(user);
+    return newUser;
   }
 
   Future<User> editUser(User user, int userID) async {
@@ -32,5 +46,23 @@ class UserController extends Model {
     user.setProfilePicUrl =
         "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/naked_boxshot_mobile_138233.jpg";
     return user;
+  }
+
+  Future<List<DropdownMenuItem<String>>> getUserTitleList() async {
+    List<DropdownMenuItem<String>> rl = [];
+    var l = await UserManagerAPI.defaultManager.getAllUserTitles();
+    l.forEach((m) {
+      rl.add(
+        DropdownMenuItem(
+          child: Row(
+            children: <Widget>[
+              Text(m["title"]),
+            ],
+          ),
+          value: m["title"],
+        ),
+      );
+    });
+    return rl;
   }
 }
