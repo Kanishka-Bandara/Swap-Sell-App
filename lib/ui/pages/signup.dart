@@ -319,7 +319,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await FaceBookAuthController.defaulyController
-                                  .loginWithFB(context);
+                                  .loginWithFB(context,AuthType.SIGNUP);
                             },
                           ),
                           SizedBox(
@@ -333,7 +333,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await GoogleAuthController.defaultController
-                                  .loginWithGoogle(context);
+                                  .loginWithGoogle(context,AuthType.SIGNUP);
                             },
                           ),
                         ],

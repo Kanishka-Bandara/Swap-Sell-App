@@ -44,14 +44,16 @@ class MyMenu {
                     child: ScopedModelDescendant<MessageController>(
                       builder: (BuildContext context, Widget widget,
                           MessageController msgModel) {
-                        return msgModel.getAllUnreadMessagesCount>0? DefaultComponents.buildRoundedNotificationLabel(
-                          context,
-                          "${msgModel.getAllUnreadMessagesCount}",
-                          Theme.of(context).primaryColor,
-                          30,
-                          30,
-                          50,
-                        ):Text("");
+                        return msgModel.getAllUnreadMessagesCount > 0
+                            ? DefaultComponents.buildRoundedNotificationLabel(
+                                context,
+                                "${msgModel.getAllUnreadMessagesCount}",
+                                Theme.of(context).primaryColor,
+                                30,
+                                30,
+                                50,
+                              )
+                            : Text("");
                       },
                     ),
                   ),
@@ -112,25 +114,31 @@ class MyMenu {
                   title: Text("Help"),
                   onTap: () {},
                 ),
-               model.currentUserState?  Divider(
-                  color: Colors.black,
-                  height: 36,
-                ):Container(),
-               model.currentUserState? ListTile(
-                  leading: Icon(Icons.perm_identity),
-                  title: Text("Profile"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    AppNavigator.navigateToProfileOverviewPage(context);
-                  },
-                ):Container(),
-                 model.currentUserState? ListTile(
-                  leading: Icon(Icons.exit_to_app),
-                  title: Text("Sign Out"),
-                  onTap: () {
-                    model.logOut();
-                  },
-                ):Container(),
+                model.currentUserState
+                    ? Divider(
+                        color: Colors.black,
+                        height: 36,
+                      )
+                    : Container(),
+                model.currentUserState
+                    ? ListTile(
+                        leading: Icon(Icons.perm_identity),
+                        title: Text("Profile"),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          AppNavigator.navigateToProfileOverviewPage(context);
+                        },
+                      )
+                    : Container(),
+                model.currentUserState
+                    ? ListTile(
+                        leading: Icon(Icons.exit_to_app),
+                        title: Text("Sign Out"),
+                        onTap: () {
+                          model.logOut();
+                        },
+                      )
+                    : Container(),
               ],
             );
           }),
@@ -171,7 +179,9 @@ class MyMenu {
             accountName: Text(model.getCurrentUser.getFName +
                 " " +
                 model.getCurrentUser.getLName),
-            accountEmail: Text(model.getCurrentUser.getEmails[0].getEmail),
+            accountEmail: Text(
+              model.getCurrentUser.getUserId,
+            ),
           );
         },
       ),

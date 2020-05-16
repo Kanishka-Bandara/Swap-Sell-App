@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
+import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
@@ -14,7 +15,7 @@ class FaceBookAuthController {
   static FaceBookAuthController defaulyController = FaceBookAuthController();
   final FacebookLogin facebookLogin = FacebookLogin();
 
-  loginWithFB(BuildContext context) async {
+  loginWithFB(BuildContext context, AuthType authType) async {
     final result = await facebookLogin.logIn(['email']);
 
     switch (result.status) {
@@ -57,7 +58,9 @@ class FaceBookAuthController {
           status: 1,
           facebookId: fbId,
         );
-        UserController.defaultUserController.signupUser(u, au,context);
+        if (authType == AuthType.SIGNUP) {
+          UserController.defaultUserController.signupUser(u, au, context);
+        } else {}
         break;
       case FacebookLoginStatus.cancelledByUser:
         print("Cancelled");

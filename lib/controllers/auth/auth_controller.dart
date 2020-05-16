@@ -11,3 +11,8 @@ class AuthController {
     return await AuthManagerAPI.defaultManager.isEmailAlreadyExist(email);
   }
 }
+
+enum AuthType {
+  SIGNUP,
+  SIGNIN,
+}

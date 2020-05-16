@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
@@ -12,7 +13,7 @@ class GoogleAuthController {
 
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
-  loginWithGoogle(BuildContext context) async {
+  loginWithGoogle(BuildContext context, AuthType authType) async {
     try {
       await _googleSignIn.signIn();
       GoogleSignInAccount currentUser = _googleSignIn.currentUser;
@@ -51,7 +52,9 @@ class GoogleAuthController {
         status: 1,
         facebookId: fbId,
       );
-      UserController.defaultUserController.signupUser(u, au,context);
+      if (authType == AuthType.SIGNUP) {
+        UserController.defaultUserController.signupUser(u, au, context);
+      } else {}
     } catch (err) {
       print(err);
     }
