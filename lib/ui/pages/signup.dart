@@ -318,7 +318,7 @@ class _SignupState extends State<Signup> {
                               size: 50,
                             ),
                             onPressed: () async {
-                              await FaceBookAuthController.defaulyController
+                              await FaceBookAuthController.defaultController
                                   .loginWithFB(context,AuthType.SIGNUP);
                             },
                           ),

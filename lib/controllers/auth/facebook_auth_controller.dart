@@ -12,10 +12,10 @@ import 'package:swap_sell/model/user/user.dart';
 import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class FaceBookAuthController {
-  static FaceBookAuthController defaulyController = FaceBookAuthController();
+  static FaceBookAuthController defaultController = FaceBookAuthController();
   final FacebookLogin facebookLogin = FacebookLogin();
 
-  loginWithFB(BuildContext context, AuthType authType) async {
+  Future<bool> loginWithFB(BuildContext context, AuthType authType) async {
     final result = await facebookLogin.logIn(['email']);
 
     switch (result.status) {
@@ -24,7 +24,6 @@ class FaceBookAuthController {
         final graphResponse = await http.get(
             'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=$token');
         Map profile = JSON.jsonDecode(graphResponse.body);
-        print(profile);
         String name = profile["name"];
         String imgUrl = profile["picture"]["data"]["url"];
         String email = profile["email"];
@@ -60,15 +59,17 @@ class FaceBookAuthController {
         );
         if (authType == AuthType.SIGNUP) {
           UserController.defaultUserController.signupUser(u, au, context);
-        } else {}
+        } else {
+          return await AuthController.defaultController
+              .signInWithFb(au, context);
+        }
         break;
       case FacebookLoginStatus.cancelledByUser:
-        print("Cancelled");
         break;
       case FacebookLoginStatus.error:
-        print("Error");
         break;
     }
+    return false;
   }
 
   logout() async {

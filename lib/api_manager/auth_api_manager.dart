@@ -70,8 +70,9 @@ class AuthManagerAPI {
     );
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
+    }else{
+      return null;
     }
-    return null;
   }
 
   Future<User> signInWithFb(AuthenticatedUser u) async {

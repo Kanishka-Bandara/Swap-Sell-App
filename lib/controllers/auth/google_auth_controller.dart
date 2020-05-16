@@ -13,11 +13,10 @@ class GoogleAuthController {
 
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
-  loginWithGoogle(BuildContext context, AuthType authType) async {
+ Future<bool> loginWithGoogle(BuildContext context, AuthType authType) async {
     try {
       await _googleSignIn.signIn();
       GoogleSignInAccount currentUser = _googleSignIn.currentUser;
-      print(currentUser);
       String name = currentUser.displayName;
       String imgUrl = currentUser.photoUrl;
       String email = currentUser.email;
@@ -54,10 +53,13 @@ class GoogleAuthController {
       );
       if (authType == AuthType.SIGNUP) {
         UserController.defaultUserController.signupUser(u, au, context);
-      } else {}
+      } else {
+         return await AuthController.defaultController.signInWithGoogle(au, context);
+      }
     } catch (err) {
       print(err);
     }
+    return null;
   }
 
   logOut() async {

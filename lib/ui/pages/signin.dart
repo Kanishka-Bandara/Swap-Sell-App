@@ -5,6 +5,7 @@ import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -137,8 +138,20 @@ class _SigninState extends State<Signin> {
                               color: Colors.blueAccent,
                               size: 50,
                             ),
-                            onPressed: () {
-                              FaceBookAuthController.defaulyController.loginWithFB(context, AuthType.SIGNIN);
+                            onPressed: () async {
+                              bool state = await FaceBookAuthController
+                                  .defaultController
+                                  .loginWithFB(context, AuthType.SIGNIN);
+                              if (state==false) {
+                                FaceBookAuthController.defaultController.logout();
+                                print("Wrong details");
+                                // DefaultComponents.showMessage(
+                                //   context,
+                                //   "You are not signin with your facebook account./nPlease signup with your account.",
+                                //   Icons.error,
+                                //   3,
+                                // );
+                              }
                             },
                           ),
                           SizedBox(
@@ -150,8 +163,20 @@ class _SigninState extends State<Signin> {
                               color: Colors.red,
                               size: 50,
                             ),
-                            onPressed: () {
-                              GoogleAuthController.defaultController.loginWithGoogle(context, AuthType.SIGNIN);
+                            onPressed: () async {
+                              bool state = await GoogleAuthController
+                                  .defaultController
+                                  .loginWithGoogle(context, AuthType.SIGNIN);
+                              if (state==false) {
+                                GoogleAuthController.defaultController.logOut();
+                                print("Wrong details");
+                                DefaultComponents.showMessage(
+                                  context,
+                                  "You are not signin with your google account./nPlease signup with your account.",
+                                  Icons.error,
+                                  3,
+                                );
+                              }
                             },
                           ),
                         ],
