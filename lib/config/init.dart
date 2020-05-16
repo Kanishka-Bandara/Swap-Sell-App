@@ -1,13 +1,8 @@
 import 'dart:io';
-
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
-import 'package:swap_sell/model/user/address.dart';
-import 'package:swap_sell/model/user/contact_metadata.dart';
-import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class AppInit extends Model {
   static AppInit currentApp = AppInit();

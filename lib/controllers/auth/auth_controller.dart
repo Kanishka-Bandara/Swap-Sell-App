@@ -5,7 +5,6 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
 
 class AuthController {
   static AuthController defaultController = new AuthController();

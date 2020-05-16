@@ -6,8 +6,6 @@ import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class Signin extends StatefulWidget {
