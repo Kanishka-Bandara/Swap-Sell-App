@@ -18,7 +18,7 @@ class AuthController {
     return await AuthManagerAPI.defaultManager.isEmailAlreadyExist(email);
   }
 
-  Future<bool>  signInWithFb(AuthenticatedUser au, BuildContext context) async {
+  Future<bool> signInWithFb(AuthenticatedUser au, BuildContext context) async {
     User user = await AuthManagerAPI.defaultManager.signInWithFb(au);
     if (user != null) {
       AppInit.currentApp.setCurrentUser = user;
@@ -29,8 +29,21 @@ class AuthController {
     }
   }
 
-  Future<bool>  signInWithGoogle(AuthenticatedUser au, BuildContext context) async {
+  Future<bool> signInWithGoogle(
+      AuthenticatedUser au, BuildContext context) async {
     User user = await AuthManagerAPI.defaultManager.signInWithGoogle(au);
+    if (user != null) {
+      AppInit.currentApp.setCurrentUser = user;
+      AppNavigator.navigateToHomePage(context);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> signInWithNormal(
+      AuthenticatedUser au, BuildContext context) async {
+    User user = await AuthManagerAPI.defaultManager.signInWithNormal(au);
     if (user != null) {
       AppInit.currentApp.setCurrentUser = user;
       AppNavigator.navigateToHomePage(context);

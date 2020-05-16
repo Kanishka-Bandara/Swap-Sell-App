@@ -82,6 +82,9 @@ class AuthManagerAPI {
   Future<User> signInWithGoogle(AuthenticatedUser u) async {
    return _signIn(u, URLHolder.SIGNIN_G_URL);
   }
+  Future<User> signInWithNormal(AuthenticatedUser u) async {
+   return _signIn(u, URLHolder.SIGNIN_NORMAL_URL);
+  }
 
 
 }

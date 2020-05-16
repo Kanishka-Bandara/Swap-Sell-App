@@ -4,6 +4,7 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
+import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
@@ -63,19 +64,21 @@ class _SigninState extends State<Signin> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           KTextFormField(
-                            name: "Email",
+                            name: "Username",
+                            required: true,
                             emptyRequiredMessage: "Username is Required",
                             onSaved: (String value) {
                               _username = value;
                             },
-                            regExp: KRegEx.EMAIL_REG_EX,
-                            regExpErrorMessage: "Please enter valid email",
+                            // regExp: KRegEx.EMAIL_REG_EX,
+                            // regExpErrorMessage: "Please enter valid email",
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           KTextFormField(
                             name: "Password",
+                            required: true,
                             emptyRequiredMessage: "Password is Required",
                             onSaved: (String value) {
                               _password = value;
@@ -107,13 +110,28 @@ class _SigninState extends State<Signin> {
                                 color: Colors.white,
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: () async{
                               if (!_formKey.currentState.validate()) {
                                 return;
                               }
                               _formKey.currentState.save();
-                              print(
-                                  "Username = $_username & password = $_password");
+                              AuthenticatedUser au = AuthenticatedUser(
+                                userName: _username,
+                                password: _password,
+                              );
+                              bool state =await AuthController.defaultController.signInWithNormal(au, context);
+                              if (state == false) {
+                                setState(() {
+                                  _password=null;
+                                });
+                                print("Bad Credentials");
+                                // DefaultComponents.showMessage(
+                                //   context,
+                                //   "You are not signin with your facebook account./nPlease signup with your account.",
+                                //   Icons.error,
+                                //   3,
+                                // );
+                              }
                             },
                           ),
                         ],
@@ -142,8 +160,9 @@ class _SigninState extends State<Signin> {
                               bool state = await FaceBookAuthController
                                   .defaultController
                                   .loginWithFB(context, AuthType.SIGNIN);
-                              if (state==false) {
-                                FaceBookAuthController.defaultController.logout();
+                              if (state == false) {
+                                FaceBookAuthController.defaultController
+                                    .logout();
                                 print("Wrong details");
                                 // DefaultComponents.showMessage(
                                 //   context,
@@ -167,15 +186,15 @@ class _SigninState extends State<Signin> {
                               bool state = await GoogleAuthController
                                   .defaultController
                                   .loginWithGoogle(context, AuthType.SIGNIN);
-                              if (state==false) {
+                              if (state == false) {
                                 GoogleAuthController.defaultController.logOut();
                                 print("Wrong details");
-                                DefaultComponents.showMessage(
-                                  context,
-                                  "You are not signin with your google account./nPlease signup with your account.",
-                                  Icons.error,
-                                  3,
-                                );
+                                // DefaultComponents.showMessage(
+                                //   context,
+                                //   "You are not signin with your google account./nPlease signup with your account.",
+                                //   Icons.error,
+                                //   3,
+                                // );
                               }
                             },
                           ),
