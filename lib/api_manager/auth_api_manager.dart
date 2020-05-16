@@ -59,4 +59,28 @@ class AuthManagerAPI {
     }
     return null;
   }
+  
+  Future<User> _signIn(AuthenticatedUser u,String url) async {
+    var response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(u),
+    );
+    if (response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    }
+    return null;
+  }
+
+  Future<User> signInWithFb(AuthenticatedUser u) async {
+   return _signIn(u, URLHolder.SIGNIN_FB_URL);
+  }
+
+  Future<User> signInWithGoogle(AuthenticatedUser u) async {
+   return _signIn(u, URLHolder.SIGNIN_G_URL);
+  }
+
+
 }

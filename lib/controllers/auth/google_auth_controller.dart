@@ -50,7 +50,7 @@ class GoogleAuthController {
       AuthenticatedUser au = AuthenticatedUser(
         logInAt: DateTime.now(),
         status: 1,
-        facebookId: fbId,
+        googleId: fbId,
       );
       if (authType == AuthType.SIGNUP) {
         UserController.defaultUserController.signupUser(u, au, context);
