@@ -27,9 +27,8 @@ class UserController extends Model {
   }
 
   Future<User> editUser(User user, int userID) async {
-    print(user.toJson());
-    //TODO:Edit User on backend
-    return user;
+    User editedUser = await UserManagerAPI.defaultManager.editUser(user);
+    return editedUser;
   }
 
   Future<bool> deleteUser(int userID) async {

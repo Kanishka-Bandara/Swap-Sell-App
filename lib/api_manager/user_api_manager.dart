@@ -38,6 +38,22 @@ class UserManagerAPI {
     return null;
   }
 
+  Future<User> editUser(User u) async {
+    var response = await http.post(
+      URLHolder.USER_EDIT_URL,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(u),
+    );
+    if (response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    }else if(response.statusCode == 202) {
+      
+    }
+    return null;
+  }
+
   Future<Map> saveUserImage(Map<String,String> request) async {
     print(jsonEncode(request));
     print("/n/n");

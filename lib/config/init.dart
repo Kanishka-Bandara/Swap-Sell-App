@@ -72,11 +72,11 @@ class AppInit extends Model {
     notifyListeners();
   }
 
-  Future<User> editCurrentUser(User u) async {
+  Future<bool> editCurrentUser(User u) async {
     _currentUser =
         await UserController.defaultUserController.editUser(u, u.getId);
     notifyListeners();
-    return _currentUser;
+    return true;
   }
 
   Future<User> editCurruntUserImage(File image) async {
