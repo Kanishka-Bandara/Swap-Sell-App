@@ -12,6 +12,7 @@ import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 import 'package:swap_sell/model/user/usertype_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/components/user_component.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -78,7 +79,15 @@ class _SignupState extends State<Signup> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          _buildUserTitleDropDown(),
+                          UserComponent.buildUserTitleDropDown(
+                            context,
+                            (value) {
+                              setState(() {
+                                _title = value;
+                              });
+                            },
+                            _title,
+                          ),
                           KTextFormField(
                             required: true,
                             name: "First Name",
@@ -166,7 +175,15 @@ class _SignupState extends State<Signup> {
                           SizedBox(
                             height: 15,
                           ),
-                          _buildCountryDropDown(),
+                          UserComponent.buildCountryDropDown(
+                            context,
+                            (value) {
+                              setState(() {
+                                _country = value;
+                              });
+                            },
+                            _country,
+                          ),
                           SizedBox(
                             height: 0,
                           ),
@@ -319,7 +336,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await FaceBookAuthController.defaultController
-                                  .loginWithFB(context,AuthType.SIGNUP);
+                                  .loginWithFB(context, AuthType.SIGNUP);
                             },
                           ),
                           SizedBox(
@@ -333,7 +350,7 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               await GoogleAuthController.defaultController
-                                  .loginWithGoogle(context,AuthType.SIGNUP);
+                                  .loginWithGoogle(context, AuthType.SIGNUP);
                             },
                           ),
                         ],
@@ -366,55 +383,5 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
-  }
-
-  Widget _buildCountryDropDown() {
-    return FutureBuilder(
-        future: LocationDetailsController.defaultcontroller.getCountryList(),
-        builder: (context, snapshot) {
-          if (snapshot == null) {
-            return Container();
-          } else {
-            return KDropDownButton<String>(
-              value: _country,
-              hint: Row(
-                children: <Widget>[
-                  Text("Select your Country"),
-                ],
-              ),
-              items: snapshot.data,
-              onChanged: (value) {
-                setState(() {
-                  _country = value;
-                });
-              },
-            );
-          }
-        });
-  }
-
-  Widget _buildUserTitleDropDown() {
-    return FutureBuilder(
-        future: UserController.defaultUserController.getUserTitleList(),
-        builder: (context, snapshot) {
-          if (snapshot == null) {
-            return Container();
-          } else {
-            return KDropDownButton<String>(
-              value: _title,
-              hint: Row(
-                children: <Widget>[
-                  Text("Select your Title"),
-                ],
-              ),
-              items: snapshot.data,
-              onChanged: (value) {
-                setState(() {
-                  _title = value;
-                });
-              },
-            );
-          }
-        });
   }
 }
