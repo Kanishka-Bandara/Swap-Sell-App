@@ -71,4 +71,22 @@ class UserController extends Model {
     });
     return rl;
   }
+
+  Future<List<DropdownMenuItem<String>>> getGenderList() async {
+    List<DropdownMenuItem<String>> rl = [];
+    var l = await UserManagerAPI.defaultManager.getGenderList();
+    l.forEach((m) {
+      rl.add(
+        DropdownMenuItem(
+          child: Row(
+            children: <Widget>[
+              Text(m["gender"]),
+            ],
+          ),
+          value: m["gender"],
+        ),
+      );
+    });
+    return rl;
+  }
 }

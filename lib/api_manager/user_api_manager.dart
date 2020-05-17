@@ -6,6 +6,7 @@ import 'package:swap_sell/model/user/user.dart';
 
 class UserManagerAPI {
   static UserManagerAPI defaultManager = UserManagerAPI();
+
   Future<List<Map<String, String>>> getAllUserTitles() async {
     List<Map<String, String>> c = [];
     var response = await http.get(URLHolder.ALL_USER_TITLES_LIST_URL);
@@ -54,4 +55,21 @@ class UserManagerAPI {
     }
     return null;
   }
+  
+  Future<List<Map<String, String>>> getGenderList() async {
+    List<Map<String, String>> c = [];
+    var response = await http.get(URLHolder.ALL_GENDER_LIST_URL);
+    if (response.statusCode == 200) {
+      var x = await jsonDecode(response.body);
+      print(x);
+      for (var i = 0; i < x.length; i++) {
+        Map<String, String> m = {};
+        m["id"] = x[i]["id"];
+        m["gender"] = x[i]["gender"];
+        c.add(m);
+      }
+    }
+    return c;
+  }
+
 }
