@@ -61,7 +61,6 @@ class UserManagerAPI {
     var response = await http.get(URLHolder.ALL_GENDER_LIST_URL);
     if (response.statusCode == 200) {
       var x = await jsonDecode(response.body);
-      print(x);
       for (var i = 0; i < x.length; i++) {
         Map<String, String> m = {};
         m["id"] = x[i]["id"];

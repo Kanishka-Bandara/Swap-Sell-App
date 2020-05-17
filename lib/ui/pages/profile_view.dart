@@ -5,6 +5,7 @@ import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/user/user.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
+import 'package:swap_sell/ui/components/user_component.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 enum ClassMode { View, Edit }
@@ -149,6 +150,13 @@ class _UserProfileViewState extends State<UserProfileView> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
+                             _classMode==ClassMode.Edit? UserComponent.buildUserTitleDropDown(
+                                context,
+                                (value) {
+                                  _user.setTitle = value;
+                                },
+                                model.getCurrentUser.getTitle,
+                              ):
                               KTextFormField(
                                 name: "Title",
                                 emptyRequiredMessage: null,
@@ -204,28 +212,48 @@ class _UserProfileViewState extends State<UserProfileView> {
                                 onSaved: null,
                                 initialValue: model.getCurrentUser.getFullName,
                               ),
-                              KTextFormField(
-                                name: "Gender",
-                                emptyRequiredMessage: null,
-                                enabled:
-                                    _classMode == ClassMode.View ? false : true,
-                                onChanged: (value) {
-                                  _user.setGender = value;
-                                },
-                                onSaved: null,
-                                initialValue: model.getCurrentUser.getGender,
-                              ),
-                              KTextFormField(
-                                name: "Country",
-                                emptyRequiredMessage: null,
-                                enabled:
-                                    _classMode == ClassMode.View ? false : true,
-                                onChanged: (value) {
-                                  _user.setCountry = value;
-                                },
-                                onSaved: null,
-                                initialValue: model.getCurrentUser.getCountry,
-                              ),
+                              _classMode == ClassMode.Edit
+                                  ? UserComponent.buildGenderDropDown(
+                                      context,
+                                      (value) {
+                                        _user.setGender = value;
+                                      },
+                                      model.getCurrentUser.getGender,
+                                    )
+                                  : KTextFormField(
+                                      name: "Gender",
+                                      emptyRequiredMessage: null,
+                                      enabled: _classMode == ClassMode.View
+                                          ? false
+                                          : true,
+                                      onChanged: (value) {
+                                        _user.setGender = value;
+                                      },
+                                      onSaved: null,
+                                      initialValue:
+                                          model.getCurrentUser.getGender,
+                                    ),
+                              _classMode == ClassMode.Edit
+                                  ? UserComponent.buildCountryDropDown(
+                                      context,
+                                      (value) {
+                                        _user.setCountry = value;
+                                      },
+                                      model.getCurrentUser.getCountry,
+                                    )
+                                  : KTextFormField(
+                                      name: "Country",
+                                      emptyRequiredMessage: null,
+                                      enabled: _classMode == ClassMode.View
+                                          ? false
+                                          : true,
+                                      onChanged: (value) {
+                                        _user.setCountry = value;
+                                      },
+                                      onSaved: null,
+                                      initialValue:
+                                          model.getCurrentUser.getCountry,
+                                    ),
                             ],
                           ),
                         ),

@@ -73,6 +73,7 @@ class UserController extends Model {
   }
 
   Future<List<DropdownMenuItem<String>>> getGenderList() async {
+    print("called getGenderList");
     List<DropdownMenuItem<String>> rl = [];
     var l = await UserManagerAPI.defaultManager.getGenderList();
     l.forEach((m) {
