@@ -22,8 +22,6 @@ class UserManagerAPI {
   }
 
   Future<User> saveUser(User u) async {
-    print(jsonEncode(u));
-    print("/n/n");
     var response = await http.post(
       URLHolder.USER_CREATE_URL,
       headers: <String, String>{
@@ -33,6 +31,24 @@ class UserManagerAPI {
     );
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
+    }else if(response.statusCode == 202) {
+      
+    }
+    return null;
+  }
+
+  Future<Map> saveUserImage(Map<String,String> request) async {
+    print(jsonEncode(request));
+    print("/n/n");
+    var response = await http.post(
+      URLHolder.USER_UPDATE_PROFILE_PICTURE_URL,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(request),
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
     }else if(response.statusCode == 202) {
       
     }

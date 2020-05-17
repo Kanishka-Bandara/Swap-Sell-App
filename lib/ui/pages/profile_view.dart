@@ -112,9 +112,14 @@ class _UserProfileViewState extends State<UserProfileView> {
                                     color: Colors.white,
                                   ),
                                   onPressed: () async {
-                                    await model.editCurruntUserImage(
-                                        await CameraController.defaultController
-                                            .getImage(context));
+                                    var file = await CameraController
+                                        .defaultController
+                                        .getImage(context);
+                                    if (file != null) {
+                                      await model.editCurruntUserImage(
+                                        file,
+                                      );
+                                    }
                                   },
                                 ),
                               ),
@@ -129,8 +134,8 @@ class _UserProfileViewState extends State<UserProfileView> {
                                 model.getCurrentUser.getFName +
                                 " " +
                                 model.getCurrentUser.getLName),
-                            _aboveText("Username : " +
-                                model.getCurrentUser.getUserId),
+                            _aboveText(
+                                "Username : " + model.getCurrentUser.getUserId),
                           ],
                         ),
                       ),
@@ -281,7 +286,6 @@ class MyClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
     return true;
   }
 }

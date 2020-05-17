@@ -6,6 +6,7 @@ import 'package:swap_sell/api_manager/auth_api_manager.dart';
 import 'package:swap_sell/api_manager/user_api_manager.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/controllers/appconfig/ImageController.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -42,9 +43,14 @@ class UserController extends Model {
   }
 
   Future<User> editUserImage(File f, User user) async {
-    //TODO:Send to the backend
-    user.setProfilePicUrl =
-        "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/naked_boxshot_mobile_138233.jpg";
+    // user.setProfilePicUrl =
+    //     "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/naked_boxshot_mobile_138233.jpg";
+        Map<String,String> request = {};
+        request["data"] = ImageController.dfaultController.encodeImageToBase64(f);
+        request["profilePicName"] = "."+f.path.split(".").last;
+        request["userId"] = user.getId.toString();
+    Map<String,dynamic> response =   await UserManagerAPI.defaultManager.saveUserImage(request);
+    user.setProfilePicUrl =response["profilePicUrl"];
     return user;
   }
 
