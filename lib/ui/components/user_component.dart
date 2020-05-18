@@ -5,7 +5,7 @@ import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 
 class UserComponent{
   
- static Widget buildCountryDropDown(BuildContext comntext,ValueChanged<dynamic> onChanged,dynamic value) {
+ static Widget buildCountryDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value) {
     return FutureBuilder(
         future: LocationDetailsController.defaultcontroller.getCountryList(),
         builder: (context, snapshot) {

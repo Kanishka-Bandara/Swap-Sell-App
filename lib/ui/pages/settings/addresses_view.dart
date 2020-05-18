@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/pages/settings/address_crud.dart';
 
 class AddressesView extends StatefulWidget {
   @override
@@ -67,7 +69,28 @@ class _AddressesViewState extends State<AddressesView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          AppNavigator.navigateToAddressCrudView(
+            context,
+            AddressCrudType.CREATE,
+            Address(
+              id: null,
+              userId: AppInit.currentApp.getCurrentUser.getId,
+              typeId: null,
+              type: null,
+              name: null,
+              poCode: null,
+              poArea: null,
+              street: null,
+              city: null,
+              district: null,
+              province: null,
+              country: null,
+              isDefaultAddress: null,
+              state: null,
+            ),
+          );
+        },
         child: Icon(
           Icons.add,
         ),
@@ -77,7 +100,13 @@ class _AddressesViewState extends State<AddressesView> {
 
   Widget _buildAddressRow(BuildContext context, Address address) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        AppNavigator.navigateToAddressCrudView(
+          context,
+          AddressCrudType.VIEW,
+          address,
+        );
+      },
       child: Container(
         padding: EdgeInsets.only(
           left: 10,

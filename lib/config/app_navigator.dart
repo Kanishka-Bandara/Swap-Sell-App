@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/config/routs.dart';
 import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/ui/pages/chat_view.dart';
 import 'package:swap_sell/ui/pages/created_product_view.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/search_page.dart';
+import 'package:swap_sell/ui/pages/settings/address_crud.dart';
 
 class AppNavigator extends Navigator {
   static navigateToHomePage(BuildContext context) {
@@ -49,7 +51,7 @@ class AppNavigator extends Navigator {
     ProductView.currentProduct = p;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_VIEW);
   }
-  
+
   static navigateToProfileOverviewPage(
     BuildContext context,
   ) {
@@ -116,6 +118,7 @@ class AppNavigator extends Navigator {
       (Route<dynamic> route) => false,
     );
   }
+
   static navigateToWishListViewPage(
     BuildContext context,
   ) {
@@ -136,19 +139,29 @@ class AppNavigator extends Navigator {
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_PREPARATION_VIEW);
   }
+
   static navigateToCheckOut(
     BuildContext context,
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_CHECKOUT_VIEW);
   }
+
   static navigateToVoiceRecognizer(
     BuildContext context,
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_VOICE_RECOGNIZER);
   }
+
   static navigateToAddressesView(
     BuildContext context,
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_SETTINGS_ADDRESSES_VIEW);
+  }
+
+  static navigateToAddressCrudView(
+      BuildContext context, AddressCrudType type, Address address) {
+    AddressCRUDVIEW.currentType = type;
+    AddressCRUDVIEW.address = address;
+    Navigator.of(context).pushNamed(Routes.ROUTES_SETTINGS_ADDRESS_CRUD_VIEW);
   }
 }
