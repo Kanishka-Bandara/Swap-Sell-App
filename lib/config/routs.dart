@@ -10,7 +10,8 @@ import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/home.dart';
 import 'package:swap_sell/ui/pages/profile_view.dart';
 import 'package:swap_sell/ui/pages/saved_view.dart';
-import 'package:swap_sell/ui/pages/settings.dart';
+import 'package:swap_sell/ui/pages/settings/addresses_view.dart';
+import 'package:swap_sell/ui/pages/settings/settings.dart';
 import 'package:swap_sell/ui/pages/shopping_cart.dart';
 import 'package:swap_sell/ui/pages/signin.dart';
 import 'package:swap_sell/ui/pages/signup.dart';
@@ -32,6 +33,7 @@ class Routes {
   static const String ROUTES_SAVED_VIEW = '/savedView';
   static const String ROUTES_WISH_LIST_VIEW = '/wishListView';
   static const String ROUTES_SETTINGS_VIEW = '/settings';
+  static const String ROUTES_SETTINGS_ADDRESSES_VIEW = '/settings_address_view';
   static const String ROUTES_CHECKOUT_VIEW = '/checkOut';
   static const String ROUTES_PREPARATION_VIEW = '/preparation';
   static const String ROUTES_VOICE_RECOGNIZER = '/voice';
@@ -50,6 +52,7 @@ class Routes {
     ROUTES_SAVED_VIEW: (BuildContext context) => SavedView(),
     ROUTES_SHOPPING_CART: (BuildContext context) => ShoppingCart(),
     ROUTES_SETTINGS_VIEW: (BuildContext context) => Settings(),
+    ROUTES_SETTINGS_ADDRESSES_VIEW: (BuildContext context) => AddressesView(),
     ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
     ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
     ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),

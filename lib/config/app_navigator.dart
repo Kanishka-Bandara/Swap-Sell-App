@@ -146,4 +146,9 @@ class AppNavigator extends Navigator {
   ) {
     Navigator.of(context).pushNamed(Routes.ROUTES_VOICE_RECOGNIZER);
   }
+  static navigateToAddressesView(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_SETTINGS_ADDRESSES_VIEW);
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
@@ -16,6 +17,18 @@ class _SettingsState extends State<Settings> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            GestureDetector(
+              onTap: (){
+                AppNavigator.navigateToAddressesView(context);
+              },
+              child: _buildHeader("Addresses"),
+            ),
+            Container(
+              margin: EdgeInsets.all(5),
+              child: Column(
+                children: <Widget>[],
+              ),
+            ),
             _buildHeader("Change Username"),
             Container(
               margin: EdgeInsets.all(5),
@@ -29,7 +42,7 @@ class _SettingsState extends State<Settings> {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -154,6 +154,16 @@ class User {
     return e;
   }
 
+  List<Address> getAddressesByType(AddressType type) {
+    List<Address> l = [];
+    this.getAddresses.forEach((v) {
+      if (v.getAddressType == type) {
+          l.add(v);
+      }
+    });
+    return l;
+  }
+
   ContactNumber getDefaultContactNumber(ContactNumberType type) {
     ContactNumber e;
     this.getContactNumbers.forEach((v) {
