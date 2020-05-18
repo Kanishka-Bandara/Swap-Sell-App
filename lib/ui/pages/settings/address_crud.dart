@@ -89,6 +89,27 @@ class _AddressCRUDVIEWState extends State<AddressCRUDVIEW> {
                 },
                 _address.getCountry,
               ),
+              UserComponent.buildProvinceDropDown(
+                context,
+                (value) {
+                  setState(() {
+                    _address.setProvince = value;
+                    _address.setDistrict=null;
+                  });
+                },
+                _address.getProvince,
+                _address.getCountry,
+              ),
+              UserComponent.buildDistrictDropDown(
+                context,
+                (value) {
+                  setState(() {
+                    _address.setDistrict = value;
+                  });
+                },
+                _address.getDistrict,
+                _address.getProvince,
+              ),
             ],
           ),
         ),

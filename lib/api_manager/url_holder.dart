@@ -19,6 +19,12 @@ class URLHolder {
   static const String _LOCATION_PACKAGE = MAIN_URL + "/location";
   static const String ALL_COUNTRY_LIST_URL =
       _LOCATION_PACKAGE + "/getAllCountries";
+  static const String ALL_PROVINCE_LIST_BY_COUNTRY_URL =
+      _LOCATION_PACKAGE + "/getAllProvincesByCountry";
+  static const String ALL_DISTRICT_LIST_BY_PROVINCE_URL =
+      _LOCATION_PACKAGE + "/getAllDistrictsByProvince";
+  static const String ALL_POSTAL_CODE_LIST_BY_DISTRICT_URL =
+      _LOCATION_PACKAGE + "/getAllPostalCodesByDistrict";
   // END::Location URL
   // BEGIN::USER URL
   static const String _USER_PACKAGE = MAIN_URL + "/user";

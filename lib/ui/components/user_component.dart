@@ -16,12 +16,77 @@ class UserComponent{
               value: value,
               hint: Row(
                 children: <Widget>[
-                  Text("Select your Country"),
+                  Text("Select your country"),
                 ],
               ),
               items: snapshot.data,
               onChanged: onChanged,
               title: "Country",
+            );
+          }
+        });
+  }
+  
+ static Widget buildProvinceDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String country) {
+    return FutureBuilder(
+        future: LocationDetailsController.defaultcontroller.getProvinceListByCountry(country),
+        builder: (context, snapshot) {
+          if (snapshot == null) {
+            return Container();
+          } else {
+            return KDropDownButton<String>(
+              value: value,
+              hint: Row(
+                children: <Widget>[
+                  Text("Select your province"),
+                ],
+              ),
+              items: snapshot.data,
+              onChanged: onChanged,
+              title: "Province",
+            );
+          }
+        });
+  }
+ static Widget buildDistrictDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String province) {
+    return FutureBuilder(
+        future: LocationDetailsController.defaultcontroller.getDistrictListByProvince(province),
+        builder: (context, snapshot) {
+          if (snapshot == null) {
+            return Container();
+          } else {
+            return KDropDownButton<String>(
+              value: value,
+              hint: Row(
+                children: <Widget>[
+                  Text("Select your district"),
+                ],
+              ),
+              items: snapshot.data,
+              onChanged: onChanged,
+              title: "District",
+            );
+          }
+        });
+  }
+
+ static Widget buildPOBoxDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String district) {
+    return FutureBuilder(
+        future: LocationDetailsController.defaultcontroller.getPOBoxListByDistrict(district),
+        builder: (context, snapshot) {
+          if (snapshot == null) {
+            return Container();
+          } else {
+            return KDropDownButton<String>(
+              value: value,
+              hint: Row(
+                children: <Widget>[
+                  Text("Select your postal area"),
+                ],
+              ),
+              items: snapshot.data,
+              onChanged: onChanged,
+              title: "Postal Area",
             );
           }
         });
@@ -38,7 +103,7 @@ class UserComponent{
               value: value,
               hint: Row(
                 children: <Widget>[
-                  Text("Select your Title"),
+                  Text("Select your title"),
                 ],
               ),
               items: snapshot.data,
@@ -60,7 +125,7 @@ class UserComponent{
               value: value,
               hint: Row(
                 children: <Widget>[
-                  Text("Select your Gender"),
+                  Text("Select your gender"),
                 ],
               ),
               items: snapshot.data,
