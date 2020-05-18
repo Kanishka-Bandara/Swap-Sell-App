@@ -79,10 +79,8 @@ class _UserProfileViewState extends State<UserProfileView> {
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: NetworkImage(
-                                            model.getCurrentUser
-                                                .getProfilePicUrl,
-                                          ),
+                                          image: _declareImage(model
+                                              .getCurrentUser.profilePicUrl),
                                         ),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(100),
@@ -150,24 +148,27 @@ class _UserProfileViewState extends State<UserProfileView> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
-                             _classMode==ClassMode.Edit? UserComponent.buildUserTitleDropDown(
-                                context,
-                                (value) {
-                                  _user.setTitle = value;
-                                },
-                                model.getCurrentUser.getTitle,
-                              ):
-                              KTextFormField(
-                                name: "Title",
-                                emptyRequiredMessage: null,
-                                enabled:
-                                    _classMode == ClassMode.View ? false : true,
-                                onChanged: (value) {
-                                  _user.setTitle = value;
-                                },
-                                onSaved: null,
-                                initialValue: model.getCurrentUser.getTitle,
-                              ),
+                              _classMode == ClassMode.Edit
+                                  ? UserComponent.buildUserTitleDropDown(
+                                      context,
+                                      (value) {
+                                        _user.setTitle = value;
+                                      },
+                                      model.getCurrentUser.getTitle,
+                                    )
+                                  : KTextFormField(
+                                      name: "Title",
+                                      emptyRequiredMessage: null,
+                                      enabled: _classMode == ClassMode.View
+                                          ? false
+                                          : true,
+                                      onChanged: (value) {
+                                        _user.setTitle = value;
+                                      },
+                                      onSaved: null,
+                                      initialValue:
+                                          model.getCurrentUser.getTitle,
+                                    ),
                               KTextFormField(
                                 name: "First Name",
                                 emptyRequiredMessage: null,
@@ -298,6 +299,12 @@ class _UserProfileViewState extends State<UserProfileView> {
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
+    );
+  }
+
+  _declareImage(String profilePicUrl) {
+    return NetworkImage(
+      "https://bingepost.com/wp-content/uploads/2020/03/intro-1583349480.jpg",
     );
   }
 }
