@@ -39,4 +39,12 @@ class URLHolder {
   static const String _GENDER_PACKAGE = MAIN_URL + "/gender";
   static const String ALL_GENDER_LIST_URL = _GENDER_PACKAGE + "/getAll";
   // END::GENDER URL
+
+  // BEGIN::NOTIFICATION URL
+  // TODO::
+  static const String _NOTIFICATION_PACKAGE = MAIN_URL + "/notification";
+  static const String ALL_NOTIFICATION_LIST_URL = _NOTIFICATION_PACKAGE + "/getAll";
+  static const String SET_NOTIFICATION_AS_READ_URL = _NOTIFICATION_PACKAGE + "/read";
+  static const String DELETE_NOTIFICATION_URL = _NOTIFICATION_PACKAGE + "/delete";
+  // END::NOTIFICATION URL
 }

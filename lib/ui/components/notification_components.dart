@@ -47,9 +47,12 @@ class NotificationComponents {
                         icon: Icon(
                           Icons.close,
                         ),
-                        onPressed: () {
-                          NotificationController.currentController
-                              .removeNotification(notification.getId);
+                        onPressed: () async{
+                        bool status = await  NotificationController.currentController
+                              .deleteNotification(notification.getId);
+                              if (status) {
+                                //TODO::SHOW MESSAGE
+                              }
                         },
                       )
                     ],

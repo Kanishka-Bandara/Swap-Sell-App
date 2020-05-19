@@ -1,5 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'notification.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Notification {
   int id;
   String notificationHeader;
@@ -7,7 +11,6 @@ class Notification {
   DateTime date;
   int state;
   int get getId => id;
-
   Notification(
       {@required this.id,
       @required this.notificationHeader,
@@ -27,4 +30,8 @@ class Notification {
   int get getState => state;
 
   set setState(int state) => this.state = state;
+  
+  factory Notification.fromJson(Map<String, dynamic> json) => _$NotificationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NotificationToJson(this);
 }
