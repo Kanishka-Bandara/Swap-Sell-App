@@ -8,7 +8,7 @@ class Shop {
   int id;
   String shopID;
   String shopName;
-  User owner;
+  int ownerId;
   String imgUrl;
   double rating;
   int status;
@@ -17,7 +17,7 @@ class Shop {
     @required this.id,
     @required this.shopID,
     @required this.shopName,
-    @required this.owner,
+    @required this.ownerId,
     this.imgUrl,
     this.rating,
     @required this.status,
@@ -27,35 +27,7 @@ class Shop {
     id: 1,
     shopID: "Sh123",
     shopName: "Kanishka's Shop",
-    owner: User(
-      id: 1,
-      userId: "U123456",
-      userType: UserType.SELLER_AND_BUYER,
-      title: "Mr.",
-      gender: "Male",
-      fname: "Kanishka",
-      lname: "Bandara",
-      fullName: "Kanishka Bandara",
-      profilePicUrl:
-          "https://qph.fs.quoracdn.net/main-raw-215174174-lbogygxumelpceaujmltqhykknchfzku.jpeg",
-      sname: "Bandara",
-      activeState: 1,
-      emails: [
-        Email(
-          id: 1,
-          emailType: EmailType.BILLING,
-          email: "kanishka@gmail.com",
-          emailTypeId: 1,
-          userId: 1,
-          isDefault: 1,
-          status: 1,
-        ),
-      ],
-      country: "Sri Lanka",
-      status: 1,
-      username: "kanishka123",
-      password: "123"
-    ),
+    ownerId: 1,
     imgUrl:
         "https://lh3.googleusercontent.com/proxy/X8FSIZC1IPsTljed6H_mszGRz55-iHXdTivKxXVJRiebhSKbTbWpufTacXgdPZP9GJCu0iyvnll1sRkcr6vgLwCE-pF_ojdPI_-CoXLkWWCVuqzhWHv7lA",
     rating: 3.8,
@@ -74,9 +46,9 @@ class Shop {
 
   set setShopName(String shopName) => this.shopName = shopName;
 
-  User get getOwner => owner;
+  int get getOwnerId => ownerId;
 
-  set setOwner(User owner) => this.owner = owner;
+  set setOwnerId(int ownerId) => this.ownerId = ownerId;
 
   String get getImgUrl => imgUrl;
 

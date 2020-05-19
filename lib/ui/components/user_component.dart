@@ -3,15 +3,18 @@ import 'package:swap_sell/controllers/location_details_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 
-class UserComponent{
-  
- static Widget buildCountryDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value) {
+class UserComponent {
+  static Widget buildCountryDropDown(
+      BuildContext context, ValueChanged<dynamic> onChanged, dynamic value) {
+    print("Country::Start");
     return FutureBuilder(
         future: LocationDetailsController.defaultcontroller.getCountryList(),
         builder: (context, snapshot) {
           if (snapshot == null) {
+            print("Country::Null");
             return Container();
           } else {
+            print("Country::Return");
             return KDropDownButton<String>(
               value: value,
               hint: Row(
@@ -26,10 +29,12 @@ class UserComponent{
           }
         });
   }
-  
- static Widget buildProvinceDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String country) {
+
+  static Widget buildProvinceDropDown(BuildContext context,
+      ValueChanged<dynamic> onChanged, dynamic value, String country) {
     return FutureBuilder(
-        future: LocationDetailsController.defaultcontroller.getProvinceListByCountry(country),
+        future: LocationDetailsController.defaultcontroller
+            .getProvinceListByCountry(country),
         builder: (context, snapshot) {
           if (snapshot == null) {
             return Container();
@@ -48,9 +53,12 @@ class UserComponent{
           }
         });
   }
- static Widget buildDistrictDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String province) {
+
+  static Widget buildDistrictDropDown(BuildContext context,
+      ValueChanged<dynamic> onChanged, dynamic value, String province) {
     return FutureBuilder(
-        future: LocationDetailsController.defaultcontroller.getDistrictListByProvince(province),
+        future: LocationDetailsController.defaultcontroller
+            .getDistrictListByProvince(province),
         builder: (context, snapshot) {
           if (snapshot == null) {
             return Container();
@@ -70,9 +78,11 @@ class UserComponent{
         });
   }
 
- static Widget buildPOBoxDropDown(BuildContext context,ValueChanged<dynamic> onChanged,dynamic value,String district) {
+  static Widget buildPOBoxDropDown(BuildContext context,
+      ValueChanged<dynamic> onChanged, dynamic value, String district) {
     return FutureBuilder(
-        future: LocationDetailsController.defaultcontroller.getPOBoxListByDistrict(district),
+        future: LocationDetailsController.defaultcontroller
+            .getPOBoxListByDistrict(district),
         builder: (context, snapshot) {
           if (snapshot == null) {
             return Container();
@@ -92,7 +102,8 @@ class UserComponent{
         });
   }
 
- static Widget buildUserTitleDropDown(BuildContext comntext,ValueChanged<dynamic> onChanged,dynamic value) {
+  static Widget buildUserTitleDropDown(
+      BuildContext comntext, ValueChanged<dynamic> onChanged, dynamic value) {
     return FutureBuilder(
         future: UserController.defaultUserController.getUserTitleList(),
         builder: (context, snapshot) {
@@ -114,7 +125,8 @@ class UserComponent{
         });
   }
 
- static Widget buildGenderDropDown(BuildContext comntext,ValueChanged<dynamic> onChanged,dynamic value) {
+  static Widget buildGenderDropDown(
+      BuildContext comntext, ValueChanged<dynamic> onChanged, dynamic value) {
     return FutureBuilder(
         future: UserController.defaultUserController.getGenderList(),
         builder: (context, snapshot) {
