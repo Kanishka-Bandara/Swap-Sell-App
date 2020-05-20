@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/model/user/contact_metadata.dart';
-import 'package:swap_sell/model/user/email.dart';
-import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class Shop {
   int id;

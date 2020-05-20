@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/controllers/notification_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/model/user/address.dart';
@@ -35,7 +36,7 @@ class AppInit extends Model {
     note: "Good",
     profilePicUrl:
         "https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5d2388f14c687b00085c0f91%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D0%26cropX2%3D1559%26cropY1%3D130%26cropY2%3D1690",
-        // "http://localhost:8080/profile/55_20200517111834_.jpg",
+    // "http://localhost:8080/profile/55_20200517111834_.jpg",
     status: 1,
     username: "kanishka12345",
     password: "123",
@@ -101,6 +102,7 @@ class AppInit extends Model {
   set setCurrentUser(User user) {
     AppInit.currentApp._currentUser = user;
     notifyListeners();
+    loadUserDetailsOnApp();
   }
 
   void _removeCurruntUser() {
@@ -141,5 +143,9 @@ class AppInit extends Model {
     AppInit.currentApp._removeCurruntUser();
     AppInit.currentApp._removeCurruntShop();
     notifyListeners();
+  }
+
+  void loadUserDetailsOnApp() async {
+    await NotificationController.currentController.fetchNotificationList();
   }
 }

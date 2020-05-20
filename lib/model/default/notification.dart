@@ -9,13 +9,16 @@ class Notification {
   String notificationHeader;
   String notification;
   DateTime date;
+  bool isRead = false;
   int state;
   int get getId => id;
-  Notification(
-      {@required this.id,
-      @required this.notificationHeader,
-      @required this.notification,
-      this.state});
+  Notification({
+    @required this.id,
+    @required this.notificationHeader,
+    @required this.notification,
+    @required this.isRead,
+    this.state,
+  });
   set setId(int id) => this.id = id;
 
   String get getNotificationHeader => notificationHeader;
@@ -26,12 +29,17 @@ class Notification {
   String get getNotification => notification;
 
   set setNotification(String notification) => this.notification = notification;
+  
+  bool get getIsRead => isRead;
+
+  set setIsRead(bool isRead) => this.isRead = isRead;
 
   int get getState => state;
 
   set setState(int state) => this.state = state;
-  
-  factory Notification.fromJson(Map<String, dynamic> json) => _$NotificationFromJson(json);
+
+  factory Notification.fromJson(Map<String, dynamic> json) =>
+      _$NotificationFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationToJson(this);
 }

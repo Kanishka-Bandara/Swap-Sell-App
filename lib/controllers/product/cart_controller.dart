@@ -5,10 +5,6 @@ import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
-import 'package:swap_sell/model/user/contact_metadata.dart';
-import 'package:swap_sell/model/user/email.dart';
-import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 enum _CartProductType {
   NEW_SHOP_WITH_NEW_PRODUCT,

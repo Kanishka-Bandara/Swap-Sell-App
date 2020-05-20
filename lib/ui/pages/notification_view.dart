@@ -33,27 +33,40 @@ class _NotificationViewState extends State<NotificationView> {
                     child: ScopedModelDescendant(
                       builder: (BuildContext context, Widget widget,
                           NotificationController model) {
-                        return model.isNotificationListEmpty
-                            ? DefaultComponents.buildNoDetailsWidget(
-                                context,
-                                Icons.notifications_off,
-                                "No Notifications to view")
-                            : SingleChildScrollView(
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      _buildNotificationList(context),
-                                    ],
+                        if (model.isLoading) {
+                          return Padding(
+                            padding: EdgeInsets.only(top: 10, bottom: 10),
+                            child: ShimmerTile(
+                              MediaQuery.of(context).size.width,
+                              MediaQuery.of(context).size.height,
+                              context,
+                            ),
+                          );
+                        } else {
+                          return model.isNotificationListEmpty
+                              ? DefaultComponents.buildNoDetailsWidget(
+                                  context,
+                                  Icons.notifications_off,
+                                  "No Notifications to view")
+                              : SingleChildScrollView(
+                                  child: Container(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        _buildNotificationList(context),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                        }
                       },
                     ),
                   )
-                : DefaultComponents.buildUnSignedTile(context,"Please Sign in to get notifications.");
+                : DefaultComponents.buildUnSignedTile(
+                    context, "Please Sign in to get notifications.");
           },
         ),
       ),
@@ -76,18 +89,33 @@ class _NotificationViewState extends State<NotificationView> {
               // );
               return Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: ShimmerTile(MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height, context),
+                child: ShimmerTile(
+                  MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height,
+                  context,
+                ),
               );
             } else {
-              return ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  return NotificationComponents.buildNotificationTile(
-                      context, snapshot.data[index]);
-                },
-                itemCount: snapshot.data.length,
-              );
+              if (model.isLoading) {
+                return Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  child: ShimmerTile(
+                    MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height,
+                    context,
+                  ),
+                );
+              } else {
+                model.setUnreadNotificationsAsRead();
+                return ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) {
+                    return NotificationComponents.buildNotificationTile(
+                        context, snapshot.data[index]);
+                  },
+                  itemCount: snapshot.data.length,
+                );
+              }
             }
           },
         ),
