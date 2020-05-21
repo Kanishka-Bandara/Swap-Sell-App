@@ -9,7 +9,7 @@ class Notification {
   String notificationHeader;
   String notification;
   DateTime date;
-  int isRead = false;
+  int isRead = 1;
   int state;
   Notification({
     @required this.id,
