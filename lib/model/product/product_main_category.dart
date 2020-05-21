@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:swap_sell/model/product/product_head_category.dart';
 
-class Category {
+class MainCategory {
   int catID;
   String catName;
   String imgPath;
+  HeadCategory headCategory;
+  
   int get getCatID => catID;
 
-  Category(this.catID, this.catName, this.imgPath);
+  MainCategory(this.catID, this.catName, this.imgPath);
 
   set setCatID(int catID) => this.catID = catID;
 
@@ -19,5 +22,9 @@ class Category {
   set setImgPath(String imgPath) => this.imgPath = imgPath;
 
   Image get getNetworkImage => Image.network(this.getImgPath);
+
+  set setHeadCategory(HeadCategory headCategory) => this.headCategory = headCategory;
+
+  HeadCategory get getHeadCategory => headCategory;
   
 }

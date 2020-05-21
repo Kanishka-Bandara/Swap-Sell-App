@@ -25,12 +25,12 @@ class Product extends Model {
   int qty;
   String currancy;
   ProductDealingType dealingState = ProductDealingType.ONLY_SELL;
-  double barterPrice; //
+  double barterPrice;
   double retailPrice;
   double delivaryPrice;
   double discountPrice;
   int saleCount;
-  int barterCount; //
+  int barterCount;
   int returnCount;
   Shop shop;
   bool isFavorite;

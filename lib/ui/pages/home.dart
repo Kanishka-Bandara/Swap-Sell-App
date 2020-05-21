@@ -68,7 +68,7 @@ class _MyHomePageState extends State<Home> {
     return Container(
       height: 50,
       child: FutureBuilder(
-        future: ProductController.defaultController.getMainCategoryList(),
+        future: ProductController.defaultController.getHeadCategoryList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(

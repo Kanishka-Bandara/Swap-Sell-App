@@ -1,17 +1,17 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
-import 'package:swap_sell/model/product/ProductCategory.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_main_category.dart';
 
 class ProductController extends Model {
   static ProductController defaultController = ProductController();
-  List<Category> mainCategoryList;
+  List<MainCategory> mainCategoryList;
   List<Product> savedProductList;
   List<Product> resentSearchedList;
   List<Product> resentArrivedProductList;
   List<Product> highestSoldProductList;
 
-  Future<List<Category>> getMainCategoryList() async {
+  Future<List<MainCategory>> getHeadCategoryList() async {
     mainCategoryList = await ProductExamples.getMainCategoryList();
     return mainCategoryList;
   }

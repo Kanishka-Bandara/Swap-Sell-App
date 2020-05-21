@@ -1,5 +1,5 @@
-import 'package:swap_sell/model/product/ProductCategory.dart';
 import 'package:swap_sell/model/product/product.dart';
+import 'package:swap_sell/model/product/product_main_category.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
@@ -1286,58 +1286,59 @@ class ProductExamples {
     return Future.delayed(Duration(seconds: 1), () => lit);
   }
 
-  static Future<List<Category>> getMainCategoryList() async {
-    List<Category> lct = List(10);
-    lct[0] = Category(
-      1,
-      "Electronic",
-      "https://img.favpng.com/23/24/19/iphone-telephone-logo-smartphone-clip-art-png-favpng-KgDH0v3AnWMtcn2gAcHyDpeDn.jpg",
-    );
-    lct[1] = Category(
-      1,
-      "Home",
-      "https://toppng.com/uploads/preview/television-icon-tv-media-icon-11553527032hi8xonemxq.png",
-    );
-    lct[2] = Category(
-      1,
-      "Health & Beauty",
-      "https://www.pngfind.com/pngs/m/85-858539_png-file-svg-health-product-icon-png-transparent.png",
-    );
-    lct[3] = Category(
-      1,
-      "Babies",
-      "https://banner2.cleanpng.com/20180422/low/kisspng-computer-icons-skin-care-emoticon-baby-products-5adc3c790f4734.6038283515243828410626.jpg",
-    );
-    lct[4] = Category(
-      1,
-      "Groceries",
-      "https://i7.pngguru.com/preview/169/424/954/organic-food-grocery-store-computer-icons-supermarket-product.jpg",
-    );
-    lct[5] = Category(
-      1,
-      "Lifestyle",
-      "https://icons-for-free.com/iconfiles/png/512/furniture+living+sofa+icon-1320183237491749710.png",
-    );
-    lct[6] = Category(
-      1,
-      "Fashion",
-      "https://cdn1.iconfinder.com/data/icons/fitness/500/T-shirt-512.png",
-    );
-    lct[7] = Category(
-      1,
-      "Accessories",
-      "https://png.pngtree.com/element_our/png_detail/20181130/watch-vector-icon-png_255353.jpg",
-    );
-    lct[8] = Category(
-      1,
-      "Sports",
-      "https://cdn.iconscout.com/icon/premium/png-256-thumb/football-ball-1435030-1215771.png",
-    );
-    lct[9] = Category(
-      1,
-      "Automotive",
-      "https://library.kissclipart.com/20180831/jqq/kissclipart-car-side-icon-clipart-car-computer-icons-clip-art-e806bac699b2c013.jpg",
-    );
-    return Future.delayed(Duration(seconds: 2), () => lct);
+  static Future<List<MainCategory>> getMainCategoryList() async {
+    return [];
+    // List<MainCategory> lct = List(10);
+    // lct[0] = Category(
+    //   1,
+    //   "Electronic",
+    //   "https://img.favpng.com/23/24/19/iphone-telephone-logo-smartphone-clip-art-png-favpng-KgDH0v3AnWMtcn2gAcHyDpeDn.jpg",
+    // );
+    // lct[1] = Category(
+    //   1,
+    //   "Home",
+    //   "https://toppng.com/uploads/preview/television-icon-tv-media-icon-11553527032hi8xonemxq.png",
+    // );
+    // lct[2] = Category(
+    //   1,
+    //   "Health & Beauty",
+    //   "https://www.pngfind.com/pngs/m/85-858539_png-file-svg-health-product-icon-png-transparent.png",
+    // );
+    // lct[3] = Category(
+    //   1,
+    //   "Babies",
+    //   "https://banner2.cleanpng.com/20180422/low/kisspng-computer-icons-skin-care-emoticon-baby-products-5adc3c790f4734.6038283515243828410626.jpg",
+    // );
+    // lct[4] = Category(
+    //   1,
+    //   "Groceries",
+    //   "https://i7.pngguru.com/preview/169/424/954/organic-food-grocery-store-computer-icons-supermarket-product.jpg",
+    // );
+    // lct[5] = Category(
+    //   1,
+    //   "Lifestyle",
+    //   "https://icons-for-free.com/iconfiles/png/512/furniture+living+sofa+icon-1320183237491749710.png",
+    // );
+    // lct[6] = Category(
+    //   1,
+    //   "Fashion",
+    //   "https://cdn1.iconfinder.com/data/icons/fitness/500/T-shirt-512.png",
+    // );
+    // lct[7] = Category(
+    //   1,
+    //   "Accessories",
+    //   "https://png.pngtree.com/element_our/png_detail/20181130/watch-vector-icon-png_255353.jpg",
+    // );
+    // lct[8] = Category(
+    //   1,
+    //   "Sports",
+    //   "https://cdn.iconscout.com/icon/premium/png-256-thumb/football-ball-1435030-1215771.png",
+    // );
+    // lct[9] = Category(
+    //   1,
+    //   "Automotive",
+    //   "https://library.kissclipart.com/20180831/jqq/kissclipart-car-side-icon-clipart-car-computer-icons-clip-art-e806bac699b2c013.jpg",
+    // );
+    // return Future.delayed(Duration(seconds: 2), () => lct);
   }
 }
