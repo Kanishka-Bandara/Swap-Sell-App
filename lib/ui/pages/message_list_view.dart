@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/message_controlller.dart';
+import 'package:swap_sell/model/message/user_message.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
@@ -53,22 +54,29 @@ class _MessageViewState extends State<MessageView> {
                       children: <Widget>[
                         model1.currentUserState
                             ? model.isEmptyMessageList
-                                ? DefaultComponents.buildNoDetailsWidget(
-                                    context,
-                                    Icons.message,
-                                    "No Messages To View.")
-                                : _buildMessageSection()
+                                ? model.isLoadingMessageList
+                                    ? _buildShimmerTileList(context)
+                                    : DefaultComponents.buildNoDetailsWidget(
+                                        context,
+                                        Icons.message,
+                                        "No Messages To View.")
+                                : _buildMessageSection(context)
                             : DefaultComponents.buildUnSignedTile(
                                 context, "Please Sign in to get messages."),
                         model1.currentUserState
                             ? model.isEmptyArchivedMessageList
-                                ? DefaultComponents.buildNoDetailsWidget(
-                                    context,
-                                    Icons.message,
-                                    "No Archived Messages.")
+                                ? model.isLoadingArchivedMessageList
+                                    ? _buildShimmerTileList(context)
+                                    : DefaultComponents.buildNoDetailsWidget(
+                                        context,
+                                        Icons.message,
+                                        "No Archived Messages.",
+                                      )
                                 : _buildArchivedMessageSection()
                             : DefaultComponents.buildUnSignedTile(
-                                context, "Please Sign in to get messages."),
+                                context,
+                                "Please Sign in to get messages.",
+                              ),
                       ],
                     );
                   },
@@ -81,30 +89,33 @@ class _MessageViewState extends State<MessageView> {
     );
   }
 
-  Widget _buildMessageSection() {
+  Widget _buildMessageSection(BuildContext context) {
     return Container(
       // child: SingleChildScrollView(
       child: FutureBuilder(
         future: MessageController.defaultMessageController.getMessageList,
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<List<UserMessage>> snapshot) {
           if (snapshot.data == null) {
-            return Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10),
-              child: ShimmerTile(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height, context),
-            );
+            return _buildShimmerTileList(context);
           } else {
             return ListView.builder(
               itemBuilder: (context, index) {
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      onTap: () {
+                      onTap: () async {
                         AppNavigator.navigateToChatViewPage(
                           context,
                           snapshot.data[index],
                         );
-                        snapshot.data[index].setAllAsRead();
+                        bool status = await MessageController
+                            .defaultMessageController
+                            .setUnreadMessagesAsRead(
+                          snapshot.data[index].getUnreadMessagesIds,
+                        );
+                        if (status) {
+                          snapshot.data[index].setAllAsRead();
+                        }
                       },
                       leading: snapshot.data[index].sentBy.profilePicUrl == null
                           ? Icon(Icons.perm_identity)
@@ -151,6 +162,14 @@ class _MessageViewState extends State<MessageView> {
       children: <Widget>[
         Text("In the messages"),
       ],
+    );
+  }
+
+  Widget _buildShimmerTileList(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10, bottom: 10),
+      child: ShimmerTile(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height, context),
     );
   }
 }

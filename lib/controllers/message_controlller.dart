@@ -1,29 +1,85 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/api_manager/message_api_manager.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/model/message/message.dart';
-import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/model/message/user_message.dart';
-import 'package:swap_sell/model/user/contact_metadata.dart';
-import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/model/user/usertype_metadata.dart';
 
 class MessageController extends Model {
   static MessageController defaultMessageController = MessageController();
   List<UserMessage> _messageList = [];
   List<UserMessage> _archivedMessageList = [];
+  bool _isMessageListLoading = false;
+  bool _isArchivedMessageListLoading = false;
 
-  MessageController() {
-    _loadMessagesList();
-    _loadArchivedMessagesList();
-  }
+// BEGIN::Getters & setters for instance variables
+
+  set setMessageList(List<UserMessage> _list) => this._messageList = _list;
 
   Future<List<UserMessage>> get getMessageList async {
-    return Future.delayed(Duration(seconds: 1), () => _messageList);
+    return _messageList;
   }
 
-  Future<List<UserMessage>> get getReceivedMessageList async {
-    return Future.delayed(Duration(seconds: 1), () => _archivedMessageList);
+  set setArchivedMessageList(List<UserMessage> _list) =>
+      this._archivedMessageList = _list;
+
+  Future<List<UserMessage>> get getArchivedMessageList async {
+    return _archivedMessageList;
   }
+
+  bool get isLoadingMessageList => this._isMessageListLoading;
+
+  set setLoadingMessageList(bool state) {
+    this._isMessageListLoading = state;
+    notifyListeners();
+  }
+
+  bool get isLoadingArchivedMessageList => this._isArchivedMessageListLoading;
+
+  set setLoadingArchivedMessageList(bool state) {
+    this._isArchivedMessageListLoading = state;
+    notifyListeners();
+  }
+
+// END::Getters & setters for instance variables
+
+// BEGIN::Methods connect with API Manager to fullfill main tasks of the controller
+
+  Future<List<UserMessage>> fetchMessageList() async {
+    _messageList = [];
+    this.setLoadingMessageList = true;
+    List<UserMessage> l = await MessageApiManager.defaultManager
+        .getMessageList(AppInit.currentApp.getCurrentUser.getId);
+    l.forEach((element) {
+      _messageList.add(element);
+    });
+    notifyListeners();
+    this.setLoadingMessageList = false;
+    return _messageList;
+  }
+
+  Future<bool> sendMessage(Message message, User receiver) async {
+    bool status = await MessageApiManager.defaultManager.sendMessage(
+      UserMessage(
+          receivedBy: receiver,
+          sentBy: AppInit.currentApp.getCurrentUser,
+          messageList: [message]),
+    );
+    return status;
+  }
+
+  Future<bool> setUnreadMessagesAsRead(List<int> ids) async {
+    bool status = await MessageApiManager.defaultManager.setMessagesAsRead(
+      AppInit.currentApp.getCurrentUser.getId,
+      ids,
+    );
+    notifyListeners();
+    return status;
+  }
+
+// END::Methods connect with API Manager to fullfill main tasks of the controller
+
+// BEGIN::Sopportive methods for controller
 
   bool get isEmptyMessageList {
     return _messageList.length == 0;
@@ -41,180 +97,5 @@ class MessageController extends Model {
     return _count;
   }
 
-  bool sendMessage(Message message, User receiver) {
-    bool status = true;
-    //Send Message To the backend
-    if (status) {
-      for (var i = 0; i < _messageList.length; i++) {}
-    }
-    return status;
-  }
-
-  void _loadMessagesList() {
-    _messageList.add(
-      UserMessage(
-        receivedBy: User(
-          id: 1,
-          userId: "u0001",
-          userType: UserType.SELLER_AND_BUYER,
-          title: "Mr.",
-          gender: "Male",
-          fname: "Kanishka",
-          lname: "Bandara",
-          fullName: "Kanishka Udayakantha Bandara",
-          emails: <Email>[
-            Email(
-              id: 1,
-              emailType: EmailType.MESSAGES,
-              isDefault: 1,
-              email: "wmkubandara@gmail.com",
-              emailTypeId: 1,
-              userId: EmailType.MESSAGES.index,
-              status: 1,
-            )
-          ],
-          country: "Sri Lanka",
-          activeState: 1,
-          status: 1,
-        ),
-        sentBy: User(
-          id: 1,
-          userId: "u0001",
-          userType: UserType.SELLER_AND_BUYER,
-          title: "Mr.",
-          gender: "Male",
-          fname: "Kanishka",
-          lname: "Bandara",
-          fullName: "Kanishka Udayakantha Bandara",
-          profilePicUrl:
-              "https://i.pinimg.com/originals/54/e4/f8/54e4f81799a09dc219ed6ff22d327efd.jpg",
-          emails: <Email>[
-            Email(
-                id: 1,
-                emailType: EmailType.MESSAGES,
-                isDefault: 1,
-                email: "wmkubandara@gmail.com",
-                status: 1,
-                emailTypeId: EmailType.MESSAGES.index,
-                userId: 1)
-          ],
-          country: "Sri Lanka",
-          activeState: 1,
-          status: 1,
-        ),
-        messageList: [
-          Message(
-            id: 1,
-            category: MessageType.RECEIVED_MESSAGE,
-            message:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: true,
-          ),
-          Message(
-            id: 2,
-            category: MessageType.RECEIVED_MESSAGE,
-            message: "How about the ",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: false,
-          ),
-          Message(
-            id: 3,
-            category: MessageType.RECEIVED_MESSAGE,
-            message: "",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: false,
-          ),
-        ],
-      ),
-    );
-    _messageList.add(
-      UserMessage(
-        receivedBy: User(
-          id: 1,
-          userId: "u0001",
-          userType: UserType.SELLER_AND_BUYER,
-          title: "Mr.",
-          gender: "Male",
-          fname: "Kanishka",
-          lname: "Bandara",
-          fullName: "Kanishka Udayakantha Bandara",
-          emails: <Email>[
-            Email(
-                id: 1,
-                emailType: EmailType.MESSAGES,
-                isDefault: 1,
-                email: "wmkubandara@gmail.com",
-                status: 1,
-                emailTypeId: EmailType.MESSAGES.index,
-                userId: 1)
-          ],
-          country: "Sri Lanka",
-          activeState: 1,
-          status: 1,
-        ),
-        sentBy: User(
-          id: 1,
-          userId: "u0001",
-          userType: UserType.SELLER_AND_BUYER,
-          title: "Mr.",
-          gender: "Male",
-          fname: "Kanishka",
-          lname: "Bandara",
-          fullName: "Kanishka Udayakantha Bandara",
-          emails: <Email>[
-            Email(
-                id: 1,
-                emailType: EmailType.MESSAGES,
-                isDefault: 1,
-                email: "wmkubandara@gmail.com",
-                status: 1,
-                emailTypeId: EmailType.MESSAGES.index,
-                userId: 1)
-          ],
-          country: "Sri Lanka",
-          activeState: 1,
-          status: 1,
-        ),
-        messageList: [
-          Message(
-            id: 1,
-            category: MessageType.SENT_MESSAGE,
-            message:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit iaculis rhoncus. Proin imperdiet enim eget nulla malesuada, et elementum odio porta. Nunc ultrices orci sed erat ullamcorper efficitur. Maecenas vel elementum urna. Donec et pretium eros. Aliquam faucibus sollicitudin felis, nec feugiat lorem semper a. Mauris metus ipsum, pharetra eu odio a, suscipit tempor magna. In id iaculis mauris.",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: true,
-          ),
-          Message(
-            id: 2,
-            category: MessageType.RECEIVED_MESSAGE,
-            message: "Hey",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: true,
-          ),
-          Message(
-            id: 3,
-            category: MessageType.RECEIVED_MESSAGE,
-            message: "Hey",
-            viewedAt: DateTime(2019, 10, 20, 15, 23, 25),
-            sentAt: DateTime(2019, 10, 20, 10, 23, 25),
-            status: MessageStatus.LIVE_MESSAGE,
-            read: false,
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _loadArchivedMessagesList() {}
+// END::Sopportive methods for controller
 }

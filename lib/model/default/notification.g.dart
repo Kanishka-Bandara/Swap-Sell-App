@@ -23,6 +23,6 @@ Map<String, dynamic> _$NotificationToJson(Notification instance) =>
       'notificationHeader': instance.notificationHeader,
       'notification': instance.notification,
       'date': instance.date?.toIso8601String(),
-      'isRead':instance.isRead,
+      'isRead': instance.isRead,
       'state': instance.state,
     };

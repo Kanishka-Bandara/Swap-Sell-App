@@ -3,7 +3,11 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controllers/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/user/user.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user_message.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class UserMessage extends Model {
   User receivedBy;
   User sentBy;
@@ -42,7 +46,22 @@ class UserMessage extends Model {
     MessageController.defaultMessageController.notifyListeners();
   }
 
+  List<int> get getUnreadMessagesIds {
+    List<int> ids = [];
+    messageList.forEach((m) {
+      if (!m.isRead) {
+        ids.add(m.getId);
+      }
+    });
+    return ids;
+  }
+
   addMessage(Message message) {
     messageList.add(message);
   }
+
+  factory UserMessage.fromJson(Map<String, dynamic> json) =>
+      _$UserMessageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserMessageToJson(this);
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/controllers/message_controlller.dart';
 import 'package:swap_sell/controllers/notification_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
@@ -145,7 +146,8 @@ class AppInit extends Model {
     notifyListeners();
   }
 
-  void loadUserDetailsOnApp() async {
-    await NotificationController.currentController.fetchNotificationList();
+  void loadUserDetailsOnApp() {
+    NotificationController.currentController.fetchNotificationList();
+    MessageController.defaultMessageController.fetchMessageList();
   }
 }

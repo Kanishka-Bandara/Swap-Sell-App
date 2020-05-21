@@ -48,4 +48,13 @@ class URLHolder {
   static const String SET_NOTIFICATION_AS_READ__BULK_URL = _NOTIFICATION_PACKAGE + "/read";
   static const String DELETE_NOTIFICATION_URL = _NOTIFICATION_PACKAGE + "/delete";
   // END::NOTIFICATION URL
+  // BEGIN::MESSAGE URL
+  static const String _MESSAGE_PACKAGE = MAIN_URL + "/message";
+  static const String SEND_MESSAGE_URL = _MESSAGE_PACKAGE + "/send";
+  static const String SET_MESSAGES_AS_READ_URL = _MESSAGE_PACKAGE + "/setMessagesAsRead";
+  static const String GET_MESSAGE_LIST_URL = _MESSAGE_PACKAGE + "/getAll";
+  static const String DELETE_MESSAGE_URL = _MESSAGE_PACKAGE + "/delete";
+  // static const String GET_ARCHIVED_MESSAGES_LIST_URL = _MESSAGE_PACKAGE + "/getAllArchived";
+  // static const String ARCHIVE_MESSAGE_URL = _MESSAGE_PACKAGE + "/doArchive";
+  // END::MESSAGE URL
 }
