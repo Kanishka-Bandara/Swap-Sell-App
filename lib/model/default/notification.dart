@@ -9,9 +9,8 @@ class Notification {
   String notificationHeader;
   String notification;
   DateTime date;
-  bool isRead = false;
+  int isRead = false;
   int state;
-  int get getId => id;
   Notification({
     @required this.id,
     @required this.notificationHeader,
@@ -19,6 +18,9 @@ class Notification {
     @required this.isRead,
     this.state,
   });
+
+  int get getId => id;
+
   set setId(int id) => this.id = id;
 
   String get getNotificationHeader => notificationHeader;
@@ -29,10 +31,10 @@ class Notification {
   String get getNotification => notification;
 
   set setNotification(String notification) => this.notification = notification;
-  
-  bool get getIsRead => isRead;
 
-  set setIsRead(bool isRead) => this.isRead = isRead;
+  bool get getIsRead => isRead == 1;
+
+  set setIsRead(bool isRead) => isRead ? this.isRead = 1 : this.isRead = 0;
 
   int get getState => state;
 
