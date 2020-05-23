@@ -14,7 +14,7 @@ class ProductExamples {
       uniqueID: "171e0bcea390c17fd70e3ffa6c2cd187",
       name: "FDT Women's Leggings",
       retailPrice: 699.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 55.79,
       images: [
         "http://img6a.flixcart.com/image/legging-jegging/f/c/7/1-1-lg-green08-fdt-xl-original-imae58jpwqj5gh5e.jpeg",
@@ -42,8 +42,8 @@ class ProductExamples {
       model: "MDL29",
       brand: "FDT",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[1] = Product(
@@ -51,7 +51,7 @@ class ProductExamples {
       uniqueID: "c2d766ca982eca8304150849735ffef9",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 999.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 62.06,
       images: [
         "http://img5a.flixcart.com/image/short/u/4/a/altht-3p-21-alisha-38-original-imaeh2d5vm5zbtgg.jpeg",
@@ -80,8 +80,8 @@ class ProductExamples {
       model: "MDL1",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
 
@@ -90,7 +90,7 @@ class ProductExamples {
       uniqueID: "7f7036a6d550aaa89d34c77bd39a5e48",
       name: "FabHomeDecor Fabric Double Sofa Bed",
       retailPrice: 32157.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 29.58,
       images: [
         "http://img6a.flixcart.com/image/sofa-bed/j/f/y/fhd112-double-foam-fabhomedecor-leatherette-black-leatherette-1100x1100-imaeh3gemjjcg9ta.jpeg",
@@ -152,8 +152,8 @@ class ProductExamples {
       model: "MDL2",
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
 
@@ -162,7 +162,7 @@ class ProductExamples {
       uniqueID: "f449ec65dcbc041b6ae5e6a32717d01b",
       name: "AW Bellies",
       retailPrice: 999.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 50.05,
       images: [
         "http://img5a.flixcart.com/image/shoe/7/z/z/red-as-454-aw-11-original-imaeebfwsdf6jdf6.jpeg",
@@ -193,8 +193,8 @@ class ProductExamples {
       model: "MDL3",
       brand: "Aw",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
 
     mainList[4] = Product(
@@ -202,7 +202,7 @@ class ProductExamples {
       uniqueID: "0973b37acd0c664e3de26e97e5571454",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 699.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 61.8,
       images: [
         "http://img5a.flixcart.com/image/short/6/2/h/altght-11-alisha-38-original-imaeh2d5uq9thnyg.jpeg",
@@ -232,8 +232,8 @@ class ProductExamples {
       model: "MDL4",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
@@ -242,7 +242,7 @@ class ProductExamples {
       uniqueID: "bc940ea42ee6bef5ac7cea3fb5cfbee7",
       name: "Sicons All Purpose Arnica Dog Shampoo",
       retailPrice: 220.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 4.55,
       images: [
         "http://img5a.flixcart.com/image/pet-shampoo/r/j/5/sh-df-14-sicons-500-1100x1100-imaeh3hfvav85tva.jpeg",
@@ -271,8 +271,8 @@ class ProductExamples {
       model: "MDL5",
       brand: "Sicons",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
 
@@ -282,7 +282,7 @@ class ProductExamples {
       name:
           "Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish",
       retailPrice: 430.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 30.0,
       images: [
         "http://img5a.flixcart.com/image/paper-weight/u/e/3/eternal-gandhi-gandhi-paper-weight-mark-v-1100x1100-imaeb8adyf3xmqhf.jpeg",
@@ -307,8 +307,8 @@ class ProductExamples {
       model: "MDL6",
       brand: "Eternal gandhi",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
 
     mainList[7] = Product(
@@ -316,7 +316,7 @@ class ProductExamples {
       uniqueID: "ce5a6818f7707e2cb61fdcdbba61f5ad",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 1199.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 60.05,
       images: [
         "http://img6a.flixcart.com/image/short/p/j/z/altght4p-26-alisha-38-original-imaeh2d5cqtxe5gt.jpeg",
@@ -346,8 +346,8 @@ class ProductExamples {
       model: "MDL7",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
 
@@ -356,7 +356,7 @@ class ProductExamples {
       uniqueID: "8542703ca9e6ebdf6d742638dfb1f2ca",
       name: "FabHomeDecor Fabric Double Sofa Bed",
       retailPrice: 32157.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 29.58,
       images: [
         "http://img6a.flixcart.com/image/sofa-bed/e/x/n/fhd107-double-foam-fabhomedecor-brown-brown-1100x1100-imaeh3geypmfrc5a.jpeg",
@@ -416,8 +416,8 @@ class ProductExamples {
       model: "MDL8",
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
 
     mainList[9] = Product(
@@ -425,7 +425,7 @@ class ProductExamples {
       uniqueID: "29c8d290caa451f97b1c32df64477a2c",
       name: "dilli bazaaar Bellies~ Corporate Casuals~ Casuals",
       retailPrice: 699.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 50.07,
       images: [
         "http://img6a.flixcart.com/image/shoe/b/p/n/pink-200db202-dilli-bazaaar-10-original-imaeh2zz4x6hnuwf.jpeg",
@@ -455,8 +455,8 @@ class ProductExamples {
       model: "MDL9",
       brand: "Dilli bazaaar",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
@@ -465,7 +465,7 @@ class ProductExamples {
       uniqueID: "4044c0ac52c1ee4b28777417651faf42",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 1199.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 60.05,
       images: [
         "http://img5a.flixcart.com/image/short/5/z/c/altght4p-39-alisha-38-original-imaeh2d5ar6m55zd.jpeg",
@@ -495,8 +495,8 @@ class ProductExamples {
       model: "MDL10",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
 
@@ -505,7 +505,7 @@ class ProductExamples {
       uniqueID: "e54bc0a7c3429da2ebef0b30331fe3d2",
       name: "Ladela Bellies",
       retailPrice: 1724.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 44.9,
       images: [
         "http://img5a.flixcart.com/image/shoe/s/g/m/black-r998-22-ladela-38-original-imaega8phqh6tf4e.jpeg",
@@ -535,8 +535,8 @@ class ProductExamples {
       model: "MDL11",
       brand: "Ladela",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
 
     mainList[12] = Product(
@@ -544,7 +544,7 @@ class ProductExamples {
       uniqueID: "c73e78fb440ff8972e0762daed4fc109",
       name: "Carrel Printed Women's",
       retailPrice: 2299.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 60.42,
       images: [
         "http://img6a.flixcart.com/image/swimsuit/5/v/9/carrel-sw-3091-black-white01-carrel-4xl-original-imaehyzm2sywfavb.jpeg",
@@ -574,8 +574,8 @@ class ProductExamples {
       model: "MDL12",
       brand: "Carrel",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
 
@@ -584,7 +584,7 @@ class ProductExamples {
       uniqueID: "c29af37837afcaf44b779eca7c19295f",
       name: "Sicons All Purpose Tea Tree Dog Shampoo",
       retailPrice: 1000.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 100.0,
       images: [
         "http://img6a.flixcart.com/image/pet-shampoo/c/c/d/sh-df-07-sicons-200-1100x1100-imaeh3kvn25fznjt.jpeg",
@@ -613,8 +613,8 @@ class ProductExamples {
       model: "MDL13",
       brand: "Sicons",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
@@ -623,7 +623,7 @@ class ProductExamples {
       uniqueID: "9aacdecceb404c74abddc513fd2756a8",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 999.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 62.06,
       images: [
         "http://img6a.flixcart.com/image/short/q/z/v/altht-3p-17-alisha-36-original-imaeh2d5njykvkz6.jpeg",
@@ -652,8 +652,8 @@ class ProductExamples {
       model: "MDL14",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[15] = Product(
@@ -661,7 +661,7 @@ class ProductExamples {
       uniqueID: "83c53f8948f508f51d2249b489ca8e7d",
       name: "Freelance Vacuum Bottles 350 ml Bottle",
       retailPrice: 699.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 0.0,
       images: [
         "http://img5a.flixcart.com/image/bottle/j/m/m/av004bgr-freelance-350-vacuum-bottles-1000x1000-imaegykdk6ytzrzz.jpeg",
@@ -690,15 +690,15 @@ class ProductExamples {
       model: "MDL15",
       brand: "Freelance",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
     mainList[16] = Product(
       id: 16,
       uniqueID: "d95b0456a0350bc42f2393c6e84b0f09",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 999.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 62.06,
       images: [
         "http://img5a.flixcart.com/image/short/t/p/b/altht-3p-2-alisha-38-original-imaeh2d53jbrxnam.jpeg",
@@ -728,8 +728,8 @@ class ProductExamples {
       model: "MDL16",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
 
@@ -738,7 +738,7 @@ class ProductExamples {
       uniqueID: "849ab05698081a374215d0b7d18047d0",
       name: "FabHomeDecor Fabric Double Sofa Bed",
       retailPrice: 32157.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 29.58,
       images: [
         "http://img5a.flixcart.com/image/sofa-bed/r/c/g/fhd132-double-foam-fabhomedecor-purple-purple-1100x1100-imaeh3getyhdnnxn.jpeg",
@@ -801,8 +801,8 @@ class ProductExamples {
       model: "MDL17",
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
@@ -811,7 +811,7 @@ class ProductExamples {
       uniqueID: "c275ee5ac19f774a3ef7da71b40aabd8",
       name: "Style Foot Bellies",
       retailPrice: 899.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 50.06,
       images: [
         "http://img5a.flixcart.com/image/shoe/p/f/h/black-sfwf0377-style-foot-44-original-imaeh4cxasyrdtjr.jpeg",
@@ -840,8 +840,8 @@ class ProductExamples {
       model: "MDL18",
       brand: "Style foot",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
 
@@ -850,7 +850,7 @@ class ProductExamples {
       uniqueID: "4f3511c33a6869b1d5102cd97818ef00",
       name: "Carrel Printed Women's",
       retailPrice: 2499.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 60.02,
       images: [
         "http://img5a.flixcart.com/image/swimsuit/g/z/j/carrel-sw-3091-darkblue-white-carrel-4xl-original-imaehyzmk8hphgua.jpeg",
@@ -880,8 +880,8 @@ class ProductExamples {
       model: "MDL19",
       brand: "Carrel",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
 
@@ -890,7 +890,7 @@ class ProductExamples {
       uniqueID: "7ee3e337474a29b38cfe1f5d4020d633",
       name: "FabHomeDecor Fabric Double Sofa Bed",
       retailPrice: 32157.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 29.58,
       images: [
         "http://img6a.flixcart.com/image/sofa-bed/j/6/q/fhd115-double-foam-fabhomedecor-dark-brown-dark-brown-original-imaeh3gee5zcazvm.jpeg",
@@ -951,8 +951,8 @@ class ProductExamples {
       model: "MDL20",
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
-      isFavorite: true,
-      currancy: "Rs",
+      isFavorite: 1,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
 
@@ -961,7 +961,7 @@ class ProductExamples {
       uniqueID: "f35f27525ab8f5988d3817ee9bb02ce1",
       name: "Sicons Conditioning Conditoner Dog Shampoo",
       retailPrice: 110.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 9.09,
       images: [
         "http://img6a.flixcart.com/image/pet-shampoo/v/x/m/sh-df-02-sicons-200-1100x1100-imaeh3kjba4htqfg.jpeg",
@@ -990,15 +990,15 @@ class ProductExamples {
       model: "MDL21",
       brand: "Sicons",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
     );
     mainList[22] = Product(
       id: 22,
       uniqueID: "ea98a65ad1e1b8688eddf89fbc7b3e27",
       name: "Alisha Solid Women's Cycling Shorts",
       retailPrice: 1000.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 100.0,
       images: [
         "http://img6a.flixcart.com/image/short/m/g/y/altht-3p-18-alisha-34-original-imaeh2d5zgnh6vsb.jpeg",
@@ -1022,8 +1022,8 @@ class ProductExamples {
       model: "MDL22",
       brand: "Alisha",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[23] = Product(
@@ -1031,7 +1031,7 @@ class ProductExamples {
       uniqueID: "7a7ba93ab20a2b50fd5a7dc74bcba063",
       name: "dongli Printed Boy's Round Neck T-Shirt",
       retailPrice: 2400.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 56.71,
       images: [
         "http://img5a.flixcart.com/image/t-shirt/w/x/t/dlhbb445-beige-black-gyellow-purple-dongli-10-11-years-original-imaehb54gxhchxcd.jpeg",
@@ -1063,8 +1063,8 @@ class ProductExamples {
       model: "MDL23",
       brand: "Dongli",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
     mainList[24] = Product(
@@ -1072,7 +1072,7 @@ class ProductExamples {
       uniqueID: "9c26a5d85a59d6a34a199ae1df836ec3",
       name: "SWAGGA Women Clogs",
       retailPrice: 1500.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 0.0,
       images: [
         "http://img6a.flixcart.com/image/sandal/h/7/v/brown-white17-swagga0040-swagga-47-original-imaeh6zhxgymnwjx.jpeg",
@@ -1100,8 +1100,8 @@ class ProductExamples {
       model: "MDL24",
       brand: "Swagga",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[25] = Product(
@@ -1109,7 +1109,7 @@ class ProductExamples {
       uniqueID: "20cf08ae845d5fd8f2b8cf52b3b9d840",
       name: "Kennel Rubber Dumbell With Bell - Small Rubber Rubber Toy For Dog",
       retailPrice: 190.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 0.0,
       images: [
         "http://img5a.flixcart.com/image/pet-toy/n/a/r/a35-kennel-original-imaea5c3qxyqzrgz.jpeg"
@@ -1142,8 +1142,8 @@ class ProductExamples {
       model: "MDL25",
       brand: "Kennel",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
     mainList[26] = Product(
@@ -1151,7 +1151,7 @@ class ProductExamples {
       uniqueID: "bb41283056536d7af11e994ba4f9db81",
       name: "Glus Wedding Lingerie Set",
       retailPrice: 1299.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 46.19,
       images: [
         "http://img5a.flixcart.com/image/lingerie-set/5/a/y/gp2151itu-glus-30b-original-imae92gzdcyhz9kr.jpeg",
@@ -1186,8 +1186,8 @@ class ProductExamples {
       model: "MDL26",
       brand: "Glus",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_SELL,
     );
     mainList[27] = Product(
@@ -1195,7 +1195,7 @@ class ProductExamples {
       uniqueID: "ea91e47cac68b132887d7fc1175e91c2",
       name: "Veelys Shiny White Quad Roller Skates - Size 4.5 UK",
       retailPrice: 3199.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 21.88,
       images: [
         "http://img6a.flixcart.com/image/skate/w/y/7/ve-ar-2132-w-4-5-1-veelys-quad-roller-shiny-white-original-imae5jpf8c5nmxfy.jpeg",
@@ -1230,8 +1230,8 @@ class ProductExamples {
       model: "MDL27",
       brand: "Veelys",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.BARTER_AND_SELL,
     );
     mainList[28] = Product(
@@ -1239,7 +1239,7 @@ class ProductExamples {
       uniqueID: "bec784ef794cf596dbe2cbbaf5427ef0",
       name: "Bulaky vanity case Jewellery Vanity Case",
       retailPrice: 499.0,
-      delivaryPrice: 150.0,
+      deliveryPrice: 150.0,
       discountPrice: 21.84,
       images: [
         "http://img6a.flixcart.com/image/vanity-box/8/5/t/j-635-bulaky-vanity-case-1100x1100-imadzy6atzfswnag.jpeg",
@@ -1260,8 +1260,8 @@ class ProductExamples {
       model: "MDL28",
       brand: "Bulaky",
       shop: Shop.exampleShop,
-      isFavorite: false,
-      currancy: "Rs",
+      isFavorite: 0,
+      currency: "Rs",
       dealingState: ProductDealingType.ONLY_BARTER,
     );
     sendableList.clear();

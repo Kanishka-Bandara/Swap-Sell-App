@@ -9,31 +9,40 @@ class Product extends Model {
   int id;
   String uniqueID;
   String name;
+  int headCategoryId; //
+  int mainCategoryId; //
+  int subCategoryId; //
   String headCategory;
   String mainCategory;
   String subCategory;
   String model;
+  int brandId; //
   String brand;
   List<String> images;
   List<Image> networkImages;
   String description;
   String barcode;
   Map<String, String> specifications = Map();
+  int conditionId; //
   ProductCondition condition = ProductCondition.BRAND_NEW;
   String inTheBox;
   double rating;
   int qty;
-  String currancy;
+  int currencyId; //
+  String currency;
+  int dealingStateId; //
   ProductDealingType dealingState = ProductDealingType.ONLY_SELL;
   double barterPrice;
   double retailPrice;
-  double delivaryPrice;
+  double deliveryPrice;
+  int discountId; //
   double discountPrice;
   int saleCount;
   int barterCount;
   int returnCount;
   Shop shop;
-  bool isFavorite;
+  int isFavorite;
+  int status;
 
   Product({
     @required this.id,
@@ -41,7 +50,7 @@ class Product extends Model {
     @required this.name,
     this.retailPrice = 0.0,
     this.barterPrice = 0.0,
-    this.delivaryPrice = 0.0,
+    this.deliveryPrice = 0.0,
     this.discountPrice = 0.0,
     this.images,
     @required this.description,
@@ -60,9 +69,17 @@ class Product extends Model {
     this.model,
     this.brand,
     this.shop,
-    this.isFavorite = false,
-    this.currancy,
+    this.isFavorite = 0,
+    this.currency,
     this.dealingState = ProductDealingType.ONLY_SELL,
+    this.headCategoryId,
+    this.mainCategoryId,
+    this.subCategoryId,
+    this.brandId,
+    this.conditionId,
+    this.currencyId,
+    this.dealingStateId,
+    this.discountId,
   });
 
   int get getId => id;
@@ -100,10 +117,10 @@ class Product extends Model {
     //notifyListeners();
   }
 
-  double get getDelivaryPrice => delivaryPrice;
+  double get getDeliveryPrice => deliveryPrice;
 
-  set setDelivaryPrice(double value) {
-    this.delivaryPrice = value;
+  set setDeliveryPrice(double value) {
+    this.deliveryPrice = value;
     //notifyListeners();
   }
 
@@ -238,17 +255,17 @@ class Product extends Model {
     //notifyListeners();
   }
 
-  bool get getIsFavorite => isFavorite;
+  bool get getIsFavorite => isFavorite == 1;
 
   set setIsFavorite(bool value) {
-    this.isFavorite = value;
+    value == true ? this.isFavorite = 1 : this.isFavorite = 0;
     //notifyListeners();
   }
 
-  String get getCurrancy => currancy;
+  String get getCurrency => currency;
 
-  set setCurrancy(String value) {
-    this.currancy = value;
+  set setCurrency(String value) {
+    this.currency = value;
     //notifyListeners();
   }
 
@@ -283,6 +300,13 @@ class Product extends Model {
 
   String get getDisplayDiscountedRetailPrice {
     return Currency.convertToCurrency(getDiscountedRetailPrice);
+  }
+
+  int get getStatus => status;
+
+  set setStatus(int status) {
+    this.status = status;
+    //notifyListeners();
   }
 
   bool get canOnlyBarter =>

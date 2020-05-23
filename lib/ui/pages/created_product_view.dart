@@ -10,19 +10,25 @@ import 'package:carousel_pro/carousel_pro.dart';
 class CreatedProductView extends StatefulWidget {
   static Product currentProduct;
   static List<File> images;
+  static Map<String, String> specifications;
 
   @override
   State<StatefulWidget> createState() {
-    return _CreatedProductViewState(currentProduct, images);
+    return _CreatedProductViewState(currentProduct, images, specifications);
   }
 }
 
 class _CreatedProductViewState extends State<CreatedProductView> {
   Product _product;
   List<FileImage> _images;
+  Map<String, String> _specifications;
   double _selectedQty = 1;
   int _bottomNavigationBarCurruntIndex = 1;
-  _CreatedProductViewState(this._product, List<File> imagesFiles) {
+  _CreatedProductViewState(
+    this._product,
+    List<File> imagesFiles,
+    this._specifications,
+  ) {
     _images = [];
     if (imagesFiles != null) {
       imagesFiles.forEach((File f) {
@@ -30,6 +36,7 @@ class _CreatedProductViewState extends State<CreatedProductView> {
         print(f.path);
       });
     }
+    _product.setSpecifications = _specifications;
   }
   @override
   void initState() {
@@ -61,7 +68,8 @@ class _CreatedProductViewState extends State<CreatedProductView> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              _product.getName == null || _product.getName.isEmpty
+                              _product.getName == null ||
+                                      _product.getName.isEmpty
                                   ? "Your product name will be shown here."
                                   : _product.getName,
                               style: TextStyle(

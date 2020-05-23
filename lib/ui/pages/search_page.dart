@@ -127,7 +127,7 @@ class SearchPage extends SearchDelegate<String> {
                 ),
               ),
               subtitle: Text(
-                "${list[index].getCurrancy} " +
+                "${list[index].getCurrency} " +
                     list[index].getRetailPrice.toString(),
                 style: TextStyle(
                   color: Color.fromRGBO(85, 85, 85, 1),

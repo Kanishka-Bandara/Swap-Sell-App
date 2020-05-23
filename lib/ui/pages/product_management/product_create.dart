@@ -20,10 +20,16 @@ class ProductCreate extends StatefulWidget {
 class _ProductCreateState extends State<ProductCreate> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int _currentStepCreate = 0;
-  Product _newProduct = Product(id: 0, uniqueID: "", name: "", description: "");
+  static Product _newProduct = Product(
+      id: 0,
+      uniqueID: "",
+      name: "",
+      description: "",
+      specifications: <String, String>{"a": "a", "b": "b"});
   List<File> _imgFiles = [];
   String _specsKey;
   String _specsValue;
+  Map<String, String> _sp = {};
 
   //Start :: Create Instance Variables
   KTextFormField _text_ProductName;
@@ -83,7 +89,7 @@ class _ProductCreateState extends State<ProductCreate> {
                               return;
                             }
                             _formKey.currentState.save();
-                            _clearAll();
+                            // _clearAll();
                           }
                         });
                       },
@@ -112,7 +118,11 @@ class _ProductCreateState extends State<ProductCreate> {
             onPressed: () {
               print("specs = ${_newProduct.getSpecifications}");
               AppNavigator.navigateToProductDummyViewPage(
-                  context, _newProduct, _imgFiles);
+                context,
+                _newProduct,
+                _imgFiles,
+                _sp,
+              );
             },
             child: Icon(Icons.visibility),
           ),
@@ -129,6 +139,7 @@ class _ProductCreateState extends State<ProductCreate> {
       _buildStepMedia(context),
       _buildStepSpecifications(context),
       _buildStepDescription(context),
+      _buildStepDelivery(context),
     ];
     return _steps;
   }
@@ -177,8 +188,7 @@ class _ProductCreateState extends State<ProductCreate> {
                   required: true,
                   name: "Product Name",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(
-                      text: product.getName),
+                  textController: TextEditingController(text: product.getName),
                   onChanged: (value) {
                     product.setName = value;
                   },
@@ -265,6 +275,19 @@ class _ProductCreateState extends State<ProductCreate> {
                       value = "0";
                     }
                     product.discountPrice = double.parse(value.toString());
+                  },
+                ),
+                _text_DiscountPrice = KTextFormField(
+                  required: true,
+                  name: "Barcode",
+                  emptyRequiredMessage: null,
+                  textController:
+                      TextEditingController(text: product.getBarcode),
+                  onChanged: (value) {
+                    product.setBarcode = value;
+                  },
+                  onSaved: (value) {
+                    product.setBarcode = value;
                   },
                 ),
                 SizedBox(
@@ -486,19 +509,27 @@ class _ProductCreateState extends State<ProductCreate> {
           builder: (BuildContext context, Widget widget, Product product) {
             return Column(
               children: <Widget>[
+                // TextFormField(
+                //   decoration: InputDecoration(labelText: "Key",),
+                //   validator: (v){
+                //     if (v.isEmpty) {
+                //       return "This field is required";
+                //     }
+                //     return null;
+                //   },
+                //   onChanged: (v){
+
+                //   },
+                // ),
                 _text_SpecsKey = KTextFormField(
                   name: "Key",
                   emptyRequiredMessage: null,
                   textController: TextEditingController(text: _specsKey),
                   onChanged: (value) {
-                    setState(() {
-                      _specsKey = value;
-                    });
+                    _specsKey = value;
                   },
                   onSaved: (value) {
-                    setState(() {
-                      _specsKey = value;
-                    });
+                    _specsKey = value;
                   },
                 ),
                 _text_SpecsValue = KTextFormField(
@@ -506,14 +537,10 @@ class _ProductCreateState extends State<ProductCreate> {
                   emptyRequiredMessage: null,
                   textController: TextEditingController(text: _specsValue),
                   onChanged: (value) {
-                    setState(() {
-                      _specsValue = value;
-                    });
+                    _specsValue = value;
                   },
                   onSaved: (value) {
-                    setState(() {
-                      _specsValue = value;
-                    });
+                    _specsValue = value;
                   },
                 ),
                 Row(
@@ -533,13 +560,16 @@ class _ProductCreateState extends State<ProductCreate> {
                         if (_specsValue == null || _specsValue.isEmpty) {
                           DefaultComponents.showMessage(
                             context,
-                            "Key is empty.Please Fill the key content.",
+                            "Key is empty.Please Fill the value content.",
                             Icons.error,
                             1,
                           );
                           return;
                         }
-                        product.specifications[_specsKey] = _specsValue;
+                        _sp[_specsKey] = _specsValue;
+                        product.specifications = _sp;
+                        print(_sp);
+                        print(product.specifications);
                         _specsKey = "";
                         _specsValue = "";
                       },
@@ -631,6 +661,37 @@ class _ProductCreateState extends State<ProductCreate> {
     );
   }
 
+  Step _buildStepDelivery(BuildContext context) {
+    return Step(
+      title: Text("Delivery"),
+      isActive: _currentStepCreate >= 4,
+      content: ScopedModel(
+        model: _newProduct,
+        child: ScopedModelDescendant<Product>(
+          builder: (BuildContext context, Widget widget, Product product) {
+            return Column(
+              children: <Widget>[
+                _text_Description = KTextFormField(
+                  required: true,
+                  name: "What is in the box",
+                  emptyRequiredMessage: null,
+                  textController:
+                      TextEditingController(text: product.getWhatIsInTheBox),
+                  onChanged: (value) {
+                    product.setWhatIsInTheBox = value;
+                  },
+                  onSaved: (value) {
+                    product.setWhatIsInTheBox = value;
+                  },
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   void _clearAll() {
     _newProduct = Product(id: 0, uniqueID: "", name: "", description: "");
     // _text_ProductName.clear();
@@ -642,4 +703,5 @@ class _ProductCreateState extends State<ProductCreate> {
     // _text_SpecsValue.clear();
     // _text_Description.clear();
   }
+
 }

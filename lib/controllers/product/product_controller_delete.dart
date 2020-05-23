@@ -61,7 +61,7 @@ class ProductControllerDelete {
       String _uniqueID = data[i][0].toString();
       String _name = data[i][3].toString();
       double _retailPrice = data[i][6] == "" ? 1000.00 : data[i][6].toDouble();
-      double _delivaryPrice = 150.00;
+      double _deliveryPrice = 150.00;
       double _discount = data[i][6] == "" ? 0.00 : data[i][7].toDouble();
       List<String> _images;
       List<String> _imagesString;
@@ -85,8 +85,8 @@ class ProductControllerDelete {
                   .toLowerCase();
       String _model = "MDL$i";
       Shop _shop = Shop.exampleShop;
-      bool _isFavorite = i % 20 == 0 ? true : false;
-      String _currancy = "Rs";
+      int _isFavorite = i % 20 == 0 ? 1 : 0;
+      String _currency = "Rs";
 
 //Start :: Set values to specs
       if (data[i][14] == "") {
@@ -160,7 +160,7 @@ class ProductControllerDelete {
         uniqueID: _uniqueID,
         name: _name,
         retailPrice: _retailPrice,
-        delivaryPrice: _delivaryPrice,
+        deliveryPrice: _deliveryPrice,
         discountPrice: _discount,
         images: _images,
         description: _description,
@@ -177,13 +177,13 @@ class ProductControllerDelete {
         brand: _brand,
         shop: _shop,
         isFavorite: _isFavorite,
-        currancy: _currancy,
+        currency: _currency,
       );
       list[i].setId = _id;
       list[i].setUniqueID = _uniqueID;
       list[i].setName = _name;
       list[i].setRetailPrice = _retailPrice;
-      list[i].setDelivaryPrice = _delivaryPrice;
+      list[i].setDeliveryPrice = _deliveryPrice;
       list[i].setDiscountePrice = _discount;
       list[i].setImages = _images;
       list[i].setDescription = _description;
@@ -198,8 +198,8 @@ class ProductControllerDelete {
       list[i].setModel = _model;
       list[i].setBrand = _brand;
       list[i].setShop = _shop;
-      list[i].setIsFavorite = _isFavorite;
-      list[i].setCurrancy = _currancy;
+      list[i].setIsFavorite = _isFavorite==1;
+      list[i].setCurrency = _currency;
       // print("${list[i].name} added");
 
       a += " mainList[$i] = Product(" +
@@ -207,7 +207,7 @@ class ProductControllerDelete {
           "uniqueID: \"${list[i].getUniqueID}\"," +
           " name: \"${list[i].getName}\"," +
           " retailPrice: ${list[i].getRetailPrice}," +
-          " delivaryPrice: ${list[i].getDelivaryPrice}," +
+          " deliveryPrice: ${list[i].getDeliveryPrice}," +
           " discountPrice: ${list[i].getDiscount}," +
           " images: $_imagesString," +
           "description: \"${list[i].getDescription}\"," +
@@ -224,7 +224,7 @@ class ProductControllerDelete {
           " brand: \"${list[i].getBrand}\"," +
           " shop: Shop.exampleShop," +
           " isFavorite: ${list[i].getIsFavorite}," +
-          "currancy: \"${list[i].getCurrancy}\"," +
+          "currency: \"${list[i].getCurrency}\"," +
           "); \n";
       i++;
     }
