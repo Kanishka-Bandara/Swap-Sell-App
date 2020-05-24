@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/model/product/product_main_category.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'product_sub_category.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class SubCategory {
   
   int catID;
@@ -27,5 +31,9 @@ class SubCategory {
   set setHeadCategory(MainCategory mainCategory) => this.mainCategory = mainCategory;
 
   MainCategory get getHeadCategory => mainCategory;
+
+  factory SubCategory.fromJson(Map<String, dynamic> json) => _$SubCategoryFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SubCategoryToJson(this);
   
 }

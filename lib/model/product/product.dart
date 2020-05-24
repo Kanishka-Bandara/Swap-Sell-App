@@ -4,7 +4,11 @@ import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/business/business.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/model/shop/shop.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'product.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Product extends Model {
   int id;
   String uniqueID;
@@ -315,4 +319,9 @@ class Product extends Model {
       this.dealingState == ProductDealingType.ONLY_SELL ? true : false;
   bool get canBarterAndSell =>
       this.dealingState == ProductDealingType.BARTER_AND_SELL ? true : false;
+
+  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
+
 }

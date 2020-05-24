@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'shop.g.dart';
 
+@JsonSerializable(explicitToJson: true)
 class Shop {
   int id;
   String shopID;
@@ -57,4 +60,9 @@ class Shop {
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+  
+  factory Shop.fromJson(Map<String, dynamic> json) => _$ShopFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ShopToJson(this);
+
 }

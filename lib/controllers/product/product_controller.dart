@@ -42,4 +42,9 @@ class ProductController extends Model {
   ) async {
     return await ProductExamples.getExampleProductList();
   }
+
+  Future<Product> saveProduct(Product p)async{
+    
+  }
+
 }

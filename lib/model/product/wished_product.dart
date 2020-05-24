@@ -1,5 +1,9 @@
 import 'package:swap_sell/model/product/product.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'wished_product.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class WishedProduct {
   int id;
   Product product;
@@ -28,4 +32,9 @@ class WishedProduct {
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
+
+  factory WishedProduct.fromJson(Map<String, dynamic> json) => _$WishedProductFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WishedProductToJson(this);
+
 }
