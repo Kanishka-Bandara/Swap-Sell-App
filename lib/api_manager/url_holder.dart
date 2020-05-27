@@ -57,4 +57,8 @@ class URLHolder {
   // static const String GET_ARCHIVED_MESSAGES_LIST_URL = _MESSAGE_PACKAGE + "/getAllArchived";
   // static const String ARCHIVE_MESSAGE_URL = _MESSAGE_PACKAGE + "/doArchive";
   // END::MESSAGE URL
+  // BEGIN::PRODUCT URL
+  static const String _PRODUCT_PACKAGE = MAIN_URL + "/product";
+  static const String CREATE_PRODUCT_URL = _PRODUCT_PACKAGE + "/create";
+  // END::PRODUCT URL
 }

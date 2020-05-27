@@ -8,19 +8,18 @@ import 'package:swap_sell/model/product/product.dart';
 class ProductApiManager {
   static ProductApiManager defaultManager = ProductApiManager();
 
-  Future<Product> saveProduct(Product p) async {
-    // var response = await http.post(
-    //   URLHolder.SEND_MESSAGE_URL,
-    //   headers: <String, String>{
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: null,
-    // );
-    // if (response.statusCode == 200) {
-    //   return null;
-    //   // return Message.fromJson(json.decode(response.body));
-    // } else {
-    //   return null;
-    // }
+  Future<Product> saveProduct(Product p,int userId) async {
+    var response = await http.post(
+      URLHolder.CREATE_PRODUCT_URL+"/$userId",
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(p),
+    );
+    if (response.statusCode == 200) {
+      return Product.fromJson(json.decode(response.body));
+    } else {
+      return null;
+    }
   }
 }

@@ -4,7 +4,6 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
-import 'package:swap_sell/controllers/location_details_controller.dart';
 import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
@@ -13,7 +12,6 @@ import 'package:swap_sell/model/user/user.dart';
 import 'package:swap_sell/model/user/usertype_metadata.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/user_component.dart';
-import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 

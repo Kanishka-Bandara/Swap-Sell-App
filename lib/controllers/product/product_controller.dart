@@ -1,4 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/api_manager/product_api_manager.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/product/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_main_category.dart';
@@ -43,8 +45,8 @@ class ProductController extends Model {
     return await ProductExamples.getExampleProductList();
   }
 
-  Future<Product> saveProduct(Product p)async{
-    
+  Future<Product> saveProduct(Product p) async {
+    return await ProductApiManager.defaultManager
+        .saveProduct(p, AppInit.currentApp.getCurrentUser.getId);
   }
-
 }

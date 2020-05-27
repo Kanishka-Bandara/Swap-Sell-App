@@ -32,20 +32,24 @@ class _ProductCreateState extends State<ProductCreate> {
   Map<String, String> _sp = {};
 
   //Start :: Create Instance Variables
-  KTextFormField _text_ProductName;
-  KTextFormField _text_Model;
-  KTextFormField _text_Brand;
-  KTextFormField _text_RetailPrice;
-  KTextFormField _text_BarterPrice;
-  KTextFormField _text_DiscountPrice;
-  KDropDownButton _dropDown_SelectCondition;
-  KDropDownButton _dropDown_dealingType;
-  KDropDownButton _dropDown_CatedoryHead;
-  KDropDownButton _dropDown_CatedoryMain;
-  KDropDownButton _dropDown_CatedorySub;
-  KTextFormField _text_SpecsKey;
-  KTextFormField _text_SpecsValue;
-  KTextFormField _text_Description;
+  TextEditingController textProductName =
+      TextEditingController(text: _newProduct.getName);
+  TextEditingController textModel =
+      TextEditingController(text: _newProduct.getModel);
+  TextEditingController textBrand =
+      TextEditingController(text: _newProduct.getBrand);
+  TextEditingController textRetailPrice =
+      TextEditingController(text: _newProduct.getRetailPrice.toString());
+  TextEditingController textBarterPrice =
+      TextEditingController(text: _newProduct.getBarterPrice.toString());
+  TextEditingController textDiscountPrice =
+      TextEditingController(text: _newProduct.getDiscountPrice.toString());
+  TextEditingController textSpecsKey = TextEditingController();
+  TextEditingController textSpecsValue = TextEditingController();
+  TextEditingController textDescription =
+      TextEditingController(text: _newProduct.getDescription);
+  TextEditingController textDelivery =
+      TextEditingController(text: _newProduct.getWhatIsInTheBox);
   //End :: Create Instance Variables
 
   @override
@@ -88,8 +92,7 @@ class _ProductCreateState extends State<ProductCreate> {
                             if (!_formKey.currentState.validate()) {
                               return;
                             }
-                            _formKey.currentState.save();
-                            // _clearAll();
+                            _saveProduct();
                           }
                         });
                       },
@@ -132,7 +135,7 @@ class _ProductCreateState extends State<ProductCreate> {
   }
 
   List<Step> _buildProductCreateSteps(BuildContext context) {
-    _newProduct.setSpecifications = {};
+    _newProduct.setSpecifications = <String, String>{};
     List<Step> _steps = <Step>[
       _buildStepMainDetails(context),
       _buildStepCategory(context),
@@ -154,7 +157,7 @@ class _ProductCreateState extends State<ProductCreate> {
           builder: (BuildContext context, Widget widget, Product product) {
             return Column(
               children: <Widget>[
-                _dropDown_SelectCondition = KDropDownButton<ProductCondition>(
+                KDropDownButton<ProductCondition>(
                   value: product.getCondition,
                   hint: Row(
                     children: <Widget>[
@@ -169,7 +172,7 @@ class _ProductCreateState extends State<ProductCreate> {
                     });
                   },
                 ),
-                _dropDown_dealingType = KDropDownButton<ProductDealingType>(
+                KDropDownButton<ProductDealingType>(
                   value: product.getDealingType,
                   hint: Row(
                     children: <Widget>[
@@ -184,11 +187,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     });
                   },
                 ),
-                _text_ProductName = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Product Name",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(text: product.getName),
+                  textController: textProductName,
                   onChanged: (value) {
                     product.setName = value;
                   },
@@ -196,11 +199,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.setName = value;
                   },
                 ),
-                _text_Model = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Model",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(text: product.getModel),
+                  textController: textModel,
                   onChanged: (value) {
                     product.setModel = value;
                   },
@@ -208,11 +211,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.setModel = value;
                   },
                 ),
-                _text_Brand = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Brand",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(text: product.getBrand),
+                  textController: textBrand,
                   onChanged: (value) {
                     product.setBrand = value;
                   },
@@ -220,12 +223,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.setBrand = value;
                   },
                 ),
-                _text_RetailPrice = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Retail Price",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(
-                      text: product.getRetailPrice.toString()),
+                  textController: textRetailPrice,
                   onChanged: (value) {
                     if (value.isEmpty) {
                       value = "0";
@@ -239,12 +241,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.setRetailPrice = double.parse(value.toString());
                   },
                 ),
-                _text_BarterPrice = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Exchange Price",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(
-                      text: product.getBarterPrice.toString()),
+                  textController: textBarterPrice,
                   onChanged: (value) {
                     if (value.isEmpty) {
                       value = "0";
@@ -258,12 +259,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.setBarterPrice = double.parse(value.toString());
                   },
                 ),
-                _text_DiscountPrice = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Discount Price",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(
-                      text: product.discountPrice.toString()),
+                  textController: textDiscountPrice,
                   onChanged: (value) {
                     if (value.isEmpty) {
                       value = "0";
@@ -277,12 +277,11 @@ class _ProductCreateState extends State<ProductCreate> {
                     product.discountPrice = double.parse(value.toString());
                   },
                 ),
-                _text_DiscountPrice = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Barcode",
                   emptyRequiredMessage: null,
-                  textController:
-                      TextEditingController(text: product.getBarcode),
+                  textController: textDiscountPrice,
                   onChanged: (value) {
                     product.setBarcode = value;
                   },
@@ -311,7 +310,7 @@ class _ProductCreateState extends State<ProductCreate> {
           builder: (BuildContext context, Widget widget, Product product) {
             return Column(
               children: <Widget>[
-                _dropDown_CatedoryHead = KDropDownButton<String>(
+                KDropDownButton<String>(
                   value: product.getHeadCategory,
                   hint: Row(
                     children: <Widget>[
@@ -342,7 +341,7 @@ class _ProductCreateState extends State<ProductCreate> {
                     });
                   },
                 ),
-                _dropDown_CatedoryMain = KDropDownButton<String>(
+                KDropDownButton<String>(
                   value: product.getMainCategory,
                   hint: Row(
                     children: <Widget>[
@@ -373,7 +372,7 @@ class _ProductCreateState extends State<ProductCreate> {
                     });
                   },
                 ),
-                _dropDown_CatedorySub = KDropDownButton<String>(
+                KDropDownButton<String>(
                   value: product.getSubCategory,
                   hint: Row(
                     children: <Widget>[
@@ -521,10 +520,10 @@ class _ProductCreateState extends State<ProductCreate> {
 
                 //   },
                 // ),
-                _text_SpecsKey = KTextFormField(
+                KTextFormField(
                   name: "Key",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(text: _specsKey),
+                  textController: textSpecsKey,
                   onChanged: (value) {
                     _specsKey = value;
                   },
@@ -532,10 +531,10 @@ class _ProductCreateState extends State<ProductCreate> {
                     _specsKey = value;
                   },
                 ),
-                _text_SpecsValue = KTextFormField(
+                KTextFormField(
                   name: "Value",
                   emptyRequiredMessage: null,
-                  textController: TextEditingController(text: _specsValue),
+                  textController: textSpecsValue,
                   onChanged: (value) {
                     _specsValue = value;
                   },
@@ -568,8 +567,8 @@ class _ProductCreateState extends State<ProductCreate> {
                         }
                         _sp[_specsKey] = _specsValue;
                         product.specifications = _sp;
-                        print(_sp);
-                        print(product.specifications);
+                        textSpecsKey.clear();
+                        textSpecsValue.clear();
                         _specsKey = "";
                         _specsValue = "";
                       },
@@ -638,14 +637,13 @@ class _ProductCreateState extends State<ProductCreate> {
           builder: (BuildContext context, Widget widget, Product product) {
             return Column(
               children: <Widget>[
-                _text_Description = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "Description",
                   emptyRequiredMessage: null,
                   isMultiLine: true,
                   maxLines: null,
-                  textController:
-                      TextEditingController(text: product.description),
+                  textController: textDescription,
                   onChanged: (value) {
                     product.description = value;
                   },
@@ -671,12 +669,11 @@ class _ProductCreateState extends State<ProductCreate> {
           builder: (BuildContext context, Widget widget, Product product) {
             return Column(
               children: <Widget>[
-                _text_Description = KTextFormField(
+                KTextFormField(
                   required: true,
                   name: "What is in the box",
                   emptyRequiredMessage: null,
-                  textController:
-                      TextEditingController(text: product.getWhatIsInTheBox),
+                  textController: textDelivery,
                   onChanged: (value) {
                     product.setWhatIsInTheBox = value;
                   },
@@ -694,14 +691,21 @@ class _ProductCreateState extends State<ProductCreate> {
 
   void _clearAll() {
     _newProduct = Product(id: 0, uniqueID: "", name: "", description: "");
-    // _text_ProductName.clear();
-    // _text_Model.clear();
-    // _text_Brand.clear();
-    // _text_RetailPrice.clear();
-    // _text_DiscountPrice.clear();
-    // _text_SpecsKey.clear();
-    // _text_SpecsValue.clear();
-    // _text_Description.clear();
+    textProductName.clear();
+    textModel.clear();
+    textBrand.clear();
+    textRetailPrice.clear();
+    textBarterPrice.clear();
+    textDiscountPrice.clear();
+    textSpecsKey.clear();
+    textSpecsValue.clear();
+    textDescription.clear();
+    textDelivery.clear();
   }
 
+  void _saveProduct() {
+    _formKey.currentState.save();
+    _newProduct.setSpecifications = _sp;
+    print(_newProduct.toJson());
+  }
 }
