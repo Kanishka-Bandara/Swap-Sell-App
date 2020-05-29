@@ -31,6 +31,12 @@ class ProductController extends Model {
 
   Future<List<Product>> getRecentArrivedProductList() async {
     resentArrivedProductList = await ProductExamples.getExampleProductList();
+    // for (var i = 0; i < 20; i++) {
+    //   resentArrivedProductList.forEach((p) async{
+    // Product product = await ProductApiManager.defaultManager.saveProduct(resentArrivedProductList[0], AppInit.currentApp.getCurrentUser.getId);
+    // print("${product.getName} has been done.");
+    //  });
+    // }
     return resentArrivedProductList;
   }
 

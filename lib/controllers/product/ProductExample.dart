@@ -22,7 +22,7 @@ class ProductExamples {
         "http://img6a.flixcart.com/image/legging-jegging/f/c/7/1-1-lg-green08-fdt-xl-original-imae58jpqzshhphj.jpeg"
       ],
       description:
-          "FDT Women's Leggings - Buy Parrot Green FDT Women's Leggings For Only Rs. 699 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
+          "FDT Women's Leggings - Buy Parrot Green FDT Women's Leggings For Only LKR. 699 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
       rating: 1.5,
       qty: 293,
       specifications: {
@@ -43,8 +43,9 @@ class ProductExamples {
       brand: "FDT",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[1] = Product(
       id: 1,
@@ -81,8 +82,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[2] = Product(
@@ -101,7 +103,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/sofa-bed/j/f/y/fhd112-double-foam-fabhomedecor-leatherette-black-leatherette-original-imaeh3gerfhdxzwj.jpeg"
       ],
       description:
-          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Leatherette Black Mechanism Type - Pull Out) Price: Rs. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Leatherette Black Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD112 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer WarrantyWarranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Leatherette Black Primary Color Black Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Leatherette Black Primary Material Subtype Foam",
+          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Leatherette Black Mechanism Type - Pull Out) Price: LKR. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Leatherette Black Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD112 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer WarrantyWarranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Leatherette Black Primary Color Black Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Leatherette Black Primary Material Subtype Foam",
       rating: 0.0,
       qty: 34,
       specifications: {
@@ -153,8 +155,9 @@ class ProductExamples {
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[3] = Product(
@@ -173,7 +176,7 @@ class ProductExamples {
         "http://img6a.flixcart.com/image/shoe/7/z/z/red-as-454-aw-11-original-imaeebfw2veeuz8s.jpeg"
       ],
       description:
-          "Key Features of AW Bellies Sandals Wedges Heel Casuals,AW Bellies Price: Rs. 499 Material: Synthetic Lifestyle: Casual Heel Type: Wedge Warranty Type: Manufacturer Product Warranty against manufacturing defects: 30 days Care instructions: Allow your pair of shoes to air and de-odorize at regular basis; use shoe bags to prevent any stains or mildew; dust any dry dirt from the surface using a clean cloth; do not use polish or shiner,Specifications of AW Bellies General Ideal For Women Occasion Casual Shoe Details Color Red Outer Material Patent Leather Heel Height 1 inch Number of Contents in Sales Package Pack of 1 In the Box One Pair Of Shoes",
+          "Key Features of AW Bellies Sandals Wedges Heel Casuals,AW Bellies Price: LKR. 499 Material: Synthetic Lifestyle: Casual Heel Type: Wedge Warranty Type: Manufacturer Product Warranty against manufacturing defects: 30 days Care instructions: Allow your pair of shoes to air and de-odorize at regular basis; use shoe bags to prevent any stains or mildew; dust any dry dirt from the surface using a clean cloth; do not use polish or shiner,Specifications of AW Bellies General Ideal For Women Occasion Casual Shoe Details Color Red Outer Material Patent Leather Heel Height 1 inch Number of Contents in Sales Package Pack of 1 In the Box One Pair Of Shoes",
       rating: 0.0,
       qty: 469,
       specifications: {
@@ -194,7 +197,7 @@ class ProductExamples {
       brand: "Aw",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
 
     mainList[4] = Product(
@@ -233,8 +236,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[5] = Product(
@@ -272,8 +276,9 @@ class ProductExamples {
       brand: "Sicons",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[6] = Product(
@@ -289,7 +294,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/paper-weight/u/e/3/eternal-gandhi-gandhi-paper-weight-mark-v-original-imaeb8adyf3xmqhf.jpeg"
       ],
       description:
-          "Key Features of Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish Crystal  paper weight Product Dimensions :   8cm x  8cm x 5cm A beautiful product Material: Crystal,Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish (Set Of 1, Clear) Price: Rs. 430 Your office desk will sparkle and shine when you accent tables with this elegant crystal paper weight. The multifaceted crystal features Gandhiji’s bust and his timeless message – “My life is my message – M.K. Gandhi”. A beautiful product to gift to your near and dear ones in family and Business.,Specifications of Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish (Set Of 1, Clear) General Model Name Gandhi Paper Weight Mark V Dimensions Weight 323 g In the Box Paper Weight Paper Weight Features Paper Weight Material Crystal Paper Weight Finish Silver Finish",
+          "Key Features of Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish Crystal  paper weight Product Dimensions :   8cm x  8cm x 5cm A beautiful product Material: Crystal,Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish (Set Of 1, Clear) Price: LKR. 430 Your office desk will sparkle and shine when you accent tables with this elegant crystal paper weight. The multifaceted crystal features Gandhiji’s bust and his timeless message – “My life is my message – M.K. Gandhi”. A beautiful product to gift to your near and dear ones in family and Business.,Specifications of Eternal Gandhi Super Series Crystal Paper Weights  with Silver Finish (Set Of 1, Clear) General Model Name Gandhi Paper Weight Mark V Dimensions Weight 323 g In the Box Paper Weight Paper Weight Features Paper Weight Material Crystal Paper Weight Finish Silver Finish",
       rating: 0.0,
       qty: 676,
       specifications: {
@@ -308,7 +313,7 @@ class ProductExamples {
       brand: "Eternal gandhi",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
 
     mainList[7] = Product(
@@ -347,8 +352,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[8] = Product(
@@ -365,7 +371,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/sofa-bed/e/x/n/fhd107-double-foam-fabhomedecor-brown-brown-original-imaeh3gehnzcjfzv.jpeg"
       ],
       description:
-          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Brown Mechanism Type - Pull Out) Price: Rs. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Brown Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock DownStorage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD107 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned onceevery 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer Warranty Warranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Brown Primary Color Brown Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Brown Primary Material Subtype Foam",
+          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Brown Mechanism Type - Pull Out) Price: LKR. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Brown Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock DownStorage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD107 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned onceevery 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer Warranty Warranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Brown Primary Color Brown Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Brown Primary Material Subtype Foam",
       rating: 0.0,
       qty: 861,
       specifications: {
@@ -417,7 +423,7 @@ class ProductExamples {
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
 
     mainList[9] = Product(
@@ -456,8 +462,9 @@ class ProductExamples {
       brand: "Dilli bazaaar",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[10] = Product(
@@ -496,8 +503,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[11] = Product(
@@ -516,7 +524,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/shoe/s/g/m/black-r998-22-ladela-38-original-imaeh3w9cycrgdgt.jpeg"
       ],
       description:
-          "Key Features of Ladela Bellies Brand: LADELA Color : Black,Ladela Bellies Price: Rs. 950 Experience the best bellies from the house of Ladela. Providing the best material to keep your feet cozy and active for the whole day.,Specifications of Ladela Bellies General Occasion Casual Ideal For Women Shoe Details Heel Height 0 inch Outer Material PU Color Black",
+          "Key Features of Ladela Bellies Brand: LADELA Color : Black,Ladela Bellies Price: LKR. 950 Experience the best bellies from the house of Ladela. Providing the best material to keep your feet cozy and active for the whole day.,Specifications of Ladela Bellies General Occasion Casual Ideal For Women Shoe Details Heel Height 0 inch Outer Material PU Color Black",
       rating: 5.0,
       qty: 169,
       specifications: {
@@ -536,7 +544,7 @@ class ProductExamples {
       brand: "Ladela",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
 
     mainList[12] = Product(
@@ -554,7 +562,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/swimsuit/5/v/9/carrel-sw-3091-black-white01-carrel-4xl-original-imaehyzmb4smucms.jpeg"
       ],
       description:
-          "Key Features of Carrel Printed Women's Fabric: SwimLycra Brand Color: Black, White,Carrel Printed Women's Price: Rs. 910 Max-coverage swimwear collection from CARREL BRAND, Brighten up your swim routine with this best fitting. This swimming costume from the house of Carrel is made of imported swim lycra fabric and comes in Black & White Colour. It has to be washed separately and dry in shade. Attractive & classy caressing the water. This swimwear provides excellent protection and Chlorine resistance. fast drying combined with flatlock stitching gives an unmatched comfort and helps you to that performance you have been striving for. This swimwear with its comfort and style is your perfect companion at any pool, beach or water activity. Time for you to do your own thing and Go With The Flow. This Swimwear Lightly padded, for modesty and support. This Product Support To This Size : L, XL, XXL, 3XL,4XL.,Specifications of Carrel Printed Women's Top Details Neck Round Neck Swimsuit Details Fabric SwimLycra Type Swim-dress General Details Pattern Printed Ideal For Women's Occasion Sports Fabric Care Wash with Similar Colors, Use Detergent for Colors In the Box 1 Swimware",
+          "Key Features of Carrel Printed Women's Fabric: SwimLycra Brand Color: Black, White,Carrel Printed Women's Price: LKR. 910 Max-coverage swimwear collection from CARREL BRAND, Brighten up your swim routine with this best fitting. This swimming costume from the house of Carrel is made of imported swim lycra fabric and comes in Black & White Colour. It has to be washed separately and dry in shade. Attractive & classy caressing the water. This swimwear provides excellent protection and Chlorine resistance. fast drying combined with flatlock stitching gives an unmatched comfort and helps you to that performance you have been striving for. This swimwear with its comfort and style is your perfect companion at any pool, beach or water activity. Time for you to do your own thing and Go With The Flow. This Swimwear Lightly padded, for modesty and support. This Product Support To This Size : L, XL, XXL, 3XL,4XL.,Specifications of Carrel Printed Women's Top Details Neck Round Neck Swimsuit Details Fabric SwimLycra Type Swim-dress General Details Pattern Printed Ideal For Women's Occasion Sports Fabric Care Wash with Similar Colors, Use Detergent for Colors In the Box 1 Swimware",
       rating: 0.0,
       qty: 907,
       specifications: {
@@ -575,8 +583,9 @@ class ProductExamples {
       brand: "Carrel",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[13] = Product(
@@ -614,8 +623,9 @@ class ProductExamples {
       brand: "Sicons",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[14] = Product(
@@ -653,8 +663,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[15] = Product(
       id: 15,
@@ -691,7 +702,7 @@ class ProductExamples {
       brand: "Freelance",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
     mainList[16] = Product(
       id: 16,
@@ -729,8 +740,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[17] = Product(
@@ -750,7 +762,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/sofa-bed/r/c/g/fhd132-double-foam-fabhomedecor-purple-purple-original-imaeh3gfmx3wjstu.jpeg"
       ],
       description:
-          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Purple Mechanism Type - Pull Out) Price: Rs. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Purple Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD132 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer Warranty Warranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Purple Primary Color Purple Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Purple Primary Material Subtype Foam",
+          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Purple Mechanism Type - Pull Out) Price: LKR. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Purple Mechanism Type - Pull Out) Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD132 Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Finish Type Matte Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Service Type Manufacturer Warranty Warranty Summary 6 Months Domestic Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Dimensions Weight 40 kg Height 838 mm Width 1905 mm Depth 939 mm Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Upholstery Color Purple Primary Color Purple Primary Material Fabric Secondary Material Subtype Mango Wood Secondary Material Foam Finish Color Purple Primary Material Subtype Foam",
       rating: 0.0,
       qty: 386,
       specifications: {
@@ -802,8 +814,9 @@ class ProductExamples {
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[18] = Product(
@@ -821,7 +834,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/shoe/v/t/m/black-sfwf0377-style-foot-43-original-imaeh4cxvjpek25n.jpeg"
       ],
       description:
-          "Key Features of Style Foot Bellies ballerina shoes ballerina flats,Style Foot Bellies Price: Rs. 449 ballet shoes that fits perfectly for casual and party wear,Specifications of Style Foot Bellies General Occasion Casual Ideal For Women Shoe Details Heel Height 1 inch Outer Material PU Color Black In the Box 1 slipper",
+          "Key Features of Style Foot Bellies ballerina shoes ballerina flats,Style Foot Bellies Price: LKR. 449 ballet shoes that fits perfectly for casual and party wear,Specifications of Style Foot Bellies General Occasion Casual Ideal For Women Shoe Details Heel Height 1 inch Outer Material PU Color Black In the Box 1 slipper",
       rating: 0.0,
       qty: 98,
       specifications: {
@@ -841,8 +854,9 @@ class ProductExamples {
       brand: "Style foot",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[19] = Product(
@@ -860,7 +874,7 @@ class ProductExamples {
         "http://img6a.flixcart.com/image/swimsuit/g/z/j/carrel-sw-3091-darkblue-white-carrel-4xl-original-imaehyzmgf2j2yh4.jpeg"
       ],
       description:
-          "Key Features of Carrel Printed Women's Fabric: SwimLycra Brand Color: DARK BLUE, WHITE,Carrel Printed Women's Price: Rs. 999 Max-coverage swimwear collection from CARREL BRAND, Brighten up your swim routine with this best fitting. This swimming costume from the house of Carrel is made of imported swim lycra fabric and comes in Darkblue & White Colour. It has to be washed separately and dry in shade. Attractive & classy caressing the water. This swimwear provides excellent protection and Chlorine resistance. fast drying combined with flatlock stitching gives an unmatched comfort and helps you to that performance you have been striving for. This swimwear with its comfort and style is your perfect companion at any pool, beach or water activity. Time for you to do your own thing and Go With The Flow. This Swimwear Lightly padded, for modesty and support. This Product Support To This Size : L, XL, XXL, 3XL,4XL.,Specifications of Carrel Printed Women's Top Details Neck Round Neck Swimsuit Details Fabric SwimLycra Type Swim-dress General Details Pattern Printed Ideal For Women's Occasion Sports Fabric Care Wash with Similar Colors, Use Detergent for Colors In the Box 1 Swimware",
+          "Key Features of Carrel Printed Women's Fabric: SwimLycra Brand Color: DARK BLUE, WHITE,Carrel Printed Women's Price: LKR. 999 Max-coverage swimwear collection from CARREL BRAND, Brighten up your swim routine with this best fitting. This swimming costume from the house of Carrel is made of imported swim lycra fabric and comes in Darkblue & White Colour. It has to be washed separately and dry in shade. Attractive & classy caressing the water. This swimwear provides excellent protection and Chlorine resistance. fast drying combined with flatlock stitching gives an unmatched comfort and helps you to that performance you have been striving for. This swimwear with its comfort and style is your perfect companion at any pool, beach or water activity. Time for you to do your own thing and Go With The Flow. This Swimwear Lightly padded, for modesty and support. This Product Support To This Size : L, XL, XXL, 3XL,4XL.,Specifications of Carrel Printed Women's Top Details Neck Round Neck Swimsuit Details Fabric SwimLycra Type Swim-dress General Details Pattern Printed Ideal For Women's Occasion Sports Fabric Care Wash with Similar Colors, Use Detergent for Colors In the Box 1 Swimware",
       rating: 0.0,
       qty: 410,
       specifications: {
@@ -881,8 +895,9 @@ class ProductExamples {
       brand: "Carrel",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[20] = Product(
@@ -900,7 +915,7 @@ class ProductExamples {
         "http://img6a.flixcart.com/image/sofa-bed/j/6/q/fhd115-double-foam-fabhomedecor-dark-brown-dark-brown-original-imaeh3geexpwnmeb.jpeg"
       ],
       description:
-          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Dark Brown Mechanism Type - Pull Out) Price: Rs. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Dark Brown Mechanism Type - Pull Out) In The Box 1 Sofa Bed Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD115 Finish Type Matte Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hardto repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Dimensions Weight 40 kg Height 838.2 mm Width 1905 mm Depth 939.8 mm Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Warranty Summary 6 Months Domestic Warranty Service Type Manufacturer Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Disclaimer -The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Primary Material Fabric Primary Color Brown Upholstery Color Dark Brown Secondary Material Foam Secondary Material Subtype Mango Wood Finish Color Dark Brown Primary Material Subtype Foam",
+          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Dark Brown Mechanism Type - Pull Out) Price: LKR. 22,646 • Fine deep seating experience • Save Space with the all new click clack Sofa Bed • Easy to fold and vice versa with simple click clack mechanism • Chrome legs with mango wood frame for long term durability • Double cushioned Sofa Bed to provide you with extra softness to make a fine seating experience • A double bed that can easily sleep two,Specifications of FabHomeDecor Fabric Double Sofa Bed (Finish Color - Dark Brown Mechanism Type - Pull Out) In The Box 1 Sofa Bed Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD115 Finish Type Matte Care Instructions Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hardto repair, Vacuum your sofas periodically with a soft bristled bru...View More Avoid outdoor use and exposure to water or prolonged moisture, Avoid exposure to direct heat or sunlight as this can cause the sofa colour to fade, Keep sharp objects away from your sofa, A little tear on the fabric cover may be hard to repair, Vacuum your sofas periodically with a soft bristled brush attachment or lightly brush them to keep general dirt and dust off the sofa and prevent any embedding between the fibres, Try to avoid food and drink spillage of any kind, If spills occur, do not leave unattended, In case of a stain, a water-free fabric cleaner can be used, However, avoid applying the cleaner directly on the stain as this can cause damage to the fabric and fade colour, Pour the cleaner onto a clean cloth and test its effect on a hidden area of the sofa before cleaning the stain with the cloth, A professional scotchguard treatment is one of the easiest and most effective options to protect against spills or stains and keep pet hair at bay, Getting your sofa professionally cleaned once every 6-8 months will not only take care of the nooks and corners that you can't reach, it will also make it more durable Dimensions Weight 40 kg Height 838.2 mm Width 1905 mm Depth 939.8 mm Warranty Covered in Warranty Warranty covers all kind of manufacturing defects. Concerned product will either be repaired or replaced based on discretion. Warranty Summary 6 Months Domestic Warranty Service Type Manufacturer Warranty Not Covered in Warranty Warranty does not cover for Improper Handling Disclaimer -The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through...View More - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit in the desired location. Also, check if the product will fit through the entrance(s) and door(s) of the premises - Please expect an unevenness of up to 5 mm in the product due to differences in surfaces and floor levels - Flipkart, or the Seller delivering the product, will not take up any type of civil work, such as drilling holes in the wall to mount the product. The product will only be assembled in case carpentry assembly is required - In case the product appears to lack shine, wiping the surface with a cloth will help clear the surface of dust particles Material & Color Primary Material Fabric Primary Color Brown Upholstery Color Dark Brown Secondary Material Foam Secondary Material Subtype Mango Wood Finish Color Dark Brown Primary Material Subtype Foam",
       rating: 0.0,
       qty: 306,
       specifications: {
@@ -952,8 +967,9 @@ class ProductExamples {
       brand: "Fabhomedecor",
       shop: Shop.exampleShop,
       isFavorite: 1,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
 
     mainList[21] = Product(
@@ -991,7 +1007,7 @@ class ProductExamples {
       brand: "Sicons",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
     );
     mainList[22] = Product(
       id: 22,
@@ -1009,7 +1025,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/short/z/j/7/altght-7-alisha-38-original-imaeh2d5jsz2ghd6.jpeg"
       ],
       description:
-          "Alisha Solid Women's Cycling Shorts - Buy Black, White, Navy Alisha Solid Women's Cycling Shorts For Only Rs. 999 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
+          "Alisha Solid Women's Cycling Shorts - Buy Black, White, Navy Alisha Solid Women's Cycling Shorts For Only LKR. 999 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
       rating: 0.0,
       qty: 341,
       specifications: {},
@@ -1023,8 +1039,9 @@ class ProductExamples {
       brand: "Alisha",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[23] = Product(
       id: 23,
@@ -1064,8 +1081,9 @@ class ProductExamples {
       brand: "Dongli",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[24] = Product(
       id: 24,
@@ -1101,8 +1119,9 @@ class ProductExamples {
       brand: "Swagga",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[25] = Product(
       id: 25,
@@ -1115,7 +1134,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/pet-toy/n/a/r/a35-kennel-original-imaea5c3qxyqzrgz.jpeg"
       ],
       description:
-          "Buy Kennel Rubber Dumbell With Bell - Small Rubber Rubber Toy For Dog for Rs.190 online. Kennel Rubber Dumbell With Bell - Small Rubber Rubber Toy For Dog at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee.",
+          "Buy Kennel Rubber Dumbell With Bell - Small Rubber Rubber Toy For Dog for LKR.190 online. Kennel Rubber Dumbell With Bell - Small Rubber Rubber Toy For Dog at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee.",
       rating: 0.0,
       qty: 481,
       specifications: {
@@ -1143,8 +1162,9 @@ class ProductExamples {
       brand: "Kennel",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[26] = Product(
       id: 26,
@@ -1158,7 +1178,7 @@ class ProductExamples {
         "http://img6a.flixcart.com/image/lingerie-set/m/w/z/gp2151ipu-glus-30b-original-imae92jf44ygzdhm.jpeg"
       ],
       description:
-          "Glus Wedding Lingerie Set - Buy Turquoise Glus Wedding Lingerie Set For Only Rs. 1299 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
+          "Glus Wedding Lingerie Set - Buy Turquoise Glus Wedding Lingerie Set For Only LKR. 1299 Online in India. Shop Online For Apparels. Huge Collection of Branded Clothes Only at Flipkart.com",
       rating: 0.0,
       qty: 363,
       specifications: {
@@ -1187,8 +1207,9 @@ class ProductExamples {
       brand: "Glus",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.ONLY_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[27] = Product(
       id: 27,
@@ -1206,7 +1227,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/skate/w/y/7/ve-ar-2132-w-4-5-1-veelys-quad-roller-shiny-white-original-imae5jpyfbmh4m4r.jpeg"
       ],
       description:
-          "Veelys Shiny White Quad Roller Skates - Size 4.5 UK only for Rs 2499 . Ideal For Boys . Buy online @ Flipkart.com. Only Genuine Products. Free Shipping. Cash On Delivery!",
+          "Veelys Shiny White Quad Roller Skates - Size 4.5 UK only for LKR 2499 . Ideal For Boys . Buy online @ Flipkart.com. Only Genuine Products. Free Shipping. Cash On Delivery!",
       rating: 0.0,
       qty: 463,
       specifications: {
@@ -1231,8 +1252,9 @@ class ProductExamples {
       brand: "Veelys",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
+      currency: "LKR",
       dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     mainList[28] = Product(
       id: 28,
@@ -1247,7 +1269,7 @@ class ProductExamples {
         "http://img5a.flixcart.com/image/vanity-box/8/5/t/j-635-bulaky-vanity-case-original-imadzy6awxhnqxuy.jpeg"
       ],
       description:
-          "Buy Bulaky vanity case Jewellery Vanity Case for Rs.390 online. Bulaky vanity case Jewellery Vanity Case at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee.",
+          "Buy Bulaky vanity case Jewellery Vanity Case for LKR.390 online. Bulaky vanity case Jewellery Vanity Case at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee.",
       rating: 3.0,
       qty: 251,
       specifications: {"Body Material": "croco leather material"},
@@ -1261,8 +1283,9 @@ class ProductExamples {
       brand: "Bulaky",
       shop: Shop.exampleShop,
       isFavorite: 0,
-      currency: "Rs",
-      dealingState: ProductDealingType.ONLY_BARTER,
+      currency: "LKR",
+      dealingState: ProductDealingType.BARTER_AND_SELL,
+      inTheBox: "1 peice of the product and sticker."
     );
     sendableList.clear();
     mainList.forEach((p) {

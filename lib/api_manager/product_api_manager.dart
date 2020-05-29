@@ -9,6 +9,7 @@ class ProductApiManager {
   static ProductApiManager defaultManager = ProductApiManager();
 
   Future<Product> saveProduct(Product p,int userId) async {
+    print("sending data");
     var response = await http.post(
       URLHolder.CREATE_PRODUCT_URL+"/$userId",
       headers: <String, String>{
@@ -16,6 +17,7 @@ class ProductApiManager {
       },
       body: jsonEncode(p),
     );
+    print(URLHolder.CREATE_PRODUCT_URL+"/$userId");
     if (response.statusCode == 200) {
       return Product.fromJson(json.decode(response.body));
     } else {
