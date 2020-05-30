@@ -57,6 +57,10 @@ class AppInit extends Model {
     return AppInit.currentApp._currentUserShop == null ? false : true;
   }
 
+  Shop get getCurrentShop {
+    return AppInit.currentApp._currentUserShop;
+  }
+
   set setCurrentShop(Shop shop) {
     AppInit.currentApp._currentUserShop = shop;
     notifyListeners();

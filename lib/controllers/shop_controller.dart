@@ -3,7 +3,7 @@ import 'package:swap_sell/api_manager/shop_api_manager.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 
 class ShopController extends Model {
-  static ShopController defaultShopController = ShopController();
+  static ShopController defaultController = ShopController();
 
   Future<Shop> createShop(Shop shop) async {
     Shop newShop = await ShopApiManager.defaultManager.saveShop(shop);
