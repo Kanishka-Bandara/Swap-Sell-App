@@ -36,6 +36,13 @@ class URLHolder {
   static const String USER_UPDATE_PROFILE_PICTURE_URL =
       _USER_PACKAGE + "/updateProfilePicture";
   // END::USER URL
+  // BEGIN::SHOP URL
+  static const String _SHOP_PACKAGE = MAIN_URL + "/shop";
+  static const String SHOP_CREATE_URL = _SHOP_PACKAGE + "/create";
+  static const String SHOP_EDIT_URL = _SHOP_PACKAGE + "/edit";
+  static const String SHOP_GET_BY_ID_URL = _SHOP_PACKAGE + "/getById";
+  static const String SHOP_GET_BY_USER_ID_URL = _SHOP_PACKAGE + "/getByUserId";
+  // END::SHOP URL
   // BEGIN::GENDER URL
   static const String _GENDER_PACKAGE = MAIN_URL + "/gender";
   static const String ALL_GENDER_LIST_URL = _GENDER_PACKAGE + "/getAll";
