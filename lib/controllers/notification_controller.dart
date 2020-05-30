@@ -10,6 +10,9 @@ class NotificationController extends Model {
 
   Future<List<Notification>> fetchNotificationList() async {
     _notifications = [];
+    if (!AppInit.currentApp.currentUserState) {
+      return[];
+    }
     this.setLoading = true;
     List<Notification> l = await NotificationApiManager.defaultManager
         .getNotificationList(AppInit.currentApp.getCurrentUser.getId);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/ui/pages/chat_view.dart';
 import 'package:swap_sell/ui/pages/checkout.dart';
 import 'package:swap_sell/ui/pages/created_product_view.dart';
@@ -34,34 +35,42 @@ class Routes {
   static const String ROUTES_SAVED_VIEW = '/savedView';
   static const String ROUTES_WISH_LIST_VIEW = '/wishListView';
   static const String ROUTES_SETTINGS_VIEW = '/settings';
-  static const String ROUTES_SETTINGS_ADDRESSES_VIEW = '/settings_addresses_view';
-  static const String ROUTES_SETTINGS_ADDRESS_CRUD_VIEW = '/settings_address_crud_view';
+  static const String ROUTES_SETTINGS_ADDRESSES_VIEW =
+      '/settings_addresses_view';
+  static const String ROUTES_SETTINGS_ADDRESS_CRUD_VIEW =
+      '/settings_address_crud_view';
   static const String ROUTES_CHECKOUT_VIEW = '/checkOut';
   static const String ROUTES_PREPARATION_VIEW = '/preparation';
   static const String ROUTES_VOICE_RECOGNIZER = '/voice';
 
-  static final Map<String, WidgetBuilder> routes = {
-    ROUTES_HOME: (BuildContext context) => Home(),
-    ROUTES_SIGNIN: (BuildContext context) => Signin(),
-    ROUTES_SIGNUP: (BuildContext context) => Signup(),
-    ROUTES_PRODUCT_VIEW: (BuildContext context) => ProductView(),
-    ROUTES_PROFILE_VIEW: (BuildContext context) => UserProfileView(),
-    ROUTES_PRODUCT_DUMMY_VIEW: (BuildContext context) => CreatedProductView(),
-    ROUTES_PRODUCT_MANAGEMENT: (BuildContext context) => ProductManagement(),
-    ROUTES_NOTIFICATION_VIEW: (BuildContext context) => NotificationView(),
-    ROUTES_MESSAGE_LIST_VIEW: (BuildContext context) => MessageView(),
-    ROUTES_CHAT_VIEW: (BuildContext context) => ChatView(),
-    ROUTES_SAVED_VIEW: (BuildContext context) => SavedView(),
-    ROUTES_SHOPPING_CART: (BuildContext context) => ShoppingCart(),
-    ROUTES_SETTINGS_VIEW: (BuildContext context) => Settings(),
-    ROUTES_SETTINGS_ADDRESSES_VIEW: (BuildContext context) => AddressesView(),
-    ROUTES_SETTINGS_ADDRESS_CRUD_VIEW: (BuildContext context) => AddressCRUDVIEW(),
-    ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
-    ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
-    ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),
-    ROUTES_VOICE_RECOGNIZER: (BuildContext context) => VoiceRecognizer(),
-  };
+  static final Map<String, WidgetBuilder> routes = getRoutes();
+
   static final RouteFactory onUnknownRoute = (RouteSettings settings) {
     return MaterialPageRoute(builder: ((BuildContext context) => Home()));
   };
+
+  static Map getRoutes() {
+    return <String, WidgetBuilder>{
+      ROUTES_HOME: (BuildContext context) => Home(),
+      ROUTES_SIGNIN: (BuildContext context) => Signin(),
+      ROUTES_SIGNUP: (BuildContext context) => Signup(),
+      ROUTES_PRODUCT_VIEW: (BuildContext context) => ProductView(),
+      ROUTES_PROFILE_VIEW: (BuildContext context) => UserProfileView(),
+      ROUTES_PRODUCT_DUMMY_VIEW: (BuildContext context) => CreatedProductView(),
+      ROUTES_PRODUCT_MANAGEMENT: (BuildContext context) => ProductManagement(),
+      ROUTES_NOTIFICATION_VIEW: (BuildContext context) => NotificationView(),
+      ROUTES_MESSAGE_LIST_VIEW: (BuildContext context) => MessageView(),
+      ROUTES_CHAT_VIEW: (BuildContext context) => ChatView(),
+      ROUTES_SAVED_VIEW: (BuildContext context) => SavedView(),
+      ROUTES_SHOPPING_CART: (BuildContext context) => ShoppingCart(),
+      ROUTES_SETTINGS_VIEW: (BuildContext context) => Settings(),
+      ROUTES_SETTINGS_ADDRESSES_VIEW: (BuildContext context) => AddressesView(),
+      ROUTES_SETTINGS_ADDRESS_CRUD_VIEW: (BuildContext context) =>
+          AddressCRUDVIEW(),
+      ROUTES_WISH_LIST_VIEW: (BuildContext context) => WishListView(),
+      ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
+      ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),
+      ROUTES_VOICE_RECOGNIZER: (BuildContext context) => VoiceRecognizer(),
+    };
+  }
 }

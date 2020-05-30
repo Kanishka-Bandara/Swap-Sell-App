@@ -54,6 +54,18 @@ class UserManagerAPI {
     return null;
   }
 
+  Future<User> getUser(int id) async {
+    var response = await http.get(
+      URLHolder.USER_GET_URL+"/$id",
+    );
+    if (response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    }else if(response.statusCode == 202) {
+      
+    }
+    return null;
+  }
+
   Future<Map> saveUserImage(Map<String,String> request) async {
     print(jsonEncode(request));
     print("/n/n");

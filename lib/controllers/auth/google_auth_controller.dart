@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
@@ -52,7 +51,7 @@ class GoogleAuthController {
         googleId: fbId,
       );
       if (authType == AuthType.SIGNUP) {
-        UserController.defaultUserController.signupUser(u, au, context);
+        AuthController.defaultController.signupUser(u, au, context);
       } else {
          return await AuthController.defaultController.signInWithGoogle(au, context);
       }

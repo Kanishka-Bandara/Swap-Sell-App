@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/config/routs.dart';
+import 'package:swap_sell/controllers/auth/auth_controller.dart';
 
 // void main() => runApp(MyApp());
 void main() {
@@ -11,8 +12,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    if (AppInit.currentApp.getIsSomeOneAlreadyLoggedIn()) {
+      AuthController.defaultController.getAndsetLoggedInUserDetails();
+    }
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Swap&Sell',
       theme: ThemeData(
         primarySwatch: Colors.green,
         buttonColor: Colors.green,

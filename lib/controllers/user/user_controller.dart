@@ -2,24 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/api_manager/auth_api_manager.dart';
 import 'package:swap_sell/api_manager/user_api_manager.dart';
-import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controllers/appconfig/ImageController.dart';
-import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class UserController extends Model {
   static UserController defaultUserController = UserController();
-
-  Future<void> signupUser(User u, AuthenticatedUser authenticatedUser,BuildContext context) async {
-    User newUser = await createUser(u);
-    authenticatedUser.setUserId = newUser.getId;
-    newUser = await AuthManagerAPI.defaultManager.signUp(authenticatedUser);
-    AppInit.currentApp.setCurrentUser = newUser;
-    AppNavigator.navigateToHomePage(context);
-  }
 
   Future<User> createUser(User user) async {
     User newUser = await UserManagerAPI.defaultManager.saveUser(user);
@@ -37,19 +25,20 @@ class UserController extends Model {
   }
 
   Future<User> getUser(int userID) async {
-    // TODO:get User on backend
-    return null;
+    User user = await UserManagerAPI.defaultManager.getUser(userID);
+    return user;
   }
 
   Future<User> editUserImage(File f, User user) async {
     // user.setProfilePicUrl =
     //     "https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/game-info/naked_boxshot_mobile_138233.jpg";
-        Map<String,String> request = {};
-        request["data"] = ImageController.dfaultController.encodeImageToBase64(f);
-        request["profilePicName"] = "."+f.path.split(".").last;
-        request["userId"] = user.getId.toString();
-    Map<String,dynamic> response =   await UserManagerAPI.defaultManager.saveUserImage(request);
-    user.setProfilePicUrl =response["profilePicUrl"];
+    Map<String, String> request = {};
+    request["data"] = ImageController.dfaultController.encodeImageToBase64(f);
+    request["profilePicName"] = "." + f.path.split(".").last;
+    request["userId"] = user.getId.toString();
+    Map<String, dynamic> response =
+        await UserManagerAPI.defaultManager.saveUserImage(request);
+    user.setProfilePicUrl = response["profilePicUrl"];
     return user;
   }
 

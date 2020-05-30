@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
@@ -58,7 +57,7 @@ class FaceBookAuthController {
           facebookId: fbId,
         );
         if (authType == AuthType.SIGNUP) {
-          UserController.defaultUserController.signupUser(u, au, context);
+          AuthController.defaultController.signupUser(u, au, context);
         } else {
           return await AuthController.defaultController
               .signInWithFb(au, context);

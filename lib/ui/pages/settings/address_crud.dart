@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/user_component.dart';
-import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class AddressCRUDVIEW extends StatefulWidget {

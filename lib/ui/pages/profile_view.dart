@@ -304,7 +304,7 @@ class _UserProfileViewState extends State<UserProfileView> {
 
   _declareImage(String profilePicUrl) {
     return NetworkImage(
-      "https://bingepost.com/wp-content/uploads/2020/03/intro-1583349480.jpg",
+      profilePicUrl,
     );
   }
 }

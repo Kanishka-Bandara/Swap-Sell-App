@@ -4,7 +4,6 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
 import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
 import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
@@ -305,7 +304,7 @@ class _SignupState extends State<Signup> {
                                 userName: _username,
                                 status: 1,
                               );
-                              UserController.defaultUserController
+                              AuthController.defaultController
                                   .signupUser(u, authenticatedUser, context);
                               // print(u.toJson().toString());
                             },

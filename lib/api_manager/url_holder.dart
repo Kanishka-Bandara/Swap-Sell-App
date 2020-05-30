@@ -32,6 +32,7 @@ class URLHolder {
   static const String ALL_USER_TITLES_LIST_URL = _TITLE_PACKAGE + "/getAll";
   static const String USER_CREATE_URL = _USER_PACKAGE + "/create";
   static const String USER_EDIT_URL = _USER_PACKAGE + "/edit";
+  static const String USER_GET_URL = _USER_PACKAGE + "/get";
   static const String USER_UPDATE_PROFILE_PICTURE_URL =
       _USER_PACKAGE + "/updateProfilePicture";
   // END::USER URL
