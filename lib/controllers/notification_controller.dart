@@ -5,27 +5,27 @@ import 'package:swap_sell/model/default/notification.dart';
 
 class NotificationController extends Model {
   static NotificationController currentController = NotificationController();
-  static List<Notification> _notifications = [];
+  static Map<int, Notification> _notifications = {};
   bool _isLoding = false;
 
   Future<List<Notification>> fetchNotificationList() async {
-    _notifications = [];
+    _notifications = {};
     if (!AppInit.currentApp.currentUserState) {
-      return[];
+      return [];
     }
     this.setLoading = true;
     List<Notification> l = await NotificationApiManager.defaultManager
         .getNotificationList(AppInit.currentApp.getCurrentUser.getId);
-    l.forEach((element) {
-      _notifications.add(element);
+    l.forEach((notification) {
+      _notifications[notification.getId] = notification;
     });
     notifyListeners();
     this.setLoading = false;
-    return _notifications;
+    return _getNotificationAsList;
   }
 
   Future<List<Notification>> get getNotificationList async {
-    return _notifications;
+    return _getNotificationAsList;
   }
 
   Future<bool> deleteNotification(int id) async {
@@ -42,29 +42,43 @@ class NotificationController extends Model {
     Notification n = await NotificationApiManager.defaultManager
         .setNotificationAsRead(id, AppInit.currentApp.getCurrentUser.getId);
     if (n != null) {
-      for (var i = 0; i < _notifications.length; i++) {
-        if (n.getId == id) {
-          _notifications[i] = n;
-          notifyListeners();
-          status = true;
-        }
-      }
+      _notifications[n.getId] = n;
+      notifyListeners();
     }
     return status;
   }
 
   Future<bool> setUnreadNotificationsAsRead() async {
     bool status = false;
-    List<Notification> n = await NotificationApiManager.defaultManager
-        .setNotificationsAsRead(AppInit.currentApp.getCurrentUser.getId,
-            getUnreadNotificationsIdList());
-    if (n != null) {
-      _notifications.forEach((n) {
-        n.setIsRead = true;
-      });
-      status=true;
-    }
-    notifyListeners();
+    List<Notification> l = [];
+    _notifications.forEach((k, n) {
+      if (!n.getIsRead) {
+        NotificationApiManager.defaultManager
+            .setNotificationAsRead(
+                n.getId, AppInit.currentApp.getCurrentUser.getId)
+            .then((Notification notification) {
+          l.add(notification);
+        });
+      }
+    });
+    l.forEach((notification) {
+      _notifications[notification.getId] = notification;
+      notifyListeners();
+    });
+    // notifyListeners();
+    // List<int> list = getUnreadNotificationsIdList();
+    // if (list.isNotEmpty) {
+    // List<Notification> n = await NotificationApiManager.defaultManager
+    //     .setNotificationsAsRead(AppInit.currentApp.getCurrentUser.getId,
+    //         list);
+    // if (n != null) {
+    //   _notifications.forEach((n) {
+    //     n.setIsRead = true;
+    //   });
+    //   status=true;
+    // }
+    // notifyListeners();
+    // }
     return status;
   }
 
@@ -72,7 +86,7 @@ class NotificationController extends Model {
     for (var i = 0; i < _notifications.length; i++) {
       Notification n = _notifications[i];
       if (n.getId == id) {
-        _notifications.removeAt(i);
+        _notifications.remove(i);
         notifyListeners();
       }
     }
@@ -94,7 +108,7 @@ class NotificationController extends Model {
 
   List<int> getUnreadNotificationsIdList() {
     List<int> l = [];
-    _notifications.forEach((n) {
+    _notifications.forEach((k, n) {
       if (!n.getIsRead) {
         l.add(n.getId);
       }
@@ -102,6 +116,14 @@ class NotificationController extends Model {
     return l;
   }
 
-  int get getUnreadNotificationCount=>this.getUnreadNotificationsIdList().length;
+  int get getUnreadNotificationCount =>
+      this.getUnreadNotificationsIdList().length;
 
+  List<Notification> get _getNotificationAsList {
+    List<Notification> l = [];
+    _notifications.forEach((key, value) {
+      l.add(value);
+    });
+    return l;
+  }
 }

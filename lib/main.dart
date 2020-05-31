@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (AppInit.currentApp.getIsSomeOneAlreadyLoggedIn()) {
-      AuthController.defaultController.getAndsetLoggedInUserDetails();
+      // AuthController.defaultController.getAndsetLoggedInUserDetails();
     }
     return MaterialApp(
       title: 'Swap&Sell',

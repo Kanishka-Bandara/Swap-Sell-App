@@ -52,8 +52,8 @@ class URLHolder {
   // TODO::
   static const String _NOTIFICATION_PACKAGE = MAIN_URL + "/notification";
   static const String ALL_NOTIFICATION_LIST_URL = _NOTIFICATION_PACKAGE + "/getAll";
-  static const String SET_NOTIFICATION_AS_READ_URL = _NOTIFICATION_PACKAGE + "/read";
-  static const String SET_NOTIFICATION_AS_READ__BULK_URL = _NOTIFICATION_PACKAGE + "/read";
+  static const String SET_NOTIFICATION_AS_READ_URL = _NOTIFICATION_PACKAGE + "/setAsRead";
+  static const String SET_NOTIFICATION_AS_READ_BULK_URL = _NOTIFICATION_PACKAGE + "/setAsReadBulk";
   static const String DELETE_NOTIFICATION_URL = _NOTIFICATION_PACKAGE + "/delete";
   // END::NOTIFICATION URL
   // BEGIN::MESSAGE URL
