@@ -53,43 +53,17 @@ class NotificationController extends Model {
     List<Notification> l = [];
     _notifications.forEach((k, n) {
       if (!n.getIsRead) {
-        NotificationApiManager.defaultManager
-            .setNotificationAsRead(
-                n.getId, AppInit.currentApp.getCurrentUser.getId)
-            .then((Notification notification) {
-          l.add(notification);
-        });
+        setNotificationAsRead(k);
+        status = true;
       }
     });
-    l.forEach((notification) {
-      _notifications[notification.getId] = notification;
-      notifyListeners();
-    });
-    // notifyListeners();
-    // List<int> list = getUnreadNotificationsIdList();
-    // if (list.isNotEmpty) {
-    // List<Notification> n = await NotificationApiManager.defaultManager
-    //     .setNotificationsAsRead(AppInit.currentApp.getCurrentUser.getId,
-    //         list);
-    // if (n != null) {
-    //   _notifications.forEach((n) {
-    //     n.setIsRead = true;
-    //   });
-    //   status=true;
-    // }
-    // notifyListeners();
-    // }
+    print(status);
     return status;
   }
 
   void _removeNotification(int id) {
-    for (var i = 0; i < _notifications.length; i++) {
-      Notification n = _notifications[i];
-      if (n.getId == id) {
-        _notifications.remove(i);
-        notifyListeners();
-      }
-    }
+    _notifications.remove(id);
+    notifyListeners();
   }
 
   bool get isNotificationListEmpty {
