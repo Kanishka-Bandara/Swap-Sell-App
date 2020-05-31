@@ -34,14 +34,7 @@ class _NotificationViewState extends State<NotificationView> {
                       builder: (BuildContext context, Widget widget,
                           NotificationController model) {
                         if (model.isLoading) {
-                          return Padding(
-                            padding: EdgeInsets.only(top: 10, bottom: 10),
-                            child: ShimmerTile(
-                              MediaQuery.of(context).size.width,
-                              MediaQuery.of(context).size.height,
-                              context,
-                            ),
-                          );
+                          return _buildShimmerTile(context);
                         } else {
                           return model.isNotificationListEmpty
                               ? DefaultComponents.buildNoDetailsWidget(
@@ -82,29 +75,10 @@ class _NotificationViewState extends State<NotificationView> {
           future: model.getNotificationList,
           builder: (context, snapshot) {
             if (snapshot.data == null) {
-              // return Container(
-              //   child: Center(
-              //     child: Spinner.getSpinner(context, 15),
-              //   ),
-              // );
-              return Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: ShimmerTile(
-                  MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height,
-                  context,
-                ),
-              );
+              return _buildShimmerTile(context);
             } else {
               if (model.isLoading) {
-                return Padding(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  child: ShimmerTile(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height,
-                    context,
-                  ),
-                );
+                return _buildShimmerTile(context);
               } else {
                 model.setUnreadNotificationsAsRead();
                 return ListView.builder(
@@ -121,5 +95,28 @@ class _NotificationViewState extends State<NotificationView> {
         ),
       );
     });
+  }
+
+  _buildShimmerTile(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+            left: 10,
+            right: 10,
+          ),
+          child: ShimmerTile.withRadius(
+            MediaQuery.of(context).size.width,
+            150,
+            context,
+            10,
+          ),
+        );
+      },
+      itemCount: 5,
+    );
   }
 }

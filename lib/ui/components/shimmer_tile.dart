@@ -5,10 +5,21 @@ import 'package:shimmer/shimmer.dart';
 class ShimmerTile extends StatelessWidget {
   final double _width;
   final double _height;
+  double _radius = 0;
   final BuildContext _context;
   static int _offset = 0;
   static int _time = 800;
-  ShimmerTile(this._width, this._height, this._context);
+  ShimmerTile(
+    this._width,
+    this._height,
+    this._context,
+  );
+  ShimmerTile.withRadius(
+    this._width,
+    this._height,
+    this._context,
+    this._radius,
+  );
   @override
   Widget build(BuildContext context) {
     context = _context;
@@ -24,7 +35,11 @@ class ShimmerTile extends StatelessWidget {
           child: Container(
             width: _width,
             height: _height,
-            color: Theme.of(context).backgroundColor,
+            decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(_radius != null ? _radius : 5),
+              color: Theme.of(context).backgroundColor,
+            ),
             // color: Colors.grey,
           ),
         ),
