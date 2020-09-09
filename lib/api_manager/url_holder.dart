@@ -1,6 +1,7 @@
 class URLHolder {
   // BEGIN::MAIN URL
-  static const String MAIN_URL = "http://10.0.2.2:8080";
+  // static const String MAIN_URL = "http://10.0.2.2:8080";
+  static const String MAIN_URL = "http://192.168.8.100:8080";
   // END::MAIN URL
   // BEGIN::AUTH URL
   static const String _AUTH_PACKAGE = MAIN_URL + "/auth";
@@ -51,15 +52,20 @@ class URLHolder {
   // BEGIN::NOTIFICATION URL
   // TODO::
   static const String _NOTIFICATION_PACKAGE = MAIN_URL + "/notification";
-  static const String ALL_NOTIFICATION_LIST_URL = _NOTIFICATION_PACKAGE + "/getAll";
-  static const String SET_NOTIFICATION_AS_READ_URL = _NOTIFICATION_PACKAGE + "/setAsRead";
-  static const String SET_NOTIFICATION_AS_READ_BULK_URL = _NOTIFICATION_PACKAGE + "/setAsReadBulk";
-  static const String DELETE_NOTIFICATION_URL = _NOTIFICATION_PACKAGE + "/delete";
+  static const String ALL_NOTIFICATION_LIST_URL =
+      _NOTIFICATION_PACKAGE + "/getAll";
+  static const String SET_NOTIFICATION_AS_READ_URL =
+      _NOTIFICATION_PACKAGE + "/setAsRead";
+  static const String SET_NOTIFICATION_AS_READ_BULK_URL =
+      _NOTIFICATION_PACKAGE + "/setAsReadBulk";
+  static const String DELETE_NOTIFICATION_URL =
+      _NOTIFICATION_PACKAGE + "/delete";
   // END::NOTIFICATION URL
   // BEGIN::MESSAGE URL
   static const String _MESSAGE_PACKAGE = MAIN_URL + "/message";
   static const String SEND_MESSAGE_URL = _MESSAGE_PACKAGE + "/send";
-  static const String SET_MESSAGES_AS_READ_URL = _MESSAGE_PACKAGE + "/setMessagesAsRead";
+  static const String SET_MESSAGES_AS_READ_URL =
+      _MESSAGE_PACKAGE + "/setMessagesAsRead";
   static const String GET_MESSAGE_LIST_URL = _MESSAGE_PACKAGE + "/getAll";
   static const String DELETE_MESSAGE_URL = _MESSAGE_PACKAGE + "/delete";
   // static const String GET_ARCHIVED_MESSAGES_LIST_URL = _MESSAGE_PACKAGE + "/getAllArchived";

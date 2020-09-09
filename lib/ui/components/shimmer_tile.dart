@@ -28,7 +28,9 @@ class ShimmerTile extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Shimmer.fromColors(
-          baseColor: Theme.of(context).backgroundColor,
+          baseColor: Theme.of(context).brightness == Brightness.dark
+              ? Colors.black
+              : Theme.of(context).backgroundColor,
           // baseColor: Colors.grey,
           highlightColor: Colors.white,
           period: Duration(milliseconds: _time),

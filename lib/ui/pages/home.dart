@@ -102,10 +102,12 @@ class _MyHomePageState extends State<Home> {
                   // width: 100,
                   height: 30,
                   child: Center(
-                    child: Text(snapshot.data[index].getCatName,style: TextStyle(fontWeight: FontWeight.bold),),
+                    child: Text(
+                      snapshot.data[index].getCatName,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 );
-
                 // return Column(
                 //   children: <Widget>[
                 //     Image.network(
@@ -129,7 +131,8 @@ class _MyHomePageState extends State<Home> {
     return Container(
       height: 310,
       child: FutureBuilder(
-        future: ProductController.defaultController.getRecentArrivedProductList(),
+        future:
+            ProductController.defaultController.getRecentArrivedProductList(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             // return Container(
