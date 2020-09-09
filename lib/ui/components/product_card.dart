@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:swap_sell/config/app_navigator.dart';
@@ -46,9 +47,28 @@ class ProductCard extends StatelessWidget {
                           topLeft: Radius.circular(5),
                           topRight: Radius.circular(5),
                         ),
-                        image: DecorationImage(
-                            image: NetworkImage(_p.getImages[0]),
-                            fit: BoxFit.cover),
+                        // image: DecorationImage(
+                        //   image: NetworkImage(_p.getImages[0]),
+                        //   fit: BoxFit.contain,
+                        // ),
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: _p.getImages[0],
+                        progressIndicatorBuilder: (
+                          context,
+                          url,
+                          downloadProgress,
+                        ) =>
+                            Center(
+                          child: CircularProgressIndicator(
+                            value: downloadProgress.progress,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.error,
+                          color: Theme.of(context).primaryColor,
+                          size: 50,
+                        ),
                       ),
                     ),
                   ],

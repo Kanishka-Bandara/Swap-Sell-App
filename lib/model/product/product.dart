@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/business/business.dart';
@@ -144,7 +145,28 @@ class Product extends Model {
     List<String> l = this.getImages;
     List<Image> images = List(l.length);
     for (var i = 0; i < l.length; i++) {
-      images[i] = Image.network(l[i]);
+      images[i] = Image.network(
+        l[i],
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes
+                  : null,
+            ),
+          );
+        },
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace stackTrace) =>
+                Icon(
+          Icons.error,
+          color: Theme.of(context).primaryColor,
+          size: 50,
+        ),
+      );
     }
     return images;
   }
@@ -320,8 +342,8 @@ class Product extends Model {
   bool get canBarterAndSell =>
       this.dealingState == ProductDealingType.BARTER_AND_SELL ? true : false;
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductToJson(this);
-
 }
