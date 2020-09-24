@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         // // accentColor: Colors.black,
         // backgroundColor: Colors.pink[50]
       ),
-      home: MakePayment(),
-      // routes: Routes.routes,
+      // home: MakePayment(),
+      routes: Routes.routes,
       onUnknownRoute: Routes.onUnknownRoute,
       debugShowCheckedModeBanner: false,
     );

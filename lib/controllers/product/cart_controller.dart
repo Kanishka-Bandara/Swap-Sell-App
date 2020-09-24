@@ -1,5 +1,5 @@
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/controllers/product/ProductExample.dart';
+import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';

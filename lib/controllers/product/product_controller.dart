@@ -1,21 +1,22 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/api_manager/product_api_manager.dart';
 import 'package:swap_sell/config/init.dart';
-import 'package:swap_sell/controllers/product/ProductExample.dart';
+import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/model/product/product_main_category.dart';
+import 'package:swap_sell/model/product/product_head_category.dart';
 
 class ProductController extends Model {
   static ProductController defaultController = ProductController();
-  List<MainCategory> mainCategoryList;
+  List<HeadCategory> headCategoryList;
   List<Product> savedProductList;
   List<Product> resentSearchedList;
   List<Product> resentArrivedProductList;
   List<Product> highestSoldProductList;
 
-  Future<List<MainCategory>> getHeadCategoryList() async {
-    mainCategoryList = await ProductExamples.getMainCategoryList();
-    return mainCategoryList;
+  Future<List<HeadCategory>> getHeadCategoryList() async {
+    headCategoryList =
+        await ProductApiManager.defaultManager.getHeadCategories();
+    return headCategoryList;
   }
 
   Future<List<Product>> getSearchedList(

@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/controllers/plugins/g_cloud_vision_controller.dart';
-import 'package:swap_sell/controllers/product/ProductExample.dart';
+import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/controllers/product/product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_product_controller.dart';
 import 'package:swap_sell/controllers/saved/saved_searches_controller.dart';
@@ -201,7 +201,8 @@ class SearchPage extends SearchDelegate<String> {
                           ),
                         ),
                         subtitle: Text(
-                          "Rs " + snapshot.data[index].getRetailPrice.toString(),
+                          "Rs " +
+                              snapshot.data[index].getRetailPrice.toString(),
                           style:
                               TextStyle(color: Color.fromRGBO(85, 85, 85, 1)),
                         ),

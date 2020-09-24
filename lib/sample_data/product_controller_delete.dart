@@ -22,7 +22,7 @@ class ProductControllerDelete {
     for (var i = 0; i < 10; i++) {
       _reasentSearchedList[i] = mainList[i];
     }
-    print("Getting resent serached list");
+    print("Getting resent searched list");
     return _reasentSearchedList;
   }
 
@@ -75,7 +75,8 @@ class ProductControllerDelete {
       String _headCategory;
       String _mainCategory;
       String _subCategory;
-      ProductCondition _condition = i % 10 == 0 ? ProductCondition.BRAND_NEW : ProductCondition.USED;
+      ProductCondition _condition =
+          i % 10 == 0 ? ProductCondition.BRAND_NEW : ProductCondition.USED;
       String _brand = data[i][13] == ""
           ? _name.split(" ")[0]
           : data[i][13].toString().substring(0, 1).toUpperCase() +
@@ -198,7 +199,7 @@ class ProductControllerDelete {
       list[i].setModel = _model;
       list[i].setBrand = _brand;
       list[i].setShop = _shop;
-      list[i].setIsFavorite = _isFavorite==1;
+      list[i].setIsFavorite = _isFavorite == 1;
       list[i].setCurrency = _currency;
       // print("${list[i].name} added");
 

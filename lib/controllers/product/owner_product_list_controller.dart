@@ -1,6 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
-import 'package:swap_sell/controllers/product/ProductExample.dart';
+import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -13,6 +13,7 @@ class OwnerProductsController extends Model {
     //TODO: get data from backend
     return _ownerProductList;
   }
+
   Future<List<Product>> getCurrentOwnerProductList() async {
     return await getOwnerProductList(AppInit.currentApp.getCurrentUser);
   }
@@ -68,8 +69,7 @@ class OwnerProductsController extends Model {
     return _ownerProductList.length;
   }
 
- Future<List<Product>> get getExchangableOwnerProducts async{
-  return getCurrentOwnerProductList();
- }
-
+  Future<List<Product>> get getExchangableOwnerProducts async {
+    return getCurrentOwnerProductList();
+  }
 }
