@@ -1,7 +1,7 @@
 class URLHolder {
   // BEGIN::MAIN URL
   // static const String MAIN_URL = "http://10.0.2.2:8080";
-  static const String MAIN_URL = "http://192.168.8.100:8080";
+  static const String MAIN_URL = "http://192.168.8.101:8080";
   // END::MAIN URL
   // BEGIN::AUTH URL
   static const String _AUTH_PACKAGE = MAIN_URL + "/auth";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/config/paypal/makePayment.dart';
 import 'package:swap_sell/config/routs.dart';
 import 'package:swap_sell/controllers/auth/auth_controller.dart';
 
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
         // // accentColor: Colors.black,
         // backgroundColor: Colors.pink[50]
       ),
-      // home: Home(),
-      routes: Routes.routes,
+      home: MakePayment(),
+      // routes: Routes.routes,
       onUnknownRoute: Routes.onUnknownRoute,
       debugShowCheckedModeBanner: false,
     );

@@ -83,8 +83,7 @@ class _CheckOutState extends State<CheckOut> {
               Row(
                 children: <Widget>[
                   Text(
-                    AppInit
-                        .currentApp.getCurrentUser.getAddresses[0].getAsString,
+                    "AppInit.currentApp.getCurrentUser.getAddresses[0].getAsString",
                   ),
                 ],
               ),
@@ -315,5 +314,4 @@ class _CheckOutState extends State<CheckOut> {
       ],
     );
   }
-
 }
