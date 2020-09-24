@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/controllers/product/owner_product_list_controller.dart';
+import 'package:swap_sell/controller/product/owner_product_list_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/ui/components/default_components.dart';
 import 'package:swap_sell/ui/components/shimmer_tile.dart';
@@ -74,9 +74,9 @@ class _OwnProductListView extends State<OwnProductListView> {
     return ScopedModel(
       model: OwnerProductsController.defaultController,
       child: FutureBuilder(
-        future:
-            OwnerProductsController.defaultController.getCurrentOwnerProductList(),
-        builder: (context,AsyncSnapshot<List<Product>> snapshot) {
+        future: OwnerProductsController.defaultController
+            .getCurrentOwnerProductList(),
+        builder: (context, AsyncSnapshot<List<Product>> snapshot) {
           if (snapshot.data == null) {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
@@ -115,7 +115,7 @@ class _OwnProductListView extends State<OwnProductListView> {
                               ),
                               title: Text(snapshot.data[index].name),
                               subtitle: Text(
-                                    snapshot.data[index].getDisplayRetailPrice,
+                                snapshot.data[index].getDisplayRetailPrice,
                                 style: TextStyle(
                                     color: Color.fromRGBO(85, 85, 85, 1)),
                               ),

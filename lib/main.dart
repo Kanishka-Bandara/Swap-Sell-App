@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/config/paypal/makePayment.dart';
 import 'package:swap_sell/config/routs.dart';
-import 'package:swap_sell/controllers/auth/auth_controller.dart';
+import 'package:swap_sell/controller/auth/auth_controller.dart';
 
 // void main() => runApp(MyApp());
 void main() {

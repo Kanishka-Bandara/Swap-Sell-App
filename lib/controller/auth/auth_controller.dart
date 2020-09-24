@@ -4,8 +4,8 @@ import 'package:swap_sell/api_manager/auth_api_manager.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/config/shared_pref.dart';
-import 'package:swap_sell/controllers/shop_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
+import 'package:swap_sell/controller/shop_controller.dart';
+import 'package:swap_sell/controller/user/user_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -81,7 +81,7 @@ class AuthController {
     if (!AppInit.currentApp.currentUserState) {
       User u = await UserController.defaultUserController
           .getUser(await this.getLoggedInUserId());
-          await setLoggedInUserDetails(u,null);
+      await setLoggedInUserDetails(u, null);
     }
   }
 

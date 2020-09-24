@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
+import 'package:swap_sell/controller/appconfig/camera_controller.dart';
 
 class GCloudVisionController {
   static GCloudVisionController defaultController = GCloudVisionController();

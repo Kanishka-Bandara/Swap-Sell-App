@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/controllers/appconfig/camera_controller.dart';
+import 'package:swap_sell/controller/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/components/default_components.dart';

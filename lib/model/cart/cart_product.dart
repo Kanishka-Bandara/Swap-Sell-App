@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/controllers/product/cart_controller.dart';
+import 'package:swap_sell/controller/product/cart_controller.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
@@ -109,17 +109,17 @@ class CartProduct extends Model {
   String get getBuyingTotalDisplay {
     return Currency.convertToCurrency(getBuyingTotal);
   }
-  
+
   double get getOwnerExchangingTotal {
-    if (this.getExchangingProduct==null) {
+    if (this.getExchangingProduct == null) {
       return 0.0;
-    }else{
-      return this.getExchangingQty*this.getExchangingProduct.getDiscountedRetailPrice;
+    } else {
+      return this.getExchangingQty *
+          this.getExchangingProduct.getDiscountedRetailPrice;
     }
   }
-  
+
   String get getOwnerExchangingTotalDisplay {
     return Currency.convertToCurrency(getOwnerExchangingTotal);
   }
-
 }

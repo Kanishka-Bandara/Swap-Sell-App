@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/controllers/location_details_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
+import 'package:swap_sell/controller/location_details_controller.dart';
+import 'package:swap_sell/controller/user/user_controller.dart';
 import 'package:swap_sell/ui/widgets/kdrop_down_button.dart';
 
 class UserComponent {

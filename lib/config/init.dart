@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/controllers/auth/auth_controller.dart';
-import 'package:swap_sell/controllers/message_controlller.dart';
-import 'package:swap_sell/controllers/notification_controller.dart';
-import 'package:swap_sell/controllers/user/user_controller.dart';
+import 'package:swap_sell/controller/auth/auth_controller.dart';
+import 'package:swap_sell/controller/message_controlller.dart';
+import 'package:swap_sell/controller/notification_controller.dart';
+import 'package:swap_sell/controller/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/model/user/user.dart';
 
@@ -74,7 +74,8 @@ class AppInit extends Model {
   void logOut() {
     AppInit.currentApp._removeCurruntUser();
     AppInit.currentApp._removeCurruntShop();
-    AuthController.defaultController.saveUserSharedPreferences(-1, null, null, null, false);
+    AuthController.defaultController
+        .saveUserSharedPreferences(-1, null, null, null, false);
     notifyListeners();
   }
 

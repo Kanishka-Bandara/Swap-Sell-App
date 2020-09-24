@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/controllers/product/product_controller.dart';
+import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/components/my_menu.dart';
 import 'package:swap_sell/ui/components/product_card.dart';

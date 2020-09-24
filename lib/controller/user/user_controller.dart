@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/api_manager/user_api_manager.dart';
-import 'package:swap_sell/controllers/appconfig/ImageController.dart';
+import 'package:swap_sell/controller/appconfig/ImageController.dart';
 import 'package:swap_sell/model/user/user.dart';
 
 class UserController extends Model {

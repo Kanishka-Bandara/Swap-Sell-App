@@ -2,7 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/controllers/product/cart_controller.dart';
+import 'package:swap_sell/controller/product/cart_controller.dart';
 
 class AppIcons {
   static createShoppingCart(BuildContext context) {

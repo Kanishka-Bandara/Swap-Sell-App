@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/controllers/product/cart_controller.dart';
-import 'package:swap_sell/controllers/product/owner_product_list_controller.dart';
+import 'package:swap_sell/controller/product/cart_controller.dart';
+import 'package:swap_sell/controller/product/owner_product_list_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/cart/user_cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';

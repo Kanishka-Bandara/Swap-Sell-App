@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:swap_sell/controllers/message_controlller.dart';
+import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/user/user.dart';
 import 'package:json_annotation/json_annotation.dart';

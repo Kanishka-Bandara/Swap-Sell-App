@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/controllers/auth/auth_controller.dart';
-import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
-import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
+import 'package:swap_sell/controller/auth/auth_controller.dart';
+import 'package:swap_sell/controller/auth/facebook_auth_controller.dart';
+import 'package:swap_sell/controller/auth/google_auth_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';

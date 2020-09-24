@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/controllers/auth/auth_controller.dart';
-import 'package:swap_sell/controllers/auth/facebook_auth_controller.dart';
-import 'package:swap_sell/controllers/auth/google_auth_controller.dart';
+import 'package:swap_sell/controller/auth/auth_controller.dart';
+import 'package:swap_sell/controller/auth/facebook_auth_controller.dart';
+import 'package:swap_sell/controller/auth/google_auth_controller.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
 import 'package:swap_sell/ui/components/app_bar.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
@@ -29,7 +29,7 @@ class _SigninState extends State<Signin> {
         false,
         false,
         null,
-      ), 
+      ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -108,7 +108,7 @@ class _SigninState extends State<Signin> {
                                 color: Colors.white,
                               ),
                             ),
-                            onPressed: () async{
+                            onPressed: () async {
                               if (!_formKey.currentState.validate()) {
                                 return;
                               }
@@ -117,10 +117,12 @@ class _SigninState extends State<Signin> {
                                 userName: _username,
                                 password: _password,
                               );
-                              bool state =await AuthController.defaultController.signInWithNormal(au, context);
+                              bool state = await AuthController
+                                  .defaultController
+                                  .signInWithNormal(au, context);
                               if (state == false) {
                                 setState(() {
-                                  _password=null;
+                                  _password = null;
                                 });
                                 print("Bad Credentials");
                                 // TODO::Show message

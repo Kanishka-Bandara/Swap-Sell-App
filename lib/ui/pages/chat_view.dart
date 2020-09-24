@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swap_sell/controllers/message_controlller.dart';
+import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/model/message/user_message.dart';
