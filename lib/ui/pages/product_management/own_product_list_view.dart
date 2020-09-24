@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controller/product/owner_product_list_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class OwnProductListView extends StatefulWidget {

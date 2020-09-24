@@ -5,10 +5,10 @@ import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/saved/saved_product_controller.dart';
 import 'package:swap_sell/controller/saved/saved_searches_controller.dart';
 import 'package:swap_sell/controller/saved/saved_shops_controller.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/my_menu.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/my_menu.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
 
 class SavedView extends StatefulWidget {
   @override

@@ -3,9 +3,9 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/appconfig/camera_controller.dart';
 import 'package:swap_sell/model/user/user.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/user_component.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/user_component.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 enum ClassMode { View, Edit }

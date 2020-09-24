@@ -5,7 +5,7 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/controller/notification_controller.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
 
 class MyMenu {
   static getMyMenu(BuildContext context) {

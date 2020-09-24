@@ -3,8 +3,8 @@ import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/model/message/message.dart';
 import 'package:swap_sell/model/message/message_metadata.dart';
 import 'package:swap_sell/model/message/user_message.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/message_components.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/message_components.dart';
 
 class ChatView extends StatefulWidget {
   static UserMessage userMessage;

@@ -10,7 +10,7 @@ import 'package:swap_sell/controller/saved/saved_searches_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/saved/saved_product.dart';
 import 'package:swap_sell/model/saved/saved_search.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:swap_sell/model/product/product.dart';
 

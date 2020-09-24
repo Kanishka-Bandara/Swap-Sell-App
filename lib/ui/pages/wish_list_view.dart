@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/product/wish_list_controller.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/my_menu.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/my_menu.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
 
 class WishListView extends StatefulWidget {
   @override

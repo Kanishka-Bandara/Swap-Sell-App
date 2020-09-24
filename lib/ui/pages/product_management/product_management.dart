@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/my_menu.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/my_menu.dart';
 import 'package:swap_sell/ui/pages/product_management/own_product_list_view.dart';
 import 'package:swap_sell/ui/pages/product_management/product_create.dart';
 

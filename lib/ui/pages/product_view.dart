@@ -7,12 +7,12 @@ import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/product_card.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
-import 'package:swap_sell/ui/components/text_components.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/product_card.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/text_components.dart';
 
 class ProductView extends StatefulWidget {
   static Product currentProduct;

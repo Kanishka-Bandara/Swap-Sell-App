@@ -9,8 +9,8 @@ import 'package:swap_sell/model/user/contact_metadata.dart';
 import 'package:swap_sell/model/user/email.dart';
 import 'package:swap_sell/model/user/user.dart';
 import 'package:swap_sell/model/user/usertype_metadata.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/user_component.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/user_component.dart';
 import 'package:swap_sell/ui/widgets/kregex.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/controller/product/product_controller.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/my_menu.dart';
-import 'package:swap_sell/ui/components/product_card.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
-import 'package:swap_sell/ui/components/text_components.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/my_menu.dart';
+import 'package:swap_sell/ui/component/product_card.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/text_components.dart';
 
 class Home extends StatefulWidget {
   @override

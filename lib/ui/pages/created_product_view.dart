@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 class CreatedProductView extends StatefulWidget {

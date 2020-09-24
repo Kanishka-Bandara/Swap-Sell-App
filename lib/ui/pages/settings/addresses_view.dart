@@ -4,7 +4,7 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/model/user/address.dart';
 import 'package:swap_sell/model/user/contact_metadata.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 import 'package:swap_sell/ui/pages/settings/address_crud.dart';
 
 class AddressesView extends StatefulWidget {

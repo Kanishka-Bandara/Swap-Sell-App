@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/model/user/address.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/user_component.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/user_component.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class AddressCRUDVIEW extends StatefulWidget {
@@ -91,7 +91,7 @@ class _AddressCRUDVIEWState extends State<AddressCRUDVIEW> {
                 context,
                 (value) {
                   setState(() {
-                    _address.setDistrict=null;
+                    _address.setDistrict = null;
                     _address.setProvince = value;
                   });
                 },
@@ -101,9 +101,8 @@ class _AddressCRUDVIEWState extends State<AddressCRUDVIEW> {
               UserComponent.buildDistrictDropDown(
                 context,
                 (value) {
-                    _address.setDistrict = value;
-                  setState(() {
-                  });
+                  _address.setDistrict = value;
+                  setState(() {});
                 },
                 _address.getDistrict,
                 _address.getProvince,

@@ -4,10 +4,10 @@ import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/model/message/user_message.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
-import 'package:swap_sell/ui/components/default_components.dart';
-import 'package:swap_sell/ui/components/my_menu.dart';
-import 'package:swap_sell/ui/components/shimmer_tile.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
+import 'package:swap_sell/ui/component/default_components.dart';
+import 'package:swap_sell/ui/component/my_menu.dart';
+import 'package:swap_sell/ui/component/shimmer_tile.dart';
 
 class MessageView extends StatefulWidget {
   @override

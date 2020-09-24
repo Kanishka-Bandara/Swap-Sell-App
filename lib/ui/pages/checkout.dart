@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/product/cart_controller.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 
 class CheckOut extends StatefulWidget {
   @override

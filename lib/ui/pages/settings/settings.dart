@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swap_sell/config/app_navigator.dart';
-import 'package:swap_sell/ui/components/app_bar.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 import 'package:swap_sell/ui/widgets/ktext_form_field.dart';
 
 class Settings extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SettingsState extends State<Settings> {
         child: Column(
           children: <Widget>[
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 AppNavigator.navigateToAddressesView(context);
               },
               child: _buildHeader("Addresses"),
