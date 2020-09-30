@@ -25,7 +25,7 @@ class _SavedViewState extends State<SavedView> {
       child: ScopedModelDescendant<AppInit>(
         builder: (BuildContext context, Widget widget, AppInit model) {
           return DefaultTabController(
-            length: 4,
+            length: 3,
             child: Scaffold(
               appBar: ApplicationBar.createNormalAppBar(
                 context,
@@ -43,9 +43,9 @@ class _SavedViewState extends State<SavedView> {
                     Tab(
                       text: "Shops",
                     ),
-                    Tab(
-                      text: "Users",
-                    ),
+                    // Tab(
+                    //   text: "Users",
+                    // ),
                   ],
                 ),
               ),
@@ -64,12 +64,12 @@ class _SavedViewState extends State<SavedView> {
                       ? _buildSavedShopsPage(context)
                       : DefaultComponents.buildUnSignedTile(
                           context, "Please Sign in to get saved shops."),
-                  model.currentUserState
-                      ? Center(
-                          child: Text("Users"),
-                        )
-                      : DefaultComponents.buildUnSignedTile(
-                          context, "Please Sign in to get saved users."),
+                  // model.currentUserState
+                  //     ? Center(
+                  //         child: Text("Users"),
+                  //       )
+                  //     : DefaultComponents.buildUnSignedTile(
+                  //         context, "Please Sign in to get saved users."),
                 ],
               ),
             ),
