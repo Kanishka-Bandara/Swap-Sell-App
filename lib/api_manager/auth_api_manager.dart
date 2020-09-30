@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:swap_sell/api_manager/url_holder.dart';
 import 'package:swap_sell/model/user/authenticated_user.dart';
@@ -21,8 +20,8 @@ class AuthManagerAPI {
         },
       ),
     );
-    if(response.statusCode==200){
-      return int.parse(response.body)==1;
+    if (response.statusCode == 200) {
+      return int.parse(response.body) == 1;
     }
     return null;
   }
@@ -39,10 +38,10 @@ class AuthManagerAPI {
         },
       ),
     );
-    if(response.statusCode==200){
-      return int.parse(response.body)==1;
-    }else{
-    return null;
+    if (response.statusCode == 200) {
+      return int.parse(response.body) == 1;
+    } else {
+      return null;
     }
   }
 
@@ -59,8 +58,8 @@ class AuthManagerAPI {
     }
     return null;
   }
-  
-  Future<User> _signIn(AuthenticatedUser u,String url) async {
+
+  Future<User> _signIn(AuthenticatedUser u, String url) async {
     var response = await http.post(
       url,
       headers: <String, String>{
@@ -70,21 +69,20 @@ class AuthManagerAPI {
     );
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
-    }else{
+    } else {
       return null;
     }
   }
 
   Future<User> signInWithFb(AuthenticatedUser u) async {
-   return _signIn(u, URLHolder.SIGNIN_FB_URL);
+    return _signIn(u, URLHolder.SIGNIN_FB_URL);
   }
 
   Future<User> signInWithGoogle(AuthenticatedUser u) async {
-   return _signIn(u, URLHolder.SIGNIN_G_URL);
+    return _signIn(u, URLHolder.SIGNIN_G_URL);
   }
+
   Future<User> signInWithNormal(AuthenticatedUser u) async {
-   return _signIn(u, URLHolder.SIGNIN_NORMAL_URL);
+    return _signIn(u, URLHolder.SIGNIN_NORMAL_URL);
   }
-
-
 }

@@ -13,7 +13,7 @@ class AppInit extends Model {
 
   Shop _currentUserShop = Shop.exampleShop;
 
-  bool getIsSomeOneAlreadyLoggedIn() {
+  bool isSomeOneAlreadyLoggedIn() {
     AuthController.defaultController.isSomeOneLoggedIn().then((value) {
       AuthController.defaultController.getAndsetLoggedInUserDetails();
       return value;

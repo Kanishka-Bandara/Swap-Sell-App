@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:swap_sell/api_manager/url_holder.dart';
 import 'package:swap_sell/model/default/notification.dart';
@@ -11,12 +10,13 @@ class NotificationApiManager {
   Future<List<Notification>> getNotificationList(int userId) async {
     List<Notification> l = [];
     print("Starting to get Notifications");
-    var response = await http.get(URLHolder.ALL_NOTIFICATION_LIST_URL+"/$userId");
-    if (response.statusCode==200) {
-     List a = json.decode(response.body);
-     a.forEach((element) { 
-       l.add(Notification.fromJson(element));
-     });
+    var response =
+        await http.get(URLHolder.ALL_NOTIFICATION_LIST_URL + "/$userId");
+    if (response.statusCode == 200) {
+      List a = json.decode(response.body);
+      a.forEach((element) {
+        l.add(Notification.fromJson(element));
+      });
     }
     return l;
   }
@@ -59,8 +59,8 @@ class NotificationApiManager {
 
   Future<List<Notification>> setNotificationsAsRead(
       int userId, List<int> ids) async {
-        print("Starting to set as read");
-        print(ids);
+    print("Starting to set as read");
+    print(ids);
     var response = await http.post(
       URLHolder.SET_NOTIFICATION_AS_READ_BULK_URL + "/$userId",
       headers: <String, String>{
