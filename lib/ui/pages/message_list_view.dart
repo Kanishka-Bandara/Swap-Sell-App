@@ -26,7 +26,7 @@ class _MessageViewState extends State<MessageView> {
           return ScopedModel(
             model: MessageController.defaultMessageController,
             child: DefaultTabController(
-              length: 2,
+              length: 1,
               child: Scaffold(
                 appBar: ApplicationBar.createNormalAppBar(
                   context,
@@ -36,13 +36,17 @@ class _MessageViewState extends State<MessageView> {
                   TabBar(
                     tabs: <Widget>[
                       Tab(
-                        text: "Messages",
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("Messages List"),
+                        ),
+                        // text: "Messages List",
                         // icon: Icon(Icons.chat),
                       ),
-                      Tab(
-                        text: "Archived",
-                        // icon: Icon(Icons.archive),
-                      ),
+                      // Tab(
+                      //   text: "Archived",
+                      //   // icon: Icon(Icons.archive),
+                      // ),
                     ],
                   ),
                 ),
@@ -63,20 +67,20 @@ class _MessageViewState extends State<MessageView> {
                                 : _buildMessageSection(context)
                             : DefaultComponents.buildUnSignedTile(
                                 context, "Please Sign in to get messages."),
-                        model1.currentUserState
-                            ? model.isEmptyArchivedMessageList
-                                ? model.isLoadingArchivedMessageList
-                                    ? _buildShimmerTileList(context)
-                                    : DefaultComponents.buildNoDetailsWidget(
-                                        context,
-                                        Icons.message,
-                                        "No Archived Messages.",
-                                      )
-                                : _buildArchivedMessageSection()
-                            : DefaultComponents.buildUnSignedTile(
-                                context,
-                                "Please Sign in to get messages.",
-                              ),
+                        // model1.currentUserState
+                        //     ? model.isEmptyArchivedMessageList
+                        //         ? model.isLoadingArchivedMessageList
+                        //             ? _buildShimmerTileList(context)
+                        //             : DefaultComponents.buildNoDetailsWidget(
+                        //                 context,
+                        //                 Icons.message,
+                        //                 "No Archived Messages.",
+                        //               )
+                        //         : _buildArchivedMessageSection()
+                        //     : DefaultComponents.buildUnSignedTile(
+                        //         context,
+                        //         "Please Sign in to get messages.",
+                        //       ),
                       ],
                     );
                   },
