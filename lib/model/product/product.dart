@@ -211,6 +211,13 @@ class Product extends Model {
     //notifyListeners();
   }
 
+  void addSpecification(String _key, String _value) {
+    if (this.specifications == null) {
+      this.specifications = Map();
+    }
+    this.specifications[_key] = _value;
+  }
+
   int get getSaleCount => saleCount;
 
   set setSaleCount(int value) {

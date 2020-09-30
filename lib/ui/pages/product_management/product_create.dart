@@ -50,6 +50,8 @@ class _ProductCreateState extends State<ProductCreate> {
       TextEditingController(text: _newProduct.getDescription);
   TextEditingController textDelivery =
       TextEditingController(text: _newProduct.getWhatIsInTheBox);
+  TextEditingController textQTY =
+      TextEditingController(text: _newProduct.getQty.toString());
   //End :: Create Instance Variables
 
   @override
@@ -124,7 +126,6 @@ class _ProductCreateState extends State<ProductCreate> {
                 context,
                 _newProduct,
                 _imgFiles,
-                _sp,
               );
             },
             child: Icon(Icons.visibility),
@@ -287,6 +288,24 @@ class _ProductCreateState extends State<ProductCreate> {
                   },
                   onSaved: (value) {
                     product.setBarcode = value;
+                  },
+                ),
+                KTextFormField(
+                  required: true,
+                  name: "QTY",
+                  emptyRequiredMessage: null,
+                  textController: textQTY,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.qty = int.parse(value.toString());
+                  },
+                  onSaved: (value) {
+                    if (value.isEmpty) {
+                      value = "0";
+                    }
+                    product.qty = int.parse(value.toString());
                   },
                 ),
                 SizedBox(
@@ -565,8 +584,9 @@ class _ProductCreateState extends State<ProductCreate> {
                           );
                           return;
                         }
-                        _sp[_specsKey] = _specsValue;
+                        // _sp[_specsKey] = _specsValue;
                         product.specifications = _sp;
+                        product.addSpecification(_specsKey, _specsValue);
                         textSpecsKey.clear();
                         textSpecsValue.clear();
                         _specsKey = "";
@@ -705,7 +725,7 @@ class _ProductCreateState extends State<ProductCreate> {
 
   void _saveProduct() {
     _formKey.currentState.save();
-    _newProduct.setSpecifications = _sp;
+    // _newProduct.setSpecifications = _sp;
     print(_newProduct.toJson());
   }
 }

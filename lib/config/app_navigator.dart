@@ -62,11 +62,9 @@ class AppNavigator extends Navigator {
     BuildContext context,
     Product p,
     List<File> images,
-    Map<String,String> specifications,
   ) {
     CreatedProductView.currentProduct = p;
     CreatedProductView.images = images;
-    CreatedProductView.specifications = specifications;
     Navigator.of(context).pushNamed(Routes.ROUTES_PRODUCT_DUMMY_VIEW);
   }
 

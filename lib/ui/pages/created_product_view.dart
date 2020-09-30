@@ -10,11 +10,10 @@ import 'package:carousel_pro/carousel_pro.dart';
 class CreatedProductView extends StatefulWidget {
   static Product currentProduct;
   static List<File> images;
-  static Map<String, String> specifications;
 
   @override
   State<StatefulWidget> createState() {
-    return _CreatedProductViewState(currentProduct, images, specifications);
+    return _CreatedProductViewState(currentProduct, images);
   }
 }
 
@@ -27,7 +26,6 @@ class _CreatedProductViewState extends State<CreatedProductView> {
   _CreatedProductViewState(
     this._product,
     List<File> imagesFiles,
-    this._specifications,
   ) {
     _images = [];
     if (imagesFiles != null) {
