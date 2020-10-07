@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/appconfig/camera_controller.dart';
+import 'package:swap_sell/controller/product/owner_product_list_controller.dart';
+import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
 import 'package:swap_sell/ui/component/default_components.dart';
@@ -21,11 +24,12 @@ class _ProductCreateState extends State<ProductCreate> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int _currentStepCreate = 0;
   static Product _newProduct = Product(
-      id: 0,
-      uniqueID: "",
-      name: "",
-      description: "",
-      specifications: <String, String>{"a": "a", "b": "b"});
+    id: 0,
+    uniqueID: "",
+    name: "",
+    description: "",
+    specifications: Map(),
+  );
   List<File> _imgFiles = [];
   String _specsKey;
   String _specsValue;
@@ -48,6 +52,8 @@ class _ProductCreateState extends State<ProductCreate> {
   TextEditingController textSpecsValue = TextEditingController();
   TextEditingController textDescription =
       TextEditingController(text: _newProduct.getDescription);
+  TextEditingController textBarcode =
+      TextEditingController(text: _newProduct.getBarcode);
   TextEditingController textDelivery =
       TextEditingController(text: _newProduct.getWhatIsInTheBox);
   TextEditingController textQTY =
@@ -121,7 +127,6 @@ class _ProductCreateState extends State<ProductCreate> {
           top: MediaQuery.of(context).size.height - 200,
           child: FloatingActionButton(
             onPressed: () {
-              print("specs = ${_newProduct.getSpecifications}");
               AppNavigator.navigateToProductDummyViewPage(
                 context,
                 _newProduct,
@@ -136,7 +141,7 @@ class _ProductCreateState extends State<ProductCreate> {
   }
 
   List<Step> _buildProductCreateSteps(BuildContext context) {
-    _newProduct.setSpecifications = <String, String>{};
+    // _newProduct.setSpecifications = <String, String>{};
     List<Step> _steps = <Step>[
       _buildStepMainDetails(context),
       _buildStepCategory(context),
@@ -282,7 +287,7 @@ class _ProductCreateState extends State<ProductCreate> {
                   required: true,
                   name: "Barcode",
                   emptyRequiredMessage: null,
-                  textController: textDiscountPrice,
+                  textController: textBarcode,
                   onChanged: (value) {
                     product.setBarcode = value;
                   },
@@ -723,9 +728,31 @@ class _ProductCreateState extends State<ProductCreate> {
     textDelivery.clear();
   }
 
-  void _saveProduct() {
+  void _saveProduct() async {
     _formKey.currentState.save();
-    // _newProduct.setSpecifications = _sp;
-    print(_newProduct.toJson());
+    _newProduct.setSpecifications = _sp;
+    _newProduct.shop = AppInit.currentApp.getCurrentShop;
+    print(_newProduct.shop.getShopName);
+    bool status = await OwnerProductsController.defaultController
+        .addToOwnerProductsList(_newProduct, _imgFiles);
+    if (status) {
+      _clearAll();
+      setState(() {
+        _imgFiles = [];
+      });
+      DefaultComponents.showMessage(
+        context,
+        "Saved successfully..!",
+        Icons.save,
+        2,
+      );
+    } else {
+      DefaultComponents.showMessage(
+        context,
+        "Didn't Saved..!",
+        Icons.error_outline,
+        1,
+      );
+    }
   }
 }

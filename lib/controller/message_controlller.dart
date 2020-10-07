@@ -48,7 +48,7 @@ class MessageController extends Model {
   Future<List<UserMessage>> fetchMessageList() async {
     _messageList = [];
     if (!AppInit.currentApp.currentUserState) {
-      return[];
+      return [];
     }
     this.setLoadingMessageList = true;
     List<UserMessage> l = await MessageApiManager.defaultManager

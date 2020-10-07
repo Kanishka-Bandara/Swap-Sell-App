@@ -3,8 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/config/paypal/PaypalPayment.dart';
 import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/controller/notification_controller.dart';
+import 'package:swap_sell/sample_data/product_controller_delete.dart';
 import 'package:swap_sell/ui/component/default_components.dart';
 
 class MyMenu {
@@ -98,7 +100,11 @@ class MyMenu {
                 ListTile(
                   leading: Icon(Icons.local_mall),
                   title: Text("Purchases"),
-                  onTap: () {},
+                  onTap: () async {
+                    ProductControllerDelete.loadAsset();
+                    print("=====================================");
+                    await ProductControllerDelete.loadMainProductList();
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.flash_on),
@@ -119,7 +125,19 @@ class MyMenu {
                 ListTile(
                   leading: Icon(Icons.category),
                   title: Text("Categorries"),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => PaypalPayment(
+                          onFinish: (number) async {
+                            // payment done
+                            print("========================================");
+                            print('order id: ' + number);
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.settings),

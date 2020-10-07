@@ -33,8 +33,8 @@ class WishedProduct {
 
   set setStatus(int status) => this.status = status;
 
-  factory WishedProduct.fromJson(Map<String, dynamic> json) => _$WishedProductFromJson(json);
+  factory WishedProduct.fromJson(Map<String, dynamic> json) =>
+      _$WishedProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$WishedProductToJson(this);
-
 }

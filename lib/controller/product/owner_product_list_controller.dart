@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/user/user.dart';
@@ -31,17 +34,17 @@ class OwnerProductsController extends Model {
             .toList());
   }
 
-  Future<bool> addToOwnerProductsList(Product product) async {
-    bool status = true;
-    //TODO:Send to backend
-    if (status) {
+  Future<bool> addToOwnerProductsList(
+      Product product, List<File> _imgFiles) async {
+    Product saveProduct = await ProductController.defaultController
+        .saveProduct(product, _imgFiles);
+    if (saveProduct != null) {
       _ownerProductList.add(product);
       notifyListeners();
-      status = true;
+      return true;
     } else {
-      status = false;
+      return false;
     }
-    return status;
   }
 
   Future<bool> updateFromOwnerProductsList(

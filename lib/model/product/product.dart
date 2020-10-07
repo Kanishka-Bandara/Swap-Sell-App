@@ -204,7 +204,7 @@ class Product extends Model {
     //notifyListeners();
   }
 
-  Map<String, String> get getSpecifications => specifications;
+  Map<String, String> get getSpecifications => this.specifications;
 
   set setSpecifications(Map<String, String> value) {
     this.specifications = value;
@@ -216,6 +216,7 @@ class Product extends Model {
       this.specifications = Map();
     }
     this.specifications[_key] = _value;
+    notifyListeners();
   }
 
   int get getSaleCount => saleCount;

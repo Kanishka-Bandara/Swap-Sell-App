@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'authenticated_user.g.dart';
@@ -69,8 +68,8 @@ class AuthenticatedUser {
 
   set setStatus(int status) => this.status = status;
 
-  factory AuthenticatedUser.fromJson(Map<String, dynamic> json) => _$AuthenticatedUserFromJson(json);
+  factory AuthenticatedUser.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticatedUserFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthenticatedUserToJson(this);
-
 }

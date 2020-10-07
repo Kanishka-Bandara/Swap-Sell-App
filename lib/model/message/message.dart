@@ -53,7 +53,8 @@ class Message {
 
   MessageStatus get getMessageStatus => messageStatus;
 
-  set setMessageStatus(MessageStatus messageStatus) => this.messageStatus = messageStatus;
+  set setMessageStatus(MessageStatus messageStatus) =>
+      this.messageStatus = messageStatus;
 
   bool get isRead => read == 1;
 
@@ -72,7 +73,7 @@ class Message {
   DateTime get getViewedAt => this.sentAt;
 
   set setViewedAt(DateTime viewdTime) => this.sentAt = viewdTime;
-  
+
   int get getStatus => status;
 
   set setStatus(int status) => this.status = status;
@@ -81,5 +82,4 @@ class Message {
       _$MessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageToJson(this);
-
 }

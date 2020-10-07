@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:csv/csv.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
@@ -47,17 +49,19 @@ class ProductControllerDelete {
     data = csv;
   }
 
-  static get loadMainProductList {
+  static get loadMainProductList async {
     if (data.length == 0) {
       ProductControllerDelete.loadAsset();
     }
     print("Loading Values to the main list");
     int pCount = data.length;
     String a = "";
-    pCount = 50;
+    // pCount = 1000;
+    print("Data length = $pCount");
     List<Product> list = new List(pCount);
     for (var i = 1; i < pCount; i++) {
       int _id = i;
+      // print("object");
       String _uniqueID = data[i][0].toString();
       String _name = data[i][3].toString();
       double _retailPrice = data[i][6] == "" ? 1000.00 : data[i][6].toDouble();
@@ -87,7 +91,7 @@ class ProductControllerDelete {
       String _model = "MDL$i";
       Shop _shop = Shop.exampleShop;
       int _isFavorite = i % 20 == 0 ? 1 : 0;
-      String _currency = "Rs";
+      String _currency = "USD";
 
 //Start :: Set values to specs
       if (data[i][14] == "") {
@@ -198,11 +202,11 @@ class ProductControllerDelete {
       list[i].setCondition = _condition;
       list[i].setModel = _model;
       list[i].setBrand = _brand;
-      list[i].setShop = _shop;
+      list[i].setBarcode = "b" + i.toString();
+      list[i].setShop = AppInit.currentApp.getCurrentShop;
       list[i].setIsFavorite = _isFavorite == 1;
       list[i].setCurrency = _currency;
-      // print("${list[i].name} added");
-
+      print("${list[i].name} added");
       a += " mainList[$i] = Product(" +
           " id: ${list[i].id}," +
           "uniqueID: \"${list[i].getUniqueID}\"," +
@@ -227,14 +231,25 @@ class ProductControllerDelete {
           " isFavorite: ${list[i].getIsFavorite}," +
           "currency: \"${list[i].getCurrency}\"," +
           "); \n";
+      print("Product $i has been loded.");
+      if (list[i] != null) {
+        Future.delayed(Duration(seconds: 2), () async {});
+        print("Saving product - $i - ${list[i].getName}");
+        await ProductController.defaultController.saveProduct(list[i]);
+        Future.delayed(Duration(seconds: 2));
+      }
       i++;
     }
     // print(list);
     print("Done\n\n");
+    print("All products is ${list.length}");
+    print("Shop - " + AppInit.currentApp.getCurrentShop.getID.toString());
     // for (var i = 0; i < list.length; i++) {
     // }
     a = a.replaceAll("I/flutter (10500):  ", "");
-    printWrapped(a);
+    // printWrapped(a);
+    print("Start to Data saving");
+    // for (var i = 1; i < list.length; i++) {}
     // Clipboard.setData(new ClipboardData(text: a));
     // var file = new File("assets/product.txt").writeAsString(a);
   }

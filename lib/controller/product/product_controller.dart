@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/api_manager/product_api_manager.dart';
 import 'package:swap_sell/config/init.dart';
+import 'package:swap_sell/controller/appconfig/ImageController.dart';
 import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/model/product/product.dart';
 import 'package:swap_sell/model/product/product_head_category.dart';
@@ -52,7 +55,16 @@ class ProductController extends Model {
     return await ProductExamples.getExampleProductList();
   }
 
-  Future<Product> saveProduct(Product p) async {
+  Future<Product> saveProduct(Product p, [List<File> _imgFiles]) async {
+    List<String> _images = [];
+    if (_imgFiles != null) {
+      for (var i = 0; i < _imgFiles.length; i++) {
+        print(i);
+        _images.add(
+            ImageController.dfaultController.encodeImageToBase64(_imgFiles[i]));
+      }
+    }
+    p.setImages = _images;
     return await ProductApiManager.defaultManager
         .saveProduct(p, AppInit.currentApp.getCurrentUser.getId);
   }

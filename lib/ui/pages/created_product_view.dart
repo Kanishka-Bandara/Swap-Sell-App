@@ -370,6 +370,9 @@ class _CreatedProductViewState extends State<CreatedProductView> {
   }
 
   List<Widget> _getSpecificationList() {
+    if (_product.getSpecifications == null) {
+      _product.setSpecifications = Map();
+    }
     List<Widget> a = new List(_product.getSpecifications.length);
     int i = 0;
     _product.getSpecifications.forEach((k, v) {
@@ -432,19 +435,25 @@ class _CreatedProductViewState extends State<CreatedProductView> {
               ),
             ],
           ),
-          _product.getSpecifications.length != 0
+          (_product.getSpecifications == null ||
+                  _product.getSpecifications.length != 0)
               ? ExpansionTile(
                   title: Text("Specifications"),
                   children: _getSpecificationList(),
                 )
-              : Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      "Define all of your product specifications as a key and a value pair.",
+              : ExpansionTile(
+                  title: Text("Specifications"),
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 50,
+                      child: Center(
+                        child: Text(
+                          "Define all of your product specifications as a key and a value pair.",
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
           ExpansionTile(
             title: Text("Description"),

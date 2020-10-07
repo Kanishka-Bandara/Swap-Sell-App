@@ -7,5 +7,4 @@ class ImageController {
   String encodeImageToBase64(File f) {
     return base64Encode(f.readAsBytesSync());
   }
-  
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/controller/product/cart_controller.dart';
 import 'package:swap_sell/model/product/product_matadata.dart';
@@ -83,7 +84,8 @@ class _CheckOutState extends State<CheckOut> {
               Row(
                 children: <Widget>[
                   Text(
-                    "AppInit.currentApp.getCurrentUser.getAddresses[0].getAsString",
+                    // "AppInit.currentApp.getCurrentUser.getAddresses[0].getAsString",
+                    "No 61 stores,\nHabdapanagala,\nWeherayaya,\nSri Lanka\n10020",
                   ),
                 ],
               ),
@@ -127,14 +129,14 @@ class _CheckOutState extends State<CheckOut> {
               Row(
                 children: <Widget>[
                   Text(
-                    "Visa * x-1639",
+                    "Paypal",
                   ),
                 ],
               ),
               Row(
                 children: <Widget>[
                   Text(
-                    "LKR 10709.00",
+                    "${CartController.defaultController.getTotalPayableDisplay}",
                   ),
                 ],
               ),
@@ -156,15 +158,20 @@ class _CheckOutState extends State<CheckOut> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
-                child: Text(
-                  "Edit",
-                  style: TextStyle(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                ),
-                onPressed: () {},
+              FaIcon(
+                FontAwesomeIcons.paypal,
+                color: Colors.blue,
+                size: 50,
               ),
+              // RaisedButton(
+              //   child: Text(
+              //     "Edit",
+              //     style: TextStyle(
+              //       color: Theme.of(context).scaffoldBackgroundColor,
+              //     ),
+              //   ),
+              //   onPressed: () {},
+              // ),
             ],
           ),
         ),
