@@ -132,7 +132,19 @@ class AuthController {
   Future<String> getLoggedInUserType() async {
     return await SPHelper.defaultHelper.getString(SPKey.USER_TYPE);
   }
+
   // END::CRUD on Shared Preferences
+  Future<String> sendCodeToResetPassword(String _email) async {
+    return await AuthManagerAPI.defaultManager.sendCodeToResetPassword(_email);
+  }
+
+  Future<bool> resetPassword(String _email, String _password) async {
+    Map m = {
+      "email": _email,
+      "pw": _password,
+    };
+    return await AuthManagerAPI.defaultManager.resetPassword(m);
+  }
 }
 
 enum AuthType {

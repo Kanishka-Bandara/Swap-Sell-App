@@ -10,6 +10,7 @@ import 'package:swap_sell/ui/pages/product_management/product_management.dart';
 import 'package:swap_sell/ui/pages/product_view.dart';
 import 'package:swap_sell/ui/pages/home.dart';
 import 'package:swap_sell/ui/pages/profile_view.dart';
+import 'package:swap_sell/ui/pages/reset_password.dart';
 import 'package:swap_sell/ui/pages/saved_view.dart';
 import 'package:swap_sell/ui/pages/settings/address_crud.dart';
 import 'package:swap_sell/ui/pages/settings/addresses_view.dart';
@@ -42,6 +43,7 @@ class Routes {
   static const String ROUTES_CHECKOUT_VIEW = '/checkOut';
   static const String ROUTES_PREPARATION_VIEW = '/preparation';
   static const String ROUTES_VOICE_RECOGNIZER = '/voice';
+  static const String ROUTES_RESETPASSWORD = '/resetPassword';
 
   static final Map<String, WidgetBuilder> routes = getRoutes();
 
@@ -71,6 +73,7 @@ class Routes {
       ROUTES_CHECKOUT_VIEW: (BuildContext context) => CheckOut(),
       ROUTES_PREPARATION_VIEW: (BuildContext context) => Preparation(),
       ROUTES_VOICE_RECOGNIZER: (BuildContext context) => VoiceRecognizer(),
+      ROUTES_RESETPASSWORD: (BuildContext context) => ResetPassword()
     };
   }
 }

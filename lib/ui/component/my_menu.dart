@@ -101,9 +101,9 @@ class MyMenu {
                   leading: Icon(Icons.local_mall),
                   title: Text("Purchases"),
                   onTap: () async {
-                    ProductControllerDelete.loadAsset();
-                    print("=====================================");
-                    await ProductControllerDelete.loadMainProductList();
+                    // ProductControllerDelete.loadAsset();
+                    // print("=====================================");
+                    // await ProductControllerDelete.loadMainProductList();
                   },
                 ),
                 ListTile(

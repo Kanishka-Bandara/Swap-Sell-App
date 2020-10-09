@@ -222,6 +222,19 @@ class _SigninState extends State<Signin> {
                           ),
                         ),
                       ),
+                      FlatButton(
+                        onPressed: () {
+                          AppNavigator.navigateToResetPasswordRequestPage(
+                              context);
+                        },
+                        child: Text(
+                          "Forgot Password",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Theme.of(context).accentColor,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],

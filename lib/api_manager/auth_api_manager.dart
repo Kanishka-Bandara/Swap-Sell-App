@@ -85,4 +85,18 @@ class AuthManagerAPI {
   Future<User> signInWithNormal(AuthenticatedUser u) async {
     return _signIn(u, URLHolder.SIGNIN_NORMAL_URL);
   }
+
+  Future<String> sendCodeToResetPassword(String _email) async {
+    // TODO::SEND to the backend
+    return "123456";
+  }
+
+  Future<bool> resetPassword(Map m) async {
+    // TODO::SEND to the backend
+    //   Map m = {
+    //   "email": _email,
+    //   "pw": _password,
+    // };
+    return true;
+  }
 }

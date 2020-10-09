@@ -164,4 +164,10 @@ class AppNavigator extends Navigator {
     AddressCRUDVIEW.address = address;
     Navigator.of(context).pushNamed(Routes.ROUTES_SETTINGS_ADDRESS_CRUD_VIEW);
   }
+
+  static navigateToResetPasswordRequestPage(
+    BuildContext context,
+  ) {
+    Navigator.of(context).pushNamed(Routes.ROUTES_RESETPASSWORD);
+  }
 }

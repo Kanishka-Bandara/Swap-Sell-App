@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:swap_sell/ui/component/app_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'PaypalServices.dart';
 
@@ -144,12 +145,12 @@ class PaypalPaymentState extends State<PaypalPayment> {
 
     if (checkoutUrl != null) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          leading: GestureDetector(
-            child: Icon(Icons.arrow_back_ios),
-            onTap: () => Navigator.pop(context),
-          ),
+        appBar: ApplicationBar.createNormalAppBar(
+          context,
+          "Checkout",
+          false,
+          false,
+          null,
         ),
         body: WebView(
           initialUrl: checkoutUrl,

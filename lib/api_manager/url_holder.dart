@@ -1,7 +1,7 @@
 class URLHolder {
   // BEGIN::MAIN URL
   // static const String MAIN_URL = "http://10.0.2.2:8080";
-  static const String MAIN_URL = "http://192.168.8.100:8080";
+  static const String MAIN_URL = "http://192.168.8.101:8080";
   // END::MAIN URL
   // BEGIN::AUTH URL
   static const String _AUTH_PACKAGE = MAIN_URL + "/auth";
@@ -15,6 +15,8 @@ class URLHolder {
       SIGNUP_URL + "/userNameAlreadyExist";
   static const String EMAIL_ALREADY_EXISTS_URL =
       SIGNUP_URL + "/userEmailAlreadyExist";
+  static const String SEND_VERIFICATION_CODE_TO_RESET_PASSWORD =
+      _AUTH_PACKAGE + "/sendCodeToResetPassword";
   // END::AUTH URL
   // BEGIN::Location URL
   static const String _LOCATION_PACKAGE = MAIN_URL + "/location";
