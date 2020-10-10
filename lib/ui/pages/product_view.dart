@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:swap_sell/controller/product/cart_controller.dart';
 import 'package:swap_sell/controller/product/product_controller.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
@@ -631,8 +632,9 @@ class _ProductViewState extends State<ProductView> {
                   children: <Widget>[
                     _product.canOnlySell || _product.canBarterAndSell
                         ? CupertinoButton(
-                            onPressed: () {
-                              CartController.defaultController
+                            onPressed: () async {
+                              bool _status = await CartController
+                                  .defaultController
                                   .addToCartProductList(
                                 CartProduct(
                                   id: 0,
@@ -645,14 +647,26 @@ class _ProductViewState extends State<ProductView> {
                                 ),
                               );
                               Navigator.of(context).pop();
+                              if (_status) {
+                                DefaultComponents.showToast(
+                                  "Product has been added to the cart.",
+                                  false,
+                                );
+                              } else {
+                                DefaultComponents.showToast(
+                                  "Something went wrong.\nPlease try again.",
+                                  true,
+                                );
+                              }
                             },
                             child: Text("Buy"),
                           )
                         : Container(),
                     _product.canOnlyBarter || _product.canBarterAndSell
                         ? CupertinoButton(
-                            onPressed: () {
-                              CartController.defaultController
+                            onPressed: () async {
+                              bool _status = await CartController
+                                  .defaultController
                                   .addToCartProductList(
                                 CartProduct(
                                   id: 0,
@@ -665,6 +679,17 @@ class _ProductViewState extends State<ProductView> {
                                 ),
                               );
                               Navigator.of(context).pop();
+                              if (_status) {
+                                DefaultComponents.showToast(
+                                  "Product has been added to the cart.",
+                                  false,
+                                );
+                              } else {
+                                DefaultComponents.showToast(
+                                  "Something went wrong.\nPlease try again.",
+                                  true,
+                                );
+                              }
                             },
                             child: Text("Exchange"),
                           )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:swap_sell/config/app_navigator.dart';
 
 class DefaultComponents {
@@ -86,6 +87,17 @@ class DefaultComponents {
         ),
       ),
     );
+  }
+
+  static showToast(String message, bool isError) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: isError ? Colors.red : Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   static Widget buildRoundedNotificationLabel(

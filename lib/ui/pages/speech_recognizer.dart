@@ -63,10 +63,9 @@ class _VoiceRecognizerState extends State<VoiceRecognizer> {
                     child: Icon(Icons.close),
                     onPressed: () {
                       if (_isListening) {
-                        _speechRecognition.cancel().then((value){
+                        _speechRecognition.cancel().then((value) {
                           setState(() {
                             _isListening = value;
-                            
                           });
                         });
                       }
@@ -77,7 +76,9 @@ class _VoiceRecognizerState extends State<VoiceRecognizer> {
                     child: Icon(Icons.mic),
                     onPressed: () {
                       if (_isAvailable && !_isListening) {
-                        _speechRecognition.listen(locale: "en_US").then((value) {
+                        _speechRecognition
+                            .listen(locale: "en_US")
+                            .then((value) {
                           setState(() {
                             _resultText = value;
                           });
@@ -101,7 +102,11 @@ class _VoiceRecognizerState extends State<VoiceRecognizer> {
               SizedBox(
                 height: 10,
               ),
-              Column(children: <Widget>[Text(_resultText),],)
+              Column(
+                children: <Widget>[
+                  Text(_resultText),
+                ],
+              )
             ],
           )
         ],

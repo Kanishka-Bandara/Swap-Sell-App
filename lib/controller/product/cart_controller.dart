@@ -1,4 +1,5 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:swap_sell/api_manager/cart_api_manager.dart';
 import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
@@ -133,11 +134,10 @@ class CartController extends Model {
 
   // Future<List<List<CartProduct>>> get cartProductsList => _cartProducts;
 
-  bool addToCartProductList(CartProduct cartProduct) {
+  Future<bool> addToCartProductList(CartProduct cartProduct) async {
     _CartProductType type = _CartProductType.NEW_SHOP_WITH_NEW_PRODUCT;
     int ucpIndex;
     int cpIndex;
-    bool _state = true;
     for (var i = 0; i < _cartProducts.length; i++) {
       if (_cartProducts[i].getShop.getShopID ==
           cartProduct.product.shop.shopID) {
@@ -152,7 +152,8 @@ class CartController extends Model {
         }
       }
     }
-    // TODO::SEND TO BACK END
+    bool _state =
+        await CartAPIManager.defaultManager.saveCartProduct(cartProduct);
     if (_state) {
       if (type == _CartProductType.NEW_SHOP_WITH_NEW_PRODUCT) {
         List<CartProduct> cp = [];
@@ -168,8 +169,6 @@ class CartController extends Model {
                 cartProduct.getQty;
       }
       notifyListeners();
-    } else {
-      _state = false;
     }
     return _state;
   }
