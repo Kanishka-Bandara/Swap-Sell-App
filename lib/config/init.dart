@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/controller/auth/auth_controller.dart';
 import 'package:swap_sell/controller/message_controlller.dart';
 import 'package:swap_sell/controller/notification_controller.dart';
+import 'package:swap_sell/controller/product/cart_controller.dart';
 import 'package:swap_sell/controller/user/user_controller.dart';
 import 'package:swap_sell/model/shop/shop.dart';
 import 'package:swap_sell/model/user/user.dart';
@@ -82,5 +83,6 @@ class AppInit extends Model {
   void loadUserDetailsOnApp() {
     NotificationController.currentController.fetchNotificationList();
     MessageController.defaultMessageController.fetchMessageList();
+    CartController.defaultController.fetchData();
   }
 }

@@ -1,5 +1,7 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:swap_sell/api_manager/cart_api_manager.dart';
+import 'package:swap_sell/api_manager/product_api_manager.dart';
+import 'package:swap_sell/config/init.dart';
 import 'package:swap_sell/sample_data/ProductExample.dart';
 import 'package:swap_sell/kpackage/currency.dart';
 import 'package:swap_sell/model/cart/cart_product.dart';
@@ -14,11 +16,17 @@ enum _CartProductType {
 }
 
 class CartController extends Model {
-  CartController() {
-    setData();
-  }
   static CartController defaultController = CartController();
   List<UserCartProduct> _cartProducts = [];
+
+  Future<List<UserCartProduct>> fetchData() async {
+    _cartProducts = [];
+    _cartProducts = await CartAPIManager.defaultManager.getUserCartProducts(
+      AppInit.currentApp.getCurrentUser.getId,
+    );
+    notifyListeners();
+    return _cartProducts;
+  }
 
   bool get isSelectedAll {
     bool _selectedAll = true;
@@ -32,109 +40,25 @@ class CartController extends Model {
     return _selectedAll;
   }
 
-  void setAllSelected(bool select) {
+  Future<bool> setAllSelected(bool select) async {
+    List<int> ids = [];
     _cartProducts.forEach((f) {
-      f.setAllProductSelected(select);
+      f.getCartProducts.forEach((element) {
+        ids.add(element.getId);
+      });
     });
-    notifyListeners();
+    bool status = await CartAPIManager.defaultManager
+        .setAllSelected(AppInit.currentApp.getCurrentUser.getId, ids);
+    if (status) {
+      _cartProducts.forEach((f) {
+        f.setAllProductSelected(select);
+      });
+      notifyListeners();
+    }
+    return status;
   }
 
-  void setData() {
-    _cartProducts.add(
-      UserCartProduct(
-        shop: Shop(
-          id: 0,
-          shopID: "1",
-          shopName: "Shop 1",
-          ownerId: 1,
-          status: 1,
-        ),
-        cartProducts: [
-          CartProduct(
-            id: 1,
-            product: ProductExamples.getList()[0],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-          CartProduct(
-            id: 2,
-            product: ProductExamples.getList()[1],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-          CartProduct(
-            id: 3,
-            product: ProductExamples.getList()[2],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-          CartProduct(
-            id: 4,
-            product: ProductExamples.getList()[3],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-          CartProduct(
-            id: 5,
-            product: ProductExamples.getList()[4],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-        ],
-      ),
-    );
-
-    _cartProducts.add(
-      UserCartProduct(
-        shop: Shop(
-          id: 1,
-          shopID: "1",
-          shopName: "Shop 2",
-          ownerId: 1,
-          status: 1,
-        ),
-        cartProducts: [
-          CartProduct(
-            id: 6,
-            product: ProductExamples.getList()[5],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-          CartProduct(
-            id: 7,
-            product: ProductExamples.getList()[6],
-            isSelected: true,
-            qty: 1,
-            dealingType: ProductDealingType.ONLY_SELL,
-            addedDate: DateTime.now(),
-            status: 1,
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Future<List<List<CartProduct>>> get cartProductsList => _cartProducts;
-
-  Future<bool> addToCartProductList(CartProduct cartProduct) async {
+  Future<bool> addToCartProduct(CartProduct cartProduct) async {
     _CartProductType type = _CartProductType.NEW_SHOP_WITH_NEW_PRODUCT;
     int ucpIndex;
     int cpIndex;
@@ -184,9 +108,7 @@ class CartController extends Model {
   }
 
   Future<List<UserCartProduct>> get getCartProducts async {
-    return Future.delayed(Duration(seconds: 1), () {
-      return _cartProducts;
-    });
+    return _cartProducts;
   }
 
   double get getCartTotal {
@@ -214,6 +136,7 @@ class CartController extends Model {
   }
 
   void removeSelectedFromTheShoppingCart() {
+    print("]]]]]]]]]]]]]]]]]]]");
     _cartProducts.forEach((ucp) {
       ucp.getCartProducts.removeWhere((cp) {
         //TODO ::Send To Backend
@@ -226,15 +149,39 @@ class CartController extends Model {
     notifyListeners();
   }
 
-  // Future<List<UserCartProduct>> get getSelectedCartProducts async {
-  //   List<UserCartProduct> l = [];
+  // void removeSelectedFromTheShoppingCart() async {
   //   _cartProducts.forEach((ucp) {
-  //     if (ucp.getSelectedAsClone.getCartProducts.length > 0) {
-  //       l.add(ucp.getSelectedAsClone);
-  //     }
+  //     ucp.getCartProducts.forEach((cp) async {
+  //       print(cp.getId);
+  //       if (cp.isSelected) {
+  //         bool status = await CartAPIManager.defaultManager
+  //             .deleteProductFromTheShoppingCart(
+  //                 AppInit.currentApp.getCurrentUser.getId, cp);
+  //         if (status) {
+  //           ucp.getCartProducts.removeWhere((cp) {
+  //             return cp.isSelected;
+  //           });
+  //         }
+  //       }
+  //     });
   //   });
-  //   return l;
+  //   notifyListeners();
+  //   _cartProducts.removeWhere((ucp) {
+  //     print("===${ucp.getCartProducts.length}");
+  //     return ucp.getCartProducts.length <= 0;
+  //   });
+  //   notifyListeners();
   // }
+
+  Future<List<UserCartProduct>> get getSelectedCartProducts async {
+    List<UserCartProduct> l = [];
+    _cartProducts.forEach((ucp) {
+      if (ucp.getSelectedAsClone.getCartProducts.length > 0) {
+        l.add(ucp.getSelectedAsClone);
+      }
+    });
+    return l;
+  }
 
   int get getSelectedCartProductCount {
     int _c = 0;

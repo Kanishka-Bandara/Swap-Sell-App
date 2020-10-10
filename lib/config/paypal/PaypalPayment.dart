@@ -24,10 +24,10 @@ class PaypalPaymentState extends State<PaypalPayment> {
 
   // you can change default currency according to your need
   Map<dynamic, dynamic> defaultCurrency = {
-    "symbol": "USD ",
+    "symbol": "LKR ",
     "decimalDigits": 2,
     "symbolBeforeTheNumber": true,
-    "currency": "USD"
+    "currency": "LKR"
   };
 
   bool isEnableShipping = false;

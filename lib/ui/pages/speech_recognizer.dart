@@ -50,6 +50,7 @@ class _VoiceRecognizerState extends State<VoiceRecognizer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

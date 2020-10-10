@@ -635,7 +635,7 @@ class _ProductViewState extends State<ProductView> {
                             onPressed: () async {
                               bool _status = await CartController
                                   .defaultController
-                                  .addToCartProductList(
+                                  .addToCartProduct(
                                 CartProduct(
                                   id: 0,
                                   product: _product,
@@ -667,7 +667,7 @@ class _ProductViewState extends State<ProductView> {
                             onPressed: () async {
                               bool _status = await CartController
                                   .defaultController
-                                  .addToCartProductList(
+                                  .addToCartProduct(
                                 CartProduct(
                                   id: 0,
                                   product: _product,
